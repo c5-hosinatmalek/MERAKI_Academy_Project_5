@@ -1,3 +1,4 @@
+DROP DATABASE todo_list;
 CREATE DATABASE Data_Pirates;
 
 USE Data_Pirates;
