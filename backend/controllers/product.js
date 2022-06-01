@@ -46,6 +46,21 @@ connection.query(query,data,(err,result)=>{
     })
  }
 
+ // create function to delete product by id
+ const deleteProductbyId=(req,res)=>{
+
+    const productId=req.params.id_product
+    const data=[productId]
+    const query=`UPDATE  PRODUCTS SET IS_DELETED =1 WHERE ID=${productId};`
+    connection.query(query,data,(err,result)=>{
+        if (err) {
+            return res.json({success:false,err})
+        }
+        res.status(200).json({success:true,result})
+    })
+ }
+
+
  
 
-module.exports={getAllProducts,createProduct,getProductbyId}
+module.exports={getAllProducts,createProduct,getProductbyId,deleteProductbyId}
