@@ -9,6 +9,8 @@ const categoryRouter = require("./routes/category");
 const registerRouter =require("./routes/register")
 const sub_categoryRouter=require("./routes/sub_category")
 const productRouter =require("./routes/product")
+const cartRouter=require("./routes/cart")
+
 const app=express()
 app.use(cors())
 app.use(express.json())
@@ -35,8 +37,8 @@ app.use("/sub_category",sub_categoryRouter)
 // create product router
 app.use("/product",productRouter)
 
-
-
+// creat middlleware application ==>handle all requst cartRouter
+app.use("/cart",cartRouter)
 
 
 
