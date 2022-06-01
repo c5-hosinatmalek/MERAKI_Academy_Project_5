@@ -32,4 +32,20 @@ connection.query(query,data,(err,result)=>{
 })
 
 }
-module.exports={getAllProducts,createProduct}
+// create function to get product by id
+ const getProductbyId=(req,res)=>{
+
+    const productId=req.params.id_product
+    const data=[productId]
+    const query=`SELECT * FROM PRODUCTS WHERE ID=${productId};`
+    connection.query(query,data,(err,result)=>{
+        if (err) {
+            return res.json({success:false,err})
+        }
+        res.status(200).json({success:true,result})
+    })
+ }
+
+ 
+
+module.exports={getAllProducts,createProduct,getProductbyId}
