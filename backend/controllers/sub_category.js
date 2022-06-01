@@ -13,4 +13,4 @@ const createNewSubCategory = (req, res) => {
   });
 };
 
-module.exports =  {createNewSubCategory} ;
+module.exports = { createNewSubCategory };
