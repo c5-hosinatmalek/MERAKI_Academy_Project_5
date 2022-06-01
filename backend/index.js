@@ -9,11 +9,13 @@ const port=process.env.PORT
 
 
 const roleRouter=require("./routes/role");
+const permissionRouter=require("./routes/permission")
 
 
 // creat middlleware application ==>handle all requst roleRouter
 app.use("/role",roleRouter);
-
+// creat middlleware application ==>handle all requst permissionRouter
+app.use("/permission",permissionRouter);
 
 
 

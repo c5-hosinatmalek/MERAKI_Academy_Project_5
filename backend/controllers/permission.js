@@ -31,3 +31,4 @@ const creatPermission = (req, res) => {
      })
   })
 };
+module.exports=creatPermission;
