@@ -9,11 +9,10 @@ const categoryRouter = require("./routes/category");
 const registerRouter =require("./routes/register")
 const sub_categoryRouter=require("./routes/sub_category")
 const productRouter =require("./routes/product")
+
 const loginRouter = require("./routes/login")
-const app=express()
-app.use(cors())
-app.use(express.json())
-const port=process.env.PORT
+
+
 
 
 
@@ -35,8 +34,10 @@ app.use("/register",registerRouter)
 app.use("/sub_category",sub_categoryRouter)
 // create product router
 app.use("/product",productRouter)
+
 // create login router
 app.use("/login",loginRouter)
+
 
 
 
