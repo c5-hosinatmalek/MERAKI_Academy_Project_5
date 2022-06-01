@@ -13,4 +13,16 @@ const createNewCategory = (req, res) => {
   });
 };
 
-module.exports = { createNewCategory };
+const getAllCategory=(req,res)=>{
+    const query="SELECT * FROM categories WHERE IS_DELETED =0"
+    connection.query(query,(err,result)=>{
+        if (err) {
+
+            return res.json({success:false,err})
+        }
+        res.status(200).json({success:true,result})
+    })
+}
+
+
+module.exports = { createNewCategory,getAllCategory };
