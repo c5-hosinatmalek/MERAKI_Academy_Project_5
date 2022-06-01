@@ -1,5 +1,7 @@
 const connection = require("../models/db");
 
+
+// create function to create category
 const createNewCategory = (req, res) => {
   const { category, picUrl } = req.body;
 
@@ -13,4 +15,17 @@ const createNewCategory = (req, res) => {
   });
 };
 
-module.exports = { createNewCategory };
+// create function to get all category
+const getAllCategory=(req,res)=>{
+    const query="SELECT * FROM categories WHERE IS_DELETED =0"
+    connection.query(query,(err,result)=>{
+        if (err) {
+
+            return res.json({success:false,err})
+        }
+        res.status(200).json({success:true,result})
+    })
+}
+
+
+module.exports = { createNewCategory,getAllCategory };
