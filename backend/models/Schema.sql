@@ -1,3 +1,4 @@
+DROP DATABASE Data_Pirates;
 CREATE DATABASE Data_Pirates;
 
 USE Data_Pirates;
@@ -39,13 +40,15 @@ CREATE TABLE roles_permissions(
 CREATE TABLE categories(
     id INT AUTO_INCREMENT NOT NULL,
     category VARCHAR(255),
+    picUrl VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
 
-cREATE TABLE sub_categories(
+CREATE TABLE sub_categories(
     id INT AUTO_INCREMENT NOT NULL,
     sub_category VARCHAR(255),
+    picUrl VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
