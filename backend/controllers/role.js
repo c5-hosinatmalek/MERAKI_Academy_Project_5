@@ -1,10 +1,10 @@
-const connection="dt"
+const connection=require("../models/db")
 
 
 
 // create middlleware function ==>creat role
 
-const creatRole=(req,res)=>{
+const createRole=(req,res)=>{
 const {role}=req.body;
 const query=`INSERT INTO roles (role) VALUES (?)`;
 const data =[role];
@@ -25,4 +25,4 @@ connection.query(query,data,(err,result)=>{
 })
 }
 
-module.exports=creatRole;
+module.exports=createRole;
