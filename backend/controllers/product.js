@@ -17,6 +17,19 @@ const getAllProducts =(req,res)=>{
 }
 
 
+// create function to create product
+const createProduct=(req,res)=>{
+    const {product_name,product_type,price,title,store_Quantity,description,category_id,sub_category}=req.body
+    
+const data =[product_name,product_type,price,title,store_Quantity,description,category_id,sub_category]
+const query="INSERT INTO products (product_name,product_type,price,title,store_Quantity,description,category_id,sub_category) VALUES(?,?,?,?,?,?,?,?)"
 
+connection.query(query,data,(err,result)=>{
+    if (err) {
+        return res.json({success:false,err})
+    }
+    res.status(200).json({success:true,result})
+})
 
-module.exports={getAllProducts}
+}
+module.exports={getAllProducts,createProduct}
