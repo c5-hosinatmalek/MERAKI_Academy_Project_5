@@ -1,4 +1,4 @@
-const connection = "db";
+const connection = require("../models/db");
 const creatPermission = (req, res) => {
   const { permission,role_id } = req.body;
   const query = `INSERT INTO permissions (permission) VALUES(?)`;

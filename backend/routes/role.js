@@ -1,11 +1,11 @@
 const express=require("express");
-const creatRole=require("../controllers/role");
+const createRole=require("../controllers/role");
 
 //==> create middlleware router==roleRouter
 const roleRouter=express.Router();
 
 // endpoint ==> http://localhost:5000/role
 
-roleRouter.post("/",creatRole);
+roleRouter.post("/",createRole);
 
 module.exports=roleRouter;
