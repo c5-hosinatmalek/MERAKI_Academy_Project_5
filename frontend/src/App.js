@@ -1,14 +1,16 @@
 import "./App.css";
-import { Route,Routes,Link } from "react-router-dom";
-import LOGIN from "./components/REGISTER";
+import { Route, Routes, Link } from "react-router-dom";
+import REGISTER from "./components/REGISTER";
 
 function App() {
-  return <div className="App">
-    <Link to="/rigester"  >rigester</Link>
+  return (
+    <div className="App">
+      <Link to="/rigester">rigester</Link>
       <Routes>
-        <Route path="/rigester" element={<LOGIN/>}/>
+        <Route path="/rigester" element={<REGISTER />} />
       </Routes>
-  </div>;
+    </div>
+  );
 }
 
 export default App;
