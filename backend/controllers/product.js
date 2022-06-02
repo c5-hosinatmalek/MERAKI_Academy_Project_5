@@ -7,7 +7,7 @@ const connection = require("../models/db")
 const getAllProducts =(req,res)=>{
 
 
-    const query="SELECT * FROM products WHERE IS_DELETED =0"
+    const query="SELECT * FROM PRODUCTS LEFT JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.ID LEFT JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.ID WHERE  PRODUCTS.IS_DELETED =0;"
 
     connection.query(query,(err,result)=>{
         if (err) {
@@ -38,7 +38,8 @@ connection.query(query,data,(err,result)=>{
 
     const productId=req.params.id_product
     const data=[productId]
-    const query=`SELECT * FROM PRODUCTS WHERE ID=? AND IS_DELETED =0;`
+    const query=`SELECT * FROM PRODUCTS LEFT JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.ID LEFT JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.ID WHERE PRODUCTS.ID=? AND PRODUCTS.IS_DELETED =0;`
+    
     connection.query(query,data,(err,result)=>{
         if (err) {
             return res.json({success:false,err})
