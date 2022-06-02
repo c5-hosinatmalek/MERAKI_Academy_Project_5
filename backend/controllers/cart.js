@@ -39,24 +39,24 @@ const AddToCart = (req, res) => {
       });
     });
   } else {
-    const query ="INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
-    const data=[product_id,user_id,quantity]
+    const query =
+      "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
+    const data = [product_id, user_id, quantity];
     connection.query(query, data, (err, Result) => {
-        if (err) {
-            res.status(500).json({
-              succses: false,
-              Message: "server error",
-              err,
-            });
-          }
-          res.status(201).json({
-            succses: true,
-            Result,
-          });
+      if (err) {
+        res.status(500).json({
+          succses: false,
+          Message: "server error",
+          err,
+        });
+      }
+      res.status(201).json({
+        succses: true,
+        Result,
+      });
     });
   }
 };
-
 
 const deletecart = (req, res) => {
   const id = req.params.id;
@@ -78,6 +78,23 @@ const deletecart = (req, res) => {
   });
 };
 
-
+const getAllCarts = (req, res) => {
+  const user_id = req.token.user_id;
+  const query = `SELECT * FROM cart WHERE user_id=?`;
+  const data = [user_id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        succses: false,
+        Message: "server error",
+        err,
+      });
+    }
+    res.status(200).json({
+      succses: true,
+      result
+    });
+  });
+};
 
 module.exports = { AddToCart, deletecart };
