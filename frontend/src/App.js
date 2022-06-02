@@ -19,7 +19,31 @@ function App() {
 
 
 
+
+
+
+
+
+
+
+
+
 {/* malek */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,38 +80,6 @@ function App() {
 
 </Routes>
   </div>;
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 export default App;
