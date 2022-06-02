@@ -1,5 +1,5 @@
 const express = require("express");
-const {getAllProducts,createProduct,getProductbyId,deleteProductbyId} =require("../controllers/product")
+const {getAllProducts,createProduct,getProductbyId,deleteProductbyId,updateProduct} =require("../controllers/product")
 
 //creat middlleware router ==>  productRouter
 const productRouter = express.Router();
@@ -12,7 +12,8 @@ productRouter.get("/:id_product",getProductbyId)
 // delete==>http://localhost:5000/product
 productRouter.delete("/:id_product",deleteProductbyId );
 
-//delete
+// put==>http://localhost:5000/product/:id
+productRouter.put("/:id",updateProduct)
 
 
 module.exports = productRouter;
