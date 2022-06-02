@@ -44,7 +44,7 @@ app.use("/cart", cartRouter);
 app.use("/login", loginRouter);
 
 // create user router
-app.use.apply("/user", userRouter);
+app.use("/user", userRouter);
 app.listen(port, () => {
   console.log(`server on in port ${port}`);
 });
