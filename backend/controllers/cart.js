@@ -2,9 +2,9 @@ const connection = require("../models/db");
 
 const AddToCart = (req, res) => {
   let check = false;
-  let Quantity = 1;
+  let quantity = 1;
   const product_id = req.params.id;
-  const quantity = 1;
+  // const quantity = 1;
   const user_id = req.token.user_id;
 
   //   const query = "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
@@ -14,6 +14,8 @@ const AddToCart = (req, res) => {
     try {
       if (result.length) {
         check = true;
+        quantity = result[0].quantity;
+        console.log(typeof quantity);
       }
     } catch {
       (err) => {
@@ -21,42 +23,43 @@ const AddToCart = (req, res) => {
       };
     }
   });
-  if (check) {
-    let qunt = result[0].quantity;
-    let newqunt = +qunt + Quantity;
-    const data = [newqunt, product_id];
-    const query = `UPDATE cart SET Quantity=? WHERE protect_id=? `;
-    connection.query(query, data, (err, resul) => {
-      if (err) {
-        return res.status(500).json({
-          succses: false,
-          Message: "server error",
-          err,
+  setTimeout(() => {
+    if (check) {
+      let newqunt = quantity + 1;
+      const data = [newqunt, product_id];
+      const query = `UPDATE cart SET Quantity=? WHERE product_id=? `;
+      connection.query(query, data, (err, resul) => {
+        if (err) {
+          return res.status(500).json({
+            succses: false,
+            Message: "server error",
+            err,
+          });
+        }
+        return res.status(201).json({
+          succses: true,
+          resul,
         });
-      }
-      return res.status(201).json({
-        succses: true,
-        resul,
       });
-    });
-  } else {
-    const query =
-      "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
-    const data = [product_id, user_id, quantity];
-    connection.query(query, data, (err, Result) => {
-      if (err) {
-        return res.status(500).json({
-          succses: false,
-          Message: "server error",
-          err,
+    } else {
+      const query =
+        "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
+      const data = [product_id, user_id, quantity];
+      connection.query(query, data, (err, Result) => {
+        if (err) {
+          return res.status(500).json({
+            succses: false,
+            Message: "server error",
+            err,
+          });
+        }
+        return res.status(201).json({
+          succses: true,
+          Result,
         });
-      }
-      return res.status(201).json({
-        succses: true,
-        Result,
       });
-    });
-  }
+    }
+  }, 30);
 };
 
 const deletecart = (req, res) => {
@@ -71,9 +74,9 @@ const deletecart = (req, res) => {
         err: err,
       });
     }
-    res.status(201).json({
+    res.status(200).json({
       succses: true,
-      Message: "cart created",
+      Message: "delete product from cart",
       result: result,
     });
   });
@@ -81,11 +84,11 @@ const deletecart = (req, res) => {
 
 const getUserCarts = (req, res) => {
   const user_id = req.token.user_id;
-  const query = `SELECT * FROM cart WHERE user_id=?`;
+  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.ID  WHERE cart.user_id=?`;
   const data = [user_id];
   connection.query(query, data, (err, result) => {
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         succses: false,
         Message: "server error",
         err,
@@ -101,21 +104,21 @@ const checkOut = (req, res) => {
   const user_id = req.token.user_id;
   const data = [user_id];
 
-  const query = `UPDATE cart SET VALUE is_delete=1 WHERE user_id=?`;
-  connection.query(query,data,(err,result)=>{
-      if (err) {
-          res.status(500).json({
-              succses:true,
-              Message:"Server error",
-              err
-          })
-      }
-      res.status(200).json({
-          succses:true,
-          Message:"delete cart",
-          result
-      })
-  })
-
+  const query = `UPDATE cart SET is_deleted = 1 WHERE user_id=?`;
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        succses: true,
+        Message: "Server error",
+        err,
+      });
+    }
+    res.status(200).json({
+      succses: true,
+      Message: "delete cart",
+      result,
+    });
+  });
+};
 
 module.exports = { AddToCart, deletecart, getUserCarts, checkOut };
