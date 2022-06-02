@@ -6,7 +6,7 @@ const AddToCart = (req, res) => {
   const product_id = req.params.id;
   const quantity = 1;
   const user_id = req.token.user_id;
-  console.log(user_id);
+
   //   const query = "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
   const query = `SELECT * FROM cart WHERE product_id=?`;
   const Data = [product_id];
@@ -28,7 +28,7 @@ const AddToCart = (req, res) => {
     const query = `UPDATE cart SET Quantity=? WHERE protect_id=? `;
     connection.query(query, data, (err, resul) => {
       if (err) {
-       return res.status(500).json({
+        return res.status(500).json({
           succses: false,
           Message: "server error",
           err,
@@ -100,6 +100,7 @@ const getUserCarts = (req, res) => {
 const checkOut = (req, res) => {
   const user_id = req.token.user_id;
   const data = [user_id];
+
   const query = `UPDATE cart SET VALUE is_delete=1 WHERE user_id=?`;
   connection.query(query,data,(err,result)=>{
       if (err) {
@@ -115,6 +116,6 @@ const checkOut = (req, res) => {
           result
       })
   })
-};
 
-module.exports = { AddToCart, deletecart, getUserCarts,checkOut };
+
+module.exports = { AddToCart, deletecart, getUserCarts, checkOut };
