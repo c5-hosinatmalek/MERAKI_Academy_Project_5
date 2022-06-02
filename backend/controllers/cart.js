@@ -1,11 +1,67 @@
 const connection = require("../models/db");
 
 const AddToCart = (req, res) => {
-  const protect_id = req.params.id;
-  const { quantity } = req.body;
-  const userid = req.token.user_id;
-  const query = "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
-  const Data = [protect_id, userid, quantity];
+  let check = false;
+  let Quantity = 1;
+  const product_id = req.params.id;
+  const quantity = 1;
+  const user_id = req.token.user_id;
+  //   const query = "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
+  const query = `SELECT * FROM cart WHERE product_id=?`;
+  const Data = [product_id];
+  connection.query(query, Data, (err, result) => {
+    try {
+      if (result.length) {
+        check = true;
+      }
+    } catch {
+      (err) => {
+        console.log(er);
+      };
+    }
+  });
+  if (check) {
+    let qunt = result[0].quantity;
+    let newqunt = +qunt + Quantity;
+    const data = [newqunt, product_id];
+    const query = `UPDATE cart SET Quantity=? WHERE protect_id=? `;
+    connection.query(query, data, (err, resul) => {
+      if (err) {
+        res.status(500).json({
+          succses: false,
+          Message: "server error",
+          err,
+        });
+      }
+      res.status(201).json({
+        succses: true,
+        resul,
+      });
+    });
+  } else {
+    const query ="INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
+    const data=[product_id,user_id,quantity]
+    connection.query(query, data, (err, Result) => {
+        if (err) {
+            res.status(500).json({
+              succses: false,
+              Message: "server error",
+              err,
+            });
+          }
+          res.status(201).json({
+            succses: true,
+            Result,
+          });
+    });
+  }
+};
+
+
+const deletecart = (req, res) => {
+  const id = req.params.id;
+  const query = "DELETE FROM cart WHERE id = ?  ";
+  const Data = [id];
   connection.query(query, Data, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -16,7 +72,7 @@ const AddToCart = (req, res) => {
     }
     res.status(201).json({
       succses: true,
-      Message:"cart created",
+      Message: "cart created",
       result: result,
     });
   });
@@ -24,5 +80,4 @@ const AddToCart = (req, res) => {
 
 
 
-
-module.exports = { AddToCart };
+module.exports = { AddToCart, deletecart };
