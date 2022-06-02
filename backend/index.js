@@ -6,18 +6,19 @@ require("dotenv").config();
 const roleRouter = require("./routes/role");
 const permissionRouter = require("./routes/permission");
 const categoryRouter = require("./routes/category");
-const registerRouter =require("./routes/register")
-const sub_categoryRouter=require("./routes/sub_category")
-const productRouter =require("./routes/product")
+const registerRouter =require("./routes/register");
+const sub_categoryRouter=require("./routes/sub_category");
+const productRouter =require("./routes/product");
 
-const loginRouter = require("./routes/login")
+const cartRouter=require("./routes/cart");
+const loginRouter = require("./routes/login");
 
-
-
-
+const app=express();
+app.use(cors());
+app.use(express.json());
+const port=process.env.PORT;
 
 //? middleware router
-
 
 // creat middlleware application ==>handle all requst roleRouter
 app.use("/role", roleRouter);
@@ -35,27 +36,10 @@ app.use("/sub_category",sub_categoryRouter)
 // create product router
 app.use("/product",productRouter)
 
+// creat middlleware application ==>handle all requst cartRouter
+app.use("/cart",cartRouter)
 // create login router
 app.use("/login",loginRouter)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(port, () => {
   console.log(`server on in port ${port}`);
