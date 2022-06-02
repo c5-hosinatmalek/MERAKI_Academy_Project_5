@@ -1,7 +1,7 @@
 import "./App.css";
 
 import {Routes,Route} from "react-router-dom"
-import  {NavBar}  from "./component/prodact/NavBar";
+import  {NavBar}  from "./component/NavBar";
 function App() {
   return <div className="App">
     <NavBar/>
