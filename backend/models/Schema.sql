@@ -83,15 +83,15 @@ CREATE TABLE sold(
     id INT AUTO_INCREMENT NOT NULL,
     sold INT,
     product_Id int,
-    FOREIGN KEY (product_Id) REFERENCES c products(id),
+    FOREIGN KEY (product_id) REFERENCES products(id),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE cart (
     id INT AUTO_INCREMENT NOT NULL,
     product_id int,
-    FOREIGN KEY (product.id) REFERENCES category product(id),
-    user_id int FOREIGN KEY (user_id) REFERENCES users product(id),
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    user_id int, FOREIGN KEY (user_id) REFERENCES users (id),
     quantity int,
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
