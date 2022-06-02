@@ -10,7 +10,8 @@ function App() {
       <Link to="/rigester">rigester</Link>
       <Routes>
         <Route path="/rigester" element={<REGISTER />} />
-        <Route path="/category/:id/products"/>
+        {/* shishany put page of products inside route below */}
+        <Route path="/category/:id/products"/>  
       </Routes>
     </div>
   );
