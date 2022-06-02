@@ -8,6 +8,7 @@ export const authSlice = createSlice({
   },
   reducers: {
     setLogin: (state, action) => {
+      localStorage.setItem("token",action.payload)
       state.token = action.payload;
       state.isLoggedIn = true;
     },
