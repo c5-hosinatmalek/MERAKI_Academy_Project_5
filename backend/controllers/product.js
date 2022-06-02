@@ -51,7 +51,7 @@ connection.query(query,data,(err,result)=>{
 
     const productId=req.params.id_product
     const data=[productId]
-    const query=`UPDATE  PRODUCTS SET IS_DELETED =1 WHERE ID=${productId};`
+    const query=`UPDATE  PRODUCTS SET IS_DELETED =1 WHERE ID=?;`
     connection.query(query,data,(err,result)=>{
         if (err) {
             return res.json({success:false,err})

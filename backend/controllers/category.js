@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const connection = require("../models/db");
 
 
@@ -26,6 +27,20 @@ const getAllCategory=(req,res)=>{
         res.status(200).json({success:true,result})
     })
 }
+const getProductbyCategoryID=(req,res)=>{
+  const category_id=req.params.category_id
+
+   const query="SELECT * FROM PRODUCTS WHERE category_id=?"
+   const data=[category_id]
+   connection.query(query,data,(err,result)=>{
+    if (err) {
+
+      return res.json({success:false,err})
+  }
+  res.status(200).json({success:true,result})
+
+   })
+}
 
 
-module.exports = { createNewCategory,getAllCategory };
+module.exports = { createNewCategory,getAllCategory,getProductbyCategoryID };
