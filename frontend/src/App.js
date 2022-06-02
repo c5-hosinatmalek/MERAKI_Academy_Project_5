@@ -19,6 +19,15 @@ function App() {
 
 
 
+
+
+
+
+
+
+
+
+
 {/* malek */}
 
 
@@ -32,8 +41,22 @@ function App() {
 
 
 
-const  App=()=> {
-  return <div className="App">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -57,39 +80,6 @@ const  App=()=> {
 
 </Routes>
   </div>;
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  </div>;
-
 }
 
 export default App;
