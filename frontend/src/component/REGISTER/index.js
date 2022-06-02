@@ -2,7 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
-const LOGIN= ()=>{
+const REGISTER= ()=>{
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
@@ -85,4 +85,4 @@ const LOGIN= ()=>{
     )
 }
 
-export default LOGIN
+export default REGISTER
