@@ -1,4 +1,4 @@
-DROP DATABASE Data_Pirates;
+DROP DATABASE todo_list;
 CREATE DATABASE Data_Pirates;
 
 USE Data_Pirates;
@@ -40,15 +40,13 @@ CREATE TABLE roles_permissions(
 CREATE TABLE categories(
     id INT AUTO_INCREMENT NOT NULL,
     category VARCHAR(255),
-    picUrl VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE sub_categories(
+cREATE TABLE sub_categories(
     id INT AUTO_INCREMENT NOT NULL,
     sub_category VARCHAR(255),
-    picUrl VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
@@ -83,15 +81,15 @@ CREATE TABLE sold(
     id INT AUTO_INCREMENT NOT NULL,
     sold INT,
     product_Id int,
-    FOREIGN KEY (product_id) REFERENCES products(id),
+    FOREIGN KEY (product_Id) REFERENCES c products(id),
     PRIMARY KEY (id)
 );
 
 CREATE TABLE cart (
     id INT AUTO_INCREMENT NOT NULL,
     product_id int,
-    FOREIGN KEY (product_id) REFERENCES products(id),
-    user_id int, FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (product.id) REFERENCES category product(id),
+    user_id int FOREIGN KEY (user_id) REFERENCES users product(id),
     quantity int,
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
