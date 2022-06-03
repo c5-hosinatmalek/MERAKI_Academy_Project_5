@@ -45,6 +45,6 @@ const searchSlice = createSlice({
 
 });
 
-export const { setAllproduct, setResultSerch, setStateSerch } =
+export const { setAllproduct, setResultSerch, setStateSerch,getfury } =
   searchSlice.actions;
 export default searchSlice.reducer;
