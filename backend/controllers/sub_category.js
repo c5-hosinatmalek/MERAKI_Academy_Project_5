@@ -13,5 +13,15 @@ const createNewSubCategory = (req, res) => {
     res.status(201).json({ success: true, result });
   });
 };
+// get all sub category
+const getSubCategory = (req, res) => {
+  const query = "SELECT * FROM sub_categories";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({ success: true, result });
+  });
+};
 
-module.exports = { createNewSubCategory };
+module.exports = { createNewSubCategory,getSubCategory };
