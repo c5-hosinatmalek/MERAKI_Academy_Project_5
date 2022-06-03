@@ -20,6 +20,8 @@ import Homepage from "./component/homepage";
 
 import { NavBar } from "./component/NavBar";
 
+import {ProductPage} from "./component/ProductPage/index"
+
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
@@ -47,6 +49,7 @@ function App() {
         
         <Route path="/category/:id/products" element={<GetProdact/>}/>
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
+          <Route path="/category/product/:id" element={<ProductPage/>}/>
 
       </Routes>
     </div>

@@ -7,9 +7,8 @@ import { getproduct } from "../../redux/reducers/prodact";
 
 import axios from "axios";
 
-import "./style.css"
+import "./style.css";
 const GetProdact = () => {
-
   const dispacth = useDispatch();
   const { id } = useParams();
 
@@ -41,18 +40,18 @@ const GetProdact = () => {
     <div>
       {state.prodect.result &&
         state.prodect.result.map((element, index) => {
-
-         console.log( );
+          console.log();
           return (
-            <div ><Link to={`/category/product/${element.product_id}`} key={index}>
-            
-              <p> title : {element.title}</p>
-              <img className="prodactpichter" src={element.picUrlProd}></img>
-              <p> description: {element.description.split(" ").slice(1,15)}</p>
-              <p> type  : {element.product_type}</p>
-              <p> price : {element.price}</p>
-
-      
+            <div>
+              <Link to={`/category/product/${element.product_id}`} key={index}>
+                <p> title : {element.title}</p>
+                <img className="prodactpichter" src={element.picUrlProd}></img>
+                <p>
+                  {" "}
+                  description: {element.description.split(" ").slice(1, 15)}
+                </p>
+                <p> type : {element.product_type}</p>
+                <p> price : {element.price}</p>
               </Link>
             </div>
           );
@@ -62,4 +61,3 @@ const GetProdact = () => {
 };
 
 export default GetProdact;
-

@@ -34,7 +34,7 @@ const LOGIN = () => {
     <div className="login_user">
       <form onSubmit={submit}>
         <div className="titel">
-          <h1>LOGIN</h1>
+          <h1>Login</h1>
         </div>
         <div className="email_login">
           <input
@@ -55,7 +55,7 @@ const LOGIN = () => {
           />
         </div>
         <div className="login_button">
-          <button>LOGIN</button>
+          <button>Login</button>
         </div>
         {status ? (
           <div className="message_user">
