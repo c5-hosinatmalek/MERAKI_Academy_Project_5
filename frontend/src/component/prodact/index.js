@@ -60,4 +60,6 @@ const GetProdact = () => {
     </div>
   );
 };
+
 export default Getproduct;
+

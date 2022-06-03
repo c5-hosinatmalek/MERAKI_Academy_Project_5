@@ -1,3 +1,5 @@
+
+
 import { Link } from "react-router-dom";
 import "./style.css";
 import { BsCart4 } from "react-icons/bs";
@@ -6,6 +8,7 @@ import LOGIN from "../LOGIN";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/reducers/auth";
 import {jwt_decode} from "jwt-decode"
+   import SEARCH from "../SEARCH"
 const NavBar = () => {
   const dispacth = useDispatch();
   const state = useSelector((state) => {
@@ -19,9 +22,11 @@ const NavBar = () => {
       console.log(state.token);
   }
 
+
   const logout = () => {
     dispacth(setLogout());
   };
+
 
   return (
     <div className="navbar">
@@ -53,6 +58,7 @@ const NavBar = () => {
       <p>
         <BsCart4 />
       </p>
+
     </div>
   );
 };
