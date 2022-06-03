@@ -53,4 +53,4 @@ const GetProdact = () => {
     </div>
   );
 };
-export default GetProdact;
+export default  GetProdact;
