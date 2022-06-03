@@ -16,8 +16,8 @@ function App() {
     <div className="App">
       <NavBar/>
       <CategoryBar/>
-      <Link to="/rigester">rigester</Link>
-      <Link to="/login">LOGIN</Link>
+      
+      
       <Routes>
         <Route path="/rigester" element={<REGISTER />} />
         <Route path="/" element={<Homepage />} />
