@@ -41,7 +41,7 @@ CREATE TABLE roles_permissions(
 CREATE TABLE categories(
     id INT AUTO_INCREMENT NOT NULL,
     category VARCHAR(255),
-    picUrl VARCHAR(255),
+    picUrlCat VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
@@ -49,14 +49,14 @@ CREATE TABLE categories(
 CREATE TABLE sub_categories(
     id INT AUTO_INCREMENT NOT NULL,
     sub_category VARCHAR(255),
-    picUrl VARCHAR(255),
+    picUrlSub VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE Products(
     id INT AUTO_INCREMENT NOT NULL,
-    picUrl VARCHAR(255),
+    picUrlProd VARCHAR(255),
     title VARCHAR (255),
     category_id INT,
     sub_category INT,
@@ -172,7 +172,7 @@ VALUES
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -196,7 +196,7 @@ Dual XtraFlo PWM Fans with white LEDs can be fine-tuned for maximum cooling perf
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -223,7 +223,7 @@ Mainstream dual platforms are available: Intel: LGA 2066/2011-v3 / 2011 /1200/ 1
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -250,7 +250,7 @@ With 25% more skived fins on the copper cold plate, the larger surface area effe
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -277,7 +277,7 @@ With 25% more skived fins on the copper cold plate, the larger surface area effe
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -300,7 +300,7 @@ VALUES
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -329,7 +329,7 @@ Combat-ready: Customized headphone hook which can be hanged on both sides,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -356,7 +356,7 @@ Cooler not included, high-performance cooler recommended,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -383,7 +383,7 @@ Cooler not included, high-performance cooler recommended,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -410,7 +410,7 @@ Does not include thermal solution,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -437,7 +437,7 @@ Windows 11 Supported,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -463,7 +463,7 @@ Digital maximum resolution - 7680 x 4320,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -492,7 +492,7 @@ Vented backplate prevents hot air from recirculating through the cooling array,"
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -522,7 +522,7 @@ GPU Tweak II provides intuitive performance tweaking thermal controls and system
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
@@ -551,7 +551,7 @@ A stainless steel bracket is harder and more resistant to corrosion,",
 
 INSERT INTO
     Products (
-        picUrl,
+        picUrlProd,
         title,
         category_id,
         sub_category,
