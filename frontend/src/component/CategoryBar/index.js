@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { getcatogre } from "../../redux/reducers/catogre"
+import "./style.css"
 
 
 
@@ -25,7 +26,7 @@ dispatch(getcatogre(result.data.result))
     
 
 },[])
-    return <div>
+    return <div className="categoryBar">
         {state.category&&state.category.map((element,index)=>{
             return <Link to={`/category/${element.category_id}/products`} key={index}>{element.category}</Link>
         })}
