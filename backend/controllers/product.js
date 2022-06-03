@@ -5,7 +5,7 @@ const connection = require("../models/db");
 
 const getAllProducts = (req, res) => {
   const query =
-    "SELECT * FROM PRODUCTS LEFT JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.ID IN JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.ID WHERE  PRODUCTS.IS_DELETED =0;";
+    "SELECT * FROM PRODUCTS INNER JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.ID INNER JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.ID WHERE  PRODUCTS.IS_DELETED =0;";
 
   connection.query(query, (err, result) => {
     if (err) {
