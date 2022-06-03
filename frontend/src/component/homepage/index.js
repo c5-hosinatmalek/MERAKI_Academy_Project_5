@@ -13,6 +13,7 @@ const Homepage = () => {
     <div>
 
       <div>
+      <img src={header4}/>
         <Slide easing="ease">
           <div className="each-slide">
             <img className="img" src={header1} />
