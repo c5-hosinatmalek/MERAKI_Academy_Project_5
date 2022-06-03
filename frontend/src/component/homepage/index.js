@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import "./style.css";
@@ -13,7 +14,9 @@ const Homepage = () => {
     <div>
 
       <div>
+        <div> 
       <img src={header4}/>
+      </div> 
         <Slide easing="ease">
           <div className="each-slide">
             <img className="img" src={header1} />
