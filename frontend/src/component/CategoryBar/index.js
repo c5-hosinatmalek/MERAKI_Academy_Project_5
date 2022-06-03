@@ -27,7 +27,8 @@ dispatch(getcatogre(result.data.result))
 },[])
     return <div>
         {state.category&&state.category.map((element,index)=>{
-            return <Link to={`/category/${element.id}/products`} key={index}>{element.category}</Link>
+            console.log(element.id);
+            return <Link to={`/category/${element.category_id}/products`} key={index}>{element.category}</Link>
         })}
     </div>
 }

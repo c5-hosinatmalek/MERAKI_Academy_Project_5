@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getproduct } from "../../redux/reducers/prodact";
-import axios from "axios";
 
+import axios from "axios";
+import "./style.css"
 const GetProdact = () => {
   const dispacth = useDispatch();
   const { id } = useParams();
@@ -36,13 +37,16 @@ const GetProdact = () => {
     <div>
       {state.prodect.result &&
         state.prodect.result.map((element, index) => {
+         console.log( );
           return (
-            <div>
-              <img src={element.picUrl}></img>
-              <p>{element.title}</p>
-              <p>{element.description}</p>
-              <p>{element.product_type}</p>
-              <p>{element.price}</p>
+            <div ><Link to={`/category/product/${element.product_id}`} key={index}>
+            
+              <p> title : {element.title}</p>
+              <img className="prodactpichter" src={element.picUrlProd}></img>
+              <p> description: {element.description.split(" ").slice(1,15)}</p>
+              <p> type  : {element.product_type}</p>
+              <p> price : {element.price}</p>
+              </Link>
             </div>
           );
         })}

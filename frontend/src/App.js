@@ -1,9 +1,9 @@
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import REGISTER from "./component/REGISTER";
-import GetProdact from "./component/Prodact";
+import GetProdact from "./component/prodact/index";
 import LOGIN from "./component/LOGIN";
-
+import Homepage from "./component/homepage";
 
 import {CategoryBar} from "./component/CategoryBar/index"
 import { NavBar } from "./component/NavBar";
@@ -18,7 +18,7 @@ function App() {
       <Link to="/login">LOGIN</Link>
       <Routes>
         <Route path="/rigester" element={<REGISTER />} />
-
+        <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<LOGIN/>} />
 
         {/* shishany put page of products inside route below */}
