@@ -1,8 +1,8 @@
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 
-import REGISTER from "./component/REGISTER";
-import GetProdact from "./component/prodact/index";
+import {REGISTER} from "./component/REGISTER/index"
+import GetProdact from "./component/Prodact/index"
 
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
@@ -14,8 +14,6 @@ import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
 ////////////////////////////////////////////////////////////
 import { CategoryBar } from "./component/CategoryBar/index";
 
-
-import LOGIN from "./component/LOGIN";
 import Homepage from "./component/homepage";
 
 
@@ -46,7 +44,7 @@ function App() {
         <Route path="/login" element={<LOGIN/>} />
 
         
-        <Route path="/category/:id/products" element={<Getproduct/>}/>
+        <Route path="/category/:id/products" element={<GetProdact/>}/>
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
 
       </Routes>
