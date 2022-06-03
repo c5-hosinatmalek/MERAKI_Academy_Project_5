@@ -1,7 +1,7 @@
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import REGISTER from "./component/REGISTER";
-import GetProdact from "./component/prodact";
+import GetProdact from "./component/Prodact";
 import LOGIN from "./component/LOGIN";
 
 
