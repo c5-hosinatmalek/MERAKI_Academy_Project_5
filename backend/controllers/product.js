@@ -5,7 +5,7 @@ const connection = require("../models/db");
 
 const getAllProducts = (req, res) => {
   const query =
-    "SELECT * FROM PRODUCTS INNER JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.ID INNER JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.ID WHERE  PRODUCTS.IS_DELETED =0;";
+    "SELECT * FROM PRODUCTS  JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.CATEGORY_ID  WHERE  PRODUCTS.IS_DELETED =0;";
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -52,7 +52,7 @@ const createProduct = (req, res) => {
 const getProductbyId = (req, res) => {
   const productId = req.params.id_product;
   const data = [productId];
-  const query = `SELECT * FROM PRODUCTS LEFT JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.ID LEFT JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.ID WHERE PRODUCTS.ID=? AND PRODUCTS.IS_DELETED =0;`;
+  const query = `SELECT * FROM PRODUCTS INNER JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.CATEGORY_ID INNER JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.SUBCATEGORY_ID WHERE PRODUCTS.PRODUCT_ID=? AND PRODUCTS.IS_DELETED =0;`;
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -66,7 +66,7 @@ const getProductbyId = (req, res) => {
 const deleteProductbyId = (req, res) => {
   const productId = req.params.id_product;
   const data = [productId];
-  const query = `UPDATE  PRODUCTS SET IS_DELETED =1 WHERE ID=?;`;
+  const query = `UPDATE  PRODUCTS SET IS_DELETED =1 WHERE product_ID=?;`;
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.json({ success: false, err });
@@ -101,7 +101,7 @@ const updateProduct = (req, res) => {
   ];
   console.log(data);
   const query =
-    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,store_Quantity=?,description=?,category_id=?,sub_category=? WHERE ID=?";
+    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,store_Quantity=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
 
   connection.query(query, data, (err, result) => {
     if (err) {

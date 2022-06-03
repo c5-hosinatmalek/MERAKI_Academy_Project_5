@@ -11,7 +11,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE users(
-    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT AUTO_INCREMENT NOT NULL,
     name VARCHAR(255),
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
@@ -19,7 +19,7 @@ CREATE TABLE users(
     role_id INT,
     FOREIGN KEY (role_id) REFERENCES roles(id),
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (user_id)
 );
 
 CREATE TABLE permissions(
@@ -39,23 +39,23 @@ CREATE TABLE roles_permissions(
 );
 
 CREATE TABLE categories(
-    id INT AUTO_INCREMENT NOT NULL,
+    category_id INT AUTO_INCREMENT NOT NULL,
     category VARCHAR(255),
     picUrlCat VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (category_id)
 );
 
 CREATE TABLE sub_categories(
-    id INT AUTO_INCREMENT NOT NULL,
+    subCategory_id INT AUTO_INCREMENT NOT NULL,
     sub_category VARCHAR(255),
     picUrlSub VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (subCategory_id)
 );
 
 CREATE TABLE Products(
-    id INT AUTO_INCREMENT NOT NULL,
+    product_id INT AUTO_INCREMENT NOT NULL,
     picUrlProd VARCHAR(255),
     title VARCHAR (255),
     category_id INT,
@@ -64,40 +64,40 @@ CREATE TABLE Products(
     product_type VARCHAR(255),
     price VARCHAR(255),
     description TEXT,
-    FOREIGN KEY (category_id) REFERENCES categories(id),
-    FOREIGN KEY (sub_category) REFERENCES sub_categories(id),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (sub_category) REFERENCES sub_categories(subcategory_id),
     Store_Quantity INT,
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (Product_id)
 );
 
 CREATE TABLE pic(
-    id INT AUTO_INCREMENT NOT NULL,
+    pic_id INT AUTO_INCREMENT NOT NULL,
     url VARCHAR(255),
     name VARCHAR(255),
     product_Id int,
-    FOREIGN KEY (product_id) REFERENCES products(id),
+    FOREIGN KEY (product_id) REFERENCES products(Product_id),
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (pic_id)
 );
 
 CREATE TABLE sold(
-    id INT AUTO_INCREMENT NOT NULL,
+    sold_id INT AUTO_INCREMENT NOT NULL,
     sold INT,
     product_Id int,
-    FOREIGN KEY (product_id) REFERENCES products(id),
-    PRIMARY KEY (id)
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    PRIMARY KEY (sold_id)
 );
 
 CREATE TABLE cart (
-    id INT AUTO_INCREMENT NOT NULL,
+    cart_id INT AUTO_INCREMENT NOT NULL,
     product_id int,
-    FOREIGN KEY (product_id) REFERENCES products(id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
     user_id int,
-    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
     quantity int,
     is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (id)
+    PRIMARY KEY (cart_id)
 );
 
 INSERT INTO

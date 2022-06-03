@@ -64,7 +64,7 @@ const AddToCart = (req, res) => {
 
 const deletecart = (req, res) => {
   const id = req.params.id;
-  const query = "DELETE FROM cart WHERE id = ?  ";
+  const query = "DELETE FROM cart WHERE cart_id = ?  ";
   const Data = [id];
   connection.query(query, Data, (err, result) => {
     if (err) {
@@ -84,7 +84,7 @@ const deletecart = (req, res) => {
 
 const getUserCarts = (req, res) => {
   const user_id = req.token.user_id;
-  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.ID  WHERE cart.user_id=?`;
+  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE cart.user_id=?`;
   const data = [user_id];
   connection.query(query, data, (err, result) => {
     if (err) {
