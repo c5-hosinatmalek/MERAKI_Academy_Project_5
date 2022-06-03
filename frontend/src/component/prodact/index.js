@@ -61,5 +61,5 @@ const GetProdact = () => {
   );
 };
 
-export default Getproduct;
+export default GetProdact;
 
