@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 import "./style.css";
 import { BsCart4 } from "react-icons/bs";
@@ -7,33 +5,38 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import LOGIN from "../LOGIN";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/reducers/auth";
-import {jwt_decode} from "jwt-decode"
-   import SEARCH from "../SEARCH"
+import jwtDecode from "jwt-decode";
+import SEARCH from "../SEARCH";
 const NavBar = () => {
   const dispacth = useDispatch();
   const state = useSelector((state) => {
-      console.log(state);
     return {
       isLoggedIn: state.auth.isLoggedIn,
-      token:state.auth.token
+      token: state.auth.token,
     };
   });
-  if (state.isLoggedIn) {
-      console.log(state.token);
-  }
-
+  const decodeToken = (columnName) => {
+      
+    if (state.isLoggedIn) {
+      return jwtDecode(state.token)[columnName];
+    }
+  };
+  
 
   const logout = () => {
     dispacth(setLogout());
   };
 
-
   return (
     <div className="navbar">
-      <img
-        className="logo"
-        src="http://res.cloudinary.com/doxxh3kej/image/upload/v1654159311/t7ldyjgrus0wqhqe4pns.jpg"
-      />
+        {decodeToken("role")==1?<div className="navUser">
+      <Link to={"/"}>
+        <img
+          className="logo"
+          src="http://res.cloudinary.com/doxxh3kej/image/upload/v1654159311/t7ldyjgrus0wqhqe4pns.jpg"
+        />
+      </Link>
+      <SEARCH />
       <dev>
         <Link to={"/login"} className="myAccount">
           <RiAccountCircleLine className="myaccount" />
@@ -41,8 +44,8 @@ const NavBar = () => {
         </Link>
         {state.isLoggedIn ? (
           <ul>
-            <li>username</li>
-            <li onClick={logout}>logout</li>
+            <li>{decodeToken("userName")}</li>
+            <li onClick={logout}>Logout</li>
           </ul>
         ) : (
           <ul className="myAccountList">
@@ -55,10 +58,21 @@ const NavBar = () => {
           </ul>
         )}
       </dev>
-      <p>
-        <BsCart4 />
-      </p>
-
+      {!state.isLoggedIn ? (
+        <Link to={"/login"}>
+          <BsCart4 className="cartLogo" />
+        </Link>
+      ) : (
+        <Link to={`/cart/${decodeToken("user_id")}`}>
+          <BsCart4 className="cartLogo" />
+        </Link>
+      )}
+      </div>:<div className="navAdmin">
+          <p>table users</p>
+          <p>table product</p>
+          <p>table checkout</p>
+          
+          </div>}
     </div>
   );
 };

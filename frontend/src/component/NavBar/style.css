@@ -1,9 +1,9 @@
-.navbar {
+.navUser {
     display: flex;
     justify-content: space-between;
 background-color: rgb(150, 150, 240);
 }
-p {
+.cartLogo {
     font-size: 40px;
 }
 .logo{
