@@ -35,7 +35,14 @@ const searchSlice = createSlice({
     setStateSerch: (state, action) => {
       state.stateserch = action.payload;
     },
-  },
+    getfury:(state,action)=>{
+      state.resultSerch=state.resultSerch.filter((element)=>{
+      return element.product_name="fury"
+      })
+    }
+
+  } 
+
 });
 
 export const { setAllproduct, setResultSerch, setStateSerch } =
