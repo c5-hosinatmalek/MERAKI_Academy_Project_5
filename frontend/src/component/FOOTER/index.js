@@ -67,7 +67,7 @@ const FOOTER=()=>{
                             <form ref={form} onSubmit={sendEmail} >
                             <div className="email">
                                   
-                                  <input type="text" placeholder="enter email...." required name='user_name' />
+                                  <input type="text" placeholder="enter Name...." required name='user_name' />
 
                                   
                               </div>
