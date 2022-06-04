@@ -74,7 +74,7 @@ const Addprodact = () => {
             setMesage("iteam has been add")
           })
           .catch((err) => {
-            setMesage("error your bitch ")
+            setMesage("error ")
             console.log(err);
           });
       })
