@@ -18,28 +18,30 @@ const getAllProducts = (req, res) => {
 // create function to create product
 const createProduct = (req, res) => {
   const {
+    picUrlProd,
+    title,
+    category_id,
+    sub_category,
     product_name,
     product_type,
     price,
-    title,
-    store_Quantity,
     description,
-    category_id,
-    sub_category,
+    Store_Quantity
   } = req.body;
 
   const data = [
+    picUrlProd,
+    title,
+    category_id,
+    sub_category,
     product_name,
     product_type,
     price,
-    title,
-    store_Quantity,
     description,
-    category_id,
-    sub_category,
+    Store_Quantity
   ];
   const query =
-    "INSERT INTO products (product_name,product_type,price,title,store_Quantity,description,category_id,sub_category) VALUES(?,?,?,?,?,?,?,?)";
+    "INSERT INTO products (picUrlProd,title,category_id,sub_category,product_name,product_type,price,description,Store_Quantity) VALUES(?,?,?,?,?,?,?,?,?)";
 
   connection.query(query, data, (err, result) => {
     if (err) {

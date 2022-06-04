@@ -21,4 +21,7 @@ productRouter.delete("/:id_product", deleteProductbyId);
 // put==>http://localhost:5000/product/:id
 productRouter.put("/:id", updateProduct);
 
+// put==>http://localhost:5000/product/create
+productRouter.post("/create", createProduct);
+
 module.exports = productRouter;
