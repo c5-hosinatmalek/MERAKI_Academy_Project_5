@@ -1,4 +1,6 @@
-import React from "react";
+// import React from "react";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import "./style.css";
 import { Link } from "react-router-dom";
 import {BsFacebook} from "react-icons/bs";
@@ -8,11 +10,21 @@ import {FaMapMarkerAlt} from "react-icons/fa";
 import {BsFillTelephoneInboundFill} from "react-icons/bs";
 import {MdEmail} from "react-icons/md";
 
-const FOOTER=()=>{
 
-    const submit=(e)=>{
+
+const FOOTER=()=>{
+    const form = useRef();
+    const sendEmail = (e) => {
         e.preventDefault();
-    }
+    
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
+   
 
 
     return(
@@ -51,17 +63,15 @@ const FOOTER=()=>{
                     <div className="right_box" >
                         <h2>contact us</h2>
                         <div className="content">
-                            <form onSubmit={submit} >
+                            <form onSubmit={sendEmail} >
                                 <div className="email">
-                                    <div className="text">Email*</div>
+                                  
                                     <input type="text" placeholder="enter email...." required />
 
                                     
                                 </div>
                                 <div className="text_area" >
-                                    <div className="text" >
-                                            Message*
-                                    </div>
+                                    
                                 <textarea placeholder="enter message...." type="text" cols="25" rows="2"  required  />
                                 </div>
 
