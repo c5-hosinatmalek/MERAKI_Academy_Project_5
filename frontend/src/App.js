@@ -22,6 +22,8 @@ import { NavBar } from "./component/NavBar";
 
 import {ProductPage} from "./component/ProductPage/index"
 
+
+import FOOTER from "./component/FOOTER";
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
@@ -52,6 +54,7 @@ function App() {
           <Route path="/category/product/:id" element={<ProductPage/>}/>
 
       </Routes>
+      <FOOTER/>
     </div>
   );
 }
