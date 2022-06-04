@@ -1,9 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { useDispatch,useSelector } from "react-redux";
 import { setLogin } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
+import { gapi } from "gapi-script"; 
+import { GoogleLogin } from "react-google-login";
 
 const LOGIN = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +31,27 @@ const LOGIN = () => {
         setMessageUser(err.response.data.message);
       });
   };
+
+const clientId="980966372884-i6imm3d62qcd07h3gdllhci878oa6dt2.apps.googleusercontent.com"
+const onsucces=(res)=>{
+console.log(res);
+
+}
+const onfailure=(res)=>{
+  console.log(res);
+}
+
+useEffect(()=>{
+  function start(){
+    gapi.client.init({
+      clientId:clientId,
+      scope:""
+    })
+  }
+  gapi.load('clint:auth2',start);
+},[])
+// let accessToken=gapi.auth.getToken().access_token;
+
 
   return (
     <div className="login_user">
@@ -57,6 +80,16 @@ const LOGIN = () => {
         <div className="login_button">
           <button>Login</button>
         </div>
+        <div className="googel">
+        <GoogleLogin
+    clientId={clientId}
+    buttonText="Login"
+    onSuccess={onsucces}
+    onFailure={onfailure}
+   
+  />
+
+        </div>
         {status ? (
           <div className="message_user">
             <h1>{messegeUser}</h1>
@@ -71,3 +104,5 @@ const LOGIN = () => {
   );
 };
 export default LOGIN;
+// 114964022727908709795
+// 114964022727908709795

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const REGISTER = () => {
@@ -10,7 +10,7 @@ const REGISTER = () => {
   const role_id = 1;
   const [messageUser, setMessageUser] = useState("");
   const [status, setStatus] = useState(false);
-  const [countries,setCountry]=useState([])
+  const [countries, setCountry] = useState([]);
 
   const submit = (e) => {
     e.preventDefault();
@@ -26,34 +26,24 @@ const REGISTER = () => {
         if (result.data.success) {
           setStatus(true);
           setMessageUser("account created successfully");
-       
         }
       })
       .catch((err) => {
         setStatus(false);
         setMessageUser("Error happened while register, please try again");
       });
-
-      
-
-
-
-    
   };
-  useEffect(()=>{
-    
+  useEffect(() => {
     axios
-    .get("https://countriesnow.space/api/v0.1/countries/capital")
-    .then((result) => {
-      setCountry(result.data.data)
-      // console.log(result.data.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-
-  },[])
+      .get("https://countriesnow.space/api/v0.1/countries/capital")
+      .then((result) => {
+        setCountry(result.data.data);
+        // console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="rigister">
@@ -80,23 +70,17 @@ const REGISTER = () => {
             />
           </div>
           <div className="country_user">
-           
-           
-       <select onChange={(e)=>{
-          setCountryy(e.target.value)
-       }} >
-       {countries &&
-          countries.map((element,index) => {
-           
-            return( <option key={index} >{element.name}</option>)
-          })}
-       </select>
+            <select
+              onChange={(e) => {
+                setCountryy(e.target.value);
+              }}
+            >
+              {countries &&
+                countries.map((element, index) => {
+                  return <option key={index}>{element.name}</option>;
+                })}
+            </select>
           </div>
-
-
-
-
-
 
           <div className="password_user">
             <input
@@ -127,4 +111,4 @@ const REGISTER = () => {
   );
 };
 
-export  {REGISTER};
+export { REGISTER };
