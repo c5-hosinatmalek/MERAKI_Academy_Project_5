@@ -50,7 +50,7 @@ useEffect(()=>{
   }
   gapi.load('clint:auth2',start);
 },[])
-// let accessToken=gapi.auth.getToken().access_token;
+
 
 
   return (
@@ -104,5 +104,3 @@ useEffect(()=>{
   );
 };
 export default LOGIN;
-// 114964022727908709795
-// 114964022727908709795
