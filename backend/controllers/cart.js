@@ -15,7 +15,6 @@ const AddToCart = (req, res) => {
       if (result.length) {
         check = true;
         quantity = result[0].quantity;
-        console.log(typeof quantity);
       }
     } catch {
       (err) => {
@@ -26,8 +25,8 @@ const AddToCart = (req, res) => {
   setTimeout(() => {
     if (check) {
       let newqunt = quantity + 1;
-      const data = [newqunt, product_id];
-      const query = `UPDATE cart SET Quantity=? WHERE product_id=? `;
+      const data = [newqunt, product_id, user_id];
+      const query = `UPDATE cart SET Quantity=? WHERE product_id=? AND user_id=? `;
       connection.query(query, data, (err, resul) => {
         if (err) {
           return res.status(500).json({
@@ -59,7 +58,7 @@ const AddToCart = (req, res) => {
         });
       });
     }
-  }, 30);
+  }, 100);
 };
 
 const deletecart = (req, res) => {

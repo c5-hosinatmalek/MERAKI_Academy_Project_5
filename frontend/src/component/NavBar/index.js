@@ -29,7 +29,14 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-        {decodeToken("role")==1?<div className="navUser">
+        {decodeToken("role")==1?
+        <div className="navAdmin">
+        <p>table users</p>
+        <p>table product</p>
+        <p>table checkout</p>
+        
+        </div>:
+        <div className="navUser">
       <Link to={"/"}>
         <img
           className="logo"
@@ -67,12 +74,9 @@ const NavBar = () => {
           <BsCart4 className="cartLogo" />
         </Link>
       )}
-      </div>:<div className="navAdmin">
-          <p>table users</p>
-          <p>table product</p>
-          <p>table checkout</p>
-          
-          </div>}
+      </div>}
+      
+      
     </div>
   );
 };
