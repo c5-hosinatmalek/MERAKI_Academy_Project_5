@@ -1,15 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 
 const REGISTER = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [country, setCountry] = useState("");
+  const [countryy, setCountryy] = useState("");
   const role_id = 1;
   const [messageUser, setMessageUser] = useState("");
   const [status, setStatus] = useState(false);
+  const [countries,setCountry]=useState([])
 
   const submit = (e) => {
     e.preventDefault();
@@ -18,20 +19,41 @@ const REGISTER = () => {
         email,
         password,
         name,
-        country,
+        // country,
         role_id,
       })
       .then((result) => {
         if (result.data.success) {
           setStatus(true);
           setMessageUser("account created successfully");
+       
         }
       })
       .catch((err) => {
         setStatus(false);
         setMessageUser("Error happened while register, please try again");
       });
+
+      
+
+
+
+    
   };
+  useEffect(()=>{
+    axios
+    axios
+    .get("https://countriesnow.space/api/v0.1/countries/capital")
+    .then((result) => {
+      // setCountries(result.data.data);
+      console.log();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+
+  },[])
 
   return (
     <div className="rigister">
@@ -58,14 +80,12 @@ const REGISTER = () => {
             />
           </div>
           <div className="country_user">
-            <input
-              placeholder="enter country"
-              type="text"
-              required
-              onChange={(e) => {
-                setCountry(e.target.value);
-              }}
-            />
+           
+           <label></label>
+            <select  >
+           
+
+            </select>
           </div>
           <div className="password_user">
             <input
