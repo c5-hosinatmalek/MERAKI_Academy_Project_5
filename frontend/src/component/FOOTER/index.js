@@ -16,20 +16,10 @@ const FOOTER=()=>{
 
 
     return(
-        <div className="container_footer">
-            
-
-        </div>
-    )
-}
-
-export default FOOTER
-
-
-
-{/* <footer>
-                <div className="main-content">
-                    <div className="left box">
+    <div className="container_footer">
+        <footer>
+        <div className="main-content">
+                    <div className="left_box">
                         <h2>About Us</h2>
                         <div className="content">
                             <p>A site specializing in the sale and purchase of all computers, accessories, printers, and supplying all required equipment</p>
@@ -41,7 +31,7 @@ export default FOOTER
                         </div>
                         
                     </div>
-                    <div className="conter box">
+                    <div className="center_box">
                     <h2>address</h2>
                     <div className="content_center" >
                     <div className="email"> <span><MdEmail/></span>
@@ -58,7 +48,7 @@ export default FOOTER
                     </div>
 
                     </div>
-                    <div className="right box" >
+                    <div className="right_box" >
                         <h2>contact us</h2>
                         <div className="content">
                             <form onSubmit={submit} >
@@ -83,4 +73,14 @@ export default FOOTER
                         </div>
                     </div>
                 </div>
-            </footer> */}
+
+        </footer>
+
+    </div>
+    )
+}
+
+export default FOOTER
+
+
+
