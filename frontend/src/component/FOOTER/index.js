@@ -1,6 +1,6 @@
 // import React from "react";
 import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 import "./style.css";
 import { Link } from "react-router-dom";
 import {BsFacebook} from "react-icons/bs";
@@ -17,12 +17,13 @@ const FOOTER=()=>{
     const sendEmail = (e) => {
         e.preventDefault();
     
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+        emailjs.sendForm('service_uq7s3w5', 'template_iy2hv8o', form.current, 'ghDvvK363ERZHeuEk')
           .then((result) => {
               console.log(result.text);
           }, (error) => {
               console.log(error.text);
           });
+         
       };
    
 
@@ -63,21 +64,27 @@ const FOOTER=()=>{
                     <div className="right_box" >
                         <h2>contact us</h2>
                         <div className="content">
-                            <form onSubmit={sendEmail} >
+                            <form ref={form} onSubmit={sendEmail} >
+                            <div className="email">
+                                  
+                                  <input type="text" placeholder="enter email...." required name='user_name' />
+
+                                  
+                              </div>
                                 <div className="email">
                                   
-                                    <input type="text" placeholder="enter email...." required />
+                                    <input type="email" placeholder="enter email...." required name='user_email' />
 
                                     
                                 </div>
                                 <div className="text_area" >
                                     
-                                <textarea placeholder="enter message...." type="text" cols="25" rows="2"  required  />
+                                <textarea placeholder="enter message...." type="text" cols="25" rows="2"  required name='message' />
                                 </div>
 
 
                                 <div className="btn" >
-                                    <button type="submit">Send</button>
+                                    <button name='submit'>Send</button>
                                 </div>
                             </form>
                         </div>
