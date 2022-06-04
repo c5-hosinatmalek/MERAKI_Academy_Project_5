@@ -23,21 +23,30 @@ const Homepage = () => {
   const properties = {
     duration: 3000,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     autoplay: "autoplay",
     indicators: true,
   };
 
-
-
-  const filterd = (type1) => {
-   const fortest= state.allproduct &&
+  const filterdCatagore = (type1) => {
+    const fortest =
+      state.allproduct &&
       state.allproduct.filter((element) => {
-          console.log(type1);
-        console.log(element.sub_category==type1);
-        return element.sub_category==type1
+        console.log(element.sub_category == type1);
+        return element.sub_category == type1 || element.product_name === type1;
       });
-      return fortest
+    return fortest;
+  };
+
+  const filterdSubCatag = (type1) => {
+    const fortest =
+      state.allproduct &&
+      state.allproduct.filter((element) => {
+        console.log(element);
+        console.log(element.sub_category == type1);
+        return element.category_id == type1;
+      });
+    return fortest;
   };
 
   return (
@@ -69,36 +78,145 @@ const Homepage = () => {
         </Slide>
       </div>
       <div>
-          <p>gpu</p>
-      <Slide {...properties} >
-      {filterd(8).map((element)=>{
-          console.log(element);
-         return <div> 
-             <div className="each-slide">
-             <img className="firstpageimg" src={element.picUrlProd}/> 
-             <p>{element.title}</p>
-             </div>
-             
-             </div>
-      })}
-      </Slide>
+        {/* this one for printers just add number (10)  */}
+        <p>gpu</p>
+        <Slide {...properties} className="test">
+          {filterdCatagore(8).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
       </div>
-      <img className="header2" src={header2}/>
+      {/* this one for ssdjust add string ("ssd") in 103 */}
+      <img className="header2" src={header2} />
       <div>
-      <Slide {...properties} >
-      {filterd(9).map((element)=>{
-          console.log(element);
-         return <div> 
-             <div className="each-slide">
-             <img className="firstpageimg" src={element.picUrlProd}/> 
-             <p>{element.title}</p>
-             </div>
-             
-             </div>
-      })}
-      </Slide>
+        <Slide {...properties} className="test">
+          {filterdCatagore(9).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
       </div>
       <img className="header3" src={header6} />
+      <div>
+        {/* this one for power by asusu just add number 1 to params */}
+        <Slide {...properties} className="test">
+          {filterdSubCatag(2).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
+      </div>
+      <img className="header3" src={header1} />
+
+      <div>
+        {/* this one for printers just add number (5)*/}
+        <p>gpu</p>
+        <Slide {...properties} className="test">
+          {filterdCatagore(8).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
+      </div>
+
+      <div>
+        {/* this one for printers just add number (6)*/}
+        <p>gpu</p>
+        <Slide {...properties} className="test">
+          {filterdCatagore(8).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
+      </div>
+      <div>
+        {/* this one for printers just add number (7)*/}
+        <p>gpu</p>
+        <Slide {...properties} className="test">
+          {filterdCatagore(8).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
+      </div>
+
+      <div>
+        {/* this one for printers just add number (8)*/}
+        <p>gpu</p>
+        <Slide {...properties} className="test">
+          {filterdCatagore(8).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
+      </div>
+      <div>
+        {/* this one for printers just add number (11)*/}
+        <p>gpu</p>
+        <Slide {...properties} className="test">
+          {filterdCatagore(8).map((element) => {
+            console.log(element);
+            return (
+              <div>
+                <div className="each-slide">
+                  <img className="firstpageimg" src={element.picUrlProd} />
+                  <p>{element.title}</p>
+                </div>
+              </div>
+            );
+          })}
+        </Slide>
+      </div>
     </div>
   );
 };
