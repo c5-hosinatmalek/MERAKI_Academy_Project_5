@@ -17,7 +17,17 @@ const FOOTER=()=>{
 
     return(
         <div className="container_footer">
-            <footer>
+            
+
+        </div>
+    )
+}
+
+export default FOOTER
+
+
+
+{/* <footer>
                 <div className="main-content">
                     <div className="left box">
                         <h2>About Us</h2>
@@ -73,10 +83,4 @@ const FOOTER=()=>{
                         </div>
                     </div>
                 </div>
-            </footer>
-
-        </div>
-    )
-}
-
-export default FOOTER
+            </footer> */}
