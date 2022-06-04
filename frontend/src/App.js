@@ -2,7 +2,9 @@ import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 
 import {REGISTER} from "./component/REGISTER/index"
-import GetProdact from "./component/Prodact/index"
+// import GetProdact from "./component/Prodact/index"
+import GetProdact from "./component/prodact/index";
+
 
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
@@ -19,6 +21,8 @@ import Homepage from "./component/homepage";
 
 import { NavBar } from "./component/NavBar";
 
+
+import FOOTER from "./component/FOOTER";
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
@@ -48,6 +52,7 @@ function App() {
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
 
       </Routes>
+      <FOOTER/>
     </div>
   );
 }
