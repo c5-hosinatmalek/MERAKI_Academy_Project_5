@@ -21,6 +21,7 @@ import Homepage from "./component/homepage";
 import { NavBar } from "./component/NavBar";
 
 import {ProductPage} from "./component/ProductPage/index"
+import CartPage from "./component/CartPage/index"
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
@@ -50,6 +51,7 @@ function App() {
         <Route path="/category/:id/products" element={<GetProdact/>}/>
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
           <Route path="/category/product/:id" element={<ProductPage/>}/>
+          <Route path="/cart/:id" element={<CartPage/>}/>
 
       </Routes>
     </div>

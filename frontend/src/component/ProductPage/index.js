@@ -29,11 +29,11 @@ const ProductPage = () => {
   const addCartClick = (id) => {
     console.log(id);
 
-    console.log(state.token);
+    
     axios
-      .post(`http://localhost:5000/cart/add/1`, {
-        Authorization: `Bearer ${state.token}`,
-      })
+      .post(`http://localhost:5000/cart/add/1`,{}, {headers:{
+        authorization: `Bearer ${state.token}`,
+      },})
       .then((result) => {
         console.log(result);
       })
