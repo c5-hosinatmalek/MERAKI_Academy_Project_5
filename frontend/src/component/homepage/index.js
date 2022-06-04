@@ -50,7 +50,7 @@ const Homepage = () => {
   };
 
   return (
-    <div>
+    <div className="mainhomediv">
       <div>
         <div>
           <img
@@ -84,10 +84,14 @@ const Homepage = () => {
           {filterdCatagore(8).map((element) => {
             console.log(element);
             return (
-              <div>
-                <div className="each-slide">
-                  <img className="firstpageimg" src={element.picUrlProd} />
-                  <p>{element.title}</p>
+              <div className="test2">
+                <div className="prodacthome">
+                    <div className="">
+                <hr></hr>
+                    <img className="firstpageimg" src={element.picUrlProd} />
+                    </div>
+                      <p className="titlehome">{element.title}</p>
+                      <p className="titlehome"> {element.price} </p>
                 </div>
               </div>
             );

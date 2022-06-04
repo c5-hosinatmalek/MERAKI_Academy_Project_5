@@ -1,37 +1,56 @@
-.img{
-height: 300px;
-width: 66%;
-height: 600px;
+.img {
+  height: 300px;
+  width: 66%;
+  height: 600px;
 }
 .each-slide > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    height: 350px;
-  }
-  
-  .each-slide span {
-    padding: 20px;
-    font-size: 20px;
-    background: #efefef;
-    text-align: center;
-  }
-  
-  .firstpageimg{
-    width: 150px;
-  }
 
-  .header2{
-    width: 66%;
+}
+.test{
+
+}
+
+.each-slide span {
+  
+  padding: 20px;
+  height: 1500px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+.firstpageimg {
+  width: 200px;
+
+}
+
+
+.test2{
+  border-left-style: inset;
+  height: 300px;
+  align-items: center;
+}
+
+.header2 {
+  width: 66%;
   height: 550px;
+}
+.header3 {
+  height: 500px;
+  width: 66%;
+}
 
-  }
-  .header3{
-height: 500px;
-width: 66%;
-  }
+.prodacthome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  margin-top: 20px;
+}
 
-  .test{
+.titlehome {
+  width: 300px;
+  font-size: 20px;
+  text-align: center
 
-  }
+}

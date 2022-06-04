@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
-
+import Createprodact from "./component/create prodact";
 import {REGISTER} from "./component/REGISTER/index"
 import GetProdact from "./component/prodact/index";
 
@@ -48,7 +48,7 @@ function App() {
         <Route path="/rigester" element={<REGISTER />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<LOGIN/>} />
-
+        <Route path="/creat" element={<Createprodact/>} />
         
         <Route path="/category/:id/products" element={<GetProdact/>}/>
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
