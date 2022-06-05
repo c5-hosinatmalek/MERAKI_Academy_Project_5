@@ -15,6 +15,7 @@ const CartPage = () => {
   useEffect(() => {
     axios
       .get("http://localhost:5000/cart/getcart/", {
+
         headers: {
           authorization: `Bearer ${state.token}`,
         },
