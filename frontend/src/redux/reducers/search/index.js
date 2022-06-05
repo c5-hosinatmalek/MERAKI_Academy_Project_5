@@ -7,10 +7,12 @@ const searchSlice = createSlice({
     resultSerch: [],
     stateserch: false,
     messageSearche: "",
+    number: [],
   },
   reducers: {
     setAllproduct: (state, action) => {
       state.allPrudact = action.payload;
+
     },
 
     setResultSerch: (state, action) => {
@@ -35,16 +37,23 @@ const searchSlice = createSlice({
     setStateSerch: (state, action) => {
       state.stateserch = action.payload;
     },
-    getfury:(state,action)=>{
-      state.resultSerch=state.resultSerch.filter((element)=>{
-      return element.product_name="fury"
+    getfury: (state, action) => {
+      state.resultSerch = state.resultSerch.filter((element) => {
+        return (element.product_name = "fury");
+      });
+    },
+    numberprodact: (state, action) => {
+      let counter =state.allPrudact.length/10
+
+      state.allPrudact.forEach((element,index)=>{
+        if (index<Math.ceil(counter)) {
+          state.number.push(index+1)
+        }
       })
-    }
-
-  } 
-
+    },
+  },
 });
 
-export const { setAllproduct, setResultSerch, setStateSerch,getfury } =
+export const { setAllproduct, setResultSerch, setStateSerch, getfury,numberprodact } =
   searchSlice.actions;
 export default searchSlice.reducer;

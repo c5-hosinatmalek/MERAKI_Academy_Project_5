@@ -19,7 +19,7 @@ const ProductPage = () => {
     axios
       .get(`http://localhost:5000/product/${id}`)
       .then((result) => {
-        console.log(result);
+        
         dispatch(getproduct(result.data.result));
       })
       .catch((err) => {
@@ -27,15 +27,15 @@ const ProductPage = () => {
       });
   }, []);
   const addCartClick = (id) => {
-    console.log(id);
+   
 
     
     axios
-      .post(`http://localhost:5000/cart/add/1`,{}, {headers:{
+      .post(`http://localhost:5000/cart/add/${id}`,{}, {headers:{
         authorization: `Bearer ${state.token}`,
       },})
       .then((result) => {
-        console.log(result);
+        
       })
       .catch((err) => {
         console.log("errr", err);
@@ -47,7 +47,7 @@ const ProductPage = () => {
       <div>
         <h2>{state.product[0] && state.product[0].title}</h2>
         <p>{state.product[0] && state.product[0].description}</p>
-        <img src={`${state.product[0] && state.product[0].picUrlProd}`} />
+        <img src={`${state.product[0] && state.product[0].picUrlProd}`} className="imgProduct" />
       </div>
       <div>
         <div className="priceAvilability">
@@ -77,4 +77,4 @@ const ProductPage = () => {
   );
 };
 
-export { ProductPage };
+export {ProductPage}
