@@ -39,23 +39,38 @@ const GetProdact = () => {
       <div className="side_bar" >
         <div className="orderby_price">
             <h1>Sorte By price</h1>
-            <select>
-              <option>
-                <button onClick={()=>{
-                  axios.get(`http://localhost:5000/product/ascending/all/${id}`).then((resulat)=>{
-                    dispacth(getproduct(resulat.data));
-                    console.log(resulat);
-                  })
-                }} >the least</button>
+            <select   onChange={(e)=>{
+                       
+                      if(e.target.value==="the least"){ axios.get(`http://localhost:5000/product/ascending/all/${id}`).then((resulat)=>{
+                      
+                        dispacth(getproduct(resulat.data));
+                      
+                      })}else{
+
+                        axios.get(`http://localhost:5000/product/descending/all/${id}`).then((resulat)=>{
+                        dispacth(getproduct(resulat.data));
+                       
+                      })
+                      }
+                 
+                }}>
+              <option value={"the least"}>
+                the least
               </option>
-              <option>
-                <button>the above</button>
+              <option value={"the above"}>
+              the above
               </option>
             </select>
         </div>
         <div className="orderby_letter">
             <h1>Sorte By Alphabet</h1>
-            <select>
+            <select onChange={(e)=>{
+               if(e.target.value==="A-to-z"){ axios.get(`http://localhost:5000/product/ByLetters/all/${id}`).then((resulat)=>{
+                      
+                dispacth(getproduct(resulat.data));
+              
+              })}
+            }} >
               <option>
                 <button>A-to-z</button>
               </option>
