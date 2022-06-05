@@ -26,6 +26,8 @@ import { ProductPage } from "./component/ProductPage/index";
 import CartPage from "./component/CartPage/index";
 
 import FOOTER from "./component/FOOTER";
+import UserTable from "./component/UserTable/UserTable"
+
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
@@ -49,6 +51,9 @@ function App() {
         <Route path="/rigester" element={<REGISTER />} />
         <Route path="/" element={<Homepage />} />
 
+
+        <Route path="/admin/usersTable" element={<UserTable/>}/>
+
         <Route path="/login" element={<LOGIN/>} />
         <Route path="/creat" element={<Createprodact/>} />
         <Route path="/admin/uplodphoto" element={<Getphotosmain/>} />
@@ -58,6 +63,7 @@ function App() {
           <Route path="/cart/:id" element={<CartPage/>}/>
 
        
+
       </Routes>
       <FOOTER />
     </div>

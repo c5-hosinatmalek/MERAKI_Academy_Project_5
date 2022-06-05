@@ -1,11 +1,12 @@
 import "./style.css";
 
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import { getproduct } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
 const ProductPage = () => {
+  const [message, setMessage] = useState("")
   const { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => {
@@ -35,6 +36,10 @@ const ProductPage = () => {
         authorization: `Bearer ${state.token}`,
       },})
       .then((result) => {
+        setMessage("Your Item has been added")
+        setTimeout(()=>{
+          setMessage("")
+        },3000)
         console.log(result);
       })
       .catch((err) => {
@@ -46,7 +51,7 @@ const ProductPage = () => {
     <div className="productPage">
       <div>
         <h2>{state.product[0] && state.product[0].title}</h2>
-        <p>{state.product[0] && state.product[0].description}</p>
+        <p>{state.product[0] && state.product[0].description.split(",").map((element,index)=>{return <ul key={index}><li key={index + "li"}>-{element}</li></ul>})}</p>
         <img src={`${state.product[0] && state.product[0].picUrlProd}`} className="imgProduct" />
       </div>
       <div>
@@ -63,7 +68,8 @@ const ProductPage = () => {
         </div>
         {state.product[0] && state.product[0].Store_Quantity == 0 ? (
           <p>Out of Stock</p>
-        ) : (
+        ) : (<>
+          <p>{message}</p>
           <button
             onClick={() => {
               addCartClick(state.product[0].product_id);
@@ -71,6 +77,7 @@ const ProductPage = () => {
           >
             Add to cart
           </button>
+        </>
         )}
       </div>
     </div>

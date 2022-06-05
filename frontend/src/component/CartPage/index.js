@@ -4,9 +4,9 @@ import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { getCart,updateQuantity,deleteFromCart,checkoutAction } from "../../redux/reducers/cart";
-
 const CartPage = () => {
-    const [quan, setquan] = useState(0)
+  const [message, setMessage] = useState("")
+    
   const state = useSelector((state) => {
     return {
       cart: state.cart.cart,
@@ -62,6 +62,7 @@ const CheckOutClick=()=>{
     headers: {
       authorization: `Bearer ${state.token}`,
     }}).then((result)=>{
+setMessage("Your order has been accepted")
       dispatch(checkoutAction())
     }).catch((err)=>{
       console.log(err);
@@ -94,6 +95,7 @@ updateQuantityFun(index,e.target.value,element.product_id)
     
 
   </table>
+  <h1>{message}</h1>
   <button onClick={(e)=>{
 CheckOutClick()
   }}>Check Out</button>

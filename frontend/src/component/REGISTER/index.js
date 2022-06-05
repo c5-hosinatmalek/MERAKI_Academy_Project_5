@@ -7,7 +7,7 @@ const REGISTER = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [country, setCountryy] = useState("");
-  const role_id = 1;
+  const role_id = 2;
   const [messageUser, setMessageUser] = useState("");
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
