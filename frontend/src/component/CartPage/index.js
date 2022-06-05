@@ -3,7 +3,7 @@ import "./style.css"
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getCart,updateQuantity,deleteFromCart } from "../../redux/reducers/cart";
+import { getCart,updateQuantity,deleteFromCart,checkoutAction } from "../../redux/reducers/cart";
 
 const CartPage = () => {
     const [quan, setquan] = useState(0)
@@ -62,7 +62,7 @@ const CheckOutClick=()=>{
     headers: {
       authorization: `Bearer ${state.token}`,
     }}).then((result)=>{
-      
+      dispatch(checkoutAction())
     }).catch((err)=>{
       console.log(err);
     })

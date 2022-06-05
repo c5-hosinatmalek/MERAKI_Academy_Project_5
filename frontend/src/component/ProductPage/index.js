@@ -35,7 +35,7 @@ const ProductPage = () => {
         authorization: `Bearer ${state.token}`,
       },})
       .then((result) => {
-        
+        console.log(result);
       })
       .catch((err) => {
         console.log("errr", err);
