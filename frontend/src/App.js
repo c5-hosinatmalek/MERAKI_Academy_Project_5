@@ -29,6 +29,8 @@ import { ProductPage } from "./component/ProductPage/index";
 import CartPage from "./component/CartPage/index";
 
 import FOOTER from "./component/FOOTER";
+import UserTable from "./component/UserTable/UserTable"
+
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
@@ -58,6 +60,7 @@ function App() {
         <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
         <Route path="/category/product/:id" element={<ProductPage />} />
         <Route path="/cart/:id" element={<CartPage />} />
+        <Route path="/admin/usersTable" element={<UserTable/>}/>
       </Routes>
       <FOOTER />
     </div>

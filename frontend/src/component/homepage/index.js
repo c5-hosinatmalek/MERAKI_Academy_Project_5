@@ -68,7 +68,6 @@ const Homepage = () => {
     <div>
       <div className="mainhomediv">
         <div>
-
           <div>
             <img
               src={header4}
@@ -140,14 +139,12 @@ const Homepage = () => {
                     <img className="firstpageimg" src={element.picUrlProd} />
                     <p>{element.title}</p>
                   </div>
-
                 </div>
               );
             })}
           </Slide>
         </div>
         <img className="header3" src={header1} />
-
 
         <div>
           {/* this one for printers just add number (5)*/}
@@ -160,16 +157,13 @@ const Homepage = () => {
                     <img className="firstpageimg" src={element.picUrlProd} />
                     <p>{element.title}</p>
                   </div>
-
                 </div>
               );
             })}
           </Slide>
 
-
           {Pagination &&
             Pagination.map((element) => {
-              
               return (
                 <div>
                   <p>{element.title}</p>
@@ -189,7 +183,6 @@ const Homepage = () => {
         </div>
       </div>
 
-
       {state.number &&
         state.number.map((element) => {
           return (
@@ -207,7 +200,6 @@ const Homepage = () => {
             </div>
           );
         })}
-
     </div>
   );
 };
