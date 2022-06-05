@@ -1,9 +1,15 @@
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import Createprodact from "./component/create prodact";
+
 import { REGISTER } from "./component/REGISTER/index";
-// import { GetProdact } from "./component/prodact/index";
+
 import GetProdact from "./component/Prodact/index";
+
+
+
+
+import { numberprodact } from "./redux/reducers/search";
 
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
@@ -31,6 +37,8 @@ function App() {
       .get("http://localhost:5000/product")
       .then((result) => {
         dispacth(setAllproduct(result.data.result));
+        dispacth(numberprodact());
+        
       })
       .catch((err) => {});
   }, []);

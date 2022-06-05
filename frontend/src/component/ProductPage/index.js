@@ -77,4 +77,4 @@ const ProductPage = () => {
   );
 };
 
-export { ProductPage };
+export {ProductPage}
