@@ -42,7 +42,7 @@ function App() {
 
       <NavBar/>
       <CategoryBar/>
-      
+      // test /////////////////////////////////
       
       <Routes>
         <Route path="/rigester" element={<REGISTER />} />
