@@ -13,6 +13,9 @@ import header4 from "./img/4.png";
 import header5 from "./img/5.png";
 import header6 from "./img/6.png";
 const Homepage = () => {
+
+
+
   const [Pagination, setPagination] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,6 +66,25 @@ const Homepage = () => {
   useEffect(() => {
     getproductPagination(1);
   }, []);
+
+  let x = [        
+    <Slide {...properties} className="test">
+      {filterdCatagore(9).map((element) => {
+        return (
+          <div>
+            <div className="each-slide">
+              <img className="firstpageimg" src={element.picUrlProd} />
+              <p>{element.title}</p>
+            </div>
+          </div>
+        );
+      })}
+    </Slide>
+  ]
+
+
+
+
 
   return (
     <div>
@@ -166,10 +188,13 @@ const Homepage = () => {
             })}
           </Slide>
 
-
+ 
           {Pagination &&
             Pagination.map((element) => {
-              
+
+
+
+   
               return (
                 <div>
                   <p>{element.title}</p>

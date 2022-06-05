@@ -189,7 +189,7 @@ VALUES
         8,
         "cooler master",
         50,
-        "Sleek, Pearl White finish for a more refined look,4 direct contact heat pipes provide excellent heat dissipation,
+        "Pearl White finish for a more refined look,4 direct contact heat pipes provide excellent heat dissipation,
 Dual XtraFlo PWM Fans with white LEDs can be fine-tuned for maximum cooling performance or silent operation,Precise stacked fin array decreases airflow resistance, allowing cooler air to reach the heatsink,Intuitive fan bracket design makes upgrading and removing the fan a breeze,",
         70
     );

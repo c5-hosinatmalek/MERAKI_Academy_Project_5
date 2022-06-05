@@ -12,7 +12,7 @@ const productRouter = require("./routes/product");
 const userRouter = require("./routes/user");
 const cartRouter = require("./routes/cart");
 const loginRouter = require("./routes/login");
-
+const Homeiteams = require("./routes/Home_items");
 //
 const app = express();
 app.use(cors());
@@ -44,6 +44,9 @@ app.use("/login", loginRouter);
 
 // create user router
 app.use("/user", userRouter);
+// create Homeiteams router
+app.use("/Homeiteams", Homeiteams);
+
 app.listen(port, () => {
   console.log(`server on in port ${port}`);
 });
