@@ -197,7 +197,7 @@ const allProductByLetters=(req,res)=>{
      }
      res.status(200).json({
        success:true,
-       message:"get all proudect by price ascending",
+       message:"get all proudect by alphabet",
        result
      })
    
