@@ -2,3 +2,9 @@
     width: 150px;
 
 }
+.orderby_price h3{
+    display: inline;
+}
+.orderby_letter h3{
+    display: inline;
+}

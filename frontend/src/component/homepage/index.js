@@ -81,19 +81,16 @@ const Homepage = () => {
       })}
     </Slide>
   ]
-console.log("mmmmmmmmmmmmm",<Slide>{x&&x.map((element)=>{
 
-})} </Slide>);
 
-console.log("aaaaaaaaaa",<Slide>{x&&x.map((element)=>{
-  return element
-})} </Slide>);
+
 
 
   return (
     <div>
       <div className="mainhomediv">
         <div>
+
           <div>
             <img
               src={header4}
@@ -165,12 +162,14 @@ console.log("aaaaaaaaaa",<Slide>{x&&x.map((element)=>{
                     <img className="firstpageimg" src={element.picUrlProd} />
                     <p>{element.title}</p>
                   </div>
+
                 </div>
               );
             })}
           </Slide>
         </div>
         <img className="header3" src={header1} />
+
 
         <div>
           {/* this one for printers just add number (5)*/}
@@ -183,16 +182,23 @@ console.log("aaaaaaaaaa",<Slide>{x&&x.map((element)=>{
                     <img className="firstpageimg" src={element.picUrlProd} />
                     <p>{element.title}</p>
                   </div>
+
                 </div>
               );
             })}
           </Slide>
+
  
           {Pagination &&
             Pagination.map((element) => {
+
+
+
+   
               return (
                 <div>
                   <p>{element.title}</p>
+
                   <img className="firstpageimg" src={element.picUrlProd} />
                   <p>
                     {" "}
@@ -226,12 +232,7 @@ console.log("aaaaaaaaaa",<Slide>{x&&x.map((element)=>{
             </div>
           );
         })}
-<h1>here</h1>
-{x&&x.map((element)=>{
-  console.log("here",element);
 
-  return 
-})}
     </div>
   );
 };
