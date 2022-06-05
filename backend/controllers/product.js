@@ -184,7 +184,7 @@ const allProductascending=(req,res)=>{
 
 const allProductByLetters=(req,res)=>{
   const {id}=req.params;
-  const query="SELECT * FROM products  WHERE IS_DELETED=0 AND category_id=? ORDER BY title ";
+  const query="SELECT * FROM products  WHERE IS_DELETED=0 AND category_id=? ORDER BY title";
   const data=[id]
    connection.query(query,data,(err,result)=>{
      if(err){

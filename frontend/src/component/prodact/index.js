@@ -38,7 +38,7 @@ const GetProdact = () => {
     <div className="container_page" >
       <div className="side_bar" >
         <div className="orderby_price">
-            <h1>Sorte By price</h1>
+            <h3>Sorte By price</h3>
             <select   onChange={(e)=>{
                        
                       if(e.target.value==="the least"){ axios.get(`http://localhost:5000/product/ascending/all/${id}`).then((resulat)=>{
@@ -63,17 +63,16 @@ const GetProdact = () => {
             </select>
         </div>
         <div className="orderby_letter">
-            <h1>Sorte By Alphabet</h1>
-            <select onChange={(e)=>{
-               if(e.target.value==="A-to-z"){ axios.get(`http://localhost:5000/product/ByLetters/all/${id}`).then((resulat)=>{
+            <h3>Sorte By Alphabet</h3>
+            <select onClick={(e)=>{
+              console.log(e.target.value);
+               if(e.target.value==="A-TO-Z"){axios.get(`http://localhost:5000/product/ByLetters/all/${id}`).then((resulat)=>{
                       
                 dispacth(getproduct(resulat.data));
               
               })}
             }} >
-              <option>
-                <button>A-to-z</button>
-              </option>
+              <option value={"A-TO-Z"}>A-TO-Z</option>
             </select>
         </div>
       </div>
