@@ -18,7 +18,6 @@ const CategoryBar =()=>{
 useEffect(()=>{
 
     axios.get("http://localhost:5000/category").then((result)=>{
-
 dispatch(getcatogre(result.data.result))
     }).catch((err)=>{
         console.log(err);

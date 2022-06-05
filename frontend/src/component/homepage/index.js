@@ -32,7 +32,6 @@ const Homepage = () => {
     const fortest =
       state.allproduct &&
       state.allproduct.filter((element) => {
-        console.log(element.sub_category == type1);
         return element.sub_category == type1 || element.product_name === type1;
       });
     return fortest;
@@ -42,8 +41,6 @@ const Homepage = () => {
     const fortest =
       state.allproduct &&
       state.allproduct.filter((element) => {
-        console.log(element);
-        console.log(element.sub_category == type1);
         return element.category_id == type1;
       });
     return fortest;
@@ -56,7 +53,6 @@ const Homepage = () => {
           <img
             src={header4}
             onClick={() => {
-              console.log(true);
               dispatch(getfury());
               navigate("/resulsearch");
             }}
@@ -82,16 +78,15 @@ const Homepage = () => {
         <p>gpu</p>
         <Slide {...properties} className="test">
           {filterdCatagore(8).map((element) => {
-            console.log(element);
             return (
               <div className="test2">
                 <div className="prodacthome">
-                    <div className="">
-                <hr></hr>
+                  <div className="">
+                    <hr></hr>
                     <img className="firstpageimg" src={element.picUrlProd} />
-                    </div>
-                      <p className="titlehome">{element.title}</p>
-                      <p className="titlehome"> {element.price} </p>
+                  </div>
+                  <p className="titlehome">{element.title}</p>
+                  <p className="titlehome"> {element.price} </p>
                 </div>
               </div>
             );
@@ -103,7 +98,6 @@ const Homepage = () => {
       <div>
         <Slide {...properties} className="test">
           {filterdCatagore(9).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">
@@ -120,7 +114,6 @@ const Homepage = () => {
         {/* this one for power by asusu just add number 1 to params */}
         <Slide {...properties} className="test">
           {filterdSubCatag(2).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">
@@ -139,7 +132,6 @@ const Homepage = () => {
         <p>gpu</p>
         <Slide {...properties} className="test">
           {filterdCatagore(8).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">
@@ -157,7 +149,6 @@ const Homepage = () => {
         <p>gpu</p>
         <Slide {...properties} className="test">
           {filterdCatagore(8).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">
@@ -174,7 +165,6 @@ const Homepage = () => {
         <p>gpu</p>
         <Slide {...properties} className="test">
           {filterdCatagore(8).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">
@@ -192,7 +182,6 @@ const Homepage = () => {
         <p>gpu</p>
         <Slide {...properties} className="test">
           {filterdCatagore(8).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">
@@ -209,7 +198,6 @@ const Homepage = () => {
         <p>gpu</p>
         <Slide {...properties} className="test">
           {filterdCatagore(8).map((element) => {
-            console.log(element);
             return (
               <div>
                 <div className="each-slide">

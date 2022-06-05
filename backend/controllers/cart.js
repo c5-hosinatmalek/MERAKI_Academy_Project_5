@@ -4,10 +4,9 @@ const AddToCart = (req, res) => {
   let check = false;
   let quantity = 1;
   const product_id = req.params.id;
-  // const quantity = 1;
+
   const user_id = req.token.user_id;
 
-  //   const query = "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
   const query = `SELECT * FROM cart WHERE product_id=?`;
   const Data = [product_id];
   connection.query(query, Data, (err, result) => {
@@ -18,7 +17,7 @@ const AddToCart = (req, res) => {
       }
     } catch {
       (err) => {
-        console.log(er);
+        console.log(err);
       };
     }
   });
@@ -62,9 +61,10 @@ const AddToCart = (req, res) => {
 };
 
 const deletecart = (req, res) => {
-  const id = req.params.id;
-  const query = "DELETE FROM cart WHERE cart_id = ?  ";
-  const Data = [id];
+  const product_id = req.params.product_id;
+  const user_id = req.token.user_id;
+  const query = "DELETE FROM cart WHERE product_id = ? AND user_id=?  ";
+  const Data = [product_id, user_id];
   connection.query(query, Data, (err, result) => {
     if (err) {
       return res.status(500).json({
@@ -83,7 +83,7 @@ const deletecart = (req, res) => {
 
 const getUserCarts = (req, res) => {
   const user_id = req.token.user_id;
-  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE cart.user_id=?`;
+  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE CART.is_deleted = 0 AND cart.user_id=?`;
   const data = [user_id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -99,8 +99,9 @@ const getUserCarts = (req, res) => {
     });
   });
 };
-const checkOut = (req, res) => {
+const checkOut = async (req, res) => {
   const user_id = req.token.user_id;
+  const { arrayCheckout } = req.body;
   const data = [user_id];
 
   const query = `UPDATE cart SET is_deleted = 1 WHERE user_id=?`;
@@ -112,12 +113,43 @@ const checkOut = (req, res) => {
         err,
       });
     }
-    res.status(200).json({
+  });
+  arrayCheckout &&
+    arrayCheckout.forEach((element) => {
+      const data2 = [+element.quantity, element.product_id];
+      const query2 =
+        "UPDATE products SET Store_Quantity=Store_Quantity-? WHERE product_id=?";
+      connection.query(query2, data2, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+};
+const updateQuantity = (req, res) => {
+  const { product_id, quantity } = req.body;
+  const user_id = req.token.user_id;
+  const data = [+quantity, product_id, user_id];
+  const query = `UPDATE cart SET Quantity=? WHERE product_id=? AND user_id=? ;`;
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        succses: false,
+        Message: "server error",
+        err,
+      });
+    }
+    return res.status(201).json({
       succses: true,
-      Message: "delete cart",
       result,
     });
   });
 };
 
-module.exports = { AddToCart, deletecart, getUserCarts, checkOut };
+module.exports = {
+  AddToCart,
+  deletecart,
+  getUserCarts,
+  checkOut,
+  updateQuantity,
+};
