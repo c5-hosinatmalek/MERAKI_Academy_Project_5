@@ -29,12 +29,40 @@ const GetProdact = () => {
         console.log(err);
       });
   };
+
   useEffect(() => {
     test();
   }, [id]);
 
   return (
-    <div>
+    <div className="container_page" >
+      <div className="side_bar" >
+        <div className="orderby_price">
+            <h1>Sorte By price</h1>
+            <select>
+              <option>
+                <button onClick={()=>{
+                  axios.get(`http://localhost:5000/product/ascending/all/${id}`).then((resulat)=>{
+                    dispacth(getproduct(resulat.data));
+                    console.log(resulat);
+                  })
+                }} >the least</button>
+              </option>
+              <option>
+                <button>the above</button>
+              </option>
+            </select>
+        </div>
+        <div className="orderby_letter">
+            <h1>Sorte By Alphabet</h1>
+            <select>
+              <option>
+                <button>A-to-z</button>
+              </option>
+            </select>
+        </div>
+      </div>
+       <div className="ALL_BRODUCT">
       {state.prodect.result &&
         state.prodect.result.map((element, index) => {
           
@@ -54,6 +82,8 @@ const GetProdact = () => {
           );
         })}
     </div>
+    </div>
+   
   );
 };
 
