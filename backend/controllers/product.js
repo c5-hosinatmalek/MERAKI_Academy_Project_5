@@ -113,10 +113,37 @@ const updateProduct = (req, res) => {
   });
 };
 
+
+const getprodactpagin=(req,res)=>{
+  const limit = 10
+  const page = req.params.page
+
+  const offset = (page - 1) * limit
+
+  // const query= "SELECT * FROM PRODUCTS  limit "+limit+" OFFSET "+offset "
+  const query = "select * from Products limit "+limit+" OFFSET "+offset
+  connection.query(query,(err,result)=>{
+   if (err) {
+     res.status(500).json({
+       success:false,
+       mesage:"server error"
+     })
+   }
+res.status(201).json({
+  success:true,
+  result
+})
+
+  })
+
+}
+
+
 module.exports = {
   getAllProducts,
   createProduct,
   getProductbyId,
   deleteProductbyId,
   updateProduct,
+  getprodactpagin
 };

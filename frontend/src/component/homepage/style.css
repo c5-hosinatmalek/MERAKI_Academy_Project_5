@@ -54,3 +54,15 @@
   text-align: center
 
 }
+
+.divPagination{
+display: flex;
+
+}
+
+.input{
+  border-style: outset;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+}
