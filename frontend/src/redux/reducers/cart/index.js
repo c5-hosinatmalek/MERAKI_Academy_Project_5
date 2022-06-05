@@ -19,11 +19,14 @@ reducers:{
     updateQuantity:(state,action)=>{
         
 state.cart[action.payload[0]].quantity=action.payload[1]
+    },
+    checkoutAction:(state,action)=>{
+state.cart=[]
     }
 }
 })
 
 
-export const { getCart,deleteFromCart,updateQuantity } = cartSlice.actions;
+export const { getCart,deleteFromCart,updateQuantity,checkoutAction } = cartSlice.actions;
 
 export default cartSlice.reducer;
