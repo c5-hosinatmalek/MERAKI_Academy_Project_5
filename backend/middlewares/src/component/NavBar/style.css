@@ -1,0 +1,19 @@
+.navUser {
+    display: flex;
+    justify-content: space-between;
+background-color: rgb(150, 150, 240);
+}
+.cartLogo {
+    font-size: 40px;
+}
+.logo{
+    height: 100px;
+    width: 100px;
+}
+.myAccount{
+    font-size: 40px;
+font-weight: 900;
+}
+.myAccountList{
+    
+}

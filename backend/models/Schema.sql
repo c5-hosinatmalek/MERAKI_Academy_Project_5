@@ -62,7 +62,7 @@ CREATE TABLE Products(
     sub_category INT,
     product_name VARCHAR(255),
     product_type VARCHAR(255),
-    price VARCHAR(255),
+    price INT,
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES categories(category_id),
     FOREIGN KEY (sub_category) REFERENCES sub_categories(subcategory_id),
