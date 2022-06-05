@@ -13,20 +13,17 @@ const GetProdact = () => {
   const { id } = useParams();
 
   const state = useSelector((state) => {
-    console.log(state);
     return {
       prodect: state.product.product,
     };
   });
-
-  console.log(id);
 
   const test = async () => {
     await axios
       .get(`http://localhost:5000/category/${id}/products`)
       .then((resulat) => {
         dispacth(getproduct(resulat.data));
-        console.log(state.prodect.result);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +37,7 @@ const GetProdact = () => {
     <div>
       {state.prodect.result &&
         state.prodect.result.map((element, index) => {
-          console.log();
+          
           return (
             <div>
               <Link to={`/category/product/${element.product_id}`} key={index}>

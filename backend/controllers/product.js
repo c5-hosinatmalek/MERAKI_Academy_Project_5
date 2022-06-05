@@ -101,7 +101,6 @@ const updateProduct = (req, res) => {
     sub_category,
     productId,
   ];
-  console.log(data);
   const query =
     "UPDATE products SET product_name=?,product_type=?,price=?,title=?,store_Quantity=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
 

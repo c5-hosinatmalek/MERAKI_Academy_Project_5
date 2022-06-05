@@ -19,9 +19,9 @@ const FOOTER=()=>{
     
         emailjs.sendForm('service_uq7s3w5', 'template_iy2hv8o', form.current, 'ghDvvK363ERZHeuEk')
           .then((result) => {
-              console.log(result.text);
+              
           }, (error) => {
-              console.log(error.text);
+              
           });
          
       };
