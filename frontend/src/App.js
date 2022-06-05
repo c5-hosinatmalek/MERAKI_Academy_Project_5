@@ -3,7 +3,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import Createprodact from "./component/create prodact";
 import {REGISTER} from "./component/REGISTER/index"
 import GetProdact from "./component/prodact/index";
-
+import Getphotosmain from "./component/home_page_pic";
 import { numberprodact } from "./redux/reducers/search";
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
@@ -51,7 +51,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<LOGIN/>} />
         <Route path="/creat" element={<Createprodact/>} />
-        
+        <Route path="/admin/uplodphoto" element={<Getphotosmain/>} />
         <Route path="/category/:id/products" element={<GetProdact/>}/>
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
           <Route path="/category/product/:id" element={<ProductPage/>}/>
