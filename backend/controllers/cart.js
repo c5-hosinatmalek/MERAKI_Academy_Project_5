@@ -7,7 +7,7 @@ const AddToCart = (req, res) => {
 
   const user_id = req.token.user_id;
 
-  const query = `SELECT * FROM cart WHERE product_id=?`;
+  const query = `SELECT * FROM cart WHERE product_id=? AND WHERE IS_DELETED =0`;
   const Data = [product_id];
   connection.query(query, Data, (err, result) => {
     try {
@@ -25,7 +25,7 @@ const AddToCart = (req, res) => {
     if (check) {
       let newqunt = quantity + 1;
       const data = [newqunt, product_id, user_id];
-      const query = `UPDATE cart SET Quantity=? WHERE product_id=? AND user_id=? `;
+      const query = `UPDATE cart SET Quantity=? WHERE product_id=? AND user_id=? AND WHERE IS_DELETED=0`;
       connection.query(query, data, (err, resul) => {
         if (err) {
           return res.status(500).json({
@@ -118,7 +118,7 @@ const checkOut = async (req, res) => {
     arrayCheckout.forEach((element) => {
       const data2 = [+element.quantity, element.product_id];
       const query2 =
-        "UPDATE products SET Store_Quantity=Store_Quantity-? WHERE product_id=?";
+        "UPDATE products SET Store_Quantity=Store_Quantity-? WHERE product_id=? AND IS_DELETED =0";
       connection.query(query2, data2, (err, result) => {
         if (err) {
           console.log(err);
