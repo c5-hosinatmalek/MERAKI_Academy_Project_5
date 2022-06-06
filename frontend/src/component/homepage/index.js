@@ -82,10 +82,6 @@ const Homepage = () => {
     </Slide>
   ]
 
-
-
-
-
   return (
     <div>
       <div className="mainhomediv">
