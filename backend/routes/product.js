@@ -5,7 +5,8 @@ const {
   getProductbyId,
   deleteProductbyId,
   updateProduct,
-  getprodactpagin,
+  getprodactpagin,restockProduct
+
 } = require("../controllers/product");
 
 //creat middlleware router ==>  productRouter
@@ -27,8 +28,11 @@ productRouter.delete("/:id_product", deleteProductbyId);
 // put==>http://localhost:5000/product/:id
 productRouter.put("/:id", updateProduct);
 
-// put==>http://localhost:5000/product/create
+// post==>http://localhost:5000/product/create
 productRouter.post("/create", createProduct);
+// put==>http://localhost:5000/product/admin/restock
+
+productRouter.put("/admin/restock",restockProduct)
 
 
 
