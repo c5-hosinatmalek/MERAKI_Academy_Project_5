@@ -67,7 +67,7 @@ const LOGIN = () => {
           />
         </div>
         <div className="passward_login">
-        <label>Enter Password</label>
+        <label>Enter Password </label>
           <input
             placeholder="enter password..."
             type="password"

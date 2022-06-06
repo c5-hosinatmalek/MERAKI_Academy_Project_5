@@ -10,10 +10,10 @@ box-sizing: border-box;
 }
 .continer_result{
     border: solid 2px black;
-    position: absolute;
+    /* position: absolute; */
 
-    left:600px;
-    margin-top: 100px;
+    left:500px;
+    /* margin-top: 100px; */
 
     /* padding: 50px; */
 
