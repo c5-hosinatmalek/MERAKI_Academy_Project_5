@@ -57,6 +57,7 @@ const LOGIN = () => {
           <h1>Login</h1>
         </div>
         <div className="email_login">
+          <label>Enter Email</label>
           <input
             placeholder="enter email..."
             type="text"
@@ -66,6 +67,7 @@ const LOGIN = () => {
           />
         </div>
         <div className="passward_login">
+        <label>Enter Password </label>
           <input
             placeholder="enter password..."
             type="password"
