@@ -78,13 +78,12 @@ const deleteProductbyId = (req, res) => {
 };
 // create function to update data in product
 const updateProduct = (req, res) => {
-  
   const {
     product_name,
     product_type,
     price,
     title,
-    store_Quantity,
+    picUrlProd,
     description,
     category_id,
     sub_category,
@@ -96,14 +95,14 @@ const updateProduct = (req, res) => {
     product_type,
     price,
     title,
-    store_Quantity,
+    picUrlProd,
     description,
     category_id,
     sub_category,
     productId,
   ];
   const query =
-    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,store_Quantity=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
+    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,picUrlProd=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -128,7 +127,6 @@ const getprodactpagin=(req,res)=>{
   const offset = (page - 1) * limit;
 
   // const query= "SELECT * FROM PRODUCTS  limit "+limit+" OFFSET "+offset "
-
   const query = "select * from Products limit " + limit + " OFFSET " + offset;
   connection.query(query, (err, result) => {
     if (err) {
@@ -143,7 +141,6 @@ const getprodactpagin=(req,res)=>{
     });
   });
 };
-
 //query=`SELECT * FROM products  WHERE IS_DELETED=0 ORDER BY CAST(price AS INT)  DESC `;
 const allProductDescending=(req,res)=>{
   const {id}=req.params
@@ -213,9 +210,8 @@ const allProductByLetters=(req,res)=>{
    })
 }
 
-
 const restockProduct = (req, res) => {
- 
+  
   const { newQuntity, product_Id } = req.body;
   const query =
     "UPDATE products SET Store_Quantity=Store_Quantity+? WHERE product_id=? AND IS_DELETED =0  ";
@@ -241,11 +237,8 @@ module.exports = {
   deleteProductbyId,
   updateProduct,
   getprodactpagin,
-
   restockProduct,
-
   allProductDescending,
   allProductascending,
   allProductByLetters
-
 };
