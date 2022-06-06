@@ -34,7 +34,20 @@ const LOGIN = () => {
   const clientId =
     "980966372884-i6imm3d62qcd07h3gdllhci878oa6dt2.apps.googleusercontent.com";
   const onsucces = (res) => {
-    console.log(res);
+    setEmail(res.profileObj.email)
+    setPassword(res.profileObj.googleId)
+    axios
+    .post(" http://localhost:5000/login", { email, password })
+    .then((result) => {
+      dispatch(setLogin(result.data.token));
+      setStatus(true);
+
+      navigate("/");
+    })
+    .catch((err) => {
+      setStatus(false);
+      setMessageUser(err.response.data.message);
+    });
   };
   const onfailure = (res) => {
     console.log(res);
@@ -82,7 +95,7 @@ const LOGIN = () => {
         <div className="googel">
           <GoogleLogin
             clientId={clientId}
-            buttonText="Login"
+            buttonText="Login With Googel "
             onSuccess={onsucces}
             onFailure={onfailure}
           />
