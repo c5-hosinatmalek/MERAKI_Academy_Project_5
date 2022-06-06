@@ -81,15 +81,6 @@ const Homepage = () => {
       })}
     </Slide>
   ]
-console.log("mmmmmmmmmmmmm",<Slide>{x&&x.map((element)=>{
-
-})} </Slide>);
-
-console.log("aaaaaaaaaa",<Slide>{x&&x.map((element)=>{
-  return element
-})} </Slide>);
-
-
   return (
     <div>
       <div className="mainhomediv">
@@ -226,12 +217,6 @@ console.log("aaaaaaaaaa",<Slide>{x&&x.map((element)=>{
             </div>
           );
         })}
-<h1>here</h1>
-{x&&x.map((element)=>{
-  console.log("here",element);
-
-  return 
-})}
     </div>
   );
 };
