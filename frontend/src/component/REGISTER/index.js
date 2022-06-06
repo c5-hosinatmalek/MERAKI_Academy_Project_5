@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { GoogleLogin } from "react-google-login";
+
 
 const REGISTER = () => {
   const [name, setName] = useState("");
@@ -13,44 +13,7 @@ const REGISTER = () => {
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
 
-//////////////////////////////////////// regester with googel
-const clientId =
-    "980966372884-i6imm3d62qcd07h3gdllhci878oa6dt2.apps.googleusercontent.com";
-  const onsucces = (res) => {
-    setEmail(res.profileObj.email)
-    setName(res.profileObj.name)
-    setPassword(res.profileObj.googleId)
-    setCountryy(null);
-    console.log( email,
-      password,
-      name,
-      country,
-      role_id);
-    axios
-      .post(`http://localhost:5000/register`, {
-        email,
-        password,
-        name,
-        country,
-        role_id,
-      })
-      .then((result) => {
-        if (result.data.success) {
-          setStatus(true);
-          setMessageUser("account created successfully");
-        }
-      })
-      .catch((err) => {
-        setStatus(false);
-        setMessageUser("Error happened while register, please try again");
-      });
-     
-    
-  };
-  const onfailure = (res) => {
-    setMessageUser("Error happened while register, please try again");
-  };
-  ////////////////////////////////////////////////////////
+
   const submit = (e) => {
     e.preventDefault();
 
@@ -141,14 +104,7 @@ const clientId =
           <div className="rigester_button">
             <button>Register</button>
           </div>
-          <div className="regester_googel" >
-          <GoogleLogin
-            clientId={clientId}
-            buttonText="Regester With Googel"
-            onSuccess={onsucces}
-            onFailure={onfailure}
-          />
-          </div>
+          
           {status ? (
             <div className="message_user">
               <h1>{messageUser}</h1>

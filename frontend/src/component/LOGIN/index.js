@@ -9,6 +9,9 @@ import { GoogleLogin } from "react-google-login";
 
 const LOGIN = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [country, setCountryy] = useState("");
+  const role_id = 1;
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState(false);
   const [messegeUser, setMessageUser] = useState("");
@@ -34,20 +37,56 @@ const LOGIN = () => {
   const clientId =
     "980966372884-i6imm3d62qcd07h3gdllhci878oa6dt2.apps.googleusercontent.com";
   const onsucces = (res) => {
-    setEmail(res.profileObj.email)
-    setPassword(res.profileObj.googleId)
+    setEmail(res.profileObj.email);
+    setPassword(res.profileObj.googleId);
+    setName(res.profileObj.name)
+    setCountryy(null);
     axios
-    .post(" http://localhost:5000/login", { email, password })
-    .then((result) => {
-      dispatch(setLogin(result.data.token));
-      setStatus(true);
+      .post(`http://localhost:5000/register`, {
+        email,
+        password,
+        name,
+        country,
+        role_id,
+      })
+      .then((result) => {
+        if (result.data.success) {
+          setStatus(true)
+          axios
+            .post(" http://localhost:5000/login", { email, password })
+            .then((result) => {
+              dispatch(setLogin(result.data.token));
+              setStatus(true);
 
-      navigate("/");
-    })
-    .catch((err) => {
-      setStatus(false);
-      setMessageUser(err.response.data.message);
-    });
+              navigate("/");
+            })
+            .catch((err) => {
+              setStatus(false);
+              setMessageUser(err.response.data.message);
+            });
+        }
+      })
+      .catch((err) => {
+       
+        console.log(err.response.data.err.code);
+        if (err.response.data.err.code === "ER_DUP_ENTRY") {
+          axios
+            .post(" http://localhost:5000/login", { email, password })
+            .then((result) => {
+              dispatch(setLogin(result.data.token));
+              setStatus(true);
+
+              navigate("/");
+            })
+            .catch((err) => {
+              setStatus(false);
+              setMessageUser(err.response.data.message);
+            });
+        }else{
+          setStatus(false);
+          setMessageUser("Error happened while register, please try again");
+        }
+      });
   };
   const onfailure = (res) => {
     console.log(res);
@@ -80,7 +119,7 @@ const LOGIN = () => {
           />
         </div>
         <div className="passward_login">
-        <label>Enter Password </label>
+          <label>Enter Password </label>
           <input
             placeholder="enter password..."
             type="password"
