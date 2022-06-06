@@ -14,21 +14,21 @@ const additeam = (req, res) => {
       });
     }
     res.status(202).json({
+      moad:"moad",
       succses: true,
       result,
+      id,id,
+      url,url
     });
   });
 };
 
 const getpiciteam = (req, res) => {
-
   const query ="SELECT * FROM pic";
-console.log();
   connection.query(query,(err, resul) => {
     if (err) {
      return res.json(500);
     }
-    console.log("mmm");
     res.json({
       succses:"moad",
       resul});
@@ -77,8 +77,12 @@ const updatepicitem = (req, res) => {
         });
       }
       res.status(203).json({
+        moad:"moad",
         succses: true,
         result,
+        product_Id,
+        id,
+        url,
       });
     });
   });
@@ -87,12 +91,3 @@ const updatepicitem = (req, res) => {
 module.exports = { additeam, getpiciteam, deletepiciteam, updatepicitem };
 
 
-// dev1
-//  slider 1
-// dev2
-// slider 1
-// slider2               <category> <ad slider></ad>
-// dev3
-// slider 1
-// dev4
-// slider 1

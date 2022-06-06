@@ -4,6 +4,7 @@ import catorgeSlice from "./reducers/catogre";
 import productSlice from "./reducers/prodact";
 import cartSlice from "./reducers/cart";
 import searchSlice from "./reducers/search";
+import homePagehSlice from "./reducers/homepage"
 export default configureStore({
   reducer: {
     auth: authSlice,
@@ -11,5 +12,7 @@ export default configureStore({
     product: productSlice,
     cart: cartSlice,
     search: searchSlice,
+    home:homePagehSlice
+
   },
 });

@@ -44,7 +44,7 @@ const NavBar = () => {
         />
       </Link>
       <SEARCH />
-      <dev>
+      <div>
         <Link to={"/login"} className="myAccount">
           <RiAccountCircleLine className="myaccount" />
           My Account
@@ -64,7 +64,7 @@ const NavBar = () => {
             </li>
           </ul>
         )}
-      </dev>
+      </div>
       {!state.isLoggedIn ? (
         <Link to={"/login"}>
           <BsCart4 className="cartLogo" />
