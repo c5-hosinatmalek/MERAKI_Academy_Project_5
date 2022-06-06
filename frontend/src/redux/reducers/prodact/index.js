@@ -3,6 +3,7 @@ export const productSlice=createSlice({
     name:"product",
     initialState:{
         product:[]
+        
     },
     reducers:{
         getproduct:(state,action)=>{

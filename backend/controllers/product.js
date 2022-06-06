@@ -117,6 +117,14 @@ const getprodactpagin = (req, res) => {
   const limit = 10;
   const page = req.params.page;
 
+
+const getprodactpagin=(req,res)=>{
+  const limit = 10
+  const page = req.params.page
+  
+  
+  
+
   const offset = (page - 1) * limit;
 
   // const query= "SELECT * FROM PRODUCTS  limit "+limit+" OFFSET "+offset "
@@ -176,6 +184,7 @@ const allProductascending=(req,res)=>{
        success:true,
        message:"get all proudect by price ascending",
        result
+
      })
    
    })

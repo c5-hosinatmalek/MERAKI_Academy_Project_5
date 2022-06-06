@@ -30,10 +30,46 @@ const NavBar = () => {
     <div className="navbar">
       {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-          <p>table users</p>
-          <p>table product</p>
-          <p>table checkout</p>
-        </div>
+
+        <p>table users</p>
+        <p>table product</p>
+        <p>table checkout</p>
+        
+        </div>:
+        <div className="navUser">
+      <Link to={"/"}>
+        <img
+          className="logo"
+          src="http://res.cloudinary.com/doxxh3kej/image/upload/v1654159311/t7ldyjgrus0wqhqe4pns.jpg"
+        />
+      </Link>
+      <SEARCH />
+      <div>
+        <Link to={"/login"} className="myAccount">
+          <RiAccountCircleLine className="myaccount" />
+          My Account
+        </Link>
+        {state.isLoggedIn ? (
+          <ul>
+            <li>{decodeToken("userName")}</li>
+            <li onClick={logout}>Logout</li>
+          </ul>
+        ) : (
+          <ul className="myAccountList">
+            <li>
+              <Link to="/login">login</Link>
+            </li>
+            <li>
+              <Link to="/rigester">Register</Link>
+            </li>
+          </ul>
+        )}
+      </div>
+      {!state.isLoggedIn ? (
+        <Link to={"/login"}>
+          <BsCart4 className="cartLogo" />
+        </Link>
+
       ) : (
         <div className="navUser">
           <Link to={"/"}>

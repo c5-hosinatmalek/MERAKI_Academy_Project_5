@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setHomeItems } from "../../redux/reducers/homepage";
 import "react-slideshow-image/dist/styles.css";
+import {
+  updateslide,
+  addtoslide,
+  deleteslide,
+} from "../../redux/reducers/homepage";
 import { Slide } from "react-slideshow-image";
 import "./style.css";
 import axios from "axios";
 function Getphotosmain() {
+  const [product_Id, setproduct_Id] = useState(0);
+  const [addimg, setAddimg] = useState(0);
+  const dispatch = useDispatch();
   const properties = {
     duration: 3000,
     slidesToShow: 3,
@@ -16,20 +25,25 @@ function Getphotosmain() {
   const state = useSelector((state) => {
     return {
       state: state.search.allPrudact,
+      home: state.home.homePageItems,
     };
   });
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
-  const [test, setTest] = useState("");
   const getHomePagePhoto = () => {
     axios
       .get(`http://localhost:5000/Homeiteams`)
       .then((resulat) => {
-        setTest(resulat.data.resul);
+        dispatch(setHomeItems(resulat.data.resul));
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
+  };
+
+  const deleteslid = (id) => {
+    axios
+      .delete(`http://localhost:5000/Homeiteams/${id}`)
+      .then((result) => {})
+      .catch((err) => {});
   };
 
   const addImage = (method, http, id) => {
@@ -38,7 +52,7 @@ function Getphotosmain() {
     data.append("upload_preset", "Data Pirates");
     data.append("cloud_name", "doxxh3kej");
     fetch("https://api.cloudinary.com/v1_1/doxxh3kej/image/upload", {
-      method: "post",
+      method: method,
       body: data,
     })
       .then((resp) => resp.json())
@@ -52,29 +66,38 @@ function Getphotosmain() {
           },
         })
           .then((resulat) => {
-            console.log(resulat);
+            if (method === "put") {
+              dispatch(
+                updateslide({
+                  id: resulat.data.id,
+                  product_Id: product_Id,
+                  url: data.url,
+                })
+              );
+            } else {
+              dispatch(
+                addtoslide({
+                  pic_id: resulat.data.result.insertId,
+                  url: resulat.data.url,
+                  product_Id: resulat.data.id,
+                })
+              );
+            }
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch((err) => {});
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
-
   useEffect(() => {
     getHomePagePhoto();
   }, []);
-
   const filterdSubCatag = (type1) => {
     const fortest =
       state.state &&
       state.state.map((element, index) => {
         if (element.sub_category == type1) {
-          console.log(element);
           return (
-            <div>
+            <div key={index}>
               <img className="firstpageimg" src={element.picUrlProd} />
               <p>{element.title}</p>
               <p>{index}</p>
@@ -82,10 +105,9 @@ function Getphotosmain() {
           );
         }
       });
-    console.log(fortest.sort().slice(0, 2));
     return fortest.sort().slice(0, 4);
   };
-
+  console.log(state.state);
   return (
     <div>
       <div>
@@ -95,26 +117,101 @@ function Getphotosmain() {
         ></input>
         <button
           onClick={() => {
-            addImage("post", `http://localhost:5000/Homeiteams/${9}`);
+            addImage("post", `http://localhost:5000/Homeiteams/${addimg}`);
           }}
         >
           update
         </button>
+        <select
+          onChange={(e) => {
+            setAddimg(e.target.value);
+          }}
+        >
+          <option>add catogrer</option>
+          <option value={1}>CPU & Processor</option>
+          <option value={2}>Storage Drive</option>
+          <option value={3}>Laser Printer</option>
+          <option value={4}>Memory - RAM</option>
+          <option value={5}>Graphic Card</option>
+          <option value={6}>Power Supply</option>
+          <option value={7}>Motherboard</option>
+          <option value={8}>Cooling</option>
+          <option value={9}>Cases</option>
+          <option value={10}>Scanner</option>
+        </select>
       </div>
-      {test &&
-        test.map((element, index) => {
+      {console.log("home",state.home)}
+      {state.home &&
+        state.home.map((element, index) => {
+
           return (
             <div>
-              <div className="test">
+              <div id={index} className="test">
                 <img src={element.url}></img>
                 <Slide {...properties} className="">
                   {" "}
                   {filterdSubCatag(element.product_Id)}
                 </Slide>
               </div>
+              <button onClick={()=>{
+               deleteslide(element.pic_id)
+              }} > delete</button>
             </div>
           );
         })}
+
+      {/* {state.home &&
+        state.home.map((element, index) => {
+          return (
+            <div key={index}>
+              <div className="test">
+                <img className="pageimg" src={element.url}></img>{" "}
+                {filterdSubCatag(element.product_Id)}
+              </div>
+              <button
+                onClick={() => {
+                  deleteslid(element.pic_id);
+                  dispatch(deleteslide(element.pic_id));
+                }}
+              >
+                {" "}
+                delete
+              </button>
+              <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+              ></input>
+              <button
+                onClick={() => {
+                  addImage(
+                    "put",
+                    `http://localhost:5000/Homeiteams/${element.pic_id}`,
+                    product_Id
+                  );
+                }}
+              >
+                update
+              </button>
+              <select
+                onChange={(e) => {
+                  setproduct_Id(e.target.value);
+                }}
+              >
+                <option>add catogrer</option>
+                <option value={1}>CPU & Processor</option>
+                <option value={2}>Storage Drive</option>
+                <option value={3}>Laser Printer</option>
+                <option value={4}>Memory - RAM</option>
+                <option value={5}>Graphic Card</option>
+                <option value={6}>Power Supply</option>
+                <option value={7}>Motherboard</option>
+                <option value={8}>Cooling</option>
+                <option value={9}>Cases</option>
+                <option value={10}>Scanner</option>
+              </select>
+            </div>
+          );
+        })} */}
     </div>
   );
 }
