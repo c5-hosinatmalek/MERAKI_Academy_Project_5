@@ -39,6 +39,7 @@ const LOGIN = () => {
   const onsucces = (res) => {
     setEmail(res.profileObj.email);
     setPassword(res.profileObj.googleId);
+    setName(res.profileObj.name)
     setCountryy(null);
     axios
       .post(`http://localhost:5000/register`, {
@@ -50,10 +51,7 @@ const LOGIN = () => {
       })
       .then((result) => {
         if (result.data.success) {
-          setStatus(true);
-          setMessageUser("account created successfully");
-          setEmail(res.profileObj.email);
-          setPassword(res.profileObj.googleId);
+          setStatus(true)
           axios
             .post(" http://localhost:5000/login", { email, password })
             .then((result) => {
@@ -69,8 +67,7 @@ const LOGIN = () => {
         }
       })
       .catch((err) => {
-        setStatus(false);
-        setMessageUser("Error happened while register, please try again");
+       
         console.log(err.response.data.err.code);
         if (err.response.data.err.code === "ER_DUP_ENTRY") {
           axios
@@ -85,6 +82,9 @@ const LOGIN = () => {
               setStatus(false);
               setMessageUser(err.response.data.message);
             });
+        }else{
+          setStatus(false);
+          setMessageUser("Error happened while register, please try again");
         }
       });
   };
