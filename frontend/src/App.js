@@ -4,7 +4,10 @@ import Createprodact from "./component/create prodact";
 import {REGISTER} from "./component/REGISTER/index"
 import GetProdact from "./component/prodact/index";
 import Getphotosmain from "./component/home_page_pic";
+
+
 import { numberprodact } from "./redux/reducers/search";
+
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
@@ -17,14 +20,14 @@ import { CategoryBar } from "./component/CategoryBar/index";
 
 import Homepage from "./component/homepage";
 
-
 import { NavBar } from "./component/NavBar";
 
-import {ProductPage} from "./component/ProductPage/index"
-import CartPage from "./component/CartPage/index"
-
+import { ProductPage } from "./component/ProductPage/index";
+import CartPage from "./component/CartPage/index";
 
 import FOOTER from "./component/FOOTER";
+import UserTable from "./component/UserTable/UserTable"
+
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
@@ -41,14 +44,16 @@ function App() {
   ////////////////////////////////////////////////////////////////////
   return (
     <div className="App">
+      <NavBar />
+      <CategoryBar />
 
-      <NavBar/>
-      <CategoryBar/>
-      
-      
       <Routes>
         <Route path="/rigester" element={<REGISTER />} />
         <Route path="/" element={<Homepage />} />
+
+
+        <Route path="/admin/usersTable" element={<UserTable/>}/>
+
         <Route path="/login" element={<LOGIN/>} />
         <Route path="/creat" element={<Createprodact/>} />
         <Route path="/admin/uplodphoto" element={<Getphotosmain/>} />
@@ -57,8 +62,10 @@ function App() {
           <Route path="/category/product/:id" element={<ProductPage/>}/>
           <Route path="/cart/:id" element={<CartPage/>}/>
 
+       
+
       </Routes>
-      <FOOTER/>
+      <FOOTER />
     </div>
   );
 }

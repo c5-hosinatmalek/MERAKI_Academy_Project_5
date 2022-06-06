@@ -6,13 +6,15 @@ const REGISTER = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [country, setCountry] = useState("");
-  const role_id = 1;
+  const [country, setCountryy] = useState("");
+  const role_id = 2;
   const [messageUser, setMessageUser] = useState("");
   const [status, setStatus] = useState(false);
+  const [countries, setCountry] = useState([]);
 
   const submit = (e) => {
     e.preventDefault();
+
     axios
       .post(`http://localhost:5000/register`, {
         email,
@@ -32,12 +34,24 @@ const REGISTER = () => {
         setMessageUser("Error happened while register, please try again");
       });
   };
+  useEffect(() => {
+    axios
+      .get("https://countriesnow.space/api/v0.1/countries/capital")
+      .then((result) => {
+        setCountry(result.data.data);
+        // console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="rigister">
       <div className="containeeer">
         <form className="form_rigister" onSubmit={submit}>
           <div className="name_user">
+            <label>Enter Name</label>
             <input
               type="text"
               placeholder="ENTER NAME"
@@ -48,6 +62,7 @@ const REGISTER = () => {
             />
           </div>
           <div className="email_user">
+          <label>Enter Email</label>
             <input
               type="text"
               placeholder="enter email"
@@ -58,16 +73,21 @@ const REGISTER = () => {
             />
           </div>
           <div className="country_user">
-            <input
-              placeholder="enter country"
-              type="text"
-              required
+          <label>Choose Country</label>
+            <select
               onChange={(e) => {
-                setCountry(e.target.value);
+                setCountryy(e.target.value);
               }}
-            />
+            >
+              {countries &&
+                countries.map((element, index) => {
+                  return <option key={index}>{element.name}</option>;
+                })}
+            </select>
           </div>
+
           <div className="password_user">
+          <label>Enter Password</label>
             <input
               type="password"
               placeholder="enter_pasword"
@@ -96,4 +116,4 @@ const REGISTER = () => {
   );
 };
 
-export  {REGISTER};
+export { REGISTER };

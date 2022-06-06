@@ -81,6 +81,7 @@ const Homepage = () => {
       })}
     </Slide>
   ]
+
   return (
     <div>
       <div className="mainhomediv">
@@ -178,12 +179,20 @@ const Homepage = () => {
               );
             })}
           </Slide>
+
+
  
           {Pagination &&
             Pagination.map((element) => {
+
+
+
+   
+
               return (
                 <div>
                   <p>{element.title}</p>
+
                   <img className="firstpageimg" src={element.picUrlProd} />
                   <p>
                     {" "}
@@ -198,7 +207,6 @@ const Homepage = () => {
             })}
         </div>
       </div>
-
 
       {state.number &&
         state.number.map((element) => {

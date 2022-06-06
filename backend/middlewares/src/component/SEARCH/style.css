@@ -1,0 +1,32 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+.search_continer{
+    /* text-align: center;
+    display: flex;
+    align-items: center; */
+}
+.continer_result{
+    border: solid 2px black;
+    /* position: absolute; */
+    left: 875px;
+    /* margin-top: 100px; */
+    /* padding: 50px; */
+
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background: rgb(255, 254, 253);
+}
+.continer_result img{
+    width: 60px;
+    height: 40px;
+}
+.all_result{
+    position: absolute;
+    left: 875px;
+}
