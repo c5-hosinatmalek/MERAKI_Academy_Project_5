@@ -120,6 +120,7 @@ const getprodactpagin = (req, res) => {
   const offset = (page - 1) * limit;
 
   // const query= "SELECT * FROM PRODUCTS  limit "+limit+" OFFSET "+offset "
+
   const query = "select * from Products limit " + limit + " OFFSET " + offset;
   connection.query(query, (err, result) => {
     if (err) {
@@ -135,8 +136,77 @@ const getprodactpagin = (req, res) => {
   });
 };
 
+//query=`SELECT * FROM products  WHERE IS_DELETED=0 ORDER BY CAST(price AS INT)  DESC `;
+const allProductDescending=(req,res)=>{
+  const {id}=req.params
+  const query=`SELECT * FROM products  WHERE IS_DELETED=0 AND category_id=? ORDER BY price DESC `;
+  const data=[id]
+   connection.query(query,data,(err,result)=>{
+     if(err){
+       res.status(500).json({
+         success:false,
+         message:"error server",
+         err:err
+       })
+       return;
+     }
+     res.status(200).json({
+       success:true,
+       message:"get all proudect by price descending",
+       result
+     })
+   
+   })
+}
+
+const allProductascending=(req,res)=>{
+  const {id}=req.params
+  const query="SELECT * FROM products  WHERE IS_DELETED=0 AND category_id=? ORDER BY price ASC ";
+  const data=[id]
+   connection.query(query,data,(err,result)=>{
+     if(err){
+       res.status(500).json({
+         success:false,
+         message:"error server",
+         err:err
+       })
+       return;
+     }
+     res.status(200).json({
+       success:true,
+       message:"get all proudect by price ascending",
+       result
+     })
+   
+   })
+}
+
+
+const allProductByLetters=(req,res)=>{
+  const {id}=req.params;
+  const query="SELECT * FROM products  WHERE IS_DELETED=0 AND category_id=? ORDER BY title";
+  const data=[id]
+   connection.query(query,data,(err,result)=>{
+     if(err){
+       res.status(500).json({
+         success:false,
+         message:"error server",
+         err:err
+       })
+       return;
+     }
+     res.status(200).json({
+       success:true,
+       message:"get all proudect by price ascending",
+       result
+     })
+   
+   })
+}
+
+
 const restockProduct = (req, res) => {
-  console.log(555555);
+ 
   const { newQuntity, product_Id } = req.body;
   const query =
     "UPDATE products SET Store_Quantity=Store_Quantity+? WHERE product_id=? AND IS_DELETED =0  ";
@@ -162,5 +232,11 @@ module.exports = {
   deleteProductbyId,
   updateProduct,
   getprodactpagin,
+
   restockProduct,
+
+  allProductDescending,
+  allProductascending,
+  allProductByLetters
+
 };
