@@ -51,6 +51,7 @@ const REGISTER = () => {
       <div className="containeeer">
         <form className="form_rigister" onSubmit={submit}>
           <div className="name_user">
+            <label>Enter Name</label>
             <input
               type="text"
               placeholder="ENTER NAME"
@@ -61,6 +62,7 @@ const REGISTER = () => {
             />
           </div>
           <div className="email_user">
+          <label>Enter Email</label>
             <input
               type="text"
               placeholder="enter email"
@@ -71,6 +73,7 @@ const REGISTER = () => {
             />
           </div>
           <div className="country_user">
+          <label>Choose Country</label>
             <select
               onChange={(e) => {
                 setCountryy(e.target.value);
@@ -84,6 +87,7 @@ const REGISTER = () => {
           </div>
 
           <div className="password_user">
+          <label>Enter Password</label>
             <input
               type="password"
               placeholder="enter_pasword"
