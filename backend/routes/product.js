@@ -5,6 +5,7 @@ const {
   getProductbyId,
   deleteProductbyId,
   updateProduct,
+ ,restockProduct
   getprodactpagin,
   allProductDescending,
   allProductascending,
@@ -28,8 +29,11 @@ productRouter.delete("/:id_product", deleteProductbyId);
 // put==>http://localhost:5000/product/:id
 productRouter.put("/:id", updateProduct);
 
-// put==>http://localhost:5000/product/create
+// post==>http://localhost:5000/product/create
 productRouter.post("/create", createProduct);
+// put==>http://localhost:5000/product/admin/restock
+
+productRouter.put("/admin/restock",restockProduct)
 
 // get==> http://localhost:5000/product/descending/all
 productRouter.get("/descending/all/:id",allProductDescending)

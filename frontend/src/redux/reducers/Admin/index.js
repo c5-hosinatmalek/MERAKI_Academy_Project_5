@@ -31,9 +31,14 @@ const adminSlice = createSlice({
       makeAdminAction:(state,action)=>{
         state.users[action.payload].role_id=1
     },
+    // payload=>[productIndex,newQuantity]
+    updateQuantityAction:(state,action)=>{
+      
+state.products[action.payload[0]].Store_Quantity=state.products[action.payload[0]].Store_Quantity+(+action.payload[1])
+    }
   },
 });
 
-export const { getUserAction, getProductAction, getSoldItemAction,makeAdminAction,deleteUserAction } =
+export const { getUserAction, getProductAction, getSoldItemAction,makeAdminAction,deleteUserAction,updateQuantityAction } =
   adminSlice.actions;
 export default adminSlice.reducer;

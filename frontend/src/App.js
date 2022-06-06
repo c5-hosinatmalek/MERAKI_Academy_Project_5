@@ -27,6 +27,7 @@ import CartPage from "./component/CartPage/index";
 
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable"
+import ProductTable from "./component/ProductTable"
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
@@ -54,6 +55,9 @@ function App() {
 
         <Route path="/admin/usersTable" element={<UserTable/>}/>
 
+      <Route path="/admin/productTable" element={<ProductTable/>}/>
+
+
         <Route path="/login" element={<LOGIN/>} />
         <Route path="/creat" element={<Createprodact/>} />
         <Route path="/admin/uplodphoto" element={<Getphotosmain/>} />
@@ -64,7 +68,9 @@ function App() {
 
        
 
+
       </Routes>
+      
       <FOOTER />
     </div>
   );
