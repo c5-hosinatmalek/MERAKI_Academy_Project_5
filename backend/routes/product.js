@@ -5,7 +5,7 @@ const {
   getProductbyId,
   deleteProductbyId,
   updateProduct,
- ,restockProduct
+ restockProduct,
   getprodactpagin,
   allProductDescending,
   allProductascending,
@@ -23,7 +23,7 @@ productRouter.post("/Pagination/:page", getprodactpagin);
 // post==>http://localhost:5000/product/:id_product
 productRouter.get("/:id_product", getProductbyId);
 
-// delete==>http://localhost:5000/product
+// delete==>http://localhost:5000/product/:id
 productRouter.delete("/:id_product", deleteProductbyId);
 
 // put==>http://localhost:5000/product/:id

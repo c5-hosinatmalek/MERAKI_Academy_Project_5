@@ -7,7 +7,6 @@ const Addprodact = () => {
   const [subcatogre, setSubcatogre] = useState("");
   const [sub_category, Setsub_category] = useState(1);
   const [cato, setCato] = useState(0);
-  const [category_id, Setcategory_id] = useState(0);
   const [product_name, Setproduct_name] = useState("");
   const [product_type, Setproduct_type] = useState(1);
   const [description, Setdescription] = useState("");

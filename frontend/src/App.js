@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import Createprodact from "./component/create prodact";
 import {REGISTER} from "./component/REGISTER/index"
-import GetProdact from "./component/prodact/index";
+import GetProdact from "./component/Prodact/index";
 import Getphotosmain from "./component/home_page_pic";
 
 
