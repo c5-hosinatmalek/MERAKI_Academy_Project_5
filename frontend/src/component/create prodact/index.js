@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 const Addprodact = () => {
-  const [mesage, setMesage] = useState("")
+  const [mesage, setMesage] = useState("");
   const [catogre, setCatogre] = useState("");
-  const [subcatogre, setSubcatogre] = useState("")
+  const [subcatogre, setSubcatogre] = useState("");
   const [sub_category, Setsub_category] = useState(1);
-  const [cato, setCato] = useState(0)
-  const [category_id, Setcategory_id] = useState(0);
+  const [cato, setCato] = useState(0);
   const [product_name, Setproduct_name] = useState("");
   const [product_type, Setproduct_type] = useState(1);
   const [description, Setdescription] = useState("");
@@ -20,8 +19,8 @@ const Addprodact = () => {
   const subcatogry = () => {
     axios
       .get("http://localhost:5000/sub_category")
-      .then((result)=>{
-        setSubcatogre(result.data.result)
+      .then((result) => {
+        setSubcatogre(result.data.result);
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +32,6 @@ const Addprodact = () => {
       .get("http://localhost:5000/category")
       .then((result) => {
         setCatogre(result.data.result);
-        console.log(catogre);
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +40,7 @@ const Addprodact = () => {
 
   useEffect(() => {
     getallcarogre();
-    subcatogry()
+    subcatogry();
   }, []);
   const uploadImage = () => {
     const data = new FormData();
@@ -56,13 +54,13 @@ const Addprodact = () => {
       .then((resp) => resp.json())
       .then((data) => {
         setUrl(data.url);
-        console.log(data.url);
+
         axios
           .post("http://localhost:5000/product/create", {
-            picUrlProd:data.url,
+            picUrlProd: data.url,
             title,
-            category_id:cato,
-            sub_category:sub_category,
+            category_id: cato,
+            sub_category: sub_category,
             product_name,
             product_type,
             price,
@@ -70,12 +68,10 @@ const Addprodact = () => {
             Store_Quantity,
           })
           .then((resulat) => {
-            console.log(resulat);
-            setMesage("iteam has been add")
+            setMesage("iteam has been add");
           })
           .catch((err) => {
-            setMesage("error ")
-            console.log(err);
+            setMesage("error ");
           });
       })
       .catch((err) => {
@@ -102,32 +98,32 @@ const Addprodact = () => {
         ></textarea>
 
         <input
-        placeholder="qun"
+          placeholder="qun"
           type="number"
           id="quantity"
           name="quantity"
           min="1"
           max="5"
-          onChange={(e)=>{
-            SetStore_Quantity(e.target.value)
+          onChange={(e) => {
+            SetStore_Quantity(e.target.value);
           }}
         ></input>
         {}
 
         <input
-                placeholder="name"
+          placeholder="name"
           onChange={(e) => {
             Setproduct_name(e.target.value);
           }}
         ></input>
         <input
-                placeholder="type"
+          placeholder="type"
           onChange={(e) => {
             Setproduct_type(e.target.value);
           }}
         ></input>
         <input
-        placeholder="price"
+          placeholder="price"
           onChange={(e) => {
             Setprice(e.target.value);
           }}
@@ -147,14 +143,15 @@ const Addprodact = () => {
 
         <select
           onChange={(e) => {
-            Setsub_category(e.target.value)
-            console.log(sub_category);
+            Setsub_category(e.target.value);
           }}
         >
           {subcatogre &&
             subcatogre.map((element, index) => {
               return (
-                <option value={element.subCategory_id}>{element.sub_category}</option>
+                <option value={element.subCategory_id}>
+                  {element.sub_category}
+                </option>
               );
             })}
         </select>

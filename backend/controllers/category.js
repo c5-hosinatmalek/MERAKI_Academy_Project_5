@@ -31,7 +31,6 @@ const getProductbyCategoryID = (req, res) => {
   const query =
     "SELECT * FROM PRODUCTS LEFT JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.CATEGORY_ID LEFT JOIN SUB_CATEGORIES ON PRODUCTS.sub_category=SUB_CATEGORIES.SUBCATEGORY_ID WHERE  PRODUCTS.IS_DELETED=0 AND  products.category_id=?";
   const data = [category_id];
-  console.log(category_id);
   connection.query(query, data, (err, result) => {
     if (err) {
       return res.json({ success: false, err });

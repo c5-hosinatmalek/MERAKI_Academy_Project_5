@@ -10,6 +10,7 @@ const register = async (req, res) => {
   const query = `INSERT INTO users (email,password,name,country,role_id) VALUES (?,?,?,?,?)`;
   const data = [email, hashPassword, name, country, role_id];
   connection.query(query, data, (err, result) => {
+    
     if (err) {
       res.status(500).json({
         success: false,

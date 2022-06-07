@@ -13,34 +13,73 @@ const GetProdact = () => {
   const { id } = useParams();
 
   const state = useSelector((state) => {
-    console.log(state);
     return {
       prodect: state.product.product,
     };
   });
-
-  console.log(id);
 
   const test = async () => {
     await axios
       .get(`http://localhost:5000/category/${id}/products`)
       .then((resulat) => {
         dispacth(getproduct(resulat.data));
-        console.log(state.prodect.result);
+        
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   useEffect(() => {
     test();
   }, [id]);
 
   return (
-    <div>
+    <div className="container_page" >
+      <div className="side_bar" >
+        <div className="orderby_price">
+            <h3>Sorte By price</h3>
+            <select   onChange={(e)=>{
+                       
+                      if(e.target.value==="the least"){ axios.get(`http://localhost:5000/product/ascending/all/${id}`).then((resulat)=>{
+                      
+                        dispacth(getproduct(resulat.data));
+                      
+                      })}else{
+
+                        axios.get(`http://localhost:5000/product/descending/all/${id}`).then((resulat)=>{
+                        dispacth(getproduct(resulat.data));
+                       
+                      })
+                      }
+                 
+                }}>
+              <option value={"the least"}>
+                the least
+              </option>
+              <option value={"the above"}>
+              the above
+              </option>
+            </select>
+        </div>
+        <div className="orderby_letter">
+            <h3>Sorte By Alphabet</h3>
+            <select onClick={(e)=>{
+              console.log(e.target.value);
+               if(e.target.value==="A-TO-Z"){axios.get(`http://localhost:5000/product/ByLetters/all/${id}`).then((resulat)=>{
+                      
+                dispacth(getproduct(resulat.data));
+              
+              })}
+            }} >
+              <option value={"A-TO-Z"}>A-TO-Z</option>
+            </select>
+        </div>
+      </div>
+       <div className="ALL_BRODUCT">
       {state.prodect.result &&
         state.prodect.result.map((element, index) => {
-          console.log();
+          
           return (
             <div>
               <Link to={`/category/product/${element.product_id}`} key={index}>
@@ -57,6 +96,8 @@ const GetProdact = () => {
           );
         })}
     </div>
+    </div>
+   
   );
 };
 
