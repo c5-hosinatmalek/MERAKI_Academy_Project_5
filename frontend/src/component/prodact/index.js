@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 
 import { useParams, Link } from "react-router-dom";
 
@@ -9,16 +9,19 @@ import { getSubCategory } from "../../redux/reducers/catogre";
 import axios from "axios";
 
 import "./style.css";
+
 const GetProdact = () => {
   const dispacth = useDispatch();
   const { id } = useParams();
-
   const state = useSelector((state) => {
     return {
       prodect: state.product.product,
-      sub_category:state.catogre.subCategory
+      sub_category:state.catogre.subCategory,
+      subCatgoryProduct:state.product.subCatgoryProduct
     };
   });
+  const [show, setShow] = useState(state.prodect)
+
 
   const products = async () => {
     await axios
@@ -26,6 +29,7 @@ const GetProdact = () => {
       .then((result) => {
         
         dispacth(getproduct(result.data.result));
+        setShow(result.data.result)
         
       })
       .catch((err) => {
@@ -48,12 +52,13 @@ dispacth(getSubCategory(result.data.result))
 
   const sub_categoryClick = (index)=>{
     
-    products();
+    
 
-    setTimeout(()=>{
+    
       dispacth(getProductbySubCategoryId(state.sub_category[index].subCategory_id))
+      setShow(state.subCatgoryProduct)
 
-    },100)
+    
   }
 
   return (
@@ -106,20 +111,20 @@ dispacth(getSubCategory(result.data.result))
         </div>
       </div>
        <div className="All_Product">
-      {state.prodect &&
-        state.prodect.map((element, index) => {
+      {show &&
+        show.map((element, index) => {
           
           return (
-            <div>
-              <Link to={`/category/product/${element.product_id}`} key={index}>
-                <p> title : {element.title}</p>
-                <img className="prodactpichter" src={element.picUrlProd}></img>
-                <p>
+            <div className="productDiv">
+              <Link to={`/category/product/${element.product_id}`} key={index} className="linkProduct">
+                <p className="titlePar">  {element.title}</p>
+                <img className="productImg" src={element.picUrlProd}></img>
+                <p className="descriptionPar">
                   {" "}
-                  description: {element.description.split(" ").slice(1, 15)}
+                   {element.description.split(" ").slice(1, 15).join(" ")}...
                 </p>
-                <p> type : {element.product_type}</p>
-                <p> price : {element.price}</p>
+               
+                <p className="pricePar">  {element.price} JD</p>
               </Link>
             </div>
           );
