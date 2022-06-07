@@ -29,7 +29,7 @@ const NavBar = () => {
   const logout = () => {
     dispacth(setLogout());
   };
-
+/////////////////////////////////////////////////////////////// 
   const sowHide = () => {
     setShow(!show);
 
@@ -39,7 +39,7 @@ const NavBar = () => {
       setClassName("");
     }
   };
-
+////////////////////////////////////////////////////////////////
   return (
     <div className="navbar">
       {decodeToken("role") == 1 ? (
