@@ -3,7 +3,7 @@ export const productSlice=createSlice({
     name:"product",
     initialState:{
         product:[],
-        
+        subCatgoryProduct:[],
         
     },
     reducers:{
@@ -12,8 +12,7 @@ export const productSlice=createSlice({
         },
         // payload => sub_catgoryId
         getProductbySubCategoryId:(state,action)=>{
-            state.product=state.product.filter((element)=>{
-                console.log(element.subCategory_id,action.payload,element.subCategory_id==action.payload);
+            state.subCatgoryProduct=state.product.filter((element)=>{
                 return element.subCategory_id==action.payload
             })
         }
