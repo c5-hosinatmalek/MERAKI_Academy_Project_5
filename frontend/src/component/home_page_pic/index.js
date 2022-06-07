@@ -93,10 +93,11 @@ function Getphotosmain() {
     getHomePagePhoto();
   }, []);
   const filterdSubCatag = (type1) => {
+    console.log();
     const fortest =
       state.state &&
       state.state.map((element, index) => {
-        if (element.sub_category == type1) {
+        if (element.subCategory_id == type1) {
           counter = counter + 1;
           return (
             <div key={index}>
@@ -140,24 +141,7 @@ function Getphotosmain() {
           <option value={10}>Scanner</option>
         </select>
       </div>
-      {state.home &&
-        state.home.map((element, index) => {
 
-          return (
-            <div>
-              <div id={index}>
-                <img src={element.url}></img>
-                <Slide {...properties} className="">
-                  {" "}
-                  {filterdSubCatag(element.product_Id)}
-                </Slide>
-              </div>
-              <button onClick={()=>{
-               deleteslide(element.pic_id)
-              }} > delete</button>
-            </div>
-          );
-        })}
 
       {state.home &&
         state.home.map((element, index) => {
@@ -220,7 +204,6 @@ function Getphotosmain() {
                   </div>
                 </div>
                     <div>
-         
                 </div>
               </div>
               </div>
