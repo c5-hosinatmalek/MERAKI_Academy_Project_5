@@ -57,9 +57,18 @@ color: white;
     
     background: white;
 }
+
+.login_button{
+    padding: 10px;
+}
+
 .login_button button{
     background: white;
     color: black;
     border-radius: 3px;
     font-size: 2rem;
+    width: 7rem;
+    margin-left: 1rem;
+    height: 3rem;
+    font-weight: 600;
 }

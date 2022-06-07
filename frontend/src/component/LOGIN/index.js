@@ -132,7 +132,7 @@ const LOGIN = () => {
           <button>Login</button>
           <GoogleLogin
             clientId={clientId}
-            buttonText="Googel "
+            buttonText="By Googel "
             onSuccess={onsucces}
             onFailure={onfailure}
           />
