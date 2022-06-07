@@ -51,7 +51,7 @@ border-bottom: solid 1px white;
    
 }
 .email{
-    margin-top: 2.2rem;
+    margin-top: 2.3rem;
     
 }
 .place{
@@ -60,6 +60,17 @@ border-bottom: solid 1px white;
 }
 .content_center{
     text-align: left;
+}
+
+.right_box .name{
+    border: 0;
+    margin: 0;
+
+}
+.right_box .email{
+    border: 0;
+    margin-top: 1rem;
+
 }
 
 
@@ -77,7 +88,7 @@ border-bottom: solid 1px white;
 
 }
 .right_box .text_area{
-    margin-top: 1.6rem;
+    margin-top: 1rem;
 }
 form button{
     margin-top: 1rem;
