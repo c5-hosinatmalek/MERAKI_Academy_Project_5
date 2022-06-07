@@ -91,10 +91,11 @@ const FOOTER = () => {
           <h2>contact us</h2>
           <div className="content">
             <form ref={form} onSubmit={sendEmail}>
-              <div className="email">
+              <div className="name">
+                  
                 <input
                   type="text"
-                  placeholder="enter email...."
+                  placeholder="enter name...."
                   required
                   name="user_name"
                 />

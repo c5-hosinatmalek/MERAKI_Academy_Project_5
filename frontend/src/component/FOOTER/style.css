@@ -15,16 +15,19 @@ footer h2{
     font-size: 2rem;
     letter-spacing:1.5px;
     margin-bottom: 0.5rem;
+    padding-top: 10px;
 }
 .left_box p{
     
     text-align: left;
     font-size: 1.7rem;
+    height: 150px;
 }
 
 .left_box{
     width: 350px;
     text-align: center;
+   
 }
 
 .social{
@@ -44,15 +47,15 @@ border-bottom: solid 1px white;
  
 }
 .phone{
-    margin-top: 1.7rem;
+    margin-top: 2.2rem;
    
 }
 .email{
-    margin-top: 1.7rem;
+    margin-top: 2.2rem;
     
 }
 .place{
-    margin-top: 1.7rem;
+    margin-top: 2.2rem;
    
 }
 .content_center{
@@ -67,8 +70,23 @@ border-bottom: solid 1px white;
 }
 
 .right_box form textarea{
-    width: 25rem;
+    width: 30rem;
     font-size: 1.5rem;
    border-radius: 5px;
-   height: 8rem;
+   height: 5rem;
+
+}
+.right_box .text_area{
+    margin-top: 1.6rem;
+}
+form button{
+    margin-top: 1rem;
+    width: 7rem;
+    font-size: 1.9rem;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+    border: solid rgb(255, 255, 255) 1px;
+    border-radius: 3px;
+    cursor: pointer;
+
 }
