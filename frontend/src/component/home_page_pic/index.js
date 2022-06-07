@@ -11,6 +11,7 @@ import { Slide } from "react-slideshow-image";
 import "./style.css";
 import axios from "axios";
 function Getphotosmain() {
+  let counter = 0;
   const [product_Id, setproduct_Id] = useState(0);
   const [addimg, setAddimg] = useState(0);
   const dispatch = useDispatch();
@@ -96,18 +97,17 @@ function Getphotosmain() {
       state.state &&
       state.state.map((element, index) => {
         if (element.sub_category == type1) {
+          counter = counter + 1;
           return (
             <div key={index}>
-              <img className="firstpageimg" src={element.picUrlProd} />
-              <p>{element.title}</p>
-              <p>{index}</p>
+              <img className="productimg" src={element.picUrlProd} />
             </div>
           );
         }
       });
+    counter = 0;
     return fortest.sort().slice(0, 4);
   };
-  console.log(state.state);
   return (
     <div>
       <div>
@@ -145,7 +145,7 @@ function Getphotosmain() {
 
           return (
             <div>
-              <div id={index} className="test">
+              <div id={index}>
                 <img src={element.url}></img>
                 <Slide {...properties} className="">
                   {" "}
@@ -162,53 +162,68 @@ function Getphotosmain() {
       {state.home &&
         state.home.map((element, index) => {
           return (
-            <div key={index}>
+            <div>
               <div className="test">
-                <img className="pageimg" src={element.url}></img>{" "}
-                {filterdSubCatag(element.product_Id)}
+                <div className="iteamsheader">
+                  <div className="mainphotodiv">
+                    <h1>Header phtoto</h1>
+                    <img className="pageimg" src={element.url}></img>{" "}
+                  </div>
+                  <div className="mainiteamsheader">
+                    <h1>product</h1>
+                    <div className="mm">
+                      <h1>{filterdSubCatag(element.product_Id)}</h1>
+                    </div>
+                  </div>
+                  <div className="changeheader">
+                    <select
+                      onChange={(e) => {
+                        setproduct_Id(e.target.value);
+                      }}
+                    >
+                      <option>add catogrer</option>
+                      <option value={1}>CPU & Processor</option>
+                      <option value={2}>Storage Drive</option>
+                      <option value={3}>Laser Printer</option>
+                      <option value={4}>Memory - RAM</option>
+                      <option value={5}>Graphic Card</option>
+                      <option value={6}>Power Supply</option>
+                      <option value={7}>Motherboard</option>
+                      <option value={10}>Scanner</option>
+                      <option value={8}>Cooling</option>
+                      <option value={9}>Cases</option>
+                    </select>
+                    <input
+                      type="file"
+                      onChange={(e) => setImage(e.target.files[0])}
+                    ></input>
+                    <button
+                      onClick={() => {
+                        deleteslid(element.pic_id);
+                        dispatch(deleteslide(element.pic_id));
+                      }}
+                    >
+                      {" "}
+                      delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        addImage(
+                          "put",
+                          `http://localhost:5000/Homeiteams/${element.pic_id}`,
+                          product_Id
+                        );
+                      }}
+                    >
+                      update
+                    </button>
+                  </div>
+                </div>
+                    <div>
+         
+                </div>
               </div>
-              <button
-                onClick={() => {
-                  deleteslid(element.pic_id);
-                  dispatch(deleteslide(element.pic_id));
-                }}
-              >
-                {" "}
-                delete
-              </button>
-              <input
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
-              ></input>
-              <button
-                onClick={() => {
-                  addImage(
-                    "put",
-                    `http://localhost:5000/Homeiteams/${element.pic_id}`,
-                    product_Id
-                  );
-                }}
-              >
-                update
-              </button>
-              <select
-                onChange={(e) => {
-                  setproduct_Id(e.target.value);
-                }}
-              >
-                <option>add catogrer</option>
-                <option value={1}>CPU & Processor</option>
-                <option value={2}>Storage Drive</option>
-                <option value={3}>Laser Printer</option>
-                <option value={4}>Memory - RAM</option>
-                <option value={5}>Graphic Card</option>
-                <option value={6}>Power Supply</option>
-                <option value={7}>Motherboard</option>
-                <option value={10}>Scanner</option>
-                <option value={8}>Cooling</option>
-                <option value={9}>Cases</option>
-              </select>
-            </div>
+              </div>
           );
         })}
     </div>
