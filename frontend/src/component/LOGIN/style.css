@@ -5,3 +5,44 @@ justify-content: center;
     align-items: center;
 }
 
+.login_user form{
+    border: solid black 5px;
+    text-align: center;
+    
+    border-radius: 5px;
+}
+
+.titel{
+    border-bottom: 3px solid black;
+}
+
+.titel h1{
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.email_login{
+    text-align: left;
+}
+
+.email_login label{
+   display: block;
+   font-size: 1.7rem;
+   font-weight: 600;
+}
+
+.passward_login{
+    text-align: left;
+}
+
+.passward_login label{
+display: block;
+font-weight: 600;
+font-size: 1.7rem;
+}
+
+
+.login_user form input{
+    width: 25rem;
+}
