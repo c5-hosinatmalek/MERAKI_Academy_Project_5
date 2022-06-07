@@ -45,13 +45,19 @@ border-bottom: solid 1px white;
 }
 .phone{
     margin-top: 1.7rem;
+   
 }
 .email{
     margin-top: 1.7rem;
+    
 }
 .place{
     margin-top: 1.7rem;
+   
 }
 .content_center{
-    text-align: center;
+    text-align: left;
 }
+
+
+.right_box{}
