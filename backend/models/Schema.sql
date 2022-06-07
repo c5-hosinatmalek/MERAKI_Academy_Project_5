@@ -51,6 +51,8 @@ CREATE TABLE sub_categories(
     sub_category VARCHAR(255),
     picUrlSub VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
     PRIMARY KEY (subCategory_id)
 );
 
@@ -121,54 +123,65 @@ VALUES
     ("Software");
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("CPU & Processor");
+    ("CPU & Processor",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Storage Drive");
+    ("Storage Drive",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Laser Printer");
+    ("Laser Printer",3);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Memory - RAM");
+    ("Memory - RAM",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Graphic Card");
+    ("Graphic Card",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Power Supply");
+    ("Power Supply",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Motherboard");
+    ("Motherboard",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Cooling");
+    ("Cooling",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Cases");
+    ("Cases",2);
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category,category_id)
 VALUES
-    ("Scanner");
+    ("Scanner",1);
+
+INSERT INTO
+    roles (role)
+VALUES
+    ("Admin");
+
+INSERT INTO
+    roles (role)
+VALUES
+    ("User");
+    
 
 INSERT INTO
     Products (
