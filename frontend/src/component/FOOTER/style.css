@@ -60,4 +60,15 @@ border-bottom: solid 1px white;
 }
 
 
-.right_box{}
+.right_box form input{
+    width: 20rem;
+    font-size: 1.5rem;
+   border-radius: 5px;
+}
+
+.right_box form textarea{
+    width: 25rem;
+    font-size: 1.5rem;
+   border-radius: 5px;
+   height: 8rem;
+}
