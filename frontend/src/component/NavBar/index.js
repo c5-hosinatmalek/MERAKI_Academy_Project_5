@@ -57,7 +57,7 @@ const NavBar = () => {
           <div className="my_account_contener">
             <div className="icons"  onClick={sowHide} >
               {" "}
-              <AccountBoxIcon color="white" sx={{ fontSize: 55 }} />
+              <AccountBoxIcon  sx={{ fontSize: 55 }} />
             </div>
 
             {state.isLoggedIn ? (
@@ -78,7 +78,7 @@ const NavBar = () => {
 
             {!state.isLoggedIn ? (
               <Link to={"/login"}>
-                <div className="icons"> <ShoppingCartIcon className="cartLogo" sx={{ fontSize: 55 }} /></div>
+                <div className="icons"> <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} /></div>
                
               </Link>
             ) : (
