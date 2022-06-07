@@ -62,15 +62,15 @@ const FOOTER = () => {
           </div>
         </div>
         <div className="center_box">
-          <h2>address</h2>
-          <div className="content_center">
-            <div className="email">
-              {" "}
-              <span className="icon" >
-                <MdEmail />
-              </span>
-              <span>mmmm@gmail.com</span>
-            </div>
+                                 <h2>address</h2>
+                <div className="content_center">
+                    <div className="email">
+                    {" "}
+                    <span className="icon" >
+                        <MdEmail />
+                        </span>
+                     <span>mmmm@gmail.com</span>
+                     </div>
           </div>
           <div className="phone">
             {" "}

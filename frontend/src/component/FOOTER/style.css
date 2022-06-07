@@ -52,4 +52,6 @@ border-bottom: solid 1px white;
 .place{
     margin-top: 1.7rem;
 }
-
+.content_center{
+    text-align: center;
+}
