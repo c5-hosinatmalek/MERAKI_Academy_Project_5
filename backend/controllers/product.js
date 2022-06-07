@@ -113,9 +113,7 @@ const updateProduct = (req, res) => {
   });
 };
 
-const getprodactpagin = (req, res) => {
-  const limit = 10;
-  const page = req.params.page;
+
 
 
 const getprodactpagin=(req,res)=>{
@@ -233,7 +231,8 @@ const restockProduct = (req, res) => {
   });
 };
 
-module.exports = {
+
+module.exports ={
   getAllProducts,
   createProduct,
   getProductbyId,
@@ -244,4 +243,4 @@ module.exports = {
   allProductDescending,
   allProductascending,
   allProductByLetters
-};
+}
