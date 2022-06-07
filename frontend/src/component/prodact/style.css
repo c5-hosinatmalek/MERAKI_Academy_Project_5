@@ -53,12 +53,14 @@
 .titlePar{
 font-size: 20px;
 font-weight: 600;
+height: 150px;
 
 }
 .descriptionPar{
 margin: 10px 0px;
 padding: 10px;
 font-size: 18px;
+height: 100px;
 
 }
 
