@@ -2,9 +2,9 @@ import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import Createprodact from "./component/create prodact";
 import {REGISTER} from "./component/REGISTER/index"
-import GetProdact from "./component/Prodact/index";
+import GetProdact from "./component/prodact/index";
 import Getphotosmain from "./component/home_page_pic";
-
+import { setHomeItems } from "./redux/reducers/homepage";
 
 import { numberprodact } from "./redux/reducers/search";
 
@@ -41,7 +41,16 @@ function App() {
         
       })
       .catch((err) => {});
+  
+        axios
+          .get(`http://localhost:5000/Homeiteams`)
+          .then((resulat) => {
+            dispacth(setHomeItems(resulat.data.resul));
+          })
+          .catch((err) => {});
+   
   }, []);
+
   ////////////////////////////////////////////////////////////////////
   return (
     <div className="App">
