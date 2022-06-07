@@ -1,5 +1,17 @@
 .categoryBar{
+    border-top: 0.009px  solid rgb(37, 36, 36);
     display: flex;
-    justify-content: space-between;
-    background-color: aqua;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem;
+    background-color:  #080808;
+   
+    margin-bottom: 0;
+}
+
+.categoryBar a{
+    color: white;
+    font-family: 'The Histoia Demo',sans-serif;
+    font-size: 1.7rem;
+   font-weight: 700;
 }

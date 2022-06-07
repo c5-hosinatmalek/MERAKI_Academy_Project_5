@@ -83,10 +83,10 @@ const Homepage = () => {
   ]
 
   return (
-    <div>
+    <div className="continerAll_mainhomediv" >
       <div className="mainhomediv">
         <div>
-          <div>
+          <div className="continerAll_img_page" >
             <img
               src={header4}
               onClick={() => {

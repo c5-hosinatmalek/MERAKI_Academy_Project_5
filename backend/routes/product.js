@@ -5,7 +5,7 @@ const {
   getProductbyId,
   deleteProductbyId,
   updateProduct,
- ,restockProduct
+ restockProduct,
   getprodactpagin,
   allProductDescending,
   allProductascending,
