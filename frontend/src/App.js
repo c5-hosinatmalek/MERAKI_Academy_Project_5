@@ -4,7 +4,7 @@ import Createprodact from "./component/create prodact";
 import {REGISTER} from "./component/REGISTER/index"
 import GetProdact from "./component/prodact/index";
 import Getphotosmain from "./component/home_page_pic";
-
+import { setHomeItems } from "./redux/reducers/homepage";
 
 import { numberprodact } from "./redux/reducers/search";
 
@@ -27,6 +27,7 @@ import CartPage from "./component/CartPage/index";
 
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable"
+import ProductTable from "./component/ProductTable"
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
@@ -40,7 +41,16 @@ function App() {
         
       })
       .catch((err) => {});
+  
+        axios
+          .get(`http://localhost:5000/Homeiteams`)
+          .then((resulat) => {
+            dispacth(setHomeItems(resulat.data.resul));
+          })
+          .catch((err) => {});
+   
   }, []);
+
   ////////////////////////////////////////////////////////////////////
   return (
     <div className="App">
@@ -54,6 +64,9 @@ function App() {
 
         <Route path="/admin/usersTable" element={<UserTable/>}/>
 
+      <Route path="/admin/productTable" element={<ProductTable/>}/>
+
+
         <Route path="/login" element={<LOGIN/>} />
         <Route path="/creat" element={<Createprodact/>} />
         <Route path="/admin/uplodphoto" element={<Getphotosmain/>} />
@@ -64,7 +77,9 @@ function App() {
 
        
 
+
       </Routes>
+      
       <FOOTER />
     </div>
   );

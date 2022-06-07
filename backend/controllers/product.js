@@ -5,7 +5,7 @@ const connection = require("../models/db");
 
 const getAllProducts = (req, res) => {
   const query =
-    "SELECT * FROM PRODUCTS  JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.CATEGORY_ID  WHERE  PRODUCTS.IS_DELETED =0;";
+    "SELECT * FROM PRODUCTS  INNER JOIN CATEGORIES ON PRODUCTS.category_id=CATEGORIES.CATEGORY_ID INNER JOIN sub_categories on products.sub_category = sub_categories.subCategory_id  WHERE  PRODUCTS.IS_DELETED =0;";
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -26,7 +26,7 @@ const createProduct = (req, res) => {
     product_type,
     price,
     description,
-    Store_Quantity
+    Store_Quantity,
   } = req.body;
 
   const data = [
@@ -38,7 +38,7 @@ const createProduct = (req, res) => {
     product_type,
     price,
     description,
-    Store_Quantity
+    Store_Quantity,
   ];
   const query =
     "INSERT INTO products (picUrlProd,title,category_id,sub_category,product_name,product_type,price,description,Store_Quantity) VALUES(?,?,?,?,?,?,?,?,?)";
@@ -83,7 +83,7 @@ const updateProduct = (req, res) => {
     product_type,
     price,
     title,
-    store_Quantity,
+    picUrlProd,
     description,
     category_id,
     sub_category,
@@ -95,14 +95,15 @@ const updateProduct = (req, res) => {
     product_type,
     price,
     title,
-    store_Quantity,
+    picUrlProd,
     description,
     category_id,
     sub_category,
     productId,
   ];
+  console.log(data);
   const query =
-    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,store_Quantity=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
+    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,picUrlProd=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
 
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -113,29 +114,33 @@ const updateProduct = (req, res) => {
 };
 
 
+
+
 const getprodactpagin=(req,res)=>{
   const limit = 10
   const page = req.params.page
 
-  const offset = (page - 1) * limit
+  
+  
+  
+
+  const offset = (page - 1) * limit;
 
   // const query= "SELECT * FROM PRODUCTS  limit "+limit+" OFFSET "+offset "
-  const query = "select * from Products limit "+limit+" OFFSET "+offset
-  connection.query(query,(err,result)=>{
-   if (err) {
-     res.status(500).json({
-       success:false,
-       mesage:"server error"
-     })
-   }
-res.status(201).json({
-  success:true,
-  result
-})
-
-  })
-
-}
+  const query = "select * from Products limit " + limit + " OFFSET " + offset;
+  connection.query(query, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        mesage: "server error",
+      });
+    }
+    res.status(201).json({
+      success: true,
+      result,
+    });
+  });
+};
 //query=`SELECT * FROM products  WHERE IS_DELETED=0 ORDER BY CAST(price AS INT)  DESC `;
 const allProductDescending=(req,res)=>{
   const {id}=req.params
@@ -176,6 +181,8 @@ const allProductascending=(req,res)=>{
        success:true,
        message:"get all proudect by price ascending",
        result
+
+
      })
    
    })
@@ -204,15 +211,36 @@ const allProductByLetters=(req,res)=>{
    })
 }
 
+const restockProduct = (req, res) => {
+  
+  const { newQuntity, product_Id } = req.body;
+  const query =
+    "UPDATE products SET Store_Quantity=Store_Quantity+? WHERE product_id=? AND IS_DELETED =0  ";
+  const data = [newQuntity, product_Id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        mesage: "server error",
+      });
+    }
+    res.status(201).json({
+      success: true,
+      result,
+    });
+  });
+};
 
-module.exports = {
+
+module.exports ={
   getAllProducts,
   createProduct,
   getProductbyId,
   deleteProductbyId,
   updateProduct,
   getprodactpagin,
+  restockProduct,
   allProductDescending,
   allProductascending,
   allProductByLetters
-};
+}

@@ -6,6 +6,7 @@ const additeam = (req, res) => {
   const query = "INSERT INTO pic (url,product_Id) VALUES(?,?)";
   const data = [url, id];
   connection.query(query, data, (err, result) => {
+    console.log(err);
     if (err) {
       return res.status(500).json({
         succses: false,
@@ -13,20 +14,24 @@ const additeam = (req, res) => {
       });
     }
     res.status(202).json({
+      moad:"moad",
       succses: true,
       result,
+      id,id,
+      url,url
     });
   });
 };
 
 const getpiciteam = (req, res) => {
-  const query =
-    "SELECT * FROM pic inner join Products on pic.product_Id=Products.product_Id ";
-  connection.query(query, (err, resul) => {
+  const query ="SELECT * FROM pic";
+  connection.query(query,(err, resul) => {
     if (err) {
-      res.json(500);
+     return res.json(500);
     }
-    res.json(resul);
+    res.json({
+      succses:"moad",
+      resul});
   });
 };
 
@@ -41,6 +46,7 @@ const deletepiciteam = (req, res) => {
         err,
       });
     }
+
     res.status(200).json({
       succses: false,
       result,
@@ -71,11 +77,17 @@ const updatepicitem = (req, res) => {
         });
       }
       res.status(203).json({
+        moad:"moad",
         succses: true,
         result,
+        product_Id,
+        id,
+        url,
       });
     });
   });
 };
 
 module.exports = { additeam, getpiciteam, deletepiciteam, updatepicitem };
+
+

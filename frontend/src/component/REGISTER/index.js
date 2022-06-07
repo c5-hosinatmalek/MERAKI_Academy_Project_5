@@ -2,15 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 const REGISTER = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [country, setCountryy] = useState("");
-  const role_id = 2;
+  const role_id = 1;
   const [messageUser, setMessageUser] = useState("");
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
+
 
   const submit = (e) => {
     e.preventDefault();
@@ -32,6 +34,7 @@ const REGISTER = () => {
       .catch((err) => {
         setStatus(false);
         setMessageUser("Error happened while register, please try again");
+      
       });
   };
   useEffect(() => {
@@ -51,6 +54,7 @@ const REGISTER = () => {
       <div className="containeeer">
         <form className="form_rigister" onSubmit={submit}>
           <div className="name_user">
+            <label>Enter Name</label>
             <input
               type="text"
               placeholder="ENTER NAME"
@@ -61,6 +65,7 @@ const REGISTER = () => {
             />
           </div>
           <div className="email_user">
+          <label>Enter Email</label>
             <input
               type="text"
               placeholder="enter email"
@@ -71,6 +76,7 @@ const REGISTER = () => {
             />
           </div>
           <div className="country_user">
+          <label>Choose Country</label>
             <select
               onChange={(e) => {
                 setCountryy(e.target.value);
@@ -84,6 +90,7 @@ const REGISTER = () => {
           </div>
 
           <div className="password_user">
+          <label>Enter Password</label>
             <input
               type="password"
               placeholder="enter_pasword"
@@ -97,6 +104,7 @@ const REGISTER = () => {
           <div className="rigester_button">
             <button>Register</button>
           </div>
+          
           {status ? (
             <div className="message_user">
               <h1>{messageUser}</h1>

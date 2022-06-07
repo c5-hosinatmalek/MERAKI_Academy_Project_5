@@ -1,10 +1,71 @@
-.prodactpichter{
-    width: 150px;
-
-}
 .orderby_price h3{
     display: inline;
 }
 .orderby_letter h3{
     display: inline;
+}
+.container_page{
+    display: grid;
+    grid-template-columns: 23% auto ;
+    grid-template-rows: 50px auto;
+    grid-template-areas: " hd hd" "side bd";
+}
+.subCategory{
+    grid-area: hd;
+    display: flex;
+    background-color: brown;
+}
+.side_bar{
+    grid-area: side;
+    background-color: orange;
+    
+}
+.All_Product{
+    background-color: antiquewhite;
+    grid-area: bd;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    
+}
+.productDiv{
+    width: 300px;
+    height: 500px;
+    
+    border: 2px solid black;
+   
+    
+}
+.productImg{
+    width: 150px;
+    height: 200px;
+    align-self: center;
+    margin: 12px 0px;
+
+}
+.linkProduct{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    flex-direction: column;
+}
+.titlePar{
+font-size: 20px;
+font-weight: 600;
+
+}
+.descriptionPar{
+margin: 10px 0px;
+padding: 10px;
+font-size: 18px;
+
+}
+
+.pricePar{
+margin-top: 10px;
+font-size: 18px;
+font-weight: 600;
+padding: 10px;
+justify-self: flex-end;
 }
