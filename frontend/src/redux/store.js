@@ -17,7 +17,7 @@ export default configureStore({
     cart: cartSlice,
     search: searchSlice,
 
-    home:homePagehSlice
+    home:homePagehSlice,
 
 
     admin:adminSlice

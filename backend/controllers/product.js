@@ -101,6 +101,7 @@ const updateProduct = (req, res) => {
     sub_category,
     productId,
   ];
+  console.log(data);
   const query =
     "UPDATE products SET product_name=?,product_type=?,price=?,title=?,picUrlProd=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
 
@@ -120,6 +121,7 @@ const getprodactpagin = (req, res) => {
 const getprodactpagin=(req,res)=>{
   const limit = 10
   const page = req.params.page
+
   
   
   
@@ -181,6 +183,7 @@ const allProductascending=(req,res)=>{
        success:true,
        message:"get all proudect by price ascending",
        result
+
 
      })
    

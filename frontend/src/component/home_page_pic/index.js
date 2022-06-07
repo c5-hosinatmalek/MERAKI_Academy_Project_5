@@ -140,7 +140,6 @@ function Getphotosmain() {
           <option value={10}>Scanner</option>
         </select>
       </div>
-      {console.log("home",state.home)}
       {state.home &&
         state.home.map((element, index) => {
 
@@ -160,7 +159,7 @@ function Getphotosmain() {
           );
         })}
 
-      {/* {state.home &&
+      {state.home &&
         state.home.map((element, index) => {
           return (
             <div key={index}>
@@ -205,13 +204,13 @@ function Getphotosmain() {
                 <option value={5}>Graphic Card</option>
                 <option value={6}>Power Supply</option>
                 <option value={7}>Motherboard</option>
+                <option value={10}>Scanner</option>
                 <option value={8}>Cooling</option>
                 <option value={9}>Cases</option>
-                <option value={10}>Scanner</option>
               </select>
             </div>
           );
-        })} */}
+        })}
     </div>
   );
 }
