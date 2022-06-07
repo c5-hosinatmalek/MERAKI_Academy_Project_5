@@ -8,41 +8,58 @@ justify-content: center;
 .login_user form{
     border: solid black 5px;
     text-align: center;
-    
+    background: black;
     border-radius: 5px;
 }
 
 .titel{
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid rgb(255, 255, 255);
 }
 
 .titel h1{
     text-transform: uppercase;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 600;
+    color: white;
+    padding: 10px;
 }
 
 .email_login{
     text-align: left;
+    padding: 10px 5px ;
+
 }
 
 .email_login label{
    display: block;
    font-size: 1.7rem;
-   font-weight: 600;
+ 
+   color: white;
 }
 
 .passward_login{
     text-align: left;
+    padding: 5px;
 }
 
 .passward_login label{
 display: block;
-font-weight: 600;
+
 font-size: 1.7rem;
+color: white;
 }
 
 
 .login_user form input{
     width: 25rem;
+    /* padding: 1rem; */
+    font-size: 2rem;
+    
+    background: white;
+}
+.login_button button{
+    background: white;
+    color: black;
+    border-radius: 3px;
+    font-size: 2rem;
 }

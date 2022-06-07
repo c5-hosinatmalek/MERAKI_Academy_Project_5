@@ -130,15 +130,16 @@ const LOGIN = () => {
         </div>
         <div className="login_button">
           <button>Login</button>
-        </div>
-        <div className="googel">
           <GoogleLogin
             clientId={clientId}
-            buttonText="Login With Googel "
+            buttonText="Googel "
             onSuccess={onsucces}
             onFailure={onfailure}
           />
         </div>
+        
+         
+      
         {status ? (
           <div className="message_user">
             <h1>{messegeUser}</h1>
