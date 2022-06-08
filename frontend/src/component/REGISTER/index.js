@@ -13,7 +13,6 @@ const REGISTER = () => {
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
 
-
   const submit = (e) => {
     e.preventDefault();
 
@@ -34,7 +33,6 @@ const REGISTER = () => {
       .catch((err) => {
         setStatus(false);
         setMessageUser("Error happened while register, please try again");
-      
       });
   };
   useEffect(() => {
@@ -50,76 +48,78 @@ const REGISTER = () => {
   }, []);
 
   return (
-    
-      <div className="containeeer_rigister">
-        
-        <form className="form_rigister" onSubmit={submit}>
-          <div className="titel_regester" > <h1>Register</h1></div>
-         
-          <div className="name_user">
-            <label>Enter Name</label>
-            <input
-              type="text"
-              placeholder="ENTER NAME"
-              required
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </div>
-          <div className="email_user">
-          <label>Enter Email</label>
-            <input
-              type="text"
-              placeholder="Enter Email"
-              required
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </div>
-          <div className="country_user">
+    <div className="containeeer_rigister">
+      <form className="form_rigister" onSubmit={submit}>
+        <div className="titel_regester">
+          {" "}
+          <h1>Register</h1>
+        </div>
+
+        <div className="name_user">
+          <label>Name</label>
+          <input
+            defaultValue={"Example_mohammad"}
+            type="text"
+            placeholder="ENTER NAME"
+            required
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </div>
+        <div className="email_user">
+          <label>Email</label>
+          <input
+            defaultValue={"Example_mohammad@gmail.com"}
+            type="text"
+            placeholder="Enter Email"
+            required
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </div>
+        <div className="country_user">
           <label>Choose Country</label>
-            <select
-              onChange={(e) => {
-                setCountryy(e.target.value);
-              }}
-            >
-              {countries &&
-                countries.map((element, index) => {
-                  return <option key={index}>{element.name}</option>;
-                })}
-            </select>
-          </div>
+          <select
+            onChange={(e) => {
+              setCountryy(e.target.value);
+            }}
+          >
+            {countries &&
+              countries.map((element, index) => {
+                return <option key={index}>{element.name}</option>;
+              })}
+          </select>
+        </div>
 
-          <div className="password_user">
-          <label>Enter Password</label>
-            <input
-              type="password"
-              placeholder="Enter Pasword"
-              required
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </div>
+        <div className="password_user">
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter Pasword"
+            required
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </div>
 
-          <div className="rigester_button">
-            <button>Register</button>
+        <div className="rigester_button">
+          <button>Register</button>
+        </div>
+
+        {status ? (
+          <div className="message_user">
+            <h1>{messageUser}</h1>
           </div>
-          
-          {status ? (
-            <div className="message_user">
-              <h1>{messageUser}</h1>
-            </div>
-          ) : (
-            <div className="message_user">
-              <h1>{messageUser}</h1>
-            </div>
-          )}
-        </form>
-      </div>
-   
+        ) : (
+          <div className="message_user">
+            <h1>{messageUser}</h1>
+          </div>
+        )}
+      </form>
+    </div>
   );
 };
 
