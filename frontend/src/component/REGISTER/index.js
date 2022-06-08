@@ -58,9 +58,9 @@ const REGISTER = () => {
         <div className="name_user">
           <label>Name</label>
           <input
-            defaultValue={"Example_mohammad"}
+           
             type="text"
-            placeholder="ENTER NAME"
+            placeholder="Example_mohammad"
             required
             onChange={(e) => {
               setName(e.target.value);
@@ -70,9 +70,9 @@ const REGISTER = () => {
         <div className="email_user">
           <label>Email</label>
           <input
-            defaultValue={"Example_mohammad@gmail.com"}
+            
             type="text"
-            placeholder="Enter Email"
+            placeholder="Example_mohammad@gmail.com"
             required
             onChange={(e) => {
               setEmail(e.target.value);
