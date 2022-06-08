@@ -6,7 +6,7 @@ import { setLogin } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
 import { gapi } from "gapi-script";
 import { GoogleLogin } from "react-google-login";
-
+import "./style.css";
 const LOGIN = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -109,7 +109,7 @@ const LOGIN = () => {
           <h1>Login</h1>
         </div>
         <div className="email_login">
-          <label>Enter Email</label>
+          <label> Email</label>
           <input
             placeholder="enter email..."
             type="text"
@@ -119,7 +119,7 @@ const LOGIN = () => {
           />
         </div>
         <div className="passward_login">
-          <label>Enter Password </label>
+          <label> Password </label>
           <input
             placeholder="enter password..."
             type="password"
@@ -130,15 +130,16 @@ const LOGIN = () => {
         </div>
         <div className="login_button">
           <button>Login</button>
-        </div>
-        <div className="googel">
           <GoogleLogin
             clientId={clientId}
-            buttonText="Login With Googel "
+            buttonText="By Googel "
             onSuccess={onsucces}
             onFailure={onfailure}
           />
         </div>
+        
+         
+      
         {status ? (
           <div className="message_user">
             <h1>{messegeUser}</h1>

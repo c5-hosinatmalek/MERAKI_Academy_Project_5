@@ -98,3 +98,41 @@ display: flex;
   height: 30px;
   text-align: center;
 }
+
+
+.contener_side_product{
+  margin-top: 1rem;
+  margin-bottom:1rem ;
+}
+
+
+
+.img_separtor{
+  width: 100%;
+  height: 30rem;
+  border: 0;
+  margin: 0;
+  padding: 15px;
+}
+
+
+
+.contener_img_separtor{
+ border-top : 1px solid rgb(112, 111, 111);
+ border-bottom : 1px solid rgb(112, 111, 111);
+
+
+}
+
+.contener_prodect{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: 5px solid black;
+
+}
+
+.contener_img_product img{
+width: 20rem;
+height: 22rem;
+}
