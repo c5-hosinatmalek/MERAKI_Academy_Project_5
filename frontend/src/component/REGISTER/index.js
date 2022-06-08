@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import "./style.css";
 
 const REGISTER = () => {
   const [name, setName] = useState("");
@@ -50,9 +50,12 @@ const REGISTER = () => {
   }, []);
 
   return (
-    <div className="rigister">
-      <div className="containeeer">
+    
+      <div className="containeeer_rigister">
+        
         <form className="form_rigister" onSubmit={submit}>
+          <div className="titel_regester" > <h1>Register</h1></div>
+         
           <div className="name_user">
             <label>Enter Name</label>
             <input
@@ -68,7 +71,7 @@ const REGISTER = () => {
           <label>Enter Email</label>
             <input
               type="text"
-              placeholder="enter email"
+              placeholder="Enter Email"
               required
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -93,7 +96,7 @@ const REGISTER = () => {
           <label>Enter Password</label>
             <input
               type="password"
-              placeholder="enter_pasword"
+              placeholder="Enter Pasword"
               required
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -116,7 +119,7 @@ const REGISTER = () => {
           )}
         </form>
       </div>
-    </div>
+   
   );
 };
 
