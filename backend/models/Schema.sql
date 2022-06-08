@@ -123,54 +123,54 @@ VALUES
     ("Software");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("CPU & Processor",2);
+    ("CPU & Processor",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714250/p59ruoewwgm6epxupgvm.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Storage Drive",2);
+    ("Storage Drive",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714801/goajw1pbyodbpv1ag7rm.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Laser Printer",3);
+    ("Laser Printer",3,"http://res.cloudinary.com/halhouli/image/upload/v1654714962/m0kxus3lensth0ndyhrm.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Memory - RAM",2);
+    ("Memory - RAM",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714437/j831zbyabgxpbp9ewq7o.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Graphic Card",2);
+    ("Graphic Card",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714391/n92tbkz2ajlxen7mwbx7.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Power Supply",2);
+    ("Power Supply",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714662/jxu1q2voemu0jvzrsjtr.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Motherboard",2);
+    ("Motherboard",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714538/ire9vdikwfnfkmbcaa1z.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Cooling",2);
+    ("Cooling",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714308/q4y3uvzyzgvooxxwppy0.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Cases",2);
+    ("Cases",2,"http://res.cloudinary.com/halhouli/image/upload/v1654714839/edzxgldexnncd0emij0b.webp");
 
 INSERT INTO
-    sub_categories (sub_category,category_id)
+    sub_categories (sub_category,category_id,picUrlSub)
 VALUES
-    ("Scanner",1);
+    ("Scanner",1,"http://res.cloudinary.com/halhouli/image/upload/v1654714916/gdqjnrprds7cvr2cgpy7.webp");
 
 INSERT INTO
     roles (role)

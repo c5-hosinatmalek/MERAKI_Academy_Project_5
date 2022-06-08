@@ -7,25 +7,76 @@
 .container_page{
     display: grid;
     grid-template-columns: 23% auto ;
-    grid-template-rows: 50px auto;
-    grid-template-areas: " hd hd" "side bd";
+    grid-template-rows: auto auto;
+    grid-template-areas: " side hd" "side bd";
+    
 }
 .subCategory{
     grid-area: hd;
+    
+    /* background-color: brown; */
+    gap: 20px;
+    display: grid;
+    grid-template-rows: 10% auto;
+    grid-template-columns: 1fr 1fr;
+    /* background-color: gray; */
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 4px double rgb(196, 193, 193);
+    padding: 20px 0px;
+    grid-template-areas: "hds hds" "subC subC";
+
+}
+
+.subcatgoryTitleProduct{
+grid-area: hds;
+padding: 10px;
+}
+.subDiv{
+    grid-area: subC;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.subImgDiv{
     display: flex;
-    background-color: brown;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+}
+.subCategoryImg{
+    width: 100px;
+    height: 100px;
+}
+.parSub{
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px;
 }
 .side_bar{
     grid-area: side;
     background-color: orange;
     
 }
-.All_Product{
-    background-color: antiquewhite;
+.radio{
+    display: block;
+}
+.sortHeader{
+    font-size: 23px;
+    font-weight: 600;
+    margin: 20px 10px 20px 20px;
+}
+.showProduct{
     grid-area: bd;
+display: flex;
+flex-direction: column;
+}
+.All_Product{
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 20px 0;
     
     
 }
@@ -33,13 +84,13 @@
     width: 300px;
     height: 500px;
     
-    border: 2px solid black;
+    border: 2px solid rgb(196, 193, 193);
    
     
 }
 .productImg{
-    width: 150px;
-    height: 200px;
+    width: 130px;
+    height: 180px;
     align-self: center;
     margin: 12px 0px;
 
@@ -49,11 +100,12 @@
     flex-wrap: wrap;
     padding: 10px;
     flex-direction: column;
+    color: black;
 }
 .titlePar{
 font-size: 20px;
 font-weight: 600;
-height: 150px;
+height: 100px;
 
 }
 .descriptionPar{
@@ -70,4 +122,7 @@ font-size: 18px;
 font-weight: 600;
 padding: 10px;
 justify-self: flex-end;
+}
+.headerProduct{
+    margin: 10px
 }
