@@ -33,9 +33,9 @@ const Homepage = () => {
               <div className="contener_img_product"><img className="productimg" src={element.picUrlProd} /></div>
               <div className="contener_titel_product" >
                 <p>{element.title}</p>
-                <div className="contener_price"> <span>{element.price}</span></div>
+               
               </div>
-             
+              <div className="contener_price"> <span>{element.price} JD</span></div>
             </div>
           );
         }
@@ -44,7 +44,7 @@ const Homepage = () => {
   };
   const properties = {
     duration: 3000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: "autoplay",
     indicators: true,
