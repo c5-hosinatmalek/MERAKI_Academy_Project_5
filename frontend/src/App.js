@@ -1,11 +1,12 @@
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
 import Createprodact from "./component/create prodact";
-import {REGISTER} from "./component/REGISTER/index"
+import { REGISTER } from "./component/REGISTER/index";
 import GetProdact from "./component/prodact/index";
 import Getphotosmain from "./component/home_page_pic";
 import { setHomeItems } from "./redux/reducers/homepage";
-
+import photo from "./img/Screenshot_1.png";
+import photo2 from "./img/Screenshot_2.png";
 import { numberprodact } from "./redux/reducers/search";
 
 import LOGIN from "./component/LOGIN";
@@ -26,8 +27,8 @@ import { ProductPage } from "./component/ProductPage/index";
 import CartPage from "./component/CartPage/index";
 
 import FOOTER from "./component/FOOTER";
-import UserTable from "./component/UserTable/UserTable"
-import ProductTable from "./component/ProductTable"
+import UserTable from "./component/UserTable/UserTable";
+import ProductTable from "./component/ProductTable";
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
@@ -38,49 +39,49 @@ function App() {
       .then((result) => {
         dispacth(setAllproduct(result.data.result));
         dispacth(numberprodact());
-        
       })
       .catch((err) => {});
-  
-        axios
-          .get(`http://localhost:5000/Homeiteams`)
-          .then((resulat) => {
-            dispacth(setHomeItems(resulat.data.resul));
-          })
-          .catch((err) => {});
-   
+
+    axios
+      .get(`http://localhost:5000/Homeiteams`)
+      .then((resulat) => {
+        dispacth(setHomeItems(resulat.data.resul));
+      })
+      .catch((err) => {});
   }, []);
 
   ////////////////////////////////////////////////////////////////////
   return (
     <div className="App">
+      <div className="mainphotos">
+        <img  src={photo}></img>
+      </div>
+
+      <div className="routesdiv">
       <NavBar />
       <CategoryBar />
 
-      <Routes>
-        <Route path="/rigester" element={<REGISTER />} />
-        <Route path="/" element={<Homepage />} />
+        <Routes>
+          <Route path="/rigester" element={<REGISTER />} />
+          <Route path="/" element={<Homepage />} />
 
+          <Route path="/admin/usersTable" element={<UserTable />} />
 
-        <Route path="/admin/usersTable" element={<UserTable/>}/>
+          <Route path="/admin/productTable" element={<ProductTable />} />
 
-      <Route path="/admin/productTable" element={<ProductTable/>}/>
-
-
-        <Route path="/login" element={<LOGIN/>} />
-        <Route path="/creat" element={<Createprodact/>} />
-        <Route path="/admin/uplodphoto" element={<Getphotosmain/>} />
-        <Route path="/category/:id/products" element={<GetProdact/>}/>
+          <Route path="/login" element={<LOGIN />} />
+          <Route path="/creat" element={<Createprodact />} />
+          <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
+          <Route path="/category/:id/products" element={<GetProdact />} />
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
-          <Route path="/category/product/:id" element={<ProductPage/>}/>
-          <Route path="/cart/:id" element={<CartPage/>}/>
-
-       
-
-
-      </Routes>
-      
+          <Route path="/category/product/:id" element={<ProductPage />} />
+          <Route path="/cart/:id" element={<CartPage />} />
+        </Routes>
       <FOOTER />
+      </div>
+      <div>
+        <img src={photo2}></img>
+      </div>
     </div>
   );
 }

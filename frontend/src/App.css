@@ -1,7 +1,16 @@
-*{
+* {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; 
- 
+  box-sizing: border-box;
 }
 
+.react-slideshow-container {
+  width: 79rem;
+}
+
+.App {
+  display: flex;
+}
+.mainphotos {
+  position: sticky;
+}
