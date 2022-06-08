@@ -94,7 +94,7 @@ const GetProdact = () => {
       <div className="side_bar">
         <div className="orderby_price">
           <h3 className="sortHeader">Sort By </h3>
-          <select
+          <select className="dropList"
             onChange={(e) => {
               if (e.target.value === "the least") {
                 axios
