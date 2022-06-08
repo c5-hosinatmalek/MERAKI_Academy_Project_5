@@ -25,6 +25,7 @@ const GetProdact = () => {
   });
   const [show, setShow] = useState(state.prodect);
   const [message, setMessage] = useState("");
+  const [title,setTitle]=useState("")
 
   const products = async () => {
     await axios
@@ -33,6 +34,8 @@ const GetProdact = () => {
         dispacth(getproduct(result.data.result));
         setShow(result.data.result);
         setMessage("All Products ");
+        console.log(result.data.result);
+        setTitle(result.data.result[0].category)
       })
       .catch((err) => {
         console.log(err);
@@ -64,9 +67,14 @@ const GetProdact = () => {
   return (
     <div className="container_page">
       <div className="subCategory">
+        <h1 className="subcatgoryTitleProduct">{title}</h1>
+        <div className="subDiv">
+
         {state.sub_category &&
           state.sub_category.map((element, index) => {
             return (<div className="subImgDiv">
+            
+
             <img key={index+"img"} src={`${element.picUrlSub}`} className="subCategoryImg" onClick={() => {
                   sub_categoryClick(index);
                 }}/>
@@ -75,12 +83,13 @@ const GetProdact = () => {
                 onClick={() => {
                   sub_categoryClick(index);
                 }}
-              >
+              className="parSub">
                 {element.sub_category}
               </p>
                   </div>
-            );
-          })}
+                  );
+                })}
+                </div>
       </div>
       <div className="side_bar">
         <div className="orderby_price">
