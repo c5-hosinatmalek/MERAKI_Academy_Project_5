@@ -77,7 +77,7 @@ const NavBar = () => {
             )}
 
             {!state.isLoggedIn ? (
-              <Link to={"/login"}>
+              <Link className="contener_logcart" to={"/login"}>
                 <div className="icons"> <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} /></div>
                
               </Link>

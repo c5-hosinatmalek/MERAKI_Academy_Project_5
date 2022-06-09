@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -113,23 +113,34 @@ const Homepage = () => {
                 </div>
               );
             })}
-          {Pagination &&
+              <div className="contener_all_product_main">
+              {Pagination &&
             Pagination.map((element) => {
               return (
-                <div>
-                  <p>{element.title}</p>
+                <div className="contener_one_product">
+                  <Link className="linkproduct_mainpage" to={"/"}>
+                 
                   <img className="firstpageimg" src={element.picUrlProd} />
-                  <p>
+                  <p className="titleproduct_main" >{element.title}</p>
+
+                  <p className="dis_product_main" >
                     {" "}
                     {element.description
                       .split(" ")
                       .splice(1, 15)
                       .join(" ")}{" "}
                   </p>
-                  <p>{element.price}</p>
+                  <p className="price_productmain" >{element.price} JD</p>
+                  </Link>
+                  
                 </div>
               );
             })}
+
+              </div>
+         
+
+
         </div>
       </div>
       {state.number &&

@@ -13,6 +13,7 @@ const userRouter = require("./routes/user");
 const cartRouter = require("./routes/cart");
 const loginRouter = require("./routes/login");
 const Homeiteams = require("./routes/Home_items");
+const prudectUsedRouter=require("./routes/product_used")
 //
 const app = express();
 app.use(cors());
@@ -46,6 +47,12 @@ app.use("/login", loginRouter);
 app.use("/user", userRouter);
 // create Homeiteams router
 app.use("/Homeiteams", Homeiteams);
+
+// creat middlleware application ==>handle all requst prudectUsedRouter
+
+app.use("/prudect_used",prudectUsedRouter)
+
+
 
 app.listen(port, () => {
   console.log(`server on in port ${port}`);

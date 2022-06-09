@@ -101,7 +101,22 @@ CREATE TABLE cart (
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (cart_id)
 );
+CREATE TABLE usedproduct (
+    used_product_id INT AUTO_INCREMENT NOT NULL,
+    product_name VARCHAR(255),
+    product_description TEXT,
+    url_imj TEXT,
+    asking_price INT,
+    bank_account VARCHAR(255),
+    admission_status TINYINT DEFAULT 0,
+    is_deleted TINYINT DEFAULT 0,
+    phone_number VARCHAR(255),
+    user_id INT,
+    FOREIGN key (user_id) REFERENCES users (user_id),
+    PRIMARY KEY (used_product_id)
 
+
+);
 INSERT INTO
     categories (category)
 VALUES

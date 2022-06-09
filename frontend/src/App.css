@@ -5,21 +5,29 @@
   box-sizing: border-box;
 }
 
-.react-slideshow-container {
-  width: 79rem;
+
+
+.contener_img2{
+  display: none;
 }
 
-.App {
-  display: flex;
-}
-.mainphotos {
-  position: sticky;
-}
-
-   
-  text-decoration: none;
-  
-}
+  @media (min-width:1800px){
+    /* .contener_img2{
+      display: none;
+    }
 
 
+    .react-slideshow-container {
+      width: 79rem;
+    }
+    
+    .App {
+      display: flex;
+    }
+    .mainphotos {
+      position: sticky;
+    } */
 
+
+
+  }

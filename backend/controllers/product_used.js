@@ -1,0 +1,105 @@
+const connection = require("../models/db");
+
+const saleOrder = (req, res) => {
+  const user_id = req.token.user_id;
+  const {
+    product_name,
+    product_description,
+    url_imj,
+    asking_price,
+    bank_account,
+    phone_number,
+  } = req.body;
+  const query = `INSERT INTO usedproduct (product_name,product_description,url_imj,asking_price,bank_account,phone_number,user_id) VALUES(?,?,?,?,?,?,?)`;
+  const data = [
+    product_name,
+    product_description,
+    url_imj,
+    asking_price,
+    bank_account,
+    phone_number,
+    user_id,
+  ];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err,
+      });
+      return;
+    }
+    res.status(200).json({
+      success: true,
+      message: "the requst has been sent successfully",
+      result: result,
+    });
+  });
+};
+
+const requstAccept = (req, res) => {
+  const used_product_id = req.params.used_product_id;
+  const query = `UPDATE usedproduct SET admission_status=1 WHERE used_product_id=?`;
+  const data = [used_product_id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err,
+      });
+      return;
+    }
+    res.status(200).json({
+      success: true,
+      message: "it has been accepted",
+      result: result,
+    });
+    console.log(used_product_id);
+  });
+};
+
+const getAllSaleOrderForUser=(req,res)=>{
+    const user_id=req.token.user_id;
+    const query=`SELECT * FROM usedproduct WHERE user_id=? AND is_deleted=0`;
+    const data=[user_id];
+    connection.query(query,data,(err,result)=>{
+        if(err){
+            res.status(500).json({
+                success:false,
+                messahge:"server error",
+               err:err
+            })
+            return;
+        }
+        res.status(200).json({
+            success:true,
+            message:"all SaleOrder",
+            result:result
+        })
+    })
+}
+
+const getAllSaleOrderForadmin=(req,res)=>{
+    const query='SELECT * FROM usedproduct WHERE is_deleted=0';
+    connection.query(query,(err,result)=>{
+        if(err){
+            res.status(500).json({
+                success:false,
+                message:"server error",
+                err:err
+            })
+            return;
+        }
+        res.status(200).json({
+            success:true,
+            message:"all sale order",
+            result:result
+        })
+    }) 
+}
+
+
+const 
+
+module.exports = { saleOrder, requstAccept ,getAllSaleOrderForUser,getAllSaleOrderForadmin};

@@ -53,7 +53,7 @@ function App() {
   ////////////////////////////////////////////////////////////////////
   return (
     <div className="App">
-      <div className="mainphotos">
+      <div className="contener_img2">
         <img  src={photo}></img>
       </div>
 
@@ -79,7 +79,7 @@ function App() {
         </Routes>
       <FOOTER />
       </div>
-      <div>
+      <div  className="contener_img2" >
         <img src={photo2}></img>
       </div>
     </div>
