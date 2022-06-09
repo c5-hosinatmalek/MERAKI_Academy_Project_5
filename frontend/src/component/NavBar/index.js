@@ -44,7 +44,7 @@ const NavBar = () => {
     <div className="navbar">
       {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-          <p>table users</p>
+          <Link>table users</Link>
           <p>table product</p>
           <p>table checkout</p>
         </div>

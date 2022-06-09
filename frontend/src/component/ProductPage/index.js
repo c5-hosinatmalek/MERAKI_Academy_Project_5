@@ -44,6 +44,9 @@ const ProductPage = () => {
       });
   };
 
+  // ==========================================
+  
+
   return (
     <div className="mainproductPage">
     <div className="productPage">
