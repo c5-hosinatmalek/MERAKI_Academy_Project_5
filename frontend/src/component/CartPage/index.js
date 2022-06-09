@@ -45,7 +45,7 @@ const CartPage = () => {
           console.log(err);
       })
   }
-   dispatch(totalPriceAction(element.quantity*element.price))
+  //  dispatch(totalPriceAction(element.quantity*element.price))
 const deleteCartClick=(product_id)=>{
     
     dispatch(deleteFromCart(product_id))
