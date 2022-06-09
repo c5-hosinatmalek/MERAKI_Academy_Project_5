@@ -15,7 +15,6 @@ const ProductPage = () => {
       token: state.auth.token,
     };
   });
-
   useEffect(() => {
     axios
       .get(`http://localhost:5000/product/${id}`)
@@ -28,8 +27,6 @@ const ProductPage = () => {
       });
   }, []);
   const addCartClick = (id) => {
-   
-
     
     axios
       .post(`http://localhost:5000/cart/add/${id}`,{}, {headers:{
@@ -48,39 +45,49 @@ const ProductPage = () => {
   };
 
   return (
+    <div className="mainproductPage">
     <div className="productPage">
-      <div>
+      <div className="childproductPage">
         <h2>{state.product[0] && state.product[0].title}</h2>
-        <p>{state.product[0] && state.product[0].description.split(",").map((element,index)=>{return <ul key={index}><li key={index + "li"}>-{element}</li></ul>})}</p>
+        
+        <p className="prodactdetalis">{state.product[0] && state.product[0].description.split(",").map((element,index)=>{return <ul key={index}><li className="lidescrption" key={index + "li"}>-{element}</li></ul>})}</p>
+        <div className="prodactphoto">
         <img src={`${state.product[0] && state.product[0].picUrlProd}`} className="imgProduct" />
+        </div>
       </div>
-      <div>
+      <div className="parentpriceAvilability">
         <div className="priceAvilability">
-          <h3>Price: {state.product[0] && state.product[0].price}</h3>
-          <div>
+          <h3>JOD {state.product[0] && state.product[0].price},00</h3>
+              <div className="detalis">
             <p>
-              Availability:
-              {state.product[0] && state.product[0].Store_Quantity == 0
+             Availability:
+              <span className="stock"> {state.product[0] && state.product[0].Store_Quantity == 0
                 ? "Out of Stock"
-                : "In Stock"}
+                : "In Stock"}</span>
             </p>
+            {console.log(state.product[0].product_type)}
+            <p>Brand: <span className="Brand">{state.product[0].product_type}</span></p>
           </div>
         </div>
+        <div className="addtocartdiv">
         {state.product[0] && state.product[0].Store_Quantity == 0 ? (
           <p>Out of Stock</p>
-        ) : (<>
-          <p>{message}</p>
+          ) : (<>
           <button
+          className="addtocart"
             onClick={() => {
               addCartClick(state.product[0].product_id);
             }}
-          >
+            >
             Add to cart
           </button>
         </>
         )}
+        </div>
       </div>
     </div>
+    </div>
+
   );
 };
 
