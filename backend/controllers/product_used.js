@@ -4,15 +4,18 @@ const saleOrder = (req, res) => {
   const user_id = req.token.user_id;
   const {
     product_name,
+    category,
     product_description,
     url_imj,
     asking_price,
     bank_account,
     phone_number,
+   
   } = req.body;
-  const query = `INSERT INTO usedproduct (product_name,product_description,url_imj,asking_price,bank_account,phone_number,user_id) VALUES(?,?,?,?,?,?,?)`;
+  const query = `INSERT INTO usedproduct (product_name,category,product_description,url_imj,asking_price,bank_account,phone_number,user_id) VALUES(?,?,?,?,?,?,?,?)`;
   const data = [
     product_name,
+    category,
     product_description,
     url_imj,
     asking_price,
@@ -165,14 +168,14 @@ const deleteProductUsed=(req,res)=>{
 
 const allproductusedhardware=(req,res)=>{
   const category=req.params.category
-  const query=`SELESCT * FROM usedproduct WHERE  is_deleted=1 AND admission_status=1 AND category=?`
+  const query=`SELECT * FROM usedproduct WHERE  is_deleted=0 AND admission_status=1 AND category=?`
   const data =[category]
   connection.query(query,data,(err,result)=>{
     if(err){
       res.status(500).json({
-        success:false.valueOf,
+        success:false,
         message:"erorr server",
-        result:result
+        err:err
       })
       return
     }
@@ -184,6 +187,26 @@ const allproductusedhardware=(req,res)=>{
   })
 }
 
+const getOneProdectused=(req,res)=>{
+  const used_product_id=req.params.id
+  const query=`SELECT * FROM usedproduct WHERE used_product_id=?`;
+  const data =[used_product_id];
+  connection.query(query,data,(err,result)=>{
+    if(err){
+      res.status(500).json({
+        success:false,
+        message:"server error ",
+        err:err
+      })
+      return
+    }
+    res.status(200).json({
+      success:true,
+      message:"product details",
+      result:result
+    })
+  })
+}
 
 
 
@@ -191,5 +214,4 @@ const allproductusedhardware=(req,res)=>{
 
 
 
-
-module.exports = { saleOrder, requstAccept ,getAllSaleOrderForUser,getAllSaleOrderForadmin,ApprovedSalesOrderforUser,ApprovedSalesOrderforAdmin,deleteProductUsed,allproductusedhardware};
+module.exports = { saleOrder, requstAccept ,getAllSaleOrderForUser,getAllSaleOrderForadmin,ApprovedSalesOrderforUser,ApprovedSalesOrderforAdmin,deleteProductUsed,allproductusedhardware,getOneProdectused};
