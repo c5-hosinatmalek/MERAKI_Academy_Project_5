@@ -44,7 +44,7 @@ const NavBar = () => {
     <div className="navbar">
       {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-          <p>table users</p>
+          <Link>table users</Link>
           <p>table product</p>
           <p>table checkout</p>
         </div>
@@ -61,9 +61,9 @@ const NavBar = () => {
             </div>
 
             {state.isLoggedIn ? (
-              <ul>
-                <li>{decodeToken("userName")}</li>
-                <li onClick={logout}>Logout</li>
+              <ul className={`ul ${className}`}>
+                <li className="li_1">{decodeToken("userName")}</li>
+                <li className="li_2" onClick={logout}>Logout</li>
               </ul>
             ) : (
               <ul className={`ul ${className}`}>
@@ -83,7 +83,7 @@ const NavBar = () => {
               </Link>
             ) : (
               <Link to={`/cart/${decodeToken("user_id")}`}>
-                <BsCart4 className="cartLogo" />
+                 <div className="icons"> <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} /></div>
               </Link>
             )}
           </div>

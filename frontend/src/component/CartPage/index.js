@@ -2,14 +2,18 @@ import axios from "axios";
 import "./style.css"
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCart,updateQuantity,deleteFromCart,checkoutAction } from "../../redux/reducers/cart";
+
+import {MdDelete} from "react-icons/md"
+
+import { getCart,updateQuantity,deleteFromCart,checkoutAction,totalPriceAction } from "../../redux/reducers/cart";
 const CartPage = () => {
   const [message, setMessage] = useState("")
-    
+    const [totalPrice,setTotalPrice]=useState("")
   const state = useSelector((state) => {
     return {
       cart: state.cart.cart,
       token: state.auth.token,
+      totalPrice:state.cart.totalPrice
     };
   });
   const dispatch = useDispatch();
@@ -42,6 +46,7 @@ const CartPage = () => {
           console.log(err);
       })
   }
+  //  dispatch(totalPriceAction(element.quantity*element.price))
 const deleteCartClick=(product_id)=>{
     
     dispatch(deleteFromCart(product_id))
@@ -70,7 +75,7 @@ setMessage("Your order has been accepted")
   return <>
 
   <table>
-<tr>
+<tr className="headerCartTable">
     <th>Image</th>
     <th>Product Name</th>
     <th>Quantity</th>
@@ -79,20 +84,28 @@ setMessage("Your order has been accepted")
 </tr>
 
   {state.cart&&state.cart.map((element,index)=>{
+   
       return<tr key={index}>
       <td><img src={`${element.picUrlProd}`} className="imgCart"/></td>
-      <td>{element.title}</td>
-      <td><input defaultValue={element.quantity} onChange={(e)=>{
+      <td className="titleCell">{element.title}</td>
+      <td className="quantityCell"><input defaultValue={element.quantity} onChange={(e)=>{
 updateQuantityFun(index,e.target.value,element.product_id)
-      }} type="number" min={0} max={element.Store_Quantity}/><button onClick={()=>{
+      }} type="number" min={0} max={element.Store_Quantity} className="inputQuantity"/><button className="deleteIcon" onClick={()=>{
         deleteCartClick(element.product_id)
-      }}>delete</button></td>
-      <td>{element
-      .price}</td>
-      <td>{element.quantity*element.price}</td>
+      }}><MdDelete/></button></td>
+      <td className="priceCell">{element
+      .price} JD</td>
+      <td className="totalCell">{element.quantity*element.price} JD</td>
       </tr>
     })}
-    
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total Price</td>
+      <td>{state.totalPrice}</td>
+
+    </tr>
 
   </table>
   <h1>{message}</h1>

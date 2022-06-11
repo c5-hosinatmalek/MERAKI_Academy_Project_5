@@ -29,8 +29,13 @@ const Homepage = () => {
       state.state.map((element, index) => {
         if (element.subCategory_id == type1) {
           return (
-            <div key={index}>
-              <img className="productimg" src={element.picUrlProd} />
+            <div className="contener_prodect" key={index}>
+              <div className="contener_img_product"><img className="productimg" src={element.picUrlProd} /></div>
+              <div className="contener_titel_product" >
+                <p>{element.title}</p>
+               
+              </div>
+              <div className="contener_price"> <span>{element.price} JD</span></div>
             </div>
           );
         }
@@ -39,7 +44,7 @@ const Homepage = () => {
   };
   const properties = {
     duration: 3000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: "autoplay",
     indicators: true,
@@ -93,10 +98,16 @@ const Homepage = () => {
               return (
                 <div>
                   <div id={index}>
-                    <img src={element.url}></img>
-                    <Slide {...properties} className="">
-                      {" "}
-                      {filterdSubCatag(element.product_Id)}
+
+
+                    {element.url? <div className="contener_img_separtor" ><img className="img_separtor" src={element.url}></img></div>  :null}
+                    
+                    <Slide {...properties} className="contener_side_product">
+                     
+                     {filterdSubCatag(element.product_Id)}
+                     
+                  
+
                     </Slide>
                   </div>
                 </div>
