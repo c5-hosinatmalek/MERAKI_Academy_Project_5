@@ -8,7 +8,7 @@ import { setHomeItems } from "./redux/reducers/homepage";
 import photo from "./img/Screenshot_1.png";
 import photo2 from "./img/Screenshot_2.png";
 import { numberprodact } from "./redux/reducers/search";
-
+import Pay from "./component/paypal";
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
@@ -54,21 +54,16 @@ function App() {
   return (
     <div className="App">
       <div className="mainphotos">
-        <img  src={photo}></img>
+        <img className="mainphotosclass" src={photo}></img>
       </div>
-
       <div className="routesdiv">
       <NavBar />
       <CategoryBar />
-
         <Routes>
           <Route path="/rigester" element={<REGISTER />} />
           <Route path="/" element={<Homepage />} />
-
           <Route path="/admin/usersTable" element={<UserTable />} />
-
           <Route path="/admin/productTable" element={<ProductTable />} />
-
           <Route path="/login" element={<LOGIN />} />
           <Route path="/creat" element={<Createprodact />} />
           <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
@@ -79,8 +74,8 @@ function App() {
         </Routes>
       <FOOTER />
       </div>
-      <div>
-        <img src={photo2}></img>
+      <div className="mainphotos">
+        <img className="mainphotosclass" src={photo2}></img>
       </div>
     </div>
   );

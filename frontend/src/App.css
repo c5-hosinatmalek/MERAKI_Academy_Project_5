@@ -13,10 +13,14 @@
   display: flex;
 }
 .mainphotos {
+ height: 1000px;
   position: sticky;
+top: 0px;
 }
+.mainphotosclass{
+  height: 950px;
 
-   
+}
 
 
 

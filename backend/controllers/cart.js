@@ -147,10 +147,29 @@ const updateQuantity = (req, res) => {
   });
 };
 
+
+
+const getallcarts=(req,res)=>{
+  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE CART.is_deleted = 1`;
+  connection.query(query,(err,result)=>{
+    if (err) {
+      res.status(500).json({
+        succses:false,
+        Message:err
+      })
+    }
+    res.json({
+      succses:true,
+      result
+    })
+  })
+}
+
 module.exports = {
   AddToCart,
   deletecart,
   getUserCarts,
   checkOut,
   updateQuantity,
+  getallcarts
 };

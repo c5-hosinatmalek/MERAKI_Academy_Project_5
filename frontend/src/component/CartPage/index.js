@@ -2,6 +2,7 @@ import axios from "axios";
 import "./style.css"
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import {MdDelete} from "react-icons/md"
 
 import { getCart,updateQuantity,deleteFromCart,checkoutAction,totalPriceAction } from "../../redux/reducers/cart";
@@ -73,6 +74,7 @@ setMessage("Your order has been accepted")
 }
 let amount =0
   return <>
+
   <table>
 <tr className="headerCartTable">
     <th>Image</th>
@@ -115,5 +117,6 @@ updateQuantityFun(index,e.target.value,element.product_id)
 CheckOutClick()
   }}>Check Out</button>
   </>
+  
 };
 export default CartPage;
