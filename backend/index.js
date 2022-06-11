@@ -16,6 +16,8 @@ const Homeiteams = require("./routes/Home_items");
 const emailRouter =require("./routes/email")
 const {requestRouter}=require("./routes/request")
 
+const prudectUsedRouter=require("./routes/product_used")
+//
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -52,6 +54,13 @@ app.use("/Homeiteams", Homeiteams);
 app.use("/email",emailRouter)
 // create requst router
 app.use("/request",requestRouter)
+
+// creat middlleware application ==>handle all requst prudectUsedRouter
+
+app.use("/prudect_used",prudectUsedRouter)
+
+
+
 app.listen(port, () => {
   console.log(`server on in port ${port}`);
 });
