@@ -5,6 +5,8 @@ import React, { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 import { getproduct } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
+import jwtDecode from "jwt-decode";
+
 const ProductPage = () => {
   const [message, setMessage] = useState("")
   const { id } = useParams();
@@ -43,9 +45,18 @@ const ProductPage = () => {
         console.log("errr", err);
       });
   };
+  const askForEmail =(product_id)=>{
+    
+    let email =jwtDecode(state.token)["email"]
+    axios.post('http://localhost:5000/request',{product_id,email}).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
 
   // ==========================================
-  
+
 
   return (
     <div className="mainproductPage">
@@ -65,20 +76,23 @@ const ProductPage = () => {
             <p>
              Availability:
               <span className="stock"> {state.product[0] && state.product[0].Store_Quantity == 0
-                ? "Out of Stock"
+                ? "Out of Stock" 
                 : "In Stock"}</span>
             </p>
-            {console.log(state.product[0].product_type)}
-            <p>Brand: <span className="Brand">{state.product[0].product_type}</span></p>
+            
+            <p>Brand: <span className="Brand">{state.product[0] && state.product[0].product_type}</span></p>
           </div>
         </div>
         <div className="addtocartdiv">
         {state.product[0] && state.product[0].Store_Quantity == 0 ? (
-          <p>Out of Stock</p>
+          <button className="addtocart" onClick={()=>{
+            askForEmail(state.product[0].product_id)
+          }}>Send me email when availabe</button>
           ) : (<>
           <button
           className="addtocart"
             onClick={() => {
+              
               addCartClick(state.product[0].product_id);
             }}
             >

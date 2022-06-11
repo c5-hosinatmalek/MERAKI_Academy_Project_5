@@ -68,7 +68,7 @@ const ProductTable = () => {
     };
   });
   // function to restock quentity
-  const restockClick = (product_Id, e) => {
+  const restockClick = (product_Id, e, title) => {
     axios
       .put("http://localhost:5000/product/admin/restock", {
         newQuntity: newQuantity,
@@ -76,6 +76,17 @@ const ProductTable = () => {
       })
       .then((result) => {
         e.target.value = "";
+        if (newQuantity !== 0) {
+          axios.post("http://localhost:5000/email", {
+            subject: `${title} has been restocked`,
+            emailBody: `The item :${title} has been restock   vist http://localhost:3000/category/product/${product_Id} so you can place your order`,
+            product_Id,
+          }).then((result)=>{
+            console.log({result});
+          }).catch((err)=>{
+            console.log({err});
+          });
+        }
       })
       .catch((err) => {});
   };
@@ -295,7 +306,11 @@ const ProductTable = () => {
                       />
                       <button
                         onClick={() => {
-                          restockClick(element.product_id, clear);
+                          restockClick(
+                            element.product_id,
+                            clear,
+                            element.title
+                          );
                           dispatch(updateQuantityAction([index, newQuantity]));
                         }}
                       >

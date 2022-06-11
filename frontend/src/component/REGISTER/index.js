@@ -12,6 +12,7 @@ const REGISTER = () => {
   const [messageUser, setMessageUser] = useState("");
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
+  const [verfied, setVerfied] = useState("");
 
   const submit = (e) => {
     e.preventDefault();
@@ -32,7 +33,11 @@ const REGISTER = () => {
       })
       .catch((err) => {
         setStatus(false);
+        if(err.response.data.err.sqlMessage.includes("Duplicate")){
+          setMessageUser("This email is already exist")
+        }
         setMessageUser("Error happened while register, please try again");
+        console.log(err);
       });
   };
   useEffect(() => {
@@ -46,6 +51,61 @@ const REGISTER = () => {
         console.log(err);
       });
   }, []);
+  const createVerfiedWord = () => {
+    let verfiedWord = "";
+    const letterAndNum = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "o",
+      "n",
+      "m",
+      "p",
+      "q",
+      "w",
+      "r",
+      "t",
+      "y",
+      "u",
+      "s",
+      "z",
+      "x",
+      "v",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "0",
+    ];
+    for (let index = 0; index < 5; index++) {
+      verfiedWord +=
+        letterAndNum[Math.round(Math.random() * letterAndNum.length)];
+    }
+    setVerfied(verfiedWord);
+    axios.post("http://localhost:5000/email", {
+      email,
+      subject: "verfied code",
+      emailBody: `Your verfied code is ${verfiedWord}`,
+    }).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    });
+  };
 
   return (
     <div className="containeeer_rigister">
@@ -58,9 +118,8 @@ const REGISTER = () => {
         <div className="name_user">
           <label>Name</label>
           <input
-            defaultValue={"Example_mohammad"}
             type="text"
-            placeholder="ENTER NAME"
+            placeholder="Example_mohammad"
             required
             onChange={(e) => {
               setName(e.target.value);

@@ -229,6 +229,7 @@ const restockProduct = (req, res) => {
       result,
     });
   });
+  
 };
 
 

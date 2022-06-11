@@ -14,7 +14,7 @@ const cartRouter = require("./routes/cart");
 const loginRouter = require("./routes/login");
 const Homeiteams = require("./routes/Home_items");
 const emailRouter =require("./routes/email")
-
+const {requestRouter}=require("./routes/request")
 
 const app = express();
 app.use(cors());
@@ -50,7 +50,8 @@ app.use("/user", userRouter);
 app.use("/Homeiteams", Homeiteams);
 // create email router
 app.use("/email",emailRouter)
-
+// create requst router
+app.use("/request",requestRouter)
 app.listen(port, () => {
   console.log(`server on in port ${port}`);
 });

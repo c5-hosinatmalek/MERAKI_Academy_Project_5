@@ -45,7 +45,7 @@ const CartPage = () => {
           console.log(err);
       })
   }
-  //  dispatch(totalPriceAction(element.quantity*element.price))
+ 
 const deleteCartClick=(product_id)=>{
     
     dispatch(deleteFromCart(product_id))
@@ -71,6 +71,7 @@ setMessage("Your order has been accepted")
       console.log(err);
     })
 }
+let amount =0
   return <>
   <table>
 <tr className="headerCartTable">
@@ -82,8 +83,11 @@ setMessage("Your order has been accepted")
 </tr>
 
   {state.cart&&state.cart.map((element,index)=>{
+    
+      amount += element.quantity*element.price
+    
    
-      return<tr key={index}>
+      return <tr key={index}>
       <td><img src={`${element.picUrlProd}`} className="imgCart"/></td>
       <td className="titleCell">{element.title}</td>
       <td className="quantityCell"><input defaultValue={element.quantity} onChange={(e)=>{
@@ -101,7 +105,7 @@ updateQuantityFun(index,e.target.value,element.product_id)
       <td></td>
       <td></td>
       <td>Total Price</td>
-      <td>{state.totalPrice}</td>
+      <td>{amount} JD</td>
 
     </tr>
 
