@@ -98,6 +98,7 @@ CREATE TABLE cart (
     user_id int,
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     quantity int,
+    price_checkout int,
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (cart_id)
 );

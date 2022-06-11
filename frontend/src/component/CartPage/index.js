@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import {MdDelete} from "react-icons/md"
 
-import { getCart,updateQuantity,deleteFromCart,checkoutAction,totalPriceAction } from "../../redux/reducers/cart";
+import { getCart,updateQuantity,deleteFromCart,checkoutAction, } from "../../redux/reducers/cart";
 const CartPage = () => {
   const [message, setMessage] = useState("")
     const [totalPrice,setTotalPrice]=useState("")
