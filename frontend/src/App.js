@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <div className="mainphotos">
-        <img  src={photo}></img>
+        <img className="mainphotosclass" src={photo}></img>
       </div>
       <div className="routesdiv">
       <NavBar />
@@ -74,8 +74,8 @@ function App() {
         </Routes>
       <FOOTER />
       </div>
-      <div>
-        <img src={photo2}></img>
+      <div className="mainphotos">
+        <img className="mainphotosclass" src={photo2}></img>
       </div>
     </div>
   );

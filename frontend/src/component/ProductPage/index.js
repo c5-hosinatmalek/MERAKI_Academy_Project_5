@@ -79,6 +79,7 @@ const ProductPage = () => {
           <button
           className="addtocart"
             onClick={() => {
+              console.log(false);
               addCartClick(state.product[0].product_id);
             }}
             >
