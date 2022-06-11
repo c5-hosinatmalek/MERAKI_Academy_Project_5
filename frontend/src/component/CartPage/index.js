@@ -2,7 +2,6 @@ import axios from "axios";
 import "./style.css"
 import React, { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { getCart,updateQuantity,deleteFromCart,checkoutAction } from "../../redux/reducers/cart";
 const CartPage = () => {
   const [message, setMessage] = useState("")
@@ -69,6 +68,7 @@ setMessage("Your order has been accepted")
     })
 }
   return <>
+
   <table>
 <tr>
     <th>Image</th>
@@ -100,5 +100,6 @@ updateQuantityFun(index,e.target.value,element.product_id)
 CheckOutClick()
   }}>Check Out</button>
   </>
+  
 };
 export default CartPage;
