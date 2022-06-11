@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setLogin } from "../../redux/reducers/auth";
 import { useNavigate } from "react-router-dom";
 import { gapi } from "gapi-script";
@@ -11,10 +11,14 @@ const LOGIN = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [country, setCountryy] = useState("");
-  const role_id = 1;
+  const role_id = 2;
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState(false);
   const [messegeUser, setMessageUser] = useState("");
+ 
+
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,15 +41,12 @@ const LOGIN = () => {
   const clientId =
     "980966372884-i6imm3d62qcd07h3gdllhci878oa6dt2.apps.googleusercontent.com";
   const onsucces = (res) => {
-    setEmail(res.profileObj.email);
-    setPassword(res.profileObj.googleId);
-    setName(res.profileObj.name)
-    setCountryy(null);
+    
     axios
       .post(`http://localhost:5000/register`, {
-        email,
-        password,
-        name,
+        email:res.profileObj.email,
+        password:res.profileObj.googleId,
+        name:res.profileObj.name,
         country,
         role_id,
       })
@@ -53,7 +54,7 @@ const LOGIN = () => {
         if (result.data.success) {
           setStatus(true)
           axios
-            .post(" http://localhost:5000/login", { email, password })
+            .post(" http://localhost:5000/login", { email:res.profileObj.email, password:res.profileObj.googleId })
             .then((result) => {
               dispatch(setLogin(result.data.token));
               setStatus(true);
@@ -71,7 +72,7 @@ const LOGIN = () => {
         console.log(err.response.data.err.code);
         if (err.response.data.err.code === "ER_DUP_ENTRY") {
           axios
-            .post(" http://localhost:5000/login", { email, password })
+            .post(" http://localhost:5000/login", { email:res.profileObj.email, password:res.profileObj.googleId })
             .then((result) => {
               dispatch(setLogin(result.data.token));
               setStatus(true);
@@ -130,12 +131,7 @@ const LOGIN = () => {
         </div>
         <div className="login_button">
           <button>Login</button>
-          <GoogleLogin
-            clientId={clientId}
-            buttonText="By Googel "
-            onSuccess={onsucces}
-            onFailure={onfailure}
-          />
+         
         </div>
         
          
@@ -150,6 +146,12 @@ const LOGIN = () => {
           </div>
         )}
       </form>
+      <GoogleLogin
+            clientId={clientId}
+            buttonText="By Googel "
+            onSuccess={onsucces}
+            onFailure={onfailure}
+          />
     </div>
   );
 };

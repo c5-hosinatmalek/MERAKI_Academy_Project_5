@@ -163,4 +163,33 @@ const deleteProductUsed=(req,res)=>{
   })
 }
 
-module.exports = { saleOrder, requstAccept ,getAllSaleOrderForUser,getAllSaleOrderForadmin,ApprovedSalesOrderforUser,ApprovedSalesOrderforAdmin,deleteProductUsed};
+const allproductusedhardware=(req,res)=>{
+  const category=req.params.category
+  const query=`SELESCT * FROM usedproduct WHERE  is_deleted=1 AND admission_status=1 AND category=?`
+  const data =[category]
+  connection.query(query,data,(err,result)=>{
+    if(err){
+      res.status(500).json({
+        success:false.valueOf,
+        message:"erorr server",
+        result:result
+      })
+      return
+    }
+    res.status(200).json({
+      success:true,
+      message:"all product used from category hardware",
+      result:result
+    })
+  })
+}
+
+
+
+
+
+
+
+
+
+module.exports = { saleOrder, requstAccept ,getAllSaleOrderForUser,getAllSaleOrderForadmin,ApprovedSalesOrderforUser,ApprovedSalesOrderforAdmin,deleteProductUsed,allproductusedhardware};
