@@ -14,7 +14,7 @@
 .App {
   display: flex;
 }
-.mainphotos {
+ .mainphotos {
  height: 1000px;
   position: sticky;
 top: 0px;
@@ -22,15 +22,15 @@ top: 0px;
 .mainphotosclass{
   height: 950px;
 
-}
+} 
 
 
 
 
-  @media (min-width:1800px){
-    /* .contener_img2{
+  @media (max-width:1500px){
+     .mainphotosclass{
       display: none;
-    }
+    } 
 
 
     .react-slideshow-container {
@@ -42,7 +42,7 @@ top: 0px;
     }
     .mainphotos {
       position: sticky;
-    } */
+    } 
 
 
 

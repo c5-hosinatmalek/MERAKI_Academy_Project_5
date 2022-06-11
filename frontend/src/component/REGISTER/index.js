@@ -13,7 +13,8 @@ const REGISTER = () => {
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
   const [verfied, setVerfied] = useState("");
-
+const [checkVerfied, setCheckVerfied] = useState(false)
+const [compareWord, setCompareWord] = useState("")
   const submit = (e) => {
     e.preventDefault();
 
@@ -35,6 +36,7 @@ const REGISTER = () => {
         setStatus(false);
         if(err.response.data.err.sqlMessage.includes("Duplicate")){
           setMessageUser("This email is already exist")
+          return
         }
         setMessageUser("Error happened while register, please try again");
         console.log(err);
@@ -110,6 +112,7 @@ const REGISTER = () => {
   return (
     <div className="containeeer_rigister">
       <form className="form_rigister" onSubmit={submit}>
+        {!checkVerfied?<>
         <div className="titel_regester">
           {" "}
           <h1>Register</h1>
@@ -129,9 +132,9 @@ const REGISTER = () => {
         <div className="email_user">
           <label>Email</label>
           <input
-            defaultValue={"Example_mohammad@gmail.com"}
+            
             type="text"
-            placeholder="Enter Email"
+            placeholder="Example_mohammad@gmail.com"
             required
             onChange={(e) => {
               setEmail(e.target.value);
@@ -176,7 +179,19 @@ const REGISTER = () => {
           <div className="message_user">
             <h1>{messageUser}</h1>
           </div>
-        )}
+        )}</>:<>
+        <div className="titel_regester">
+          {" "}
+          <h1>verfied</h1>
+        </div>
+        <p>Enter the verfied code, it was send to your email</p>
+        <input maxLength={6} onChange={(e)=>{
+setCompareWord(e.target.value)
+        }}/>
+        <button onClick={()=>{
+          
+        }}>Verfied email</button>
+        </>}
       </form>
     </div>
   );

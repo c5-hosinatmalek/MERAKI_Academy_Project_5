@@ -28,10 +28,10 @@ const ProductPage = () => {
         console.log(err);
       });
   }, []);
-  const addCartClick = (id) => {
+  const addCartClick = (id,price) => {
     
     axios
-      .post(`http://localhost:5000/cart/add/${id}`,{}, {headers:{
+      .post(`http://localhost:5000/cart/add/${id}`,{price}, {headers:{
         authorization: `Bearer ${state.token}`,
       },})
       .then((result) => {
@@ -93,7 +93,7 @@ const ProductPage = () => {
           className="addtocart"
             onClick={() => {
 
-              addCartClick(state.product[0].product_id);
+              addCartClick(state.product[0].product_id,state.product[0].price);
             }}
             >
             Add to cart
