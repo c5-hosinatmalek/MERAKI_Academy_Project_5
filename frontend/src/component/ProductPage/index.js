@@ -60,7 +60,7 @@ const ProductPage = () => {
       </div>
       <div className="parentpriceAvilability">
         <div className="priceAvilability">
-          <h3>JOD {state.product[0] && state.product[0].price},00</h3>
+          <h2>JOD {state.product[0] && state.product[0].price},00</h2>
               <div className="detalis">
             <p>
              Availability:
