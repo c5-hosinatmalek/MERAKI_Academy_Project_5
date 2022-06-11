@@ -147,23 +147,21 @@ const updateQuantity = (req, res) => {
   });
 };
 
-
-
-const getallcarts=(req,res)=>{
-  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE CART.is_deleted = 1`;
-  connection.query(query,(err,result)=>{
+const getallcarts = (req, res) => {
+  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID INNER JOIN sub_categories ON  PRODUCTS.sub_category=sub_categories.subCategory_id INNER JOIN users ON users.user_id=cart.user_id WHERE CART.is_deleted = 1`;
+  connection.query(query, (err, result) => {
     if (err) {
       res.status(500).json({
-        succses:false,
-        Message:err
-      })
+        succses: false,
+        Message: err,
+      });
     }
     res.json({
-      succses:true,
-      result
-    })
-  })
-}
+      succses: true,
+      result,
+    });
+  });
+};
 
 module.exports = {
   AddToCart,
@@ -171,5 +169,5 @@ module.exports = {
   getUserCarts,
   checkOut,
   updateQuantity,
-  getallcarts
+  getallcarts,
 };
