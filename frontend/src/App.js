@@ -19,6 +19,7 @@ import { setAllproduct } from "./redux/reducers/search";
 import axios from "axios";
 import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
 import ALLPRODUCTUSED from "./component/product_used/all_product_used/style";
+import ALLPRODUCTFORADMIN from "./component/product_used/all_order_sale_admin";
 ////////////////////////////////////////////////////////////
 import { CategoryBar } from "./component/CategoryBar/index";
 
@@ -76,7 +77,8 @@ function App() {
           <Route path="/cart/:id" element={<CartPage />} />
           <Route path="/create_order_sale" element={<ORDERSALE/>} />
           <Route path="/all_order_sale" element={<ALLORDERSALE/>} />
-          <Route path= />
+          <Route path="/all_product_used" element={<ALLPRODUCTUSED/>} />
+          <Route path="/all_order_sale_for_admin" element={<ALLPRODUCTFORADMIN/>}/>
         </Routes>
       <FOOTER />
       </div>
