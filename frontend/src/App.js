@@ -13,7 +13,7 @@ import Getallcarts from "./component/getallcartadmin";
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector} from "react-redux";
 import { setAllproduct } from "./redux/reducers/search";
 import axios from "axios";
 import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
@@ -26,7 +26,7 @@ import { NavBar } from "./component/NavBar";
 
 import { ProductPage } from "./component/ProductPage/index";
 import CartPage from "./component/CartPage/index";
-
+import jwtDecode from "jwt-decode";
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
@@ -35,6 +35,21 @@ import {SubCatgoryPage} from "./component/SubCategoryPage/index"
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
+
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.auth.isLoggedIn,
+      token: state.auth.token,
+    };
+  });
+
+
+  const decodeToken = (columnName) => {
+    if (state.isLoggedIn) {
+      return jwtDecode(state.token)[columnName];
+    }
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/product")
@@ -53,9 +68,40 @@ function App() {
   }, []);
 
   ////////////////////////////////////////////////////////////////////
+  
   return (
-    <div className="App">
+    <div>
+{decodeToken("role") == 1? <div className="App">
+<div className="mainphotos">
+        <img className="mainphotosclass" src={photo}></img>
+      </div>
+      <div className="routesdiv">
+      <NavBar />
+        <Routes>
+          <Route path="/rigester" element={<REGISTER />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/admin/usersTable" element={<UserTable />} />
+          <Route path="/admin/productTable" element={<ProductTable />} />
+          <Route path="/admin/cart" element={<Getallcarts />} />
+          <Route path="/login" element={<LOGIN />} />
+          <Route path="/creat" element={<Createprodact />} />
+          <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
+          <Route path="/category/:id/products" element={<GetProdact />} />
+          <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
+          <Route path="/category/product/:id" element={<ProductPage />} />
+          <Route path="/cart/:id" element={<CartPage />} />
+          <Route path="/subCategory/:subCategory_id" element={<SubCatgoryPage/>}/>
+        </Routes>
+      <FOOTER />
+      </div>
       <div className="mainphotos">
+        <img className="mainphotosclass" src={photo2}></img>
+      </div>
+</div>
+:
+(
+<div className="App">
+<div className="mainphotos">
         <img className="mainphotosclass" src={photo}></img>
       </div>
       <div className="routesdiv">
@@ -81,6 +127,12 @@ function App() {
       <div className="mainphotos">
         <img className="mainphotosclass" src={photo2}></img>
       </div>
+
+</div>
+)}
+
+
+
     </div>
   );
 }

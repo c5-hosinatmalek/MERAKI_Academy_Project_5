@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 import { BsCart4 } from "react-icons/bs";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LOGIN from "../LOGIN";
 import { useSelector, useDispatch } from "react-redux";
@@ -29,7 +29,7 @@ const NavBar = () => {
   const logout = () => {
     dispacth(setLogout());
   };
-/////////////////////////////////////////////////////////////// 
+  ///////////////////////////////////////////////////////////////
   const sowHide = () => {
     setShow(!show);
 
@@ -39,14 +39,23 @@ const NavBar = () => {
       setClassName("");
     }
   };
-////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
   return (
     <div className="navbar">
       {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-          <Link>table users</Link>
-          <p>table product</p>
-          <p>table checkout</p>
+          <Link to={`/admin/usersTable`}>table users</Link>
+          <Link to={`/admin/productTable`}>
+            <p>table product</p>
+          </Link>
+          <Link to={`/admin/cart`}>
+            <p>table checkout</p>
+          </Link>
+          <Link to={`/admin/uplodphoto`}>
+            <p>uplodphoto</p>
+          </Link>
+        
+        <Link to={`/`} >login</Link>
         </div>
       ) : (
         <div className="navUser">
@@ -55,19 +64,21 @@ const NavBar = () => {
           </Link>
           <SEARCH />
           <div className="my_account_contener">
-            <div className="icons"  onClick={sowHide} >
+            <div className="icons" onClick={sowHide}>
               {" "}
-              <AccountBoxIcon  sx={{ fontSize: 55 }} />
+              <AccountBoxIcon sx={{ fontSize: 55 }} />
             </div>
 
             {state.isLoggedIn ? (
               <ul className={`ul ${className}`}>
                 <li className="li_1">{decodeToken("userName")}</li>
-                <li className="li_2" onClick={logout}>Logout</li>
+                <li className="li_2" onClick={logout}>
+                  Logout
+                </li>
               </ul>
             ) : (
               <ul className={`ul ${className}`}>
-                <li className="li_1" >
+                <li className="li_1">
                   <Link to="/login">login</Link>
                 </li>
                 <li className="li_2">
@@ -78,12 +89,17 @@ const NavBar = () => {
 
             {!state.isLoggedIn ? (
               <Link className="contener_logcart" to={"/login"}>
-                <div className="icons"> <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} /></div>
-               
+                <div className="icons">
+                  {" "}
+                  <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} />
+                </div>
               </Link>
             ) : (
               <Link to={`/cart/${decodeToken("user_id")}`}>
-                 <div className="icons"> <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} /></div>
+                <div className="icons">
+                  {" "}
+                  <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} />
+                </div>
               </Link>
             )}
           </div>
