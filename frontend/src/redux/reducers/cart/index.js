@@ -23,7 +23,7 @@ state.cart[action.payload[0]].quantity=action.payload[1]
     },
     checkoutAction:(state,action)=>{
 state.cart=[]
-console.log(state.cart,111);
+
     },
     totalPriceAction:(state,action)=>{
 state.totalprice=state.totalprice+action.payload

@@ -5,6 +5,10 @@ const AddToCart = (req, res) => {
   let quantity = 1;
   const product_id = req.params.id;
   const user_id = req.token.user_id;
+
+  const {price} =req.body
+
+
   const query = `select * from cart where product_id =? and is_deleted=0;`;
   const Data = [product_id];
   console.log(check,quantity,quantity,product_id,user_id,Data);
@@ -40,8 +44,8 @@ const AddToCart = (req, res) => {
       });
     } else {
       const query =
-        "INSERT INTO cart (product_id,user_id,quantity) VALUES (?,?,?)";
-      const data = [product_id, user_id, quantity];
+        "INSERT INTO cart (product_id,user_id,quantity,price_checkout) VALUES (?,?,?,?)";
+      const data = [product_id, user_id, quantity,price];
       connection.query(query, data, (err, Result) => {
         if (err) {
           return res.status(500).json({

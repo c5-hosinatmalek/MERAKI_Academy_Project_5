@@ -5,14 +5,16 @@
   box-sizing: border-box;
 }
 
-.react-slideshow-container {
-  width: 79rem;
+
+
+.contener_img2{
+  display: none;
 }
 
 .App {
   display: flex;
 }
-.mainphotos {
+ .mainphotos {
  height: 1000px;
   position: sticky;
 top: 0px;
@@ -20,10 +22,33 @@ top: 0px;
 .mainphotosclass{
   height: 950px;
 
-}
+} 
+
+
+
+
+  @media (max-width:1500px){
+     .mainphotosclass{
+      display: none;
+    } 
+
+
 
 button:hover{
   cursor: pointer
 }
 
+    .react-slideshow-container {
+      width: 79rem;
+    }
+    
+    .App {
+      display: flex;
+    }
+    .mainphotos {
+      position: sticky;
+    } 
 
+
+
+  }

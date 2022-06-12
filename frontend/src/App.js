@@ -30,6 +30,7 @@ import CartPage from "./component/CartPage/index";
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
+import {SubCatgoryPage} from "./component/SubCategoryPage/index"
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
@@ -73,6 +74,7 @@ function App() {
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
           <Route path="/category/product/:id" element={<ProductPage />} />
           <Route path="/cart/:id" element={<CartPage />} />
+          <Route path="/subCategory/:subCategory_id" element={<SubCatgoryPage/>}/>
         </Routes>
       <FOOTER />
       </div>

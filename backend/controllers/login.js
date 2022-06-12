@@ -27,6 +27,7 @@ const login = (req, res) => {
             country: result[0].country,
             role: result[0].role_id,
             userName: result[0].name,
+            email:result[0].email
           };
           const secret = process.env.SECRET;
           const token = jwt.sign(payload, secret);

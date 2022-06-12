@@ -8,6 +8,7 @@ const searchSlice = createSlice({
     stateserch: false,
     messageSearche: "",
     number: [],
+    subCatgoryProduct:[],
   },
   reducers: {
     setAllproduct: (state, action) => {
@@ -51,9 +52,15 @@ const searchSlice = createSlice({
         }
       })
     },
+    getProductbySubCategoryId:(state,action)=>{
+      console.log(111111);
+      state.subCatgoryProduct=state.allPrudact.filter((element)=>{
+          return element.subCategory_id==action.payload
+      })
+  }
   },
 });
 
-export const { setAllproduct, setResultSerch, setStateSerch, getfury,numberprodact } =
+export const { setAllproduct, setResultSerch, setStateSerch, getfury,numberprodact,getProductbySubCategoryId } =
   searchSlice.actions;
 export default searchSlice.reducer;
