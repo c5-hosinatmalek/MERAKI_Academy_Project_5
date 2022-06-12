@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./style.css"
+import "./style.css";
 import axios from "axios";
 const Getallcarts = () => {
-    const [data, setData] = useState("")
-    const [category, setCategory] = useState("")
-    let sorteddata;
+  const [data, setData] = useState("");
+  const [category, setCategory] = useState("");
+  let sorteddata;
   useEffect(() => {
     axios
       .get("http://localhost:5000/cart")
@@ -28,35 +28,42 @@ const Getallcarts = () => {
   }, []);
 
   const sortdata = (string) => {
-      const sorteddata= data.map((element) => {
+    const sorteddata = data.map((element) => {
       if (element.sub_category === string) {
         return (
-          <div>
-            <img className="adminimg" src={element.picUrlProd}></img>
-            <p>{element.title}</p>
-            <p> {element.price} </p>
-          </div>
+          <table>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+            </tr>
+
+            <tr>
+              <td>
+                <img className="adminimg" src={element.picUrlProd} />
+              </td>
+              <td>{element.title}</td>
+              <td> {element.price} </td>
+            </tr>
+          </table>
         );
       }
     });
-    return sorteddata ;
+    return sorteddata;
   };
-  sorteddata=category&&category.map((element, index) => {
-    return (
-      <div>
-        <h1>{element.sub_category}</h1>
-        {sortdata(element.sub_category)}
-      </div>
-    );
-  })
+  sorteddata =
+    category &&
+    category.map((element, index) => {
+      return (
+        <div>
+          <h1>{element.sub_category}</h1>
 
+          {sortdata(element.sub_category)}
+        </div>
+      );
+    });
 
-
-  return (
-    <div>
-        {sorteddata}
-    </div>
-  );
+  return <div>{sorteddata}</div>;
 };
 
 export default Getallcarts;

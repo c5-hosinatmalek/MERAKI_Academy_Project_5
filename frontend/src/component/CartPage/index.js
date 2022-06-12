@@ -53,17 +53,7 @@ const CartPage = () => {
       });
   };
   //  dispatch(totalPriceAction(element.quantity*element.price))
-  const deleteCartClick = (product_id) => {
-    dispatch(deleteFromCart(product_id));
-    axios
-      .delete(`http://localhost:5000/cart/${product_id}`, {
-        headers: {
-          authorization: `Bearer ${state.token}`,
-        },
-      })
 
-  }
- 
 const deleteCartClick=(product_id)=>{
     
     dispatch(deleteFromCart(product_id))
@@ -78,8 +68,10 @@ const deleteCartClick=(product_id)=>{
 }
 
 const CheckOutClick=()=>{
+  let date = new Date()
+  date = date.toString().split(" ").slice(1,4).join(" ")
  
-  axios.put("http://localhost:5000/cart/checkout",{arrayCheckout:state.cart},{
+  axios.put("http://localhost:5000/cart/checkout",{arrayCheckout:state.cart,date},{
     headers: {
       authorization: `Bearer ${state.token}`,
     }}).then((result)=>{
@@ -125,7 +117,7 @@ updateQuantityFun(index,e.target.value,element.product_id)
       <td></td>
       <td>Total Price</td>
       <td>{amount} JD</td>
-
+</tr>
 
         {state.cart &&
           state.cart.map((element, index) => {
@@ -185,6 +177,6 @@ updateQuantityFun(index,e.target.value,element.product_id)
         Check Out
       </button>
     </>
-  );
-};
+  };
+
 export default CartPage;
