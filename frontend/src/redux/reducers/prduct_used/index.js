@@ -2,7 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const product_used=createSlice({
+const product_used_slice=createSlice({
     name:"product_used",
     initialState:{
         allProductusedfromUser:[],
@@ -49,3 +49,7 @@ const product_used=createSlice({
         }
     }
 })
+
+export  const {addOrderSaleFromUser,SetAllProductUsedFromUser,setallProductUsedApprovedFromUser,setallProductFromAdmin,setallProductApprovedFromAdmin,requestAccept}=product_used_slice.actions
+
+export default product_used_slice.reducer
