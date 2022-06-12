@@ -1,0 +1,10 @@
+.contener_ordersale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40rem;
+}
+
+.contener_ordersale .form_ordersale{
+    border: solid black 5px;
+}
