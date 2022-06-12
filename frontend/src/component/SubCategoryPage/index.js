@@ -25,7 +25,7 @@ useEffect(()=>{
 },[])
 
 return <>
-<h1>{state.subCatgoryProduct[0].sub_category&&state.subCatgoryProduct[0].sub_category}</h1>
+
 
 {state.subCatgoryProduct&&state.subCatgoryProduct.map((element,index)=>{
     return <div className="productdivSub">

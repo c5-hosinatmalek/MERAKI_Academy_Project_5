@@ -63,19 +63,7 @@ const CartPage = () => {
       })
 
   }
- 
-const deleteCartClick=(product_id)=>{
-    
-    dispatch(deleteFromCart(product_id))
-    axios.delete(`http://localhost:5000/cart/${product_id}`,{
-        headers: {
-          authorization: `Bearer ${state.token}`,
-        }}).then((result)=>{
-            
-        }).catch((err)=>{
-            console.log(err);
-        })
-}
+
 
 const CheckOutClick=()=>{
  
@@ -119,60 +107,13 @@ updateQuantityFun(index,e.target.value,element.product_id)
       <td className="totalCell">{element.quantity*element.price} JD</td>
       </tr>
     })}
-    <tr>
+    
       <td></td>
       <td></td>
       <td></td>
       <td>Total Price</td>
       <td>{amount} JD</td>
-
-
-        {state.cart &&
-          state.cart.map((element, index) => {
-            return (
-              <tr key={index}>
-                <td>
-                  <img src={`${element.picUrlProd}`} className="imgCart" />
-                </td>
-                <td className="titleCell">{element.title}</td>
-                <td className="quantityCell">
-                  <input
-                    defaultValue={element.quantity}
-                    onChange={(e) => {
-                      updateQuantityFun(
-                        index,
-                        e.target.value,
-                        element.product_id
-                      );
-                    }}
-                    type="number"
-                    min={0}
-                    max={element.Store_Quantity}
-                    className="inputQuantity"
-                  />
-                  <button
-                    className="deleteIcon"
-                    onClick={() => {
-                      deleteCartClick(element.product_id);
-                    }}
-                  >
-                    <MdDelete />
-                  </button>
-                </td>
-                <td className="priceCell">{element.price} JD</td>
-                <td className="totalCell">
-                  {element.quantity * element.price} JD
-                </td>
-              </tr>
-            );
-          })}
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>Total Price</td>
-          <td>{state.totalPrice}</td>
-        </tr>
+      
       </table>
       <h1>{message}</h1>
       <button
@@ -185,6 +126,7 @@ updateQuantityFun(index,e.target.value,element.product_id)
         Check Out
       </button>
     </>
-  );
+  
+  
 };
 export default CartPage;
