@@ -54,6 +54,7 @@ const CartPage = () => {
   };
   //  dispatch(totalPriceAction(element.quantity*element.price))
 
+
 const deleteCartClick=(product_id)=>{
     
     dispatch(deleteFromCart(product_id))
@@ -66,6 +67,7 @@ const deleteCartClick=(product_id)=>{
             console.log(err);
         })
 }
+
 
 const CheckOutClick=()=>{
   let date = new Date()
@@ -111,12 +113,13 @@ updateQuantityFun(index,e.target.value,element.product_id)
       <td className="totalCell">{element.quantity*element.price} JD</td>
       </tr>
     })}
-    <tr>
+    
       <td></td>
       <td></td>
       <td></td>
       <td>Total Price</td>
       <td>{amount} JD</td>
+
 </tr>
 
         {state.cart &&
@@ -165,6 +168,7 @@ updateQuantityFun(index,e.target.value,element.product_id)
           <td>Total Price</td>
           <td>{state.totalPrice}</td>
         </tr>
+
       </table>
       <h1>{message}</h1>
       <button
@@ -177,6 +181,8 @@ updateQuantityFun(index,e.target.value,element.product_id)
         Check Out
       </button>
     </>
+
   };
+
 
 export default CartPage;
