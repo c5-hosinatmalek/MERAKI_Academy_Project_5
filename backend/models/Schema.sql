@@ -86,6 +86,10 @@ CREATE TABLE pic(
 CREATE TABLE sold(
     sold_id INT AUTO_INCREMENT NOT NULL,
     sold INT,
+    title VARCHAR(255),
+    price INT,
+    quantity INT,
+    date VARCHAR(255),
     product_Id int,
     FOREIGN KEY (product_id) REFERENCES products(product_id),
     PRIMARY KEY (sold_id)

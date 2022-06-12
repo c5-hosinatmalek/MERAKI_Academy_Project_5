@@ -39,7 +39,6 @@ const ProductPage = () => {
         setTimeout(()=>{
           setMessage("")
         },3000)
-        console.log(result);
       })
       .catch((err) => {
         console.log("errr", err);

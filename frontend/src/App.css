@@ -33,6 +33,11 @@ top: 0px;
     } 
 
 
+
+button:hover{
+  cursor: pointer
+}
+
     .react-slideshow-container {
       width: 79rem;
     }

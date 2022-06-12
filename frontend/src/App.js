@@ -9,6 +9,7 @@ import photo from "./img/Screenshot_1.png";
 import photo2 from "./img/Screenshot_2.png";
 import { numberprodact } from "./redux/reducers/search";
 import Pay from "./component/paypal";
+import Getallcarts from "./component/getallcartadmin";
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
@@ -65,6 +66,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/admin/usersTable" element={<UserTable />} />
           <Route path="/admin/productTable" element={<ProductTable />} />
+          <Route path="/admin/cart" element={<Getallcarts />} />
           <Route path="/login" element={<LOGIN />} />
           <Route path="/creat" element={<Createprodact />} />
           <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
