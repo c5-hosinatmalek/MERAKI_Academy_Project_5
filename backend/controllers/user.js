@@ -66,5 +66,24 @@ const makeAdmin=(req,res)=>{
     });
   })
 }
+const getUserbyEmail=(req,res)=>{
+  const email=req.params.email
+  const query="select * from users where email=?"
+  const data =[email]
+  connection.query(query,data,(err, result) => {
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err,
+      });
+      return;
+    }
+    res.status(200).json({
+      success: true,
+      result: result,
+    });
+  })
+}
 
-module.exports = { getAllUser, deleteUserByid,makeAdmin };
+module.exports = { getAllUser, deleteUserByid,makeAdmin,getUserbyEmail };
