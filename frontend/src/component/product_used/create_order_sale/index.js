@@ -69,6 +69,7 @@ const ORDERSALE=()=>{
         <div className="contener_ordersale">
            
             <form className="form_ordersale" onSubmit={submit} >
+                <div className="titel_order" ><h1>Sale Order</h1> </div>
                 <div className="productused_name" >
                     <label>name product</label>
                     <input placeholder="Example hard desk" onChange={(e)=>{setProduct_name(e.target.value)}}  />
