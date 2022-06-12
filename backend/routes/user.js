@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllUser, deleteUserByid,makeAdmin } = require("../controllers/user");
+const { getAllUser, deleteUserByid,makeAdmin,getUserbyEmail } = require("../controllers/user");
 //==> create middleware router userRouter
 const userRouter = express.Router();
 //==> http method get endpoint ==>http://localhost:5000/user
@@ -9,8 +9,10 @@ userRouter.get("/", getAllUser);
 
 userRouter.delete("/:id", deleteUserByid);
 //==>http method put endpoint ==> http://localhost:5000/user/:id
-
 userRouter.put("/:id",makeAdmin)
+//==>http method get endpoint ==> http://localhost:5000/user/:email
+
+userRouter.get("/:email",getUserbyEmail)
 
 
 
