@@ -64,6 +64,7 @@ CREATE TABLE Products(
     sub_category INT,
     product_name VARCHAR(255),
     product_type VARCHAR(255),
+    buy_price Int,
     price INT,
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES categories(category_id),
@@ -85,9 +86,9 @@ CREATE TABLE pic(
 
 CREATE TABLE sold(
     sold_id INT AUTO_INCREMENT NOT NULL,
-    sold INT,
+    sold_price INT,
     title VARCHAR(255),
-    price INT,
+    price_buy INT,
     quantity INT,
     date VARCHAR(255),
     product_Id int,
