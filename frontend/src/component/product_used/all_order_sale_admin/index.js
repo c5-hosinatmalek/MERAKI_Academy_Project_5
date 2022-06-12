@@ -12,13 +12,19 @@ const ALLPRODUCTFORADMIN=()=>{
         }
     })
 
-    useEffect(()=>{
+
+    const allOrderSale=()=>{
         axios.get("http://localhost:5000/prudect_used/AllSaleOrderForadmin").then((resulatt)=>{
 
             dispacth( setallProductFromAdmin(resulatt.data.result))
-            console.log(resulatt.data.result);
+           
                 
         })
+    }
+
+
+    useEffect(()=>{
+        allOrderSale()
     },[])
 
 
@@ -54,7 +60,13 @@ const ALLPRODUCTFORADMIN=()=>{
                             <td>{element.admission_status?<h1 style={{color:"green"}} >it has been accpted</h1  >:<h1 style={{color:"red"}} >under review</h1>}</td>
                             <td>{element.product_description}</td>
                             <td>{element.phone_number}</td>
-                            <td> <button>Acceptance</button> </td>
+                            <td> <button onClick={()=>{
+                                axios.put(`http://localhost:5000/prudect_used/${element.used_product_id}`).then((result)=>{
+                                    allOrderSale()
+                                })
+                            }} >Acceptance</button>
+                                <button>delete</button>
+                             </td>
             </tr>
         )
     })
