@@ -17,7 +17,7 @@ const ALLPRODUCTFORADMIN=()=>{
         axios.get("http://localhost:5000/prudect_used/AllSaleOrderForadmin").then((resulatt)=>{
 
             dispacth( setallProductFromAdmin(resulatt.data.result))
-           
+            console.log(resulatt);
                 
         })
     }
@@ -65,7 +65,10 @@ const ALLPRODUCTFORADMIN=()=>{
                                     allOrderSale()
                                 })
                             }} >Acceptance</button>
-                                <button>delete</button>
+                                <button onClick={()=>{axios.delete(`http://localhost:5000/prudect_used/delete/${element.used_product_id}`).then((result)=>{
+                                    allOrderSale()
+                                    console.log(result);
+                                })}} >delete</button>
                              </td>
             </tr>
         )

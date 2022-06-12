@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { setAllproduct } from "./redux/reducers/search";
 import axios from "axios";
 import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
-import ALLPRODUCTUSED from "./component/product_used/all_product_used/style";
+import ALLPRODUCTUSED from "./component/product_used/all_product_used";
 import ALLPRODUCTFORADMIN from "./component/product_used/all_order_sale_admin";
 ////////////////////////////////////////////////////////////
 import { CategoryBar } from "./component/CategoryBar/index";
