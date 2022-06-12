@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getproduct,
-  getProductbySubCategoryId,
+  
 } from "../../redux/reducers/prodact";
 import { getSubCategory } from "../../redux/reducers/catogre";
 
@@ -57,12 +57,7 @@ const GetProdact = () => {
     sub_category();
   }, [id]);
 
-  const sub_categoryClick = (index) => {
-    dispacth(
-      getProductbySubCategoryId(state.sub_category[index].subCategory_id)
-    );
-    setShow(state.subCatgoryProduct);
-  };
+
 
   return (
     <div className="container_page">
@@ -73,19 +68,16 @@ const GetProdact = () => {
         {state.sub_category &&
           state.sub_category.map((element, index) => {
             return (<div className="subImgDiv">
-            
+              <Link to={`/subCategory/${element.subCategory_id}`}>
 
-            <img key={index+"img"} src={`${element.picUrlSub}`} className="subCategoryImg" onClick={() => {
-                  sub_categoryClick(index);
-                }}/>
+            <img key={index+"img"} src={`${element.picUrlSub}`} className="subCategoryImg" />
               <p
                 key={index}
-                onClick={() => {
-                  sub_categoryClick(index);
-                }}
-              className="parSub">
+                
+                className="parSub">
                 {element.sub_category}
               </p>
+                </Link>
                   </div>
                   );
                 })}
@@ -129,22 +121,7 @@ const GetProdact = () => {
             <option value={"the above"}>high-price to low-price</option>
             <option value={"A-TO-Z"}>A-Z</option>
           </select>
-          {/* <div className="radio">
-            <input type={"radio"} id="none" />
-            <label for="none">None</label>
-          </div>
-          <div className="radio">
-            <input type={"radio"} id="theleast" />
-            <label for="theleast">low-price to high-price</label>
-          </div>
-          <div className="radio">
-            <input type={"radio"} id="theabove" />
-            <label for="theabove">high-price to low-price</label>
-          </div>
-          <div className="radio">
-            <input type={"radio"} id="AtoZ" />
-            <label for="AtoZ">A-Z</label>
-          </div> */}
+          
         </div>
       </div>
       <div className="showProduct">

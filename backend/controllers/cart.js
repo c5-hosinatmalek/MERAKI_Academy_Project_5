@@ -4,12 +4,14 @@ const AddToCart = (req, res) => {
   let check = false;
   let quantity = 1;
   const product_id = req.params.id;
-
   const user_id = req.token.user_id;
+
   const {price} =req.body
+
 
   const query = `select * from cart where product_id =? and is_deleted=0;`;
   const Data = [product_id];
+  console.log(check,quantity,quantity,product_id,user_id,Data);
   connection.query(query, Data, (err, result) => {
     try {
       if (result.length) {
@@ -148,23 +150,58 @@ const updateQuantity = (req, res) => {
   });
 };
 
-
-
-const getallcarts=(req,res)=>{
-  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE CART.is_deleted = 1`;
-  connection.query(query,(err,result)=>{
+const getallcarts = (req, res) => {
+  const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID INNER JOIN sub_categories ON  PRODUCTS.sub_category=sub_categories.subCategory_id INNER JOIN users ON users.user_id=cart.user_id WHERE CART.is_deleted = 1`;
+  connection.query(query, (err, result) => {
     if (err) {
       res.status(500).json({
-        succses:false,
-        Message:err
-      })
+        succses: false,
+        Message: err,
+      });
     }
     res.json({
-      succses:true,
-      result
-    })
-  })
-}
+      succses: true,
+      result,
+    });
+  });
+};
+
+const addtosold = (req, res) => {
+  const product_Id = req.params.product_id;
+  const { title, quantity, price, date } = req.body;
+  const data = [title, price, date];
+  const query = "SELECT * FROM sold WHERE TITLE=? AND PRICE=? AND DATE=?";
+  connection.query(query, data, (err, reslt) => {
+    if (!reslt) {
+      const data = [title, price, product_Id, quantity, date];
+      const query = "INSERT INTO cart (title,price,product_Id,quantity,date)";
+      connection.query(query, data, (err, reslt1) => {
+        if (err) {
+          res.json({
+            stats: false,
+            Message: "err while adding new iteam",
+          });
+        }
+        res.status(201).json({
+          succses: true,
+          reslt1,
+        });
+      });
+    }
+    const data = [quantity, title, price, date];
+    const query =
+      "UPDATE sold SET quantity=quantity+? WHERE TITLE=? AND PRICE=? AND DATE=?";
+    connection.query(query, data, (err, result3) => {
+      if (err) {
+        res.json({ err });
+      }
+      res.status(203).json({
+        succses: true,
+        result3,
+      });
+    });
+  });
+};
 
 module.exports = {
   AddToCart,
@@ -172,5 +209,6 @@ module.exports = {
   getUserCarts,
   checkOut,
   updateQuantity,
-  getallcarts
+  getallcarts,
+  addtosold
 };

@@ -13,11 +13,8 @@
 .titleCell{
     padding: 5px 10px;
     font-size: 20px;
-    
     font-weight: 600;
     height: 125px;
-
-
 }
 .quantityCell{
     padding: 5px 17px;
@@ -59,3 +56,4 @@ display: flex;
 justify-items: center;
 align-items: center;
 }
+

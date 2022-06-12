@@ -9,6 +9,7 @@ import photo from "./img/Screenshot_1.png";
 import photo2 from "./img/Screenshot_2.png";
 import { numberprodact } from "./redux/reducers/search";
 import Pay from "./component/paypal";
+import Getallcarts from "./component/getallcartadmin";
 import LOGIN from "./component/LOGIN";
 import ORDERSALE from "./component/product_used/create_order_sale";
 import ALLORDERSALE from "./component/product_used/all_order_sale";
@@ -31,6 +32,7 @@ import CartPage from "./component/CartPage/index";
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
+import {SubCatgoryPage} from "./component/SubCategoryPage/index"
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
@@ -66,6 +68,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/admin/usersTable" element={<UserTable />} />
           <Route path="/admin/productTable" element={<ProductTable />} />
+          <Route path="/admin/cart" element={<Getallcarts />} />
           <Route path="/login" element={<LOGIN />} />
           <Route path="/creat" element={<Createprodact />} />
           <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
@@ -73,8 +76,12 @@ function App() {
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
           <Route path="/category/product/:id" element={<ProductPage />} />
           <Route path="/cart/:id" element={<CartPage />} />
+
           <Route path="/create_order_sale" element={<ORDERSALE/>} />
           <Route path="/all_order_sale" element={<ALLORDERSALE/>} />
+
+          <Route path="/subCategory/:subCategory_id" element={<SubCatgoryPage/>}/>
+
         </Routes>
       <FOOTER />
       </div>
