@@ -74,24 +74,9 @@ const ORDERSALE=()=>{
                     <label>name product</label>
                     <input placeholder="Example hard desk" onChange={(e)=>{setProduct_name(e.target.value)}}  />
                 </div>
-                <div className="category_select">
-                    <label >choice category</label>
-                    <select onChange={(e)=>{setCategory(e.target.value)}} >
-                        <option ></option>
-                        <option value="hard ware">hard ware</option>
-                        <option value="hard ware">hard ware</option>
-                        <option value="hard ware">hard ware</option>
-                    </select>
-                </div>
-                <div className="product_used_description">
-                    <label>description product</label>
-                    <textarea onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="description product" />
-                </div>
-                <div className="img_url_contener" >
-                    <label>choice img product</label>
-                    <input type="file" onChange={(e)=>{setimage(e.target.files[0])}} />
-                </div>
+              
                 <div className="asking_price">
+                    <label>asking price</label>
                     <input onChange={(e)=>{setAsking_price(e.target.value)}} placeholder="asking price"/>
                 </div>
                 <div className=" bank_account">
@@ -102,6 +87,25 @@ const ORDERSALE=()=>{
                     <label>phon number</label>
                     <input placeholder="phon number" onChange={(e)=>{setphone_number(e.target.value)}} />
                 </div>
+                <div className="category_select">
+                    <label >choice category</label>
+                    <select onChange={(e)=>{setCategory(e.target.value)}} >
+                        <option ></option>
+                        <option value="hard ware">hard ware</option>
+                        <option value="hard ware">hard ware</option>
+                        <option value="hard ware">hard ware</option>
+                    </select>
+                </div>
+                
+                <div className="img_url_contener" >
+                    <label>choice img product</label>
+                    <input type="file" onChange={(e)=>{setimage(e.target.files[0])}} />
+                </div>
+                <div className="product_used_description">
+                    <label>description product</label>
+                    <textarea onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="description product" />
+                </div>
+                
                 <div className="sen_buttoun" ><button>send</button></div>
                 <div className="message_user" >  <h1>{message}</h1> </div>
             </form>

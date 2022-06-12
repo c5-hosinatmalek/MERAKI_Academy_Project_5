@@ -11,6 +11,7 @@ import { numberprodact } from "./redux/reducers/search";
 import Pay from "./component/paypal";
 import LOGIN from "./component/LOGIN";
 import ORDERSALE from "./component/product_used/create_order_sale";
+import ALLORDERSALE from "./component/product_used/all_order_sale";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -73,6 +74,7 @@ function App() {
           <Route path="/category/product/:id" element={<ProductPage />} />
           <Route path="/cart/:id" element={<CartPage />} />
           <Route path="/create_order_sale" element={<ORDERSALE/>} />
+          <Route path="/all_order_sale" element={<ALLORDERSALE/>} />
         </Routes>
       <FOOTER />
       </div>

@@ -50,6 +50,6 @@ const product_used_slice=createSlice({
     }
 })
 
-const {addOrderSaleFromUser,SetAllProductUsedFromUser,setallProductUsedApprovedFromUser,setallProductFromAdmin,setallProductApprovedFromAdmin,requestAccept}=product_used_slice.actions
+export  const {addOrderSaleFromUser,SetAllProductUsedFromUser,setallProductUsedApprovedFromUser,setallProductFromAdmin,setallProductApprovedFromAdmin,requestAccept}=product_used_slice.actions
 
 export default product_used_slice.reducer

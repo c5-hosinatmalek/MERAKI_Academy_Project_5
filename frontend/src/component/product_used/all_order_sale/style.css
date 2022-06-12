@@ -1,0 +1,44 @@
+.contener_all_order_sale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+
+}
+.content_img_order img{
+    width: 17rem;
+    height: 100%;
+}
+.one_order_sale{
+    display: flex;
+    flex-direction: row;
+  margin-bottom: 1rem;
+  border: 3px solid rgb(0, 0, 0);
+
+}
+.content_all_order_sale{
+    scroll-behavior: auto;
+    height: 40rem;
+    box-sizing: border-box;
+    overflow:scroll;
+}
+.details_all_order{
+    width: 30rem;
+}
+
+.approvied{
+   text-align: center;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+   
+}
+.details_all_order h1{
+    padding: 5px;
+   
+}
+
+.approvied h1{
+    padding:7px ;
+    font-size: 2rem;
+}
