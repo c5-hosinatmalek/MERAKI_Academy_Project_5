@@ -9,7 +9,7 @@ import photo from "./img/Screenshot_1.png";
 import photo2 from "./img/Screenshot_2.png";
 import { numberprodact } from "./redux/reducers/search";
 import Pay from "./component/paypal";
-import Getallcarts from "./component/getallcart";
+import Getallcarts from "./component/getallcartadmin";
 import LOGIN from "./component/LOGIN";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
