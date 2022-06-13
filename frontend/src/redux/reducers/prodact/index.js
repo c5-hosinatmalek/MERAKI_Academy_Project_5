@@ -4,32 +4,50 @@ export const productSlice = createSlice({
   initialState: {
     product: [],
     subCatgoryProduct: [],
-    Pagination: [],
+    number: [],
+    productcatogre: [],
   },
   reducers: {
+
     getproduct: (state, action) => {
+      console.log(action.payload.length / 12);
       state.product = action.payload;
     },
 
-    
-    setPagination: (state, action) => {
-      state.Pagination = action.payload;
+    // payload => sub_catgoryId
+    getProductBysubCategoryAction: (state, action) => {
+      state.subCatgoryProduct = action.payload;
     },
-        // payload => sub_catgoryId
-      getProductBysubCategoryAction:(state,action)=>{
-            state.subCatgoryProduct=action.payload
+    getnumber: (state, action) => {
+      state.number = [];
+      let counter = state.product.length / 12;
+      state.product.forEach((element, index) => {
+        if (index < Math.ceil(counter)) {
+          state.number.push(index + 1);
         }
-  
+      });
+    },
+    addcatogre:(state,action)=>{
+      state.productcatogre=action.payload
+      state.number=[]
+      let counter = state.productcatogre.length / 12;
+      state.productcatogre.forEach((element, index) => {
+        console.log(index < Math.ceil(counter));
+        if (index < Math.ceil(counter)) {
+          console.log(index + 1);
+          state.number.push(index + 1);
+        }
+      });
+    }
+  },
 });
 
-export const { getproduct, setPagination,getProductBysubCategoryAction } = productSlice.actions;
-
-    
-        
-       
-
-
-
-
+export const {
+  getproduct,
+  setPagination,
+  getProductBysubCategoryAction,
+  getnumber,
+  addcatogre
+} = productSlice.actions;
 
 export default productSlice.reducer;

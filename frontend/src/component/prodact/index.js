@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-
+import { addcatogre } from "../../redux/reducers/prodact";
 import { useParams, Link } from "react-router-dom";
-
+import { getnumber } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getproduct,
-  
-} from "../../redux/reducers/prodact";
+import { getproduct } from "../../redux/reducers/prodact";
 import { getSubCategory } from "../../redux/reducers/catogre";
 
 import axios from "axios";
@@ -19,23 +16,25 @@ const GetProdact = () => {
   const state = useSelector((state) => {
     return {
       prodect: state.product.product,
+      number: state.product.number,
       sub_category: state.catogre.subCategory,
       subCatgoryProduct: state.product.subCatgoryProduct,
+      
     };
   });
   const [show, setShow] = useState(state.prodect);
   const [message, setMessage] = useState("");
-  const [title,setTitle]=useState("")
+  const [title, setTitle] = useState("");
 
-  const products = async () => {
+  const products = async (string) => {
     await axios
-      .get(`http://localhost:5000/category/${id}/products`)
+      .post(`http://localhost:5000/product/subcatogre/${string}`, { id: id })
       .then((result) => {
         dispacth(getproduct(result.data.result));
         setShow(result.data.result);
         setMessage("All Products ");
         console.log(result.data.result);
-        setTitle(result.data.result[0].category)
+        setTitle(result.data.result[0].category);
       })
       .catch((err) => {
         console.log(err);
@@ -53,40 +52,55 @@ const GetProdact = () => {
   };
 
   useEffect(() => {
-    products();
+    axios
+      .get(`http://localhost:5000/category/${id}/products`)
+      .then((result) => {
+        dispacth(addcatogre(result.data.result))
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },[]);
+
+  useEffect(() => {
+    products(1);
     sub_category();
+
+    dispacth(getnumber());
   }, [id]);
-
-
 
   return (
     <div className="container_page">
       <div className="subCategory">
         <h1 className="subcatgoryTitleProduct">{title}</h1>
         <div className="subDiv">
-
-        {state.sub_category &&
-          state.sub_category.map((element, index) => {
-            return (<div className="subImgDiv">
-              <Link to={`/subCategory/${element.subCategory_id}`} className="subImgDiv">
-
-            <img key={index+"img"} src={`${element.picUrlSub}`} className="subCategoryImg" />
-              <p
-                key={index}
-                
-                className="parSub">
-                {element.sub_category}
-              </p>
-                </Link>
-                  </div>
-                  );
-                })}
+          {state.sub_category &&
+            state.sub_category.map((element, index) => {
+              return (
+                <div className="subImgDiv">
+                  <Link
+                    to={`/subCategory/${element.subCategory_id}`}
+                    className="subImgDiv"
+                  >
+                    <img
+                      key={index + "img"}
+                      src={`${element.picUrlSub}`}
+                      className="subCategoryImg"
+                    />
+                    <p key={index} className="parSub">
+                      {element.sub_category}
+                    </p>
+                  </Link>
                 </div>
+              );
+            })}
+        </div>
       </div>
       <div className="side_bar">
         <div className="orderby_price">
           <h3 className="sortHeader">Sort By </h3>
-          <select className="dropList"
+          <select
+            className="dropList"
             onChange={(e) => {
               if (e.target.value === "the least") {
                 axios
@@ -121,7 +135,6 @@ const GetProdact = () => {
             <option value={"the above"}>high-price to low-price</option>
             <option value={"A-TO-Z"}>A-Z</option>
           </select>
-          
         </div>
       </div>
       <div className="showProduct">
@@ -145,6 +158,24 @@ const GetProdact = () => {
 
                     <p className="pricePar"> {element.price} JD</p>
                   </Link>
+                </div>
+              );
+            })}
+          {state.number &&
+            state.number.map((element) => {
+              console.log(element);
+              return (
+                <div className="divPagination">
+                  {" "}
+                  <button
+                    key={element}
+                    onClick={() => {
+                      products(element);
+                    }}
+                  >
+                    {element}
+                  </button>
+                  ;
                 </div>
               );
             })}
