@@ -7,6 +7,7 @@ import { setAllProductUsed } from "../../../redux/reducers/prduct_used";
 import { Link } from "react-router-dom";
 const ALLPRODUCTUSED=()=>{
     const [message,setMessage]=useState("")
+    const [category,setCategory]=useState("")
 const dispacth=useDispatch()
 const state=useSelector((state)=>{
     return{
@@ -22,9 +23,27 @@ const getAllProductUsed=()=>{
     })
 
 }
+
+ const getAllProductBYCategory=()=>{
+    axios.get(`http://localhost:5000/prudect_used/productbycategory/${category}`).then((result)=>{
+        console.log(result);
+        setMessage(result.data.message)
+        dispacth(setAllProductUsed(result.data.result))
+    })
+
+ }
+
 useEffect(()=>{
-    getAllProductUsed()
-},[])
+    if(!category){
+        getAllProductUsed()
+    }else if(category==="ALL Produc"){
+        getAllProductUsed()
+    }else{
+        getAllProductBYCategory()
+        console.log("mmmm");
+    }
+  
+},[category])
 
 
 
@@ -37,7 +56,15 @@ useEffect(()=>{
                 <div> <h1>{message}</h1> </div>    
                 <div className="content_select">
                     <label>category  </label>
-                    <select></select></div>
+                    <select onChange={(e)=>{setCategory(e.target.value)}}>
+                        <option></option>
+                        <option value="ALL Produc" >ALL Produc</option>
+                        <option value="hard ware">hard ware</option>
+                        <option value="Bc">Bc</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                    </div>
                            
             </div>
 
