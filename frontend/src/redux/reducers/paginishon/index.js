@@ -9,7 +9,6 @@ export const paginationSlice = createSlice({
     setPagination: (state, action) => {
       state.pagination = action.payload;
     },
-    // payload => sub_catgoryId
     subCatgorypagination: (state, action) => {
       state.subCatgoryPagination = action.payload;
     },
@@ -17,6 +16,6 @@ export const paginationSlice = createSlice({
 });
 
 export const { setPagination, subCatgorypagination} =
-  productSlice.actions;
+paginationSlice.actions;
 
-export default productSlice.reducer;
+export default paginationSlice.reducer;
