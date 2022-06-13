@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { subCatgorypagination } from "../../redux/reducers/paginishon";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductBysubCategoryAction } from "../../redux/reducers/prodact";
 
@@ -31,6 +32,7 @@ const SubCatgoryPage = () => {
       .post(`http://localhost:5000/product/subcatogre/1`)
       .then((result) => {
         console.log(result);
+        dispatch(subCatgorypagination());
       })
       .catch((err) => {
         console.log(err);

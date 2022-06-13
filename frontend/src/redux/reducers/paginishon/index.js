@@ -4,9 +4,11 @@ export const paginationSlice = createSlice({
   initialState: {
     subCatgoryPagination: [],
     pagination: [],
+    number: [],
   },
   reducers: {
     setPagination: (state, action) => {
+      console.log(action.payload);
       state.pagination = action.payload;
     },
     subCatgorypagination: (state, action) => {
