@@ -5,6 +5,7 @@ export const productSlice = createSlice({
     product: [],
     subCatgoryProduct: [],
     Pagination: [],
+    
   },
   reducers: {
     getproduct: (state, action) => {
@@ -20,7 +21,8 @@ export const productSlice = createSlice({
             state.subCatgoryProduct=action.payload
         }
   
-});
+}
+})
 
 export const { getproduct, setPagination,getProductBysubCategoryAction } = productSlice.actions;
 
