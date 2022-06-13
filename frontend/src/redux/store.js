@@ -16,11 +16,7 @@ export default configureStore({
     product: productSlice,
     cart: cartSlice,
     search: searchSlice,
-
     home:homePagehSlice,
-
-
     admin:adminSlice
-
   },
 });

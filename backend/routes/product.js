@@ -9,7 +9,8 @@ const {
   getprodactpagin,
   allProductDescending,
   allProductascending,
-  allProductByLetters
+  allProductByLetters,
+  getProdactPaginBuySub
 } = require("../controllers/product");
 
 //creat middlleware router ==>  productRouter
@@ -43,4 +44,9 @@ productRouter.get("/ascending/all/:id",allProductascending)
 
 // get==> http://localhost:5000/product/ByLetters/all
 productRouter.get("/ByLetters/all/:id",allProductByLetters)
+
+productRouter.post("/subcatogre/:page",getProdactPaginBuySub)
+
+
+
 module.exports = productRouter;
