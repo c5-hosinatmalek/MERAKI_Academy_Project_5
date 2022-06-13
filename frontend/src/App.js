@@ -12,6 +12,7 @@ import Pay from "./component/paypal";
 import LOGIN from "./component/LOGIN";
 import ORDERSALE from "./component/product_used/create_order_sale";
 import ALLORDERSALE from "./component/product_used/all_order_sale";
+import ONEPRODUCTUSED from "./component/product_used/one_product_used";
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -79,6 +80,7 @@ function App() {
           <Route path="/all_order_sale" element={<ALLORDERSALE/>} />
           <Route path="/all_product_used" element={<ALLPRODUCTUSED/>} />
           <Route path="/all_order_sale_for_admin" element={<ALLPRODUCTFORADMIN/>}/>
+          <Route path="/one_product_used/:id" element={<ONEPRODUCTUSED/>} />
         </Routes>
       <FOOTER />
       </div>

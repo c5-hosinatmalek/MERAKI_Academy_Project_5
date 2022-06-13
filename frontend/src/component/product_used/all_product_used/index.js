@@ -76,7 +76,7 @@ useEffect(()=>{
                         return(
                         <div className="one_product_used">
                         <Link
-                          to={`/category/product/${"product_used"}/${element.used_product_id}`}
+                          to={`/one_product_used/${element.used_product_id}`}
                           key={index}
                           className="link_Product_used"
                         >

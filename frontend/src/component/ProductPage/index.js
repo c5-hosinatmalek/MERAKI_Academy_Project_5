@@ -6,24 +6,22 @@ import { useParams } from "react-router-dom";
 import { getproduct } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
-import { setOneproductused } from "../../redux/reducers/prduct_used";
+
 
 const ProductPage = () => {
   const [message, setMessage] = useState("")
   const { id } = useParams();
-  const {type}=useParams()
+  
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
-      productused:state.product_used.oneproductused,
+     
       product: state.product.product,
       token: state.auth.token,
     };
   });
   useEffect(() => {
-    if(type=="product_used"){
-     
-    }else{
+   
       axios
       .get(`http://localhost:5000/product/${id}`)
       .then((result) => {
@@ -33,7 +31,7 @@ const ProductPage = () => {
       .catch((err) => {
         console.log(err);
       });
-    }
+    
 
 
 
