@@ -33,6 +33,7 @@ setTitle(result.data.result[0].sub_category)
 return <>
 <h1>{title}</h1>
 
+
 {state.subCatgoryProduct&&state.subCatgoryProduct.map((element,index)=>{
     return <div className="productdivSub">
     <Link
