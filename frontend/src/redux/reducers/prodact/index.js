@@ -20,7 +20,7 @@ export const productSlice = createSlice({
             state.subCatgoryProduct=action.payload
         }
   
-});
+}});
 
 export const { getproduct, setPagination,getProductBysubCategoryAction } = productSlice.actions;
 

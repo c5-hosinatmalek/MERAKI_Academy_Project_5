@@ -90,6 +90,7 @@ setMessage("Your order has been accepted")
     })
 }
 let amount =0
+
   return <>
 
   <table>
@@ -167,8 +168,8 @@ let amount =0
       </button>
     </>
 
-  );
-};
+      };
+
 
 
 
