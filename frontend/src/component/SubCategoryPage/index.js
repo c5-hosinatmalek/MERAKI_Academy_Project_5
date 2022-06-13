@@ -1,31 +1,37 @@
 import axios from "axios";
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import { useParams,Link } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
-import { getProductbySubCategoryId } from "../../redux/reducers/search";
-import "./style.css"
+import { getProductBysubCategoryAction} from "../../redux/reducers/prodact"
 
 const SubCatgoryPage =()=>{
 
 const {subCategory_id}=useParams()
 
 const dispatch=useDispatch()
-
+const [title, setTitle] = useState("")
 const state =useSelector((state)=>{
 
 return {
-    subCatgoryProduct: state.search.subCatgoryProduct
+    subCatgoryProduct: state.product.subCatgoryProduct
 }
 })
 
 useEffect(()=>{
-  dispatch(getProductbySubCategoryId(subCategory_id))
+  axios.get(`http://localhost:5000/sub_category/${subCategory_id}/products`).then((result)=>{
+console.log(result.data.result);
+dispatch(getProductBysubCategoryAction(result.data.result)
+)
+setTitle(result.data.result[0].sub_category)
+  }).catch((err)=>{
+    console.log(err);
+  })
 
 
 },[])
 
 return <>
-<h1>{state.subCatgoryProduct[0].sub_category&&state.subCatgoryProduct[0].sub_category}</h1>
+<h1>{title}</h1>
 
 {state.subCatgoryProduct&&state.subCatgoryProduct.map((element,index)=>{
     return <div className="productdivSub">

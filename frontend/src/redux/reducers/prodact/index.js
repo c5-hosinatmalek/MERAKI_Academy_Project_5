@@ -11,12 +11,14 @@ export const productSlice=createSlice({
             state.product=action.payload
         },
         // payload => sub_catgoryId
-        
+        getProductBysubCategoryAction:(state,action)=>{
+            state.subCatgoryProduct=action.payload
+        }
     }
 })
 
 
 
-export const { getproduct } = productSlice.actions;
+export const { getproduct,getProductBysubCategoryAction } = productSlice.actions;
 
 export default productSlice.reducer;

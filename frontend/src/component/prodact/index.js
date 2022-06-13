@@ -68,7 +68,7 @@ const GetProdact = () => {
         {state.sub_category &&
           state.sub_category.map((element, index) => {
             return (<div className="subImgDiv">
-              <Link to={`/subCategory/${element.subCategory_id}`}>
+              <Link to={`/subCategory/${element.subCategory_id}`} className="subImgDiv">
 
             <img key={index+"img"} src={`${element.picUrlSub}`} className="subCategoryImg" />
               <p

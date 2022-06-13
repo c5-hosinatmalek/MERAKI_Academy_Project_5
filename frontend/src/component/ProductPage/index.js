@@ -97,6 +97,7 @@ const ProductPage = () => {
             >
             Add to cart
           </button>
+          <p>{message}</p>
         </>
         )}
         </div>

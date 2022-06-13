@@ -5,8 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { MdDelete } from "react-icons/md";
 
-
-import { getCart,updateQuantity,deleteFromCart,checkoutAction } from "../../redux/reducers/cart";
+import {
+  getCart,
+  updateQuantity,
+  deleteFromCart,
+  checkoutAction,
+} from "../../redux/reducers/cart";
 
 const CartPage = () => {
   const [message, setMessage] = useState("");
@@ -53,6 +57,7 @@ const CartPage = () => {
       });
   };
   //  dispatch(totalPriceAction(element.quantity*element.price))
+
   const deleteCartClick = (product_id) => {
     dispatch(deleteFromCart(product_id));
     axios
@@ -61,72 +66,91 @@ const CartPage = () => {
           authorization: `Bearer ${state.token}`,
         },
       })
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  }
- 
-const deleteCartClick=(product_id)=>{
-    
-    dispatch(deleteFromCart(product_id))
-    axios.delete(`http://localhost:5000/cart/${product_id}`,{
-        headers: {
-          authorization: `Bearer ${state.token}`,
-        }}).then((result)=>{
-            
-        }).catch((err)=>{
-            console.log(err);
-        })
-}
+  const CheckOutClick = () => {
+    axios
+      .put(
+        "http://localhost:5000/cart/checkout",
+        { arrayCheckout: state.cart },
+        {
+          headers: {
+            authorization: `Bearer ${state.token}`,
+          },
+        }
+      )
+      .then((result) => {
+        setMessage("Your order has been accepted");
+        dispatch(checkoutAction());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  let amount = 0;
+  return (
+    <>
+      <table>
+        <tr className="headerCartTable">
+          <th>Image</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
 
-const CheckOutClick=()=>{
- 
-  axios.put("http://localhost:5000/cart/checkout",{arrayCheckout:state.cart},{
-    headers: {
-      authorization: `Bearer ${state.token}`,
-    }}).then((result)=>{
-setMessage("Your order has been accepted")
-      dispatch(checkoutAction())
-    }).catch((err)=>{
-      console.log(err);
-    })
-}
-let amount =0
-  return <>
+        {state.cart &&
+          state.cart.map((element, index) => {
+            amount += element.quantity * element.price;
 
-  <table>
-<tr className="headerCartTable">
-    <th>Image</th>
-    <th>Product Name</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Total</th>
-</tr>
-
-  {state.cart&&state.cart.map((element,index)=>{
-    
-      amount += element.quantity*element.price
-    
-   
-      return <tr key={index}>
-      <td><img src={`${element.picUrlProd}`} className="imgCart"/></td>
-      <td className="titleCell">{element.title}</td>
-      <td className="quantityCell"><input defaultValue={element.quantity} onChange={(e)=>{
-updateQuantityFun(index,e.target.value,element.product_id)
-      }} type="number" min={0} max={element.Store_Quantity} className="inputQuantity"/><button className="deleteIcon" onClick={()=>{
-        deleteCartClick(element.product_id)
-      }}><MdDelete/></button></td>
-      <td className="priceCell">{element
-      .price} JD</td>
-      <td className="totalCell">{element.quantity*element.price} JD</td>
-      </tr>
-    })}
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Total Price</td>
-      <td>{amount} JD</td>
-
-
+            return (
+              <tr key={index}>
+                <td>
+                  <img src={`${element.picUrlProd}`} className="imgCart" />
+                </td>
+                <td className="titleCell">{element.title}</td>
+                <td className="quantityCell">
+                  <input
+                    defaultValue={element.quantity}
+                    onChange={(e) => {
+                      updateQuantityFun(
+                        index,
+                        e.target.value,
+                        element.product_id
+                      );
+                    }}
+                    type="number"
+                    min={0}
+                    max={element.Store_Quantity}
+                    className="inputQuantity"
+                  />
+                  <button
+                    className="deleteIcon"
+                    onClick={() => {
+                      deleteCartClick(element.product_id);
+                    }}
+                  >
+                    <MdDelete />
+                  </button>
+                </td>
+                <td className="priceCell">{element.price} JD</td>
+                <td className="totalCell">
+                  {element.quantity * element.price} JD
+                </td>
+              </tr>
+            );
+          })}
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Total Price</td>
+          <td>{amount} JD</td>
+        </tr>
         {state.cart &&
           state.cart.map((element, index) => {
             return (
@@ -179,7 +203,6 @@ updateQuantityFun(index,e.target.value,element.product_id)
         className="checkotbtton"
         onClick={(e) => {
           CheckOutClick();
-
         }}
       >
         Check Out
@@ -187,4 +210,5 @@ updateQuantityFun(index,e.target.value,element.product_id)
     </>
   );
 };
+
 export default CartPage;
