@@ -24,18 +24,28 @@
   height: 950px;
 }
 
-@media (max-width: 1500px) {
-  .mainphotosclass {
-    display: none;
-  }
 
-  button:hover {
-    cursor: pointer;
-  }
+
+
+button:hover{
+  cursor: pointer
+}
+
+
+
+  @media (max-width:1500px){
+     .mainphotosclass{
+      display: none;
+    } 
+
+
+
+  
 
   .react-slideshow-container {
     width: 79rem;
   }
+
 
   .App {
     display: flex;
@@ -44,6 +54,7 @@
     position: sticky;
   }
 }
+
 
 .react-slideshow-container {
   width: 79rem;

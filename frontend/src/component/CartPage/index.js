@@ -5,8 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { MdDelete } from "react-icons/md";
 
-
-import { getCart,updateQuantity,deleteFromCart,checkoutAction } from "../../redux/reducers/cart";
+import {
+  getCart,
+  updateQuantity,
+  deleteFromCart,
+  checkoutAction,
+} from "../../redux/reducers/cart";
 
 const CartPage = () => {
   const [message, setMessage] = useState("");
@@ -55,6 +59,8 @@ const CartPage = () => {
   //  dispatch(totalPriceAction(element.quantity*element.price))
 
 
+
+
 const deleteCartClick=(product_id)=>{
     
     dispatch(deleteFromCart(product_id))
@@ -100,30 +106,9 @@ let amount =0
       amount += element.quantity*element.price
     
    
-      return <tr key={index}>
-      <td><img src={`${element.picUrlProd}`} className="imgCart"/></td>
-      <td className="titleCell">{element.title}</td>
-      <td className="quantityCell"><input defaultValue={element.quantity} onChange={(e)=>{
-updateQuantityFun(index,e.target.value,element.product_id)
-      }} type="number" min={0} max={element.Store_Quantity} className="inputQuantity"/><button className="deleteIcon" onClick={()=>{
-        deleteCartClick(element.product_id)
-      }}><MdDelete/></button></td>
-      <td className="priceCell">{element
-      .price} JD</td>
-      <td className="totalCell">{element.quantity*element.price} JD</td>
-      </tr>
-    })}
     
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Total Price</td>
-      <td>{amount} JD</td>
 
-</tr>
 
-        {state.cart &&
-          state.cart.map((element, index) => {
             return (
               <tr key={index}>
                 <td>
@@ -166,8 +151,9 @@ updateQuantityFun(index,e.target.value,element.product_id)
           <td></td>
           <td></td>
           <td>Total Price</td>
-          <td>{state.totalPrice}</td>
+          <td>{amount} JD</td>
         </tr>
+        
 
       </table>
       <h1>{message}</h1>
@@ -175,14 +161,15 @@ updateQuantityFun(index,e.target.value,element.product_id)
         className="checkotbtton"
         onClick={(e) => {
           CheckOutClick();
-
         }}
       >
         Check Out
       </button>
     </>
 
-  };
+  );
+};
+
 
 
 export default CartPage;

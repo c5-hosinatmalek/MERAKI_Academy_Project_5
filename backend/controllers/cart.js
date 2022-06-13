@@ -142,7 +142,7 @@ const checkOut = async (req, res) => {
         if (err) {
           console.log(err);
         }
-        res.status(200).json({ succ: true, result });
+        console.log({ succ: true, result });
       });
     });
 };
