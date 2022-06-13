@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from "react-redux";
 import axios from "axios";
 import "./style.css"
 import { setAllProductUsed } from "../../../redux/reducers/prduct_used";
+
 import { Link } from "react-router-dom";
 const ALLPRODUCTUSED=()=>{
     const [message,setMessage]=useState("")
@@ -11,6 +12,7 @@ const ALLPRODUCTUSED=()=>{
 const dispacth=useDispatch()
 const state=useSelector((state)=>{
     return{
+      
         allproduct:state.product_used.allproductused
     }
 })

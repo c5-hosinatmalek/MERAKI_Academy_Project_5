@@ -21,10 +21,8 @@ const ProductPage = () => {
     };
   });
   useEffect(() => {
-    if(type==="product_used"){
-      axios.get(`http://localhost:500/prudect_used/productdetails/${id}`).then((result)=>{
-            dispatch(setOneproductused(result.data.result))
-      })
+    if(type=="product_used"){
+     
     }else{
       axios
       .get(`http://localhost:5000/product/${id}`)
@@ -76,6 +74,8 @@ const ProductPage = () => {
   return (
     
     <div className="mainproductPage">
+      
+
     <div className="productPage">
       <div className="childproductPage">
         <h2>{state.product[0] && state.product[0].title}</h2>
