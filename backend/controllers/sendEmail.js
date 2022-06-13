@@ -2,11 +2,12 @@ const res = require("express/lib/response")
 const nodemailer =require("nodemailer")
 const connection =require("../models/db")
 const sendEmail=(req,res)=>{
-    
+    console.log("send");
     const {emailBody}=req.body
     const {subject}=req.body
     const {product_Id}=req.body
     const {email}=req.body
+    console.log(subject,email,emailBody);
 const transporter= nodemailer.createTransport({
     service:"Gmail",
     auth :{
@@ -53,29 +54,31 @@ if(subject.includes("restock")){
         })
 
     })
-    if (subject.includes("verfied")) {
-        const mailOptions ={
-            from:"datapirates1996@gmail.com",
-            to:`${email}`,
-            subject:`${subject}`,
-            text:`${emailBody}`
-        }
-        transporter.sendMail(mailOptions,(error,info)=>{
-            if(error){
-               return res.json({error})
-            }
-            
-            console.log(info);
-        })
-    }
     
-
-  })
-
-
-
+    
+    
+})
 
 
+
+
+
+}
+if (subject.includes("verfied")) {
+    console.log("in verfied");
+    const mailOptions ={
+        from:"datapirates1996@gmail.com",
+        to:`${email}`,
+        subject:`${subject}`,
+        text:`${emailBody}`
+    }
+    transporter.sendMail(mailOptions,(error,info)=>{
+        if(error){
+           return res.json({error})
+        }
+        
+        res.json({info});
+    })
 }
 
 

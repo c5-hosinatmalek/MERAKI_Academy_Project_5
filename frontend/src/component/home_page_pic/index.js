@@ -92,6 +92,7 @@ function Getphotosmain() {
   useEffect(() => {
     getHomePagePhoto();
   }, []);
+
   const filterdSubCatag = (type1) => {
     console.log();
     const fortest =

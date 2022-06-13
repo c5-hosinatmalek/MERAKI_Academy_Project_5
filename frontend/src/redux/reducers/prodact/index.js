@@ -1,26 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const productSlice=createSlice({
-    name:"product",
-    initialState:{
-        product:[],
-        subCatgoryProduct:[],
-        
+export const productSlice = createSlice({
+  name: "product",
+  initialState: {
+    product: [],
+    subCatgoryProduct: [],
+    Pagination: [],
+  },
+  reducers: {
+    getproduct: (state, action) => {
+      state.product = action.payload;
     },
-    reducers:{
-        getproduct:(state,action)=>{
-            state.product=action.payload
-        },
+
+    
+    setPagination: (state, action) => {
+      state.Pagination = action.payload;
+    },
         // payload => sub_catgoryId
-        getProductbySubCategoryId:(state,action)=>{
-            state.subCatgoryProduct=state.product.filter((element)=>{
-                return element.subCategory_id==action.payload
-            })
+      getProductBysubCategoryAction:(state,action)=>{
+            state.subCatgoryProduct=action.payload
         }
-    }
-})
+  
+});
+
+export const { getproduct, setPagination,getProductBysubCategoryAction } = productSlice.actions;
+
+    
+        
+       
 
 
 
-export const { getproduct,getProductbySubCategoryId } = productSlice.actions;
+
 
 export default productSlice.reducer;

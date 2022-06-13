@@ -6,9 +6,9 @@
 }
 .container_page{
     display: grid;
-    grid-template-columns: 24% auto ;
+    grid-template-columns: 0 auto;
     grid-template-rows: auto auto;
-    grid-template-areas: " side hd" "side bd";
+    grid-template-areas: " hd hd" "sort sort" "bd bd";
     
 }
 .subCategory{
@@ -30,7 +30,7 @@
 
 .subcatgoryTitleProduct{
 grid-area: hds;
-padding: 10px;
+padding: 10px 30px;
 }
 .subDiv{
     grid-area: subC;
@@ -61,8 +61,10 @@ padding: 10px;
 }
 .side_bar{
     padding: 10px 10px;
-    grid-area: side;
-    background-color: orange;
+    grid-area: sort;
+    /* border-bottom: double rgb(196, 193, 193) 4px; */
+    display: flex;
+    justify-content: end;
     
 }
 .dropList{
@@ -73,8 +75,9 @@ padding: 10px;
 }
 .sortHeader{
     font-size: 23px;
-    font-weight: 600;
+    font-weight: 100;
     margin: 20px 10px 20px 20px;
+    
 }
 .showProduct{
     grid-area: bd;
@@ -134,5 +137,5 @@ padding: 10px;
 justify-self: flex-end;
 }
 .headerProduct{
-    margin: 10px
+    margin: 10px 30px;
 }
