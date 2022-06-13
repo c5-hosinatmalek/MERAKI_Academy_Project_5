@@ -20,10 +20,9 @@ export default configureStore({
     home:homePagehSlice,
 
 
-
     admin:adminSlice,
 
-    product_used:product_used_slice
 
+    product_used:product_used_slice
   },
 });

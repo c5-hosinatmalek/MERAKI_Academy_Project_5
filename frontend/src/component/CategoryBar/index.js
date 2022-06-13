@@ -31,6 +31,7 @@ dispatch(getcatogre(result.data.result))
 
             return <Link to={`/category/${element.category_id}/products`} key={index}>{element.category}</Link>
         })}
+        <Link to="/all_product_used" >Used Products</Link>
     </div>
 }
 

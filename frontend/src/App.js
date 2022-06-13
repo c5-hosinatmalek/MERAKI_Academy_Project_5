@@ -12,13 +12,17 @@ import Pay from "./component/paypal";
 import Getallcarts from "./component/getallcartadmin";
 import LOGIN from "./component/LOGIN";
 import ORDERSALE from "./component/product_used/create_order_sale";
-import ALLORDERSALE from "./component/product_used/all_order_sale";
+import ALLORDERSALE from "./component/product_used/all_order_sale"
+import ONEPRODUCTUSED from "./component/product_used/one_product_used";
+
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
 import { useDispatch ,useSelector} from "react-redux";
 import { setAllproduct } from "./redux/reducers/search";
 import axios from "axios";
 import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
+import ALLPRODUCTUSED from "./component/product_used/all_product_used";
+import ALLPRODUCTFORADMIN from "./component/product_used/all_order_sale_admin";
 ////////////////////////////////////////////////////////////
 import { CategoryBar } from "./component/CategoryBar/index";
 
@@ -120,13 +124,21 @@ function App() {
           <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
           <Route path="/category/:id/products" element={<GetProdact />} />
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
-          <Route path="/category/product/:id" element={<ProductPage />} />
+          <Route path="/category/product/:id" element={<ProductPage />}/>
           <Route path="/cart/:id" element={<CartPage />} />
 
           <Route path="/create_order_sale" element={<ORDERSALE/>} />
           <Route path="/all_order_sale" element={<ALLORDERSALE/>} />
+          <Route path="/all_product_used" element={<ALLPRODUCTUSED/>} />
+          <Route path="/all_order_sale_for_admin" element={<ALLPRODUCTFORADMIN/>}/>
+          <Route path="/one_product_used/:id" element={<ONEPRODUCTUSED/>} />
+
+
+        
+         
 
           <Route path="/subCategory/:subCategory_id" element={<SubCatgoryPage/>}/>
+
 
         </Routes>
       <FOOTER />

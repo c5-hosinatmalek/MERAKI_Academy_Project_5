@@ -1,13 +1,19 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
 * {
   padding: 0;
   margin: 0;
+
+  /* font-family: 'Poppins', sans-serif; */
+
   box-sizing: border-box;
 }
 
 
 
 
+
  .contener_img2{
+
 
   display: none;
 }
@@ -22,9 +28,16 @@
 }
 .mainphotosclass {
   height: 950px;
+
+
+
 }
 
 
+
+.mainphotosclass{
+  display: none;
+}
 
 
 button:hover{
