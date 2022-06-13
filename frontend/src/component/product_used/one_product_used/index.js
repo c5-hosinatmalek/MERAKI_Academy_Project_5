@@ -35,26 +35,38 @@ const ONEPRODUCTUSED=()=>{
                
                  {state.productused&&state.productused.map((element)=>{
                     return(
-                        <div className="content_one_product">
-                        <div className="content_img">
-                            <img src={`${element.url_imj}`}/>
-                        </div>
-                        <div className="all_ditels">
-                            <div className="h1_titel" >
-                                <h1>{element.product_name}</h1>
-                            </div>
-                            <div className="p_discribtion">
-                                <p>{element.product_description}</p>
-                            </div>
-                            <div className="h1_price">
-                                <h>{element.asking_price}</h>
-                            </div>
+                        <div className="mainproductPage">
+      
 
-                        </div>
-                        <div className="content_add_cart">
-                            <button>Add Caret</button>
-                        </div>
-                        </div>
+    <div className="productPage">
+      <div className="childproductPage">
+        <h2>{element.product_name}</h2>
+        
+        <p className="prodactdetalis">{element.product_description}</p>
+        <div className="prodactphoto">
+        <img src={`${element.url_imj}`} className="imgProduct" />
+        </div>
+      </div>
+      <div className="parentpriceAvilability">
+        <div className="priceAvilability">
+          <h2>JOD {element.asking_price},00</h2>
+              <div className="detalis">
+            
+            
+            <p>category: <span className="Brand">{element.category}</span></p>
+          </div>
+        </div>
+        <div className="addtocartdiv">
+        <button
+          className="addtocart"
+            
+            >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
                     )
                  })
                    
