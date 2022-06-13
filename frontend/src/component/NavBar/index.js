@@ -72,9 +72,11 @@ const NavBar = () => {
             {state.isLoggedIn ? (
               <ul className={`ul ${className}`}>
                 <li className="li_1">{decodeToken("userName")}</li>
-                <li className="li_2" onClick={logout}>
-                  Logout
-                </li>
+
+                <li className="" ><Link to="/create_order_sale" >order sale</Link></li>
+                <li className="" ><Link to="/all_order_sale" >All Order Sale</Link></li>
+                <li className="li_2" onClick={logout}>Logout</li>
+
               </ul>
             ) : (
               <ul className={`ul ${className}`}>

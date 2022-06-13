@@ -6,12 +6,11 @@ const AddToCart = (req, res) => {
   const product_id = req.params.id;
   const user_id = req.token.user_id;
 
-  const {price} =req.body
-
+  const { price } = req.body;
 
   const query = `select * from cart where product_id =? and is_deleted=0;`;
   const Data = [product_id];
-  console.log(check,quantity,quantity,product_id,user_id,Data);
+  console.log(check, quantity, quantity, product_id, user_id, Data);
   connection.query(query, Data, (err, result) => {
     try {
       if (result.length) {
@@ -45,7 +44,7 @@ const AddToCart = (req, res) => {
     } else {
       const query =
         "INSERT INTO cart (product_id,user_id,quantity,price_checkout) VALUES (?,?,?,?)";
-      const data = [product_id, user_id, quantity,price];
+      const data = [product_id, user_id, quantity, price];
       connection.query(query, data, (err, Result) => {
         if (err) {
           return res.status(500).json({
@@ -104,7 +103,8 @@ const getUserCarts = (req, res) => {
 };
 const checkOut = async (req, res) => {
   const user_id = req.token.user_id;
-  const { arrayCheckout } = req.body;
+  const { arrayCheckout, date } = req.body;
+
   const data = [user_id];
 
   const query = `UPDATE cart SET is_deleted = 1 WHERE user_id=?`;
@@ -119,14 +119,30 @@ const checkOut = async (req, res) => {
   });
   arrayCheckout &&
     arrayCheckout.forEach((element) => {
-      const data2 = [+element.quantity, element.product_id];
-      const query2 =
+      const data = [+element.quantity, element.product_id];
+      const query =
         "UPDATE products SET Store_Quantity=Store_Quantity-? WHERE product_id=? AND IS_DELETED =0";
+      connection.query(query, data, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        console.log({ succ: true, result });
+      });
+      const query2 =
+        "INSERT INTO sold(sold_price,title,price_buy,quantity,date,product_Id) values(?,?,?,?,?,?)";
+      const data2 = [
+        element.price,
+        element.title,
+        element.buy_price,
+        +element.quantity,
+        date,
+        element.product_id,
+      ];
       connection.query(query2, data2, (err, result) => {
         if (err) {
           console.log(err);
         }
-        res.status(200).json({ succ: true, result });
+        console.log({ succ: true, result });
       });
     });
 };
@@ -210,5 +226,5 @@ module.exports = {
   checkOut,
   updateQuantity,
   getallcarts,
-  addtosold
+  addtosold,
 };

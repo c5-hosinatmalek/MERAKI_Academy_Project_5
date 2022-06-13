@@ -42,6 +42,7 @@ const Addprodact = () => {
     getallcarogre();
     subcatogry();
   }, []);
+  
   const uploadImage = () => {
     const data = new FormData();
     data.append("file", image);

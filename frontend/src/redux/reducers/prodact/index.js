@@ -10,13 +10,26 @@ export const productSlice = createSlice({
     getproduct: (state, action) => {
       state.product = action.payload;
     },
-    // payload => sub_catgoryId
+
+    
     setPagination: (state, action) => {
       state.Pagination = action.payload;
     },
-  },
+        // payload => sub_catgoryId
+      getProductBysubCategoryAction:(state,action)=>{
+            state.subCatgoryProduct=action.payload
+        }
+  
 });
 
-export const { getproduct, setPagination } = productSlice.actions;
+export const { getproduct, setPagination,getProductBysubCategoryAction } = productSlice.actions;
+
+    
+        
+       
+
+
+
+
 
 export default productSlice.reducer;

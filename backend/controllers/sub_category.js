@@ -23,7 +23,7 @@ const getSubCategory = (req, res) => {
     res.status(200).json({ success: true, result });
   });
 };
-getSubCategoryBycategoryId=(req,res)=>{
+const getSubCategoryBycategoryId=(req,res)=>{
   const category_id=req.params.category_id
   const data =[category_id]
   const query = "SELECT * FROM sub_categories where category_id=?";
@@ -34,5 +34,16 @@ getSubCategoryBycategoryId=(req,res)=>{
     res.status(200).json({ success: true, result });
   });
 }
+const getProductBySubCategory=(req,res)=>{
+  const {subCatgory_id} =req.params
+  const data =[subCatgory_id]
+  const query = "SELECT * FROM products inner join sub_categories on products.sub_category=sub_categories.subCategory_id where products.sub_category=?";
+  connection.query(query,data, (err, result) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({ success: true, result });
+  });
+}
 
-module.exports = { createNewSubCategory,getSubCategory,getSubCategoryBycategoryId };
+module.exports = { createNewSubCategory,getSubCategory,getSubCategoryBycategoryId,getProductBySubCategory };
