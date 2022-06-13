@@ -17,15 +17,16 @@
 }
 .one_result{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    width: 300px;
     padding: 20px;
-    margin: 20px;
-    background: whitesmoke;
     align-items: center;
+    width: 300px;
+    height: 500px;
+    
+    border: 2px solid rgb(196, 193, 193);
 }
 .one_result img{
-    width: 70px;
-    height: 70px;
+    width: 130px;
+    height: 180px;
 }

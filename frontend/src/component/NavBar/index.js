@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./style.css";
-import { BsCart4 } from "react-icons/bs";
+import { RiAccountCircleFill } from "react-icons/ri";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LOGIN from "../LOGIN";
@@ -66,15 +66,15 @@ const NavBar = () => {
           <div className="my_account_contener">
             <div className="icons" onClick={sowHide}>
               {" "}
-              <AccountBoxIcon sx={{ fontSize: 55 }} />
+              <RiAccountCircleFill sx={{ fontSize: 55 }} className="icons" /> 
             </div>
 
             {state.isLoggedIn ? (
               <ul className={`ul ${className}`}>
                 <li className="li_1">{decodeToken("userName")}</li>
 
-                <li className="" ><Link to="/create_order_sale" >order sale</Link></li>
-                <li className="" ><Link to="/all_order_sale" >All Order Sale</Link></li>
+                <li className="li_1" ><Link to="/create_order_sale" >order sale</Link></li>
+                <li className="li_1" ><Link to="/all_order_sale" >All Order Sale</Link></li>
                 <li className="li_2" onClick={logout}>Logout</li>
 
               </ul>

@@ -37,10 +37,10 @@ export const productSlice = createSlice({
           console.log(index + 1);
           state.number.push(index + 1);
         }
-      });
-    }
-  },
-});
+
+  
+}});
+
 
 export const {
   getproduct,

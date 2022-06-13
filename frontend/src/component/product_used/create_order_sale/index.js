@@ -69,26 +69,26 @@ const ORDERSALE=()=>{
         <div className="contener_ordersale">
            
             <form className="form_ordersale" onSubmit={submit} >
-                <div className="titel_order" ><h1>Sale Order</h1> </div>
+                <div className="titel_order" ><h1>Info of your product</h1> </div>
                 <div className="productused_name" >
-                    <label>name product</label>
+                    <label>Name product</label>
                     <input placeholder="Example hard desk" onChange={(e)=>{setProduct_name(e.target.value)}}  />
                 </div>
               
                 <div className="asking_price">
-                    <label>asking price</label>
+                    <label>Price</label>
                     <input onChange={(e)=>{setAsking_price(e.target.value)}} placeholder="asking price"/>
                 </div>
                 <div className=" bank_account">
-                    <label>banck account</label>
-                    <input placeholder="banck account" onChange={(e)=>{setbank_account(e.target.value)}} />
+                    <label>Bank account</label>
+                    <input placeholder="Bank account" onChange={(e)=>{setbank_account(e.target.value)}} />
                 </div>
                 <div className="phone_number">
-                    <label>phon number</label>
-                    <input placeholder="phon number" onChange={(e)=>{setphone_number(e.target.value)}} />
+                    <label>Phone number</label>
+                    <input placeholder="Phone number" onChange={(e)=>{setphone_number(e.target.value)}} />
                 </div>
                 <div className="category_select">
-                    <label >choice category</label>
+                    <label >Category</label>
                     <select onChange={(e)=>{setCategory(e.target.value)}} >
                         <option ></option>
                         <option value="hard ware">hard ware</option>
@@ -104,15 +104,15 @@ const ORDERSALE=()=>{
                 </div>
                 
                 <div className="img_url_contener" >
-                    <label>choice img product</label>
+                    <label> Image for the product</label>
                     <input type="file" onChange={(e)=>{setimage(e.target.files[0])}} />
                 </div>
                 <div className="product_used_description">
-                    <label>description product</label>
-                    <textarea onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="description product" />
+                    <label>Description </label>
+                    <textarea onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="Description" />
                 </div>
                 
-                <div className="sen_buttoun" ><button>send</button></div>
+                <div className="sen_buttoun" ><button>Send</button></div>
                 <div className="message_user" >  <h1>{message}</h1> </div>
             </form>
         </div>
