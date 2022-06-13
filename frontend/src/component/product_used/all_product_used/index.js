@@ -2,7 +2,9 @@ import React from "react";
 import { useEffect,useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import axios from "axios";
+import "./style.css"
 import { setAllProductUsed } from "../../../redux/reducers/prduct_used";
+import { Link } from "react-router-dom";
 const ALLPRODUCTUSED=()=>{
     const [message,setMessage]=useState("")
 const dispacth=useDispatch()
@@ -15,6 +17,7 @@ const state=useSelector((state)=>{
 const getAllProductUsed=()=>{
     axios.get("http://localhost:5000/prudect_used/allproductused").then((result)=>{
         
+        setMessage(result.data.message)
         dispacth(setAllProductUsed(result.data.result))
     })
 
@@ -32,14 +35,33 @@ useEffect(()=>{
         <div className="all_oroduct_used">
             <div className="consent_massege_and_category">
                 <div> <h1>{message}</h1> </div>    
-                <div className="content_select"><select></select></div>
+                <div className="content_select">
+                    <label>category  </label>
+                    <select></select></div>
                            
             </div>
 
             <div className="content_all_productused">
                 {
-                    state.allproduct&& state.allproduct.map((element)=>{
-                        
+                    state.allproduct&& state.allproduct.map((element,index)=>{
+                        return(
+                        <div className="one_product_used">
+                        <Link
+                          to={`/`}
+                          key={index}
+                          className="link_Product_used"
+                        >
+                          <img className="product_used_Img" src={element.url_imj}></img>
+                          <p className="titlePar_product_used"> {element.product_name}</p>
+                          <p className="descriptionPar_used">
+                            {" "}
+                            {element.product_description}
+                          </p>
+      
+                          <p className="price_product_used"> {element.asking_price} JD</p>
+                        </Link>
+                      </div>
+                        )
                     })
                 }
 
