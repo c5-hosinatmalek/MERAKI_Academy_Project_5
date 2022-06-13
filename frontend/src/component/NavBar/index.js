@@ -11,7 +11,7 @@ import SEARCH from "../SEARCH";
 import { useState } from "react";
 
 const NavBar = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState();
   const [className, setClassName] = useState("");
   const dispacth = useDispatch();
   const state = useSelector((state) => {

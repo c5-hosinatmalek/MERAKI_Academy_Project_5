@@ -1,0 +1,62 @@
+.all_oroduct_used{
+    height: 50rem;
+}
+
+.consent_massege_and_category{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid rgb(139, 133, 133);
+    align-items: center;
+    padding: 0 10px;
+}
+.content_all_productused{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.one_product_used{
+    width: 300px;
+    height: 500px;
+    
+    border: 2px solid rgb(196, 193, 193);
+}
+
+.product_used_Img{
+    width: 130px;
+    height: 180px;
+    align-self: center;
+    margin: 12px 0px;
+}
+
+.link_Product_used{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+  
+    flex-direction: column;
+    color: black;
+}
+
+.titlePar_product_used{
+    font-size: 20px;
+font-weight: 600;
+height: 100px;
+}
+
+.descriptionPar_used{
+    margin: 10px 0px;
+padding: 10px;
+font-size: 18px;
+height: 100px;
+}
+.price_product_used{
+    margin-top: 10px;
+font-size: 18px;
+font-weight: 600;
+padding: 10px;
+justify-self: flex-end;
+}

@@ -5,6 +5,7 @@ export const catorgeSlice = createSlice({
   initialState: {
     catorge: [],
     subCategory:[],
+
   },
   reducers: {
     getcatogre: (state, action) => {
@@ -12,7 +13,8 @@ export const catorgeSlice = createSlice({
     },
     getSubCategory:(state,action)=>{
       state.subCategory=action.payload
-    }
+    },
+
   },
 });
 

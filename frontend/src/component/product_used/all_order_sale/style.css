@@ -2,7 +2,9 @@
     display: flex;
     /* justify-content: center; */
     align-items: center;
+
     height: 50rem;
+
 
 }
 .content_all_order_sale{
@@ -44,6 +46,7 @@
 .details_all_order h1{
     padding: 5px;
    
+
 }
 
 

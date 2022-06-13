@@ -6,7 +6,7 @@ import axios from "axios";
 import { getfury } from "../../redux/reducers/search";
 import "react-slideshow-image/dist/styles.css";
 import "./style.css";
-import { setPagination } from "../../redux/reducers/prodact";
+import { setPagination } from "../../redux/reducers/paginishon/index";
 import header1 from "./img/1.png";
 import header2 from "./img/2.jpg";
 import header3 from "./img/3.jpg";
@@ -21,7 +21,7 @@ const Homepage = () => {
       number: state.search.number,
       state: state.search.allPrudact,
       home: state.home.homePageItems,
-      Pagination: state.product.Pagination,
+      Pagination: state.pagination.pagination,
     };
   });
   const filterdSubCatag = (type1) => {
@@ -69,6 +69,15 @@ const Homepage = () => {
   useEffect(() => {
     getproductPagination(1);
   }, []);
+
+
+
+
+
+
+
+
+  console.log(state);
   return (
     <div className="continerAll_mainhomediv">
       <div className="mainhomediv">
