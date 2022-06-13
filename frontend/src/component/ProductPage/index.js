@@ -7,18 +7,22 @@ import { getproduct } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
 
+
 const ProductPage = () => {
   const [message, setMessage] = useState("")
   const { id } = useParams();
+  
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
+     
       product: state.product.product,
       token: state.auth.token,
     };
   });
   useEffect(() => {
-    axios
+   
+      axios
       .get(`http://localhost:5000/product/${id}`)
       .then((result) => {
         
@@ -27,6 +31,13 @@ const ProductPage = () => {
       .catch((err) => {
         console.log(err);
       });
+    
+
+
+
+
+
+    
   }, []);
   const addCartClick = (id,price) => {
     
@@ -58,7 +69,10 @@ const ProductPage = () => {
 
 
   return (
+    
     <div className="mainproductPage">
+      
+
     <div className="productPage">
       <div className="childproductPage">
         <h2>{state.product[0] && state.product[0].title}</h2>

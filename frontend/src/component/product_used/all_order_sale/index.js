@@ -33,7 +33,14 @@ const ALLORDERSALE = () => {
             console.log(element);
             return (
               <div className="content_one_order_sale">
-                {element.admission_status ? (
+
+                {element.is_deleted?<div
+                    style={{ background: ` rgba(192, 11, 11, 0.774)` }}
+                    className="approvied"
+                  >
+                    <h1 className="fff">Admission status</h1>
+                  </div>:element.admission_status ? (
+
                   <div
                     style={{ background: `rgba(0, 128, 0, 0.63)` }}
                     className="approvied"
@@ -42,7 +49,9 @@ const ALLORDERSALE = () => {
                   </div>
                 ) : (
                   <div
-                    style={{ background: ` rgba(192, 11, 11, 0.774)` }}
+
+                    style={{ background: `rgba(240, 240, 16, 0.795)` }}
+
                     className="approvied"
                   >
                     <h1 className="fff">Admission status</h1>
@@ -58,7 +67,9 @@ const ALLORDERSALE = () => {
 
                     <h1>
                       Admission status :
-                      {element.admission_status
+
+                      {element.is_deleted?"Request Denied":element.admission_status
+
                         ? "it has been accepted"
                         : "Under Review"}{" "}
                     </h1>

@@ -32,6 +32,7 @@ const CategoryBar = () => {
             </Link>
           );
         })}
+        <Link to="/all_product_used" >Used Products</Link>
     </div>
   );
 };

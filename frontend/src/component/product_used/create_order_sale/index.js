@@ -92,8 +92,14 @@ const ORDERSALE=()=>{
                     <select onChange={(e)=>{setCategory(e.target.value)}} >
                         <option ></option>
                         <option value="hard ware">hard ware</option>
+
+                        <option value="Bc">Bc</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Accessories">Accessories</option>
+
                         <option value="hard ware">hard ware</option>
-                        <option value="hard ware">hard ware</option>
+                        
+
                     </select>
                 </div>
                 
