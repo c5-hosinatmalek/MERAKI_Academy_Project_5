@@ -73,7 +73,7 @@ function App() {
           <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
           <Route path="/category/:id/products" element={<GetProdact />} />
           <Route path="/resulsearch" element={<PAGEAllRESULTSEARCH />} />
-          <Route path="/category/product/:id" element={<ProductPage />} />
+          <Route path="/category/product/:type/:id" element={<ProductPage />}/>
           <Route path="/cart/:id" element={<CartPage />} />
           <Route path="/create_order_sale" element={<ORDERSALE/>} />
           <Route path="/all_order_sale" element={<ALLORDERSALE/>} />

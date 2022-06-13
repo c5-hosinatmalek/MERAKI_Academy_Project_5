@@ -47,7 +47,7 @@ const ALLORDERSALE = () => {
                   </div>
                 ) : (
                   <div
-                    style={{ background: ` rgba(192, 11, 11, 0.774)` }}
+                    style={{ background: `rgba(240, 240, 16, 0.795)` }}
                     className="approvied"
                   >
                     <h1 className="fff">Admission status</h1>

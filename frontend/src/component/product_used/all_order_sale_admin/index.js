@@ -5,6 +5,9 @@ import axios from "axios";
 import { setallProductFromAdmin } from "../../../redux/reducers/prduct_used";
 import "./style.css"
 const ALLPRODUCTFORADMIN=()=>{
+    // const [message,setMessage]=useState("")
+    // const [statemessage,setstatemessage]=useState()
+    // const [className,setclassName]=useState("")
     const dispacth=useDispatch()
     const state=useSelector((state)=>{
         return{
@@ -21,7 +24,13 @@ const ALLPRODUCTFORADMIN=()=>{
                 
         })
     }
-
+    // const setClasName=()=>{
+    //     if(statemessage){
+    //         setclassName("active")
+    //     }else{
+    //         setclassName("")
+    //     }
+    // }
 
     useEffect(()=>{
         allOrderSale()
@@ -33,6 +42,18 @@ const ALLPRODUCTFORADMIN=()=>{
 
     return(
         <div className="contener_all_product_for_admin">
+            {/* <div className={`message_user_use ${className}`} >
+               <h1> {message}</h1>
+               <button onClick={()=>{
+                if(message==="Are you sure you will accept the product"){
+                   
+
+                }
+               }}
+               
+               >OK</button>
+               <button>cancle</button>
+            </div> */}
                 <table>
                    
                         <tr>
@@ -61,9 +82,12 @@ const ALLPRODUCTFORADMIN=()=>{
                             <td>{element.product_description}</td>
                             <td>{element.phone_number}</td>
                             <td> <button onClick={()=>{
-                                axios.put(`http://localhost:5000/prudect_used/${element.used_product_id}`).then((result)=>{
-                                    allOrderSale()
-                                })
+                               axios.put(`http://localhost:5000/prudect_used/${element.used_product_id}`).then((result)=>{
+                                allOrderSale()
+                               
+                                
+                            })
+
                             }} >Acceptance</button>
                                 <button onClick={()=>{axios.delete(`http://localhost:5000/prudect_used/delete/${element.used_product_id}`).then((result)=>{
                                     allOrderSale()

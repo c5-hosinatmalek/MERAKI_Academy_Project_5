@@ -74,7 +74,7 @@ useEffect(()=>{
                         return(
                         <div className="one_product_used">
                         <Link
-                          to={`/`}
+                          to={`/category/product/${"product_used"}/${element.used_product_id}`}
                           key={index}
                           className="link_Product_used"
                         >
@@ -85,7 +85,7 @@ useEffect(()=>{
                             {element.product_description}
                           </p>
       
-                          <p className="price_product_used"> {element.asking_price} JD</p>
+                          <p className="price_product_used"> {element.asking_price +20 } JD</p>
                         </Link>
                       </div>
                         )

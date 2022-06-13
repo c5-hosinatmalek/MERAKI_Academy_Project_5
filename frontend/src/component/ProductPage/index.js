@@ -6,19 +6,27 @@ import { useParams } from "react-router-dom";
 import { getproduct } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
+import { setOneproductused } from "../../redux/reducers/prduct_used";
 
 const ProductPage = () => {
   const [message, setMessage] = useState("")
   const { id } = useParams();
+  const {type}=useParams()
   const dispatch = useDispatch();
   const state = useSelector((state) => {
     return {
+      productused:state.product_used.oneproductused,
       product: state.product.product,
       token: state.auth.token,
     };
   });
   useEffect(() => {
-    axios
+    if(type==="product_used"){
+      axios.get(`http://localhost:500/prudect_used/productdetails/${id}`).then((result)=>{
+            dispatch(setOneproductused(result.data.result))
+      })
+    }else{
+      axios
       .get(`http://localhost:5000/product/${id}`)
       .then((result) => {
         
@@ -27,6 +35,13 @@ const ProductPage = () => {
       .catch((err) => {
         console.log(err);
       });
+    }
+
+
+
+
+
+    
   }, []);
   const addCartClick = (id) => {
     
@@ -59,6 +74,7 @@ const ProductPage = () => {
 
 
   return (
+    
     <div className="mainproductPage">
     <div className="productPage">
       <div className="childproductPage">

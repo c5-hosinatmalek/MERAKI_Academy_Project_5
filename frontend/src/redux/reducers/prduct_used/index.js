@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const product_used_slice=createSlice({
     name:"product_used",
     initialState:{
+        oneproductused:[],
         allproductused:[],
         allProductusedfromUser:[],
         allProductusedApprovedFromUser:[],
@@ -50,11 +51,14 @@ const product_used_slice=createSlice({
         },
         setAllProductUsed:(state,action)=>{
             state.allproductused=action.payload
+        },
+        setOneproductused:(state,action)=>{
+            state.oneproductused=action.payload
         }
 
     }
 })
 
-export  const {addOrderSaleFromUser,SetAllProductUsedFromUser,setallProductUsedApprovedFromUser,setallProductFromAdmin,setallProductApprovedFromAdmin,requestAccept,setAllProductUsed}=product_used_slice.actions
+export  const {addOrderSaleFromUser,SetAllProductUsedFromUser,setallProductUsedApprovedFromUser,setallProductFromAdmin,setallProductApprovedFromAdmin,requestAccept,setAllProductUsed,setOneproductused}=product_used_slice.actions
 
 export default product_used_slice.reducer

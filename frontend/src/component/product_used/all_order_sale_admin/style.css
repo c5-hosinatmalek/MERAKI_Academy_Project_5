@@ -8,3 +8,19 @@ height: 15rem;
 tr th {
     margin-left: 5rem ;
 }
+
+.message_user_use{
+    position: absolute;
+    z-index: 10;
+    left: 45%;
+    top: 50%;
+    background-color: rgba(97, 92, 92, 0.534);
+    width: 300px;
+    height: 100px;
+    display: none;
+}
+
+
+.message_user_use.active{
+    display: block;
+}
