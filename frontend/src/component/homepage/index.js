@@ -6,13 +6,13 @@ import axios from "axios";
 import { getfury } from "../../redux/reducers/search";
 import "react-slideshow-image/dist/styles.css";
 import "./style.css";
+import { setPagination } from "../../redux/reducers/prodact";
 import header1 from "./img/1.png";
 import header2 from "./img/2.jpg";
 import header3 from "./img/3.jpg";
 import header4 from "./img/4.png";
 import header5 from "./img/5.png";
 const Homepage = () => {
-  const [Pagination, setPagination] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => {
@@ -21,6 +21,7 @@ const Homepage = () => {
       number: state.search.number,
       state: state.search.allPrudact,
       home: state.home.homePageItems,
+      Pagination: state.product.Pagination,
     };
   });
   const filterdSubCatag = (type1) => {
@@ -59,7 +60,7 @@ const Homepage = () => {
     axios
       .post(`http://localhost:5000/product/Pagination/${string}`)
       .then((result) => {
-        setPagination(result.data.result);
+        dispatch(setPagination(result.data.result));
       })
       .catch((err) => {
         console.log(err);
@@ -99,9 +100,8 @@ const Homepage = () => {
         <div>
           {state.home &&
             state.home.map((element, index) => {
-              console.log(element);
               return (
-                <div>
+                <div key={index}>
                   <div id={index}>
                     {element.url ? (
                       <div className="contener_img_separtor">
@@ -116,8 +116,8 @@ const Homepage = () => {
               );
             })}
           <div className="contener_all_product_main">
-            {Pagination &&
-              Pagination.map((element) => {
+            {state.Pagination &&
+              state.Pagination.map((element) => {
                 return (
                   <div className="contener_one_product">
                     <Link
