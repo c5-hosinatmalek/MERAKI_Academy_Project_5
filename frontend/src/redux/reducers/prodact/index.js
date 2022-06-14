@@ -1,26 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const productSlice=createSlice({
-    name:"product",
-    initialState:{
-        product:[],
-        subCatgoryProduct:[],
-        
+export const productSlice = createSlice({
+  name: "product",
+  initialState: {
+    product: [],
+    subCatgoryProduct: [],
+    number: [],
+    productcatogre: [],
+  },
+  reducers: {
+
+    getproduct: (state, action) => {
+      console.log(action.payload.length / 12);
+      state.product = action.payload;
     },
-    reducers:{
-        getproduct:(state,action)=>{
-            state.product=action.payload
-        },
-        // payload => sub_catgoryId
-        getProductbySubCategoryId:(state,action)=>{
-            state.subCatgoryProduct=state.product.filter((element)=>{
-                return element.subCategory_id==action.payload
-            })
+
+    // payload => sub_catgoryId
+    getProductBysubCategoryAction: (state, action) => {
+      state.subCatgoryProduct = action.payload;
+    },
+    getnumber: (state, action) => {
+      state.number = [];
+      let counter = state.product.length / 12;
+      state.product.forEach((element, index) => {
+        if (index < Math.ceil(counter)) {
+          state.number.push(index + 1);
         }
-    }
-})
+      });
+    },
+    addcatogre:(state,action)=>{
+      state.productcatogre=action.payload
+      state.number=[]
+      let counter = state.productcatogre.length / 12;
+      state.productcatogre.forEach((element, index) => {
+        console.log(index < Math.ceil(counter));
+        if (index < Math.ceil(counter)) {
+          console.log(index + 1);
+          state.number.push(index + 1);
+        }
+
+  
+}});
 
 
-
-export const { getproduct,getProductbySubCategoryId } = productSlice.actions;
+export const {
+  getproduct,
+  setPagination,
+  getProductBysubCategoryAction,
+  getnumber,
+  addcatogre
+} = productSlice.actions;
 
 export default productSlice.reducer;

@@ -9,14 +9,17 @@ import photo from "./img/Screenshot_1.png";
 import photo2 from "./img/Screenshot_2.png";
 import { numberprodact } from "./redux/reducers/search";
 import Pay from "./component/paypal";
+import Getallcarts from "./component/getallcartadmin";
 import LOGIN from "./component/LOGIN";
 import ORDERSALE from "./component/product_used/create_order_sale";
-import ALLORDERSALE from "./component/product_used/all_order_sale";
+import ALLORDERSALE from "./component/product_used/all_order_sale"
 import ONEPRODUCTUSED from "./component/product_used/one_product_used";
+
 import { useSelector } from "react-redux";
+
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAllproduct } from "./redux/reducers/search";
 import axios from "axios";
 import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
@@ -32,15 +35,33 @@ import { NavBar } from "./component/NavBar";
 
 import { ProductPage } from "./component/ProductPage/index";
 import CartPage from "./component/CartPage/index";
-
+import jwtDecode from "jwt-decode";
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
+
 import jwtDecode from "jwt-decode";
+
+import { SubCatgoryPage } from "./component/SubCategoryPage/index";
+
 
 function App() {
   ///////////////////////////////search proccess//////////////////////////
   const dispacth = useDispatch();
+
+  const state = useSelector((state) => {
+    return {
+      isLoggedIn: state.auth.isLoggedIn,
+      token: state.auth.token,
+    };
+  });
+
+  const decodeToken = (columnName) => {
+    if (state.isLoggedIn) {
+      return jwtDecode(state.token)[columnName];
+    }
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/product")
@@ -59,6 +80,7 @@ function App() {
   }, []);
   
   ////////////////////////////////////////////////////////////////////
+
   const state = useSelector((state) => {
     return {
       isLoggedIn: state.auth.isLoggedIn,
@@ -122,6 +144,14 @@ function App() {
             <Route path="/all_product_used" element={<ALLPRODUCTUSED/>} />
             <Route path="/all_order_sale_for_admin" element={<ALLPRODUCTFORADMIN/>}/>
             <Route path="/one_product_used/:id" element={<ONEPRODUCTUSED/>} />
+               <Route path="/admin/cart" element={<Getallcarts />} />
+               <Route
+                path="/subCategory/:subCategory_id"
+                element={<SubCatgoryPage />}/>
+             
+               
+
+       
           </Routes>
         <FOOTER />
         </div>
@@ -133,5 +163,8 @@ function App() {
   }
  
 }
+
+
+
 
 export default App;

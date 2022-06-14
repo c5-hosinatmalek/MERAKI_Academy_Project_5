@@ -64,6 +64,7 @@ CREATE TABLE Products(
     sub_category INT,
     product_name VARCHAR(255),
     product_type VARCHAR(255),
+    buy_price Int,
     price INT,
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES categories(category_id),
@@ -85,7 +86,11 @@ CREATE TABLE pic(
 
 CREATE TABLE sold(
     sold_id INT AUTO_INCREMENT NOT NULL,
-    sold INT,
+    sold_price INT,
+    title VARCHAR(255),
+    price_buy INT,
+    quantity INT,
+    date VARCHAR(255),
     product_Id int,
     FOREIGN KEY (product_id) REFERENCES products(product_id),
     PRIMARY KEY (sold_id)
@@ -98,6 +103,7 @@ CREATE TABLE cart (
     user_id int,
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     quantity int,
+    price_checkout int,
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (cart_id)
 );

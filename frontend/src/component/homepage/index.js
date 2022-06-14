@@ -6,13 +6,13 @@ import axios from "axios";
 import { getfury } from "../../redux/reducers/search";
 import "react-slideshow-image/dist/styles.css";
 import "./style.css";
+import { setPagination } from "../../redux/reducers/paginishon/index";
 import header1 from "./img/1.png";
 import header2 from "./img/2.jpg";
 import header3 from "./img/3.jpg";
 import header4 from "./img/4.png";
 import header5 from "./img/5.png";
 const Homepage = () => {
-  const [Pagination, setPagination] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => {
@@ -21,6 +21,7 @@ const Homepage = () => {
       number: state.search.number,
       state: state.search.allPrudact,
       home: state.home.homePageItems,
+      Pagination: state.pagination.pagination,
     };
   });
   const filterdSubCatag = (type1) => {
@@ -30,12 +31,18 @@ const Homepage = () => {
         if (element.subCategory_id == type1) {
           return (
             <div className="contener_prodect" key={index}>
-              <div className="contener_img_product"><img className="productimg" src={element.picUrlProd} /></div>
-              <div className="contener_titel_product" >
-                <p>{element.title}</p>
-               
-              </div>
-              <div className="contener_price"> <span>{element.price} JD</span></div>
+              <Link to={`/category/product/${element.product_id}`}>
+                <div className="contener_img_product">
+                  <img className="productimg" src={element.picUrlProd} />
+                </div>
+                <div className="contener_titel_product">
+                  <p>{element.title}</p>
+                </div>
+                <div className="contener_price">
+                  {" "}
+                  <span>{element.price} JD</span>
+                </div>
+              </Link>
             </div>
           );
         }
@@ -53,7 +60,7 @@ const Homepage = () => {
     axios
       .post(`http://localhost:5000/product/Pagination/${string}`)
       .then((result) => {
-        setPagination(result.data.result);
+        dispatch(setPagination(result.data.result));
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +69,15 @@ const Homepage = () => {
   useEffect(() => {
     getproductPagination(1);
   }, []);
-  console.log(state.home);
+
+
+
+
+
+
+
+
+  console.log(state);
   return (
     <div className="continerAll_mainhomediv">
       <div className="mainhomediv">
@@ -94,53 +109,46 @@ const Homepage = () => {
         <div>
           {state.home &&
             state.home.map((element, index) => {
-              console.log(element);
               return (
-                <div>
+                <div key={index}>
                   <div id={index}>
-
-
-                    {element.url? <div className="contener_img_separtor" ><img className="img_separtor" src={element.url}></img></div>  :null}
-                    
+                    {element.url ? (
+                      <div className="contener_img_separtor">
+                        <img className="img_separtor" src={element.url}></img>
+                      </div>
+                    ) : null}
                     <Slide {...properties} className="contener_side_product">
-                     
-                     {filterdSubCatag(element.product_Id)}
-                     
-                  
-
+                      {filterdSubCatag(element.product_Id)}
                     </Slide>
                   </div>
                 </div>
               );
             })}
-              <div className="contener_all_product_main">
-              {Pagination &&
-            Pagination.map((element) => {
-              return (
-                <div className="contener_one_product">
-                  <Link className="linkproduct_mainpage" to={"/"}>
-                 
-                  <img className="firstpageimg" src={element.picUrlProd} />
-                  <p className="titleproduct_main" >{element.title}</p>
+          <div className="contener_all_product_main">
+            {state.Pagination &&
+              state.Pagination.map((element) => {
+                return (
+                  <div className="contener_one_product">
+                    <Link
+                      className="linkproduct_mainpage"
+                      to={`/category/product/${element.product_id}`}
+                    >
+                      <img className="firstpageimg" src={element.picUrlProd} />
+                      <p className="titleproduct_main">{element.title}</p>
 
-                  <p className="dis_product_main" >
-                    {" "}
-                    {element.description
-                      .split(" ")
-                      .splice(1, 15)
-                      .join(" ")}{" "}
-                  </p>
-                  <p className="price_productmain" >{element.price} JD</p>
-                  </Link>
-                  
-                </div>
-              );
-            })}
-
-              </div>
-         
-
-
+                      <p className="dis_product_main">
+                        {" "}
+                        {element.description
+                          .split(" ")
+                          .splice(1, 15)
+                          .join(" ")}{" "}
+                      </p>
+                      <p className="price_productmain">{element.price} JD</p>
+                    </Link>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
       {state.number &&

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 const PAGEAllRESULTSEARCH = () => {
   const resulatsarch = useSelector((state) => {
     return {
@@ -18,15 +18,22 @@ const PAGEAllRESULTSEARCH = () => {
         {resulatsarch.resulatsarch &&
           resulatsarch.resulatsarch.map((resulat, index) => {
             return (
-              <div className="one_result">
-                <div className="img_result">
-                  <img src={resulat.picUrlProd} />
+              <Link
+                to={`/category/product/${resulat.product_id}`}
+                key={index}
+                className="linkProduct"
+              >
+                <div className="one_result">
+                  <img src={resulat.picUrlProd} className="img_result" />
+                  <p className="titlePar">{resulat.title}</p>
+                  <p className="descriptionPar">
+                    {" "}
+                    {resulat.description.split(" ").slice(1, 15).join(" ")}...
+                  </p>
+
+                  <p className="pricePar">{resulat.price}JD</p>
                 </div>
-                <div className="one_dis_price">
-                  <h3>{resulat.title}</h3>
-                  <h4>price:{resulat.price}JD</h4>
-                </div>
-              </div>
+              </Link>
             );
           })}
       </div>
