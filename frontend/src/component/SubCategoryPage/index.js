@@ -27,16 +27,6 @@ const SubCatgoryPage = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    axios
-      .post(`http://localhost:5000/product/subcatogre/1`)
-      .then((result) => {
-        console.log(result);
-        dispatch(subCatgorypagination());
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   return (
@@ -60,26 +50,6 @@ const SubCatgoryPage = () => {
                 </p>
 
                 <p className="pricePar"> {element.price} JD</p>
-              </Link>
-            </div>
-          );
-        })}
-      {state.Pagination &&
-        state.Pagination.map((element) => {
-          return (
-            <div className="contener_one_product">
-              <Link
-                className="linkproduct_mainpage"
-                to={`/category/product/${element.product_id}`}
-              >
-                <img className="firstpageimg" src={element.picUrlProd} />
-                <p className="titleproduct_main">{element.title}</p>
-
-                <p className="dis_product_main">
-                  {" "}
-                  {element.description.split(" ").splice(1, 15).join(" ")}{" "}
-                </p>
-                <p className="price_productmain">{element.price} JD</p>
               </Link>
             </div>
           );
