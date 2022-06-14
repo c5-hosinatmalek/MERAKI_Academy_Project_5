@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {paginationAction} from "../../../redux/reducers/paginishon/index"
 const PAGEAllRESULTSEARCH = () => {
   const resulatsarch = useSelector((state) => {
     return {
@@ -10,6 +11,7 @@ const PAGEAllRESULTSEARCH = () => {
       messageSearche: state.search.messageSearche,
     };
   });
+  let numberPage=Math.ceil(resulatsarch.resulatsarch.length/12)
 
   return (
     <div className="all_result_search">
