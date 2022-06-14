@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setResultSerch, setStateSerch } from "../../redux/reducers/search";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+
+
 const SEARCH = () => {
   const dispacth = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +29,7 @@ const SEARCH = () => {
         onClick={() => {
           navigate("/resulsearch");
           dispacth(setStateSerch(false));
+          
         }}
       >
         Search
