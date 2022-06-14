@@ -154,7 +154,7 @@ const ProductTable = () => {
   };
 
   return (
-    <>
+    <div className="contenur_product_taple" >
       <table>
         <tr>
           <th>Image</th>
@@ -371,7 +371,7 @@ const ProductTable = () => {
             );
           })}
       </table>
-    </>
+    </div>
   );
 };
 

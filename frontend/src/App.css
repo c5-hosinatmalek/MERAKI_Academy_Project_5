@@ -6,8 +6,18 @@
   /* font-family: 'Poppins', sans-serif; */
 
   box-sizing: border-box;
+  
 }
 
+.routesdiv_admin{
+  display: flex;
+  
+  flex-direction: row;
+  overflow: hidden;
+  width: auto;
+  height:50rem;
+  border-bottom: 3px black solid;
+}
 
 
 
