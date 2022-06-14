@@ -114,7 +114,7 @@ const updateProduct = (req, res) => {
 };
 
 const getprodactpagin = (req, res) => {
-  const limit = 10;
+  const limit = 12;
   const page = req.params.page;
 
   const offset = (page - 1) * limit;

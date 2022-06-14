@@ -15,7 +15,6 @@ import ORDERSALE from "./component/product_used/create_order_sale";
 import ALLORDERSALE from "./component/product_used/all_order_sale"
 import ONEPRODUCTUSED from "./component/product_used/one_product_used";
 
-import { useSelector } from "react-redux";
 
 /////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
@@ -40,7 +39,7 @@ import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
 
-import jwtDecode from "jwt-decode";
+
 
 import { SubCatgoryPage } from "./component/SubCategoryPage/index";
 
@@ -81,17 +80,17 @@ function App() {
   
   ////////////////////////////////////////////////////////////////////
 
-  const state = useSelector((state) => {
-    return {
-      isLoggedIn: state.auth.isLoggedIn,
-      token: state.auth.token,
-    };
-  });
-  const decodeToken = (columnName) => {
-    if (state.isLoggedIn) {
-      return jwtDecode(state.token)[columnName];
-    }
-  };
+  // const state = useSelector((state) => {
+  //   return {
+  //     isLoggedIn: state.auth.isLoggedIn,
+  //     token: state.auth.token,
+  //   };
+  // });
+  // const decodeToken = (columnName) => {
+  //   if (state.isLoggedIn) {
+  //     return jwtDecode(state.token)[columnName];
+  //   }
+  // };
 
   
   if(decodeToken("role")){

@@ -20,9 +20,11 @@
 }
 
 
+.mainphotosclass{
+  display: none;
+}
 
-
- .contener_img2{
+ /* .contener_img2{
 
 
   display: none;
@@ -41,11 +43,11 @@
 
 
 
-}
+} */
 
 
 
-.mainphotosclass{
+/* .mainphotosclass{
   display: none;
 }
 
@@ -88,4 +90,4 @@ button:hover{
 }
 .mainphotos {
   position: sticky;
-}
+} */
