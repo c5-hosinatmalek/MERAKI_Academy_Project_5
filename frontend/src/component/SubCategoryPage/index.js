@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./style.css"
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { subCatgorypagination } from "../../redux/reducers/paginishon";
@@ -30,31 +31,33 @@ const SubCatgoryPage = () => {
   }, []);
 
   return (
-    <>
-      <h1>{title}</h1>
-
+    <div className="main">
+    <h1 className="type">{title}</h1>
+    <div className="mainnproductdivSub">
       {state.subCatgoryProduct &&
         state.subCatgoryProduct.map((element, index) => {
+          console.log(element);
           return (
-            <div className="productdivSub">
-              <Link
-                to={`/category/product/${element.product_id}`}
-                key={index}
-                className="linkProduct"
-              >
-                <img className="productImg" src={element.picUrlProd}></img>
-                <p className="titlePar"> {element.title}</p>
-                <p className="descriptionPar">
-                  {" "}
-                  {element.description.split(" ").slice(1, 15).join(" ")}...
-                </p>
-
-                <p className="pricePar"> {element.price} JD</p>
-              </Link>
-            </div>
+            <div className="productDiv">
+            <Link
+              to={`/category/product/${element.product_id}`}
+              key={index}
+              className="linkProduct"
+            >
+              <img className="productImg" src={element.picUrlProd}></img>
+              <p className="titlePar"> {element.title}</p>
+              <p className="descriptionPar">
+                {" "}
+                {element.description.split(" ").slice(1, 15).join(" ")}...
+              </p>
+              <p className="pricePar"> {element.price} JD</p>
+            </Link>
+          </div>
           );
         })}
-    </>
+  </div>
+
+  </div>
   );
 };
 
