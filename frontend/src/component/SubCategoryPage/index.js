@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./style.css"
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { subCatgorypagination } from "../../redux/reducers/paginishon";
@@ -27,64 +28,36 @@ const SubCatgoryPage = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    axios
-      .post(`http://localhost:5000/product/subcatogre/1`)
-      .then((result) => {
-        console.log(result);
-        dispatch(subCatgorypagination());
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   return (
-    <>
-      <h1>{title}</h1>
-
+    <div className="main">
+    <h1 className="type">{title}</h1>
+    <div className="mainnproductdivSub">
       {state.subCatgoryProduct &&
         state.subCatgoryProduct.map((element, index) => {
+          console.log(element);
           return (
-            <div className="productdivSub">
-              <Link
-                to={`/category/product/${element.product_id}`}
-                key={index}
-                className="linkProduct"
-              >
-                <img className="productImg" src={element.picUrlProd}></img>
-                <p className="titlePar"> {element.title}</p>
-                <p className="descriptionPar">
-                  {" "}
-                  {element.description.split(" ").slice(1, 15).join(" ")}...
-                </p>
-
-                <p className="pricePar"> {element.price} JD</p>
-              </Link>
-            </div>
+            <div className="productDiv">
+            <Link
+              to={`/category/product/${element.product_id}`}
+              key={index}
+              className="linkProduct"
+            >
+              <img className="productImg" src={element.picUrlProd}></img>
+              <p className="titlePar"> {element.title}</p>
+              <p className="descriptionPar">
+                {" "}
+                {element.description.split(" ").slice(1, 15).join(" ")}...
+              </p>
+              <p className="pricePar"> {element.price} JD</p>
+            </Link>
+          </div>
           );
         })}
-      {state.Pagination &&
-        state.Pagination.map((element) => {
-          return (
-            <div className="contener_one_product">
-              <Link
-                className="linkproduct_mainpage"
-                to={`/category/product/${element.product_id}`}
-              >
-                <img className="firstpageimg" src={element.picUrlProd} />
-                <p className="titleproduct_main">{element.title}</p>
+  </div>
 
-                <p className="dis_product_main">
-                  {" "}
-                  {element.description.split(" ").splice(1, 15).join(" ")}{" "}
-                </p>
-                <p className="price_productmain">{element.price} JD</p>
-              </Link>
-            </div>
-          );
-        })}
-    </>
+  </div>
   );
 };
 

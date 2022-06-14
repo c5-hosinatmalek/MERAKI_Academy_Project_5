@@ -4,6 +4,7 @@ import { RiAccountCircleFill } from "react-icons/ri";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LOGIN from "../LOGIN";
+import logo from "./logo/logo.png"
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/reducers/auth";
 import jwtDecode from "jwt-decode";
@@ -60,7 +61,8 @@ const NavBar = () => {
       ) : (
         <div className="navUser">
           <Link to={"/"}>
-            <h1 className="logo_name">ComTech</h1>
+
+<img src={logo} className="logo_name"></img>
           </Link>
           <SEARCH />
           <div className="my_account_contener">

@@ -114,7 +114,7 @@ const updateProduct = (req, res) => {
 };
 
 const getprodactpagin = (req, res) => {
-  const limit = 10;
+  const limit = 12;
   const page = req.params.page;
 
   const offset = (page - 1) * limit;
@@ -224,12 +224,10 @@ const restockProduct = (req, res) => {
 
 
 const getProdactPaginBuySub = (req, res) => {
-  console.log(false);
   const limit = 12;
   const page = req.params.page;
   const id =req.body.id
   const data=[id]
-  console.log(data);
   const offset = (page - 1) * limit;
   const query = "select * from Products WHERE Products.category_id=? limit " + limit + " OFFSET " + offset ;
   connection.query(query,data,(err, result) => {

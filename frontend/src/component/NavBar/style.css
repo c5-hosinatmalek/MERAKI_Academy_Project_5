@@ -1,3 +1,7 @@
+
+.navbar{
+    background-color: black;
+}
 * {
 
     padding: 0;
@@ -27,6 +31,8 @@ background-color: #000000;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     user-select: none;
+    width: 150px;
+    height: 100;
 }
 
 

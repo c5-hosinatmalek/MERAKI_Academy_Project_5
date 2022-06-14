@@ -1,6 +1,6 @@
 const express=require("express")
 const authentication=require("../middlewares/authentication")
-const {saleOrder,requstAccept,getAllSaleOrderForUser,getAllSaleOrderForadmin,ApprovedSalesOrderforUser,ApprovedSalesOrderforAdmin,deleteProductUsed,allproductusedhardware,getOneProdectused}=require("../controllers/product_used")
+const {saleOrder,requstAccept,getAllSaleOrderForUser,getAllSaleOrderForadmin,ApprovedSalesOrderforUser,ApprovedSalesOrderforAdmin,deleteProductUsed,allProductUsed,getOneProdectused,getAllProdectWithCategory}=require("../controllers/product_used")
 const prudectUsedRouter=express.Router()
 
 // post ==>http://localhost:5000/prudect_used
@@ -25,9 +25,12 @@ prudectUsedRouter.get("/Allorderapprovedforadmin",ApprovedSalesOrderforAdmin)
 // delete ==> http://localhost:5000/prudect_used/delete/:id
 prudectUsedRouter.delete("/delete/:id",deleteProductUsed)
 
-// get ===> http://localhost:5000/prudect_used/allproductbycategory/:category
-prudectUsedRouter.get("/allproductbycategory/:category",allproductusedhardware)
+// get ===> http://localhost:5000/prudect_used/allproductused
+prudectUsedRouter.get("/allproductused",allProductUsed)
 
-//get ===> http://localhost:500/prudect_used/productdetails/:id
+//get ===> http://localhost:5000/prudect_used/productdetails/:id
 prudectUsedRouter.get("/productdetails/:id",getOneProdectused)
+
+// get ===> http://localhost:5000/prudect_used/productbycategory/:category
+prudectUsedRouter.get("/productbycategory/:category",getAllProdectWithCategory) 
 module.exports=prudectUsedRouter
