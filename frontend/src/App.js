@@ -158,11 +158,20 @@ function App() {
         <div className="mainphotos">
           <img className="mainphotosclass" src={photo2}></img>
         </div>
-      </div>
-    );
-  }
- 
-}
+
+      </div>)
+
+      }
+          
+         
+
+   
+     
+   
+
+
+
+
 
 
 

@@ -10,12 +10,14 @@
     text-align: center;
     border: 1px solid black;
     border-radius: 3px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .titel_regester{
-    border-bottom:solid black 3px ;
-    padding: 7px;
+    color: white;
+    background-color: #0B4579;
+    /* border-bottom:solid black 3px ; */
+    /* padding: 7px; */
     font-size: 1.7rem;
     font-weight: 600;
 }
@@ -58,8 +60,6 @@
 }
 
 .form_rigister button {
-    background: white;
-    color: black;
     border-radius: 3px;
     font-size: 2rem;
     width: 9rem;
@@ -67,4 +67,10 @@
     height: 3rem;
     font-weight: 600;
     cursor: pointer;
+    width: 300px;
+    height: 70px;
+    background-color: #b11616;
+    border: 0ch;
+    font-size: 23px;
+    color: white;
 }

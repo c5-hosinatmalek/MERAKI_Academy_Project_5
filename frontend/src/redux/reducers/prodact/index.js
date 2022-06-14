@@ -10,7 +10,6 @@ export const productSlice = createSlice({
   reducers: {
 
     getproduct: (state, action) => {
-      console.log(action.payload.length / 12);
       state.product = action.payload;
     },
 
@@ -32,15 +31,15 @@ export const productSlice = createSlice({
       state.number=[]
       let counter = state.productcatogre.length / 12;
       state.productcatogre.forEach((element, index) => {
-        console.log(index < Math.ceil(counter));
         if (index < Math.ceil(counter)) {
           console.log(index + 1);
           state.number.push(index + 1);
         }
 
   
-}});
+})}
 
+  }})
 
 export const {
   getproduct,
