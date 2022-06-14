@@ -63,7 +63,7 @@ const requstAccept = (req, res) => {
 
 const getAllSaleOrderForUser = (req, res) => {
   const user_id = req.token.user_id;
-  const query = `SELECT * FROM usedproduct WHERE user_id=? AND is_deleted=0 AND admission_status=0`;
+  const query = `SELECT * FROM usedproduct WHERE user_id=? `;
   const data = [user_id];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -84,7 +84,7 @@ const getAllSaleOrderForUser = (req, res) => {
 
 const getAllSaleOrderForadmin = (req, res) => {
   const query =
-    "SELECT * FROM usedproduct WHERE is_deleted=0 AND admission_status=0";
+    "SELECT * FROM usedproduct WHERE is_deleted=0 ";
   connection.query(query, (err, result) => {
     if (err) {
       res.status(500).json({
@@ -167,11 +167,11 @@ const deleteProductUsed = (req, res) => {
   });
 };
 
-const allproductusedhardware = (req, res) => {
-  const category = req.params.category;
-  const query = `SELECT * FROM usedproduct WHERE  is_deleted=0 AND admission_status=1 AND category=?`;
-  const data = [category];
-  connection.query(query, data, (err, result) => {
+const allProductUsed = (req, res) => {
+  
+  const query = `SELECT * FROM usedproduct WHERE  is_deleted=0 AND admission_status=1`;
+  
+  connection.query(query,(err, result) => {
     if (err) {
       res.status(500).json({
         success: false,
@@ -182,7 +182,7 @@ const allproductusedhardware = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      message: "all product used from category hardware",
+      message: "all product used ",
       result: result,
     });
   });
@@ -209,6 +209,28 @@ const getOneProdectused = (req, res) => {
   });
 };
 
+
+const getAllProdectWithCategory=(req,res)=>{
+  const category=req.params.category
+  const query=`SELECT * FROM usedproduct WHERE is_deleted=0 AND admission_status=1 AND category=?`
+  const data=[category]
+  connection.query(query,data,(err,result)=>{
+    if(err){
+      res.status(500).json({
+        success:false,
+        message:"server error",
+        result:result
+      })
+      return
+    }
+    res.status(200).json({
+      success:true,
+      message:`all product ${category}`,
+      result:result
+    })
+  })
+}
+
 module.exports = {
   saleOrder,
   requstAccept,
@@ -217,6 +239,7 @@ module.exports = {
   ApprovedSalesOrderforUser,
   ApprovedSalesOrderforAdmin,
   deleteProductUsed,
-  allproductusedhardware,
+  allProductUsed,
   getOneProdectused,
+  getAllProdectWithCategory
 };

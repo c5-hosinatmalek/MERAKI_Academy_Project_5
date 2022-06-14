@@ -2,3 +2,9 @@
     height: 50px;
     width:51px
 }
+.contenur_product_taple{
+    width: 90%;
+    height: 45rem;
+    overflow: auto;
+    
+}

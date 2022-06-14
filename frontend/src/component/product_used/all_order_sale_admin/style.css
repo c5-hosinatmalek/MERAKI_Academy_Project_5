@@ -1,5 +1,7 @@
 
-
+.contener_all_product_for_admin{
+    width: 20rem;
+}
 .contener_all_product_for_admin img {
 width: 15rem;
 height: 15rem;

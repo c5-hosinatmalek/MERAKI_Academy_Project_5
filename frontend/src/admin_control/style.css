@@ -1,0 +1,21 @@
+.contenur_admin_control{
+text-align: center;
+width: 15rem;
+height:70rem;
+border-right: 3px solid black;
+
+
+
+
+}
+
+
+
+.all_link_page a{
+display: block;
+margin: 3.5rem 1rem;
+border: 5px solid black;
+color: black;
+font-size: 2rem;
+
+}
