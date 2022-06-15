@@ -8,3 +8,7 @@
     overflow: auto;
     
 }
+#description{
+    overflow: auto;
+    width: 5rem;
+}

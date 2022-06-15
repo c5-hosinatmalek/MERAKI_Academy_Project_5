@@ -65,9 +65,9 @@ button:hover{
   }
 
 
-  /* .App {
+  .App {
     display: flex;
-  } */
+  }
   .mainphotos {
     position: sticky;
   }
@@ -78,14 +78,9 @@ button:hover{
   width: 79rem;
 }
 
-/* .App {
-  display: flex;
-} */
 .mainphotos {
   position: sticky;
 }
-
-
 
 .routesdiv{
   width: 600%;

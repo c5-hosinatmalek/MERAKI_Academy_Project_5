@@ -157,39 +157,41 @@ const ProductTable = () => {
     <div className="contenur_product_taple" >
       <table>
         <tr>
-          <th>Image</th>
-          <th>Product_id</th>
-          <th>picUrlProd</th>
-          <th>title</th>
-          <th>Product Name</th>
-          <th>category</th>
-          <th>sub_category</th>
-          <th>product_type</th>
-          <th>price</th>
-          <th>description</th>
-          <th>Store_Quantity</th>
-          <th>note</th>
-          <th>button</th>
+          <th className="head">Image</th>
+          <th className="head">Product id</th>
+          <th className="head">PicUrlProd</th>
+          <th className="head">Title</th>
+          <th className="head">Product Name</th>
+          <th className="head">Category</th>
+          <th className="head">Sub Category</th>
+          <th className="head">Product_Type</th>
+          <th className="head">Buy Price</th>
+          <th className="head">Sell Price</th>
+          <th className="head">Description</th>
+          <th className="head">Store Quantity</th>
+          <th className="head">Note</th>
+          <th className="head">button</th>
         </tr>
         {state.products &&
           state.products.map((element, index) => {
             return (
               <tr key={index}>
-                <td>
+                <td className="body">
                   <img src={`${element.picUrlProd}`} className="imgTable" />
                 </td>
 
-                <td>{`${element.product_id}`} </td>
+                <td className="body">{`${element.product_id}`} </td>
                 {index !== indexState ? (
                   <>
-                    <td>{element.picUrlProd}</td>
-                    <td>{element.title}</td>
-                    <td>{element.product_name}</td>
-                    <td>{element.category}</td>
-                    <td>{element.sub_category}</td>
-                    <td>{element.product_type}</td>
-                    <td>{element.price}</td>
-                    <td>{element.description}</td>
+                    <td className="body">{element.picUrlProd}</td>
+                    <td className="body">{element.title}</td>
+                    <td className="body">{element.product_name}</td>
+                    <td className="body">{element.category}</td>
+                    <td className="body">{element.sub_category}</td>
+                    <td className="body">{element.product_type}</td>
+                    <td className="body">{element.buy_price}</td>
+                    <td className="body">{element.price}</td>
+                    <td className="body" id="description">{element.description}</td>
                   </>
                 ) : (
                   <>
