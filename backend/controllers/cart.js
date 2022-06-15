@@ -123,7 +123,7 @@ const checkOut = async (req, res) => {
         element.price,
         element.title,
         element.buy_price,
-        +element.quantity,
+        element.quantity,
         date,
         element.product_id,
       ];
@@ -131,7 +131,7 @@ const checkOut = async (req, res) => {
         if (err) {
           console.log(err);
         }
-        console.log({ succ: true, result });
+        res.status(200).json({ succ: true, result });
       });
     });
 };

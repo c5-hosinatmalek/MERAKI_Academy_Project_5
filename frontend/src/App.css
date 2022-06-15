@@ -23,15 +23,11 @@
 
 
 
- .contener_img2{
 
 
-  display: none;
-}
-
-.App {
+/* .App {
   display: flex;
-}
+} */
 .mainphotos {
   height: 1000px;
   position: sticky;
@@ -69,9 +65,9 @@ button:hover{
   }
 
 
-  .App {
+  /* .App {
     display: flex;
-  }
+  } */
   .mainphotos {
     position: sticky;
   }
@@ -82,9 +78,9 @@ button:hover{
   width: 79rem;
 }
 
-.App {
+/* .App {
   display: flex;
-}
+} */
 .mainphotos {
   position: sticky;
 }

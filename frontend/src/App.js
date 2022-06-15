@@ -14,10 +14,6 @@ import LOGIN from "./component/LOGIN";
 import ORDERSALE from "./component/product_used/create_order_sale";
 import ALLORDERSALE from "./component/product_used/all_order_sale"
 import ONEPRODUCTUSED from "./component/product_used/one_product_used";
-
-import { useSelector } from "react-redux";
-
-/////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllproduct } from "./redux/reducers/search";
@@ -26,7 +22,6 @@ import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
 import ALLPRODUCTUSED from "./component/product_used/all_product_used";
 import ALLPRODUCTFORADMIN from "./component/product_used/all_order_sale_admin";
 import ADMINCONTROL from "./admin_control";
-////////////////////////////////////////////////////////////
 import { CategoryBar } from "./component/CategoryBar/index";
 
 import Homepage from "./component/homepage";
@@ -40,7 +35,7 @@ import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
 
-import jwtDecode from "jwt-decode";
+
 
 import { SubCatgoryPage } from "./component/SubCategoryPage/index";
 
@@ -81,20 +76,9 @@ function App() {
   
   ////////////////////////////////////////////////////////////////////
 
-  const state = useSelector((state) => {
-    return {
-      isLoggedIn: state.auth.isLoggedIn,
-      token: state.auth.token,
-    };
-  });
-  const decodeToken = (columnName) => {
-    if (state.isLoggedIn) {
-      return jwtDecode(state.token)[columnName];
-    }
-  };
 
   
-  if(decodeToken("role")){
+  if(decodeToken("role")==1){
     return(
     <div className="App">
     <div className="mainphotos">
@@ -161,7 +145,7 @@ function App() {
 
       </div>)
 
-      }
+      }}
           
          
 
