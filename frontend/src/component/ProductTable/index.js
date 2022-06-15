@@ -26,6 +26,7 @@ const ProductTable = () => {
   const [price, Setprice] = useState(0);
   const [title, Settitle] = useState("");
   const [image, setImage] = useState("");
+  const [buy_price,setBuy_price] =useState("")
 
   const subcatogry = () => {
     axios
@@ -113,6 +114,7 @@ const ProductTable = () => {
         product_type,
         price,
         description,
+        buy_price
       })
       .then((result) => {
         dispatch(
@@ -127,6 +129,7 @@ const ProductTable = () => {
               product_type,
               price,
               description,
+              buy_price
             },
           ])
         );
@@ -170,12 +173,12 @@ const ProductTable = () => {
           <th className="head">Description</th>
           <th className="head">Store Quantity</th>
           <th className="head">Note</th>
-          <th className="head">button</th>
+          <th className="head">Operater</th>
         </tr>
         {state.products &&
           state.products.map((element, index) => {
             return (
-              <tr key={index}>
+              <tr key={index} className="bodyrow">
                 <td className="body">
                   <img src={`${element.picUrlProd}`} className="imgTable" />
                 </td>
@@ -183,49 +186,53 @@ const ProductTable = () => {
                 <td className="body">{`${element.product_id}`} </td>
                 {index !== indexState ? (
                   <>
-                    <td className="body">{element.picUrlProd}</td>
-                    <td className="body">{element.title}</td>
+                    <td className="body"><p className="url">{element.picUrlProd}</p></td>
+                    <td className="description"><p className="descriptionPar">{element.title}</p></td>
                     <td className="body">{element.product_name}</td>
                     <td className="body">{element.category}</td>
                     <td className="body">{element.sub_category}</td>
                     <td className="body">{element.product_type}</td>
                     <td className="body">{element.buy_price}</td>
                     <td className="body">{element.price}</td>
-                    <td className="body" id="description">{element.description}</td>
+                    <td className="description" ><p className="descriptionPar">{element.description}</p></td>
                   </>
                 ) : (
                   <>
-                    <td>
+                    <td className="body">
                       <input
                         type="file"
-                        className="inputImg"
+                        className="updateinputImg"
                         onChange={(e) => setImage(e.target.files[0])}
                       />
-                      <button className="buttonImg" onClick={uploadImage}>
+                      <button className="uploadButton" onClick={uploadImage}>
                         Upload
                       </button>
                     </td>
-                    <td>
-                      <input
+                    <td className="body">
+                      <textarea className="descriptionPar"
                         placeholder="Title"
                         defaultValue={element.title}
                         onChange={(e) => {
                           Settitle(e.target.value);
                         }}
-                      />
+                        type="text"
+                        cols="25"
+                        rows="4"
+                      ></textarea>
                     </td>
-                    <td>
+                    <td className="body">
                       {" "}
                       <input
+                      className="updateinput"
                         placeholder="Product Name"
-                        defaultValue={element.title}
+                        defaultValue={element.product_name}
                         onChange={(e) => {
                           Setproduct_name(e.target.value);
                         }}
                       />
                     </td>
-                    <td>
-                      <select
+                    <td className="body">
+                      <select  className="updateinput"
                         onChange={(e) => {
                           setCato(e.target.value);
                         }}
@@ -240,8 +247,8 @@ const ProductTable = () => {
                           })}
                       </select>
                     </td>
-                    <td>
-                      <select
+                    <td className="body">
+                      <select className="updateinput"
                         onChange={(e) => {
                           Setsub_category(e.target.value);
                         }}
@@ -256,26 +263,37 @@ const ProductTable = () => {
                           })}
                       </select>
                     </td>
-                    <td>
+                    <td className="body">
                       <input
                         placeholder="Product_type"
+                        className="updateinput"
                         defaultValue={element.product_type}
                         onChange={(e) => {
                           Setproduct_type(e.target.value);
                         }}
                       />
                     </td>
-                    <td>
+                    <td className="body">
+                      <input placeholder="Buy  Price"
+                      className="updateinput"
+                        defaultValue={element.buy_price}
+                        onChange={(e) => {
+                          setBuy_price(e.target.value)
+                        }}
+                      />
+                    </td>
+                    <td className="body">
                       <input
-                        placeholder="Price"
+                        placeholder="Sell Price"
+                        className="updateinput"
                         defaultValue={element.price}
                         onChange={(e) => {
                           Setprice(e.target.value);
                         }}
                       />
                     </td>
-                    <td>
-                      <textarea
+                    <td className="body">
+                      <textarea className="descriptionPar"
                         onChange={(e) => {
                           Setdescription(e.target.value);
                         }}
@@ -289,16 +307,16 @@ const ProductTable = () => {
                     </td>
                   </>
                 )}
-                <td>{element.Store_Quantity}</td>
-                <td>
+                <td className="body">{element.Store_Quantity}</td>
+                <td className="body">
                   {element.Store_Quantity < 10
                     ? "Restock the product"
                     : "The stock is good"}
                 </td>
-                <td>
+                <td className="body">
                   {quantityInput ? (
                     <>
-                      <input
+                      <input className="quantityInput"
                         type={"number"}
                         placeholder="New Quantity"
                         onChange={(e) => {
@@ -306,7 +324,7 @@ const ProductTable = () => {
                           setClear(e);
                         }}
                       />
-                      <button
+                      <button className="operButton"
                         onClick={() => {
                           restockClick(
                             element.product_id,
@@ -316,9 +334,9 @@ const ProductTable = () => {
                           dispatch(updateQuantityAction([index, newQuantity]));
                         }}
                       >
-                        Add New Qunantity
+                      New Qunantity
                       </button>
-                      <button
+                      <button className="operButton"
                         onClick={() => {
                           setQuantityInput(false);
                         }}
@@ -328,21 +346,21 @@ const ProductTable = () => {
                     </>
                   ) : index !== indexState ? (
                     <>
-                      <button
+                      <button className="operButton"
                         onClick={() => {
                           deleteClick(element.product_id);
                         }}
                       >
                         Delete
                       </button>
-                      <button
+                      <button className="operButton"
                         onClick={() => {
                           setIndexState(index);
                         }}
                       >
                         Update
                       </button>
-                      <button
+                      <button className="operButton"
                         onClick={() => {
                           setQuantityInput(true);
                         }}
@@ -352,14 +370,14 @@ const ProductTable = () => {
                     </>
                   ) : (
                     <>
-                      <button
+                      <button className="operButton"
                         onClick={(e) => {
                           updateClick(element.product_id);
                         }}
                       >
                         Update
                       </button>{" "}
-                      <button
+                      <button className="operButton"
                         onClick={() => {
                           setIndexState("");
                         }}

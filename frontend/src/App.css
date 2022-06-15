@@ -19,6 +19,9 @@
   height:50rem;
   border-bottom: 3px black solid;
 }
+textarea{
+  resize: none;
+}
 
 
 
