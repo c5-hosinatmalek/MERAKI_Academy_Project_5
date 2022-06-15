@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 import { RiAccountCircleFill } from "react-icons/ri";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import LOGIN from "../LOGIN";
+
+import {FaShoppingCart} from "react-icons/fa";
+
+
 import logo from "./logo/logo.png"
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/reducers/auth";
 import jwtDecode from "jwt-decode";
 import SEARCH from "../SEARCH";
 import { useState } from "react";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const NavBar = () => {
   const [show, setShow] = useState();
@@ -17,6 +19,7 @@ const NavBar = () => {
   const dispacth = useDispatch();
   const state = useSelector((state) => {
     return {
+      cartcontent:state.cart.cart,
       isLoggedIn: state.auth.isLoggedIn,
       token: state.auth.token,
     };
@@ -95,17 +98,20 @@ const NavBar = () => {
               <Link className="contener_logcart" to={"/login"}>
                 <div className="icons">
                   {" "}
-                  <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} />
+                  <FaShoppingCart  />
                 </div>
+               
               </Link>
             ) : (
-              <Link to={`/cart/${decodeToken("user_id")}`}>
+              <Link className="contener_logcart" to={`/cart/${decodeToken("user_id")}`}>
                 <div className="icons">
                   {" "}
-                  <ShoppingCartIcon color="balck" sx={{ fontSize: 55 }} />
+                  <FaShoppingCart  />
                 </div>
+              
               </Link>
             )}
+            <h1 className="menu_icon"  ><MenuIcon  sx={{ fontSize: 55 }} /></h1>
           </div>
         </div>
       )}

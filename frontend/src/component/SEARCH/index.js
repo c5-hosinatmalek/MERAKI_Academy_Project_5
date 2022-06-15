@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setResultSerch, setStateSerch } from "../../redux/reducers/search";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
+import {GrFormSearch} from "react-icons/gr";
 
 
 const SEARCH = () => {
@@ -25,15 +27,13 @@ const SEARCH = () => {
           dispacth(setResultSerch(e.target.value));
         }}
       />
-      <button
-        onClick={() => {
+      
+      
+      <h1 className="h1_search" onClick={() => {
           navigate("/resulsearch");
           dispacth(setStateSerch(false));
           
-        }}
-      >
-        Search
-      </button>
+        }}> <GrFormSearch/> </h1>
       <div className="all_result">
         {resultSerch.stateserch ? (
           resultSerch.resultSerch &&
