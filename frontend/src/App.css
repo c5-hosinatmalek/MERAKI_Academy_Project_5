@@ -1,74 +1,48 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   padding: 0;
   margin: 0;
-
-  /* font-family: 'Poppins', sans-serif; */
-
+  font-family: "Montserrat";
   box-sizing: border-box;
-  
 }
 
-.routesdiv_admin{
+.routesdiv_admin {
   display: flex;
-  
   flex-direction: row;
   overflow: hidden;
   width: auto;
-  height:50rem;
+  height: 50rem;
   border-bottom: 3px black solid;
 }
 
-
-
-
- .contener_img2{
-
-
+.contener_img2 {
   display: none;
 }
 
-.App {
-  display: flex;
-}
+
 .mainphotos {
   height: 1000px;
   position: sticky;
   top: 0px;
 }
 .mainphotosclass {
-  height: 950px;
-
-
-
+  height: 1000px;
+  width: 300px;
 }
 
-
-
-.mainphotosclass{
-  display: none;
+button:hover {
+  cursor: pointer;
 }
 
-
-button:hover{
-  cursor: pointer
-}
-
-
-
-  @media (max-width:1500px){
-     .mainphotosclass{
-      display: none;
-    } 
-
-
-
-  
+@media (max-width: 1500px) {
+  .mainphotosclass {
+    display: none;
+  }
 
   .react-slideshow-container {
     width: 79rem;
   }
-
 
   .App {
     display: flex;
@@ -78,20 +52,15 @@ button:hover{
   }
 }
 
-
 .react-slideshow-container {
   width: 79rem;
 }
 
 .App {
-  display: flex;
+display: grid;
+grid-template-columns: auto 70% 15%;
 }
 .mainphotos {
   position: sticky;
 }
 
-
-
-.routesdiv{
-  width: 600%;
-}

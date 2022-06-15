@@ -12,6 +12,7 @@ import header2 from "./img/2.jpg";
 import header3 from "./img/3.jpg";
 import header4 from "./img/4.png";
 import header5 from "./img/5.png";
+import { color } from "@mui/system";
 const Homepage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,11 +37,11 @@ const Homepage = () => {
                   <img className="productimg" src={element.picUrlProd} />
                 </div>
                 <div className="contener_titel_product">
-                  <p>{element.title}</p>
+                  <span className="titlemainpage">{element.title}</span>
                 </div>
                 <div className="contener_price">
                   {" "}
-                  <span>{element.price} JD</span>
+                  <h1 className="pricemain">{element.price} JD</h1>
                 </div>
               </Link>
             </div>

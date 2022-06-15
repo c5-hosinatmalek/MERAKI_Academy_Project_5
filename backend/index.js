@@ -39,22 +39,26 @@ app.use("/register", registerRouter);
 // create sub_category router
 app.use("/sub_category", sub_categoryRouter);
 // create product router
-app.use("/product", productRouter);
 
+app.use("/product", productRouter);
 // creat middlleware application ==>handle all requst cartRouter
+
 app.use("/cart", cartRouter);
 // create login router
-app.use("/login", loginRouter);
 
+app.use("/login", loginRouter);
 // create user router
+
 app.use("/user", userRouter);
 // create Homeiteams router
+
 app.use("/Homeiteams", Homeiteams);
 // create email router
+
 app.use("/email",emailRouter)
 // create requst router
-app.use("/request",requestRouter)
 
+app.use("/request",requestRouter)
 // creat middlleware application ==>handle all requst prudectUsedRouter
 
 app.use("/prudect_used",prudectUsedRouter)

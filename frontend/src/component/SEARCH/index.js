@@ -39,7 +39,7 @@ const SEARCH = () => {
               return (
                 <Link
                   to={`/category/product/${result.product_id}
-                        `}
+                  `}
                 >
                   <div className="continer_result">
                     <div className="img_product">

@@ -128,78 +128,110 @@ const REGISTER = () => {
   };
 
   return (
-    <div className="containeeer_rigister">
+    <div>
       {!checkVerfied ? (
-        <form className="form_rigister" onSubmit={submit}>
-          <>
-            <div className="titel_regester">
-              {" "}
-              <h1>Register</h1>
+        <div className="mainregster">
+          <h1 className="Register">Register Account</h1>
+          <div className="test3">
+            <div>
+              <h3>
+                If you already have an account with us, please login at the
+                login page.
+              </h3>
             </div>
+            <div className="containeeer_rigister">
+              <form className="form_rigister" onSubmit={submit}>
+                <>
+                  <div className="titel_regester"> </div>
+                  <div className="space">
+                    <div className="inputname">
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Name
+                      </h3>
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Email
+                      </h3>
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Country
+                      </h3>
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Password
+                      </h3>
+                    </div>
+                    <div className="regstierinputs">
+                      <div className="name_user">
+                        <input
+                          className="inputregstier"
+                          type="text"
+                          placeholder="User Name"
+                          required
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
+                        />
+                      </div>
+                      <div className="email_user">
+                        <input
+                          className="inputregstier"
+                          type="text"
+                          placeholder="E_mail"
+                          required
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                        />
+                      </div>
+                      <div className="country_user">
+                        <select
+                          className="regstierinputs"
+                          onChange={(e) => {
+                            setCountryy(e.target.value);
+                          }}
+                        >
+                          {countries &&
+                            countries.map((element, index) => {
+                              return (
+                                <option key={index}>{element.name}</option>
+                              );
+                            })}
+                        </select>
+                      </div>
 
-            <div className="name_user">
-              <label>Name</label>
-              <input
-                type="text"
-                placeholder="Example_mohammad"
-                required
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-            </div>
-            <div className="email_user">
-              <label>Email</label>
-              <input
-                type="text"
-                placeholder="Example_mohammad@gmail.com"
-                required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div className="country_user">
-              <label>Choose Country</label>
-              <select
-                onChange={(e) => {
-                  setCountryy(e.target.value);
-                }}
-              >
-                {countries &&
-                  countries.map((element, index) => {
-                    return <option key={index}>{element.name}</option>;
-                  })}
-              </select>
-            </div>
+                      <div className="password_user">
+                        <input
+                          className="inputregstier"
+                          type="password"
+                          placeholder="Pasword"
+                          required
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
 
-            <div className="password_user">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter Pasword"
-                required
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
+                  {status ? (
+                    <div className="message_user">
+                      <h1>{messageUser}</h1>
+                    </div>
+                  ) : (
+                    <div className="message_user">
+                      <h1>{messageUser}</h1>
+                    </div>
+                  )}
+                </>
+              </form>
             </div>
-
-            <div className="rigester_button">
-              <button>Register</button>
-            </div>
-
-            {status ? (
-              <div className="message_user">
-                <h1>{messageUser}</h1>
-              </div>
-            ) : (
-              <div className="message_user">
-                <h1>{messageUser}</h1>
-              </div>
-            )}
-          </>
-        </form>
+          </div>
+          <div className="Register">
+            <button>Register</button>
+          </div>
+        </div>
       ) : (
         <>
           <div className="titel_regester">
