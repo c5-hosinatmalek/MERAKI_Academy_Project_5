@@ -35,6 +35,19 @@
   margin-bottom: 0.5rem;
   font-size: 1rem;
 }
+span{
+    color: #b11616;
+    font-weight: 600;
+}
+.lowQuan{
+    height: 3rem;
+    margin: 0;
+    text-align: center;
+    font-size: 1.1rem;
+    border-bottom : 2px solid gray;
+    background-color: #b11616;
+    color: white;
+}
 .uploadButton{
     width: 90%;
     height: 2rem;

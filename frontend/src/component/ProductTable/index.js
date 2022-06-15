@@ -182,8 +182,11 @@ const ProductTable = () => {
                 <td className="body">
                   <img src={`${element.picUrlProd}`} className="imgTable" />
                 </td>
+                {element.Store_Quantity < 10
+                    ?<td className="lowQuan">{`${element.product_id}`} </td>
+                    :  <td className="body">{`${element.product_id}`} </td>}
 
-                <td className="body">{`${element.product_id}`} </td>
+                
                 {index !== indexState ? (
                   <>
                     <td className="body"><p className="url">{element.picUrlProd}</p></td>
@@ -310,8 +313,8 @@ const ProductTable = () => {
                 <td className="body">{element.Store_Quantity}</td>
                 <td className="body">
                   {element.Store_Quantity < 10
-                    ? "Restock the product"
-                    : "The stock is good"}
+                    ?<span>Restock the product</span>
+                    :  "The stock is good"}
                 </td>
                 <td className="body">
                   {quantityInput ? (
