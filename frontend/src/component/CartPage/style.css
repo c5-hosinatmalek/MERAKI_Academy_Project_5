@@ -6,6 +6,9 @@
 .content_cart{
 margin-bottom: 5rem;
 }
+.content_cart.active{
+    display: none;
+}
 .imgCart{
     height: 120px;
     width: 120px;
@@ -80,3 +83,12 @@ align-items: center;
     border-top:3px solid black ;
 }
 
+.message_cart{
+    display: none;
+}
+.message_cart.active{
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+}

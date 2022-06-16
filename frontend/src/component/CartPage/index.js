@@ -15,6 +15,8 @@ import {
 const CartPage = () => {
   const [message, setMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
+  const [clascontent,setclascontent]=useState("")
+
   const state = useSelector((state) => {
     return {
       cart: state.cart.cart,
@@ -31,8 +33,15 @@ const CartPage = () => {
         },
       })
       .then((result) => {
-        console.log(result);
+       
         dispatch(getCart(result.data.result));
+        if(result.data.result.length===0){
+          setclascontent("active")
+        }else{
+          setclascontent("")
+        }
+
+        
       })
       .catch((err) => {
         console.log(err);
@@ -92,7 +101,8 @@ setMessage("Your order has been accepted")
 let amount =0
 
   return <div className="contenur_cart" >
-      <div className="content_cart" >
+    <h1 className={`message_cart ${clascontent}`} >Cart is empty</h1>
+      <div className={`content_cart ${clascontent}`} >
   <table>
 <tr className="headerCartTable">
     <th>Image</th>
