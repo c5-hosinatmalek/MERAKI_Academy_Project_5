@@ -58,57 +58,58 @@ const CartPage = () => {
   };
   //  dispatch(totalPriceAction(element.quantity*element.price))
 
-
-
-
-const deleteCartClick=(product_id)=>{
-    
-    dispatch(deleteFromCart(product_id))
-    axios.delete(`http://localhost:5000/cart/${product_id}`,{
+  const deleteCartClick = (product_id) => {
+    dispatch(deleteFromCart(product_id));
+    axios
+      .delete(`http://localhost:5000/cart/${product_id}`, {
         headers: {
           authorization: `Bearer ${state.token}`,
-        }}).then((result)=>{
-            
-        }).catch((err)=>{
-            console.log(err);
-        })
-}
+        },
+      })
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  const CheckOutClick = () => {
+    let date = new Date();
+    date = date.toString().split(" ").slice(1, 4).join(" ");
 
-const CheckOutClick=()=>{
-  let date = new Date()
-  date = date.toString().split(" ").slice(1,4).join(" ")
- 
-  axios.put("http://localhost:5000/cart/checkout",{arrayCheckout:state.cart,date},{
-    headers: {
-      authorization: `Bearer ${state.token}`,
-    }}).then((result)=>{
-setMessage("Your order has been accepted")
-      dispatch(checkoutAction())
-    }).catch((err)=>{
-      console.log(err);
-    })
-}
-let amount =0
+    axios
+      .put(
+        "http://localhost:5000/cart/checkout",
+        { arrayCheckout: state.cart, date },
+        {
+          headers: {
+            authorization: `Bearer ${state.token}`,
+          },
+        }
+      )
+      .then((result) => {
+        setMessage("Your order has been accepted");
+        dispatch(checkoutAction());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  let amount = 0;
 
-  return <>
+  return (
+    <>
+      <table>
+        <tr className="headerCartTable">
+          <th>Image</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
 
-  <table>
-<tr className="headerCartTable">
-    <th>Image</th>
-    <th>Product Name</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Total</th>
-</tr>
-
-  {state.cart&&state.cart.map((element,index)=>{
-    
-      amount += element.quantity*element.price
-    
-   
-    
-
+        {state.cart &&
+          state.cart.map((element, index) => {
+            amount += element.quantity * element.price;
 
             return (
               <tr key={index}>
@@ -154,8 +155,6 @@ let amount =0
           <td className="tdtotalprice">Total Price</td>
           <td className="tdtotalprice">{amount} JD</td>
         </tr>
-        
-
       </table>
       <h1>{message}</h1>
       <button
@@ -167,12 +166,7 @@ let amount =0
         Check Out
       </button>
     </>
-
-
-      };
-
-
-
-
+  );
+};
 
 export default CartPage;

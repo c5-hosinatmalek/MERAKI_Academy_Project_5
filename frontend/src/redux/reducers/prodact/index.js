@@ -8,7 +8,6 @@ export const productSlice = createSlice({
     productcatogre: [],
   },
   reducers: {
-
     getproduct: (state, action) => {
       state.product = action.payload;
     },
@@ -26,28 +25,27 @@ export const productSlice = createSlice({
         }
       });
     },
-    addcatogre:(state,action)=>{
-      state.productcatogre=action.payload
-      state.number=[]
+    addcatogre: (state, action) => {
+      state.productcatogre = action.payload;
+      state.number = [];
       let counter = state.productcatogre.length / 12;
       state.productcatogre.forEach((element, index) => {
         if (index < Math.ceil(counter)) {
-          console.log(index + 1);
           state.number.push(index + 1);
         }
 
-  
-})}
+      });
+    },
+  },
+});
 
-  }})
 
 export const {
   getproduct,
   setPagination,
   getProductBysubCategoryAction,
   getnumber,
-  addcatogre
+  addcatogre,
 } = productSlice.actions;
 
 export default productSlice.reducer;
-    

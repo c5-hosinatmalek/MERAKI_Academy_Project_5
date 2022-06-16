@@ -134,8 +134,8 @@ font-weight: 400;
 
 /* slider product */
 .contener_img_product img{
-width: 15rem;
-height: 16rem;
+width: 10rem;
+height: 10rem;
 }
 
 .content_product_slid{
@@ -145,7 +145,7 @@ height: 16rem;
   padding-bottom: 1rem;
 } 
 .contener_price span{
-  font-size: 2rem;
+  font-size: 30px;
   font-weight: 700;
 }
 
@@ -198,6 +198,16 @@ font-weight: 600;
 padding: 10px;
 justify-self: flex-end;
 }
+
+
+/*.pricemain{
+  color: black;
+font-size: 27px;
+}
+.titlemainpage{
+  font-size: 23px;
+  color: black;}*/
+
 .numper_page_home{
   display: flex;
   justify-content: center;
@@ -335,5 +345,6 @@ justify-self: flex-end;
         padding: 10px;
       }
       
+
 
 }

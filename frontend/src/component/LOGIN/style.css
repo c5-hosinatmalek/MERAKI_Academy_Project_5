@@ -1,74 +1,120 @@
-.login_user{
-    height: 40rem;
-justify-content: center;
+.mainlogin{
     display: flex;
-    align-items: center;
-}
-
-.login_user form{
-    border: solid black 5px;
-    text-align: center;
-    background: black;
-    border-radius: 5px;
-}
-
-.titel{
-    border-bottom: 3px solid rgb(255, 255, 255);
-}
-
-.titel h1{
-    text-transform: uppercase;
-    font-size: 3rem;
-    font-weight: 600;
-    color: white;
-    padding: 10px;
-}
-
-.email_login{
-    text-align: left;
-    padding: 10px 5px ;
 
 }
+.logginheader{
+display: flex;
+flex-direction: column;
+gap: 2rem;
+margin-left: 2rem;
 
-.email_login label{
-   display: block;
-   font-size: 1.7rem;
- 
-   color: white;
+}
+.detalislogin{
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+.childlogin {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.login_user {
+    display: flex;
+    gap: 10rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    justify-content: center;
+}
+.loginput {
+  height: 2rem;
+  font-size: 20px;
+  border-bottom-color: #f3f3f3;
+  border-right-color: #f3f3f3;
+  background-color: #f3f3f3d2;
+}
+.emaildiv{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.passworddiv{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.loginh3 {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+}
+.logininput {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.AccountLogin {
+  color: red;
+  margin-top: 1rem;
+
+}
+.login_user form {
+  border: solid black 5px;
+  text-align: center;
+  background: black;
+  border-radius: 5px;
 }
 
-.passward_login{
-    text-align: left;
-    padding: 5px;
+.titel {
+  border-bottom: 3px solid rgb(255, 255, 255);
 }
 
-.passward_login label{
-display: block;
-
-font-size: 1.7rem;
-color: white;
+.titel h1 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 600;
+  color: white;
+  padding: 10px;
 }
 
+.email_login label {
+  display: block;
+  font-size: 1.7rem;
 
-.login_user form input{
-    width: 25rem;
-    /* padding: 1rem; */
-    font-size: 2rem;
-    
-    background: white;
+  color: white;
 }
 
-.login_button{
-    padding: 10px;
+.passward_login label {
+  display: block;
+
+  font-size: 1.7rem;
+  color: white;
 }
 
-.login_button button{
-    background: white;
-    color: black;
-    border-radius: 3px;
-    font-size: 2rem;
-    width: 7rem;
-    margin-left: 1rem;
-    height: 3rem;
-    font-weight: 600;
+.login_user form input {
+  width: 25rem;
+
+  font-size: 2rem;
+
+  background: white;
+}
+
+.login_button {
+  padding: 10px;
+}
+.login_buttons {
+    display: flex;
+    width: 39rem;
+    gap: 2rem;
+    justify-content:center;
+}
+.login_button {
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: red;
+  font-size: 20px;
+  width: 10rem;
+  height: 50px;
 }
