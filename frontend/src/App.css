@@ -20,16 +20,18 @@
   border-bottom: 3px black solid;
 }
 
-
+.mainphotosclass{
+  display: none;
+}
 
 
  .contener_img2{
 
-
-  display: none;
+display: none;
+  
 }
 
-.App {
+/* .App {
   display: flex;
 }
 .mainphotos {
@@ -93,4 +95,4 @@ button:hover{
 
 .routesdiv{
   width: 600%;
-}
+} */

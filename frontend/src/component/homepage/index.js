@@ -31,7 +31,7 @@ const Homepage = () => {
         if (element.subCategory_id == type1) {
           return (
             <div className="contener_prodect" key={index}>
-              <Link to={`/category/product/${element.product_id}`}>
+              <Link className="content_product_slid" to={`/category/product/${element.product_id}`}>
                 <div className="contener_img_product">
                   <img className="productimg" src={element.picUrlProd} />
                 </div>
@@ -151,6 +151,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      <div className="numper_page_home" >
       {state.number &&
         state.number.map((element) => {
           return (
@@ -164,10 +165,11 @@ const Homepage = () => {
               >
                 {element}
               </button>
-              ;
+              
             </div>
           );
         })}
+      </div>
     </div>
   );
 };

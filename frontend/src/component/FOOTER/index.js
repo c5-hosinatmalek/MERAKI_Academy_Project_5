@@ -69,7 +69,7 @@ const FOOTER = () => {
                     <span className="icon" >
                         <MdEmail />
                         </span>
-                     <span>mmmm@gmail.com</span>
+                     <span>datapirates1996@gmail.com</span>
                      </div>
           </div>
           <div className="phone">
