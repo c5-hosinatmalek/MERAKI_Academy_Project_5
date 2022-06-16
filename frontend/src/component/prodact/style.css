@@ -15,10 +15,10 @@
     grid-area: hd;
     
     /* background-color: brown; */
-    gap: 20px;
-    display: grid;
-    grid-template-rows: 10% auto;
-    grid-template-columns: 1fr 1fr;
+    /* gap: 20px; */
+    /* display: grid; */
+    /* grid-template-rows: 10% auto; */
+    /* grid-template-columns: 1fr 1fr; */
     /* background-color: gray; */
     font-size: 18px;
     font-weight: 600;
@@ -30,13 +30,18 @@
 
 .subcatgoryTitleProduct{
 grid-area: hds;
-padding: 10px 30px;
+/* padding: 10px 30px; */
 }
 .subDiv{
-    grid-area: subC;
+    /* grid-area: subC;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
+    grid-template-columns: 1fr 1fr; */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+width: 100%;
 }
 .subImgDiv{
     display: flex;
