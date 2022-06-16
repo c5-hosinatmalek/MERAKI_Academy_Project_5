@@ -161,12 +161,15 @@ const GetProdact = () => {
                 </div>
               );
             })}
-          {state.number &&
+          
+        </div>
+       <div className="number_page" >
+       {state.number &&
             state.number.map((element) => {
               console.log(element);
               return (
                 <div className="divPagination">
-                  {" "}
+                 
                   <button
                     key={element}
                     onClick={() => {
@@ -175,12 +178,13 @@ const GetProdact = () => {
                   >
                     {element}
                   </button>
-                  ;
+                  
                 </div>
               );
             })}
-        </div>
+       </div>
       </div>
+      
     </div>
   );
 };

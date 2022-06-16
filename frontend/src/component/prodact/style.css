@@ -149,3 +149,20 @@ justify-self: flex-end;
 .headerProduct{
     margin: 10px 30px;
 }
+.number_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 17px;
+}
+.divPagination button{
+    background: rgba(245, 222, 179, 0);
+    /* border: none; */
+    /* padding-left:rem; */
+    padding: 0.6rem;
+    margin-left: 2rem;
+    font-size: 2rem;
+    font-weight: 800;
+    border: rgb(94, 93, 93) 1px solid;
+    cursor: pointer;
+}
