@@ -34,6 +34,9 @@ z-index: 10;
 background: white;
 width: 24.9rem;
 }
+.all_result a {
+color: black;
+}
 .continer_result{
     display: flex;
     border-bottom: solid 2px black;
@@ -63,6 +66,12 @@ width: 24.9rem;
         text-align: center;
         cursor: pointer;
     }
+    .all_result{
+        position: absolute;    
+        z-index: 10;
+        background: white;
+        width: 15rem;
+        }
 }
 
 @media (max-width:510px){
@@ -85,6 +94,12 @@ width: 24.9rem;
         text-align: center;
         cursor: pointer;
     }
+    .all_result{
+        position: absolute;    
+        z-index: 10;
+        background: white;
+        width:  13.5rem;
+        }
 }
 @media (max-width:425px){
     .search_continer input{
@@ -106,4 +121,14 @@ width: 24.9rem;
         text-align: center;
         cursor: pointer;
     }
+    .all_result{
+        position: absolute;    
+        z-index: 10;
+        background: white;
+        width:  10rem;
+        }
+        .all_result a {
+            color: black;
+            font-size: 1rem;
+            }
 }

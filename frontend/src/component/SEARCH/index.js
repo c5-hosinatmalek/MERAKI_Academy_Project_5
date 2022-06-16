@@ -40,9 +40,12 @@ const SEARCH = () => {
           resultSerch.resultSerch.map((result, index) => {
             if (index < 5) {
               return (
-                <Link
+                <Link onClick={()=>{
+                  dispacth(setStateSerch(false));
+                }}
                   to={`/category/product/${result.product_id}
                         `}
+                        
                 >
                   <div className="continer_result">
                     <div className="img_product">
@@ -50,7 +53,7 @@ const SEARCH = () => {
                     </div>
                     <div className="nameAndprice_product">
                       <h3>{result.title}</h3>
-                      <h4>price:{result.price}JD</h4>
+                      <h4>price: {result.price} JD</h4>
                     </div>
                   </div>
                 </Link>
