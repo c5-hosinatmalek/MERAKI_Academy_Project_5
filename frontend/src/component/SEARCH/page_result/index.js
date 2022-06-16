@@ -47,7 +47,7 @@ const PAGEAllRESULTSEARCH = () => {
             );
           })}
       </div>
-      <div>
+      <div className="numper_" >
         {resulatsarch.number &&
           resulatsarch.number.map((element, index) => {
             return (

@@ -1,5 +1,5 @@
 // import React from "react";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -9,8 +9,14 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+import {BsArrowUpRightSquareFill} from "react-icons/bs";
 
 const FOOTER = () => {
+  const [clasNameicon,setClasNameicon]=useState("")
+  const [classNameSend,setClassNameSend]=useState("")
+
+
+
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
@@ -23,7 +29,26 @@ const FOOTER = () => {
         "ghDvvK363ERZHeuEk"
       )
       .then(
-        (result) => {},
+        (result) => {
+           
+
+          if(result.status==200){
+            setTimeout(()=>{
+              setClassNameSend("active")
+              setClasNameicon("active")
+
+            }, 100)
+
+            setTimeout(()=>{
+              setClassNameSend("")
+              setClasNameicon("")
+
+            }, 9000)
+          }
+
+
+
+        },
         (error) => {}
       );
   };
@@ -120,8 +145,10 @@ const FOOTER = () => {
               </div>
 
               <div className="btn">
-                <button name="submit">Send</button>
+                <button className={`submit_send_email ${classNameSend}`}>Send</button>
+               <h1 className={`righi_send ${clasNameicon}`}> <BsArrowUpRightSquareFill/></h1>
               </div>
+           
             </form>
           </div>
         </div>
