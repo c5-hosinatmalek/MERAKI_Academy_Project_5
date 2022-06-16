@@ -12,7 +12,7 @@
 }
 
 .navbar {
-    padding: 1.5rem;
+    /* padding: 1rem; */
 background-color: #000000;
 
 }
@@ -124,6 +124,8 @@ background-color: #000000;
     font-weight: 1000;
 }
 
+
+
 .icons {
     color: #ffffff;
     border: 0;
@@ -132,11 +134,95 @@ background-color: #000000;
     width: min-content;
     height: min-content;
     /* border-radius: 5px; */
-    font-size: 50px;
+    font-size: 60px;
+    display: inline-block;
+   
+
+}
+
+
+.contener_logcart {
+    color: black;
+    position: relative;
+}
+
+.menu_icon{
+    color: #ffffff;
+    display:none;
+}
+
+
+@media (max-width:650px){.icons {
+    color: #ffffff;
+    border: 0;
+    margin: 0 0.4rem;
+    box-sizing: border-box;
+    width: min-content;
+    height: min-content;
+    /* border-radius: 5px; */
+    font-size: 30px;
     display: inline-block;
 
 }
 
-.contener_logcart {
-    color: black;
+.logo_name {
+    font-family: 'The Histoia Demo', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to top, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    width: 120px;
+    height: 100;
+}
+
+}
+@media (max-width:510px){
+    .icons {
+        color: #ffffff;
+        border: 0;
+        /* margin: 0 rem; */
+        box-sizing: border-box;
+        width: min-content;
+        height: min-content;
+        /* border-radius: 5px; */
+        font-size: 30px;
+        display: inline-block;
+    
+    }
+    .logo_name {
+        font-family: 'The Histoia Demo', sans-serif;
+        font-size: 2rem;
+        background: linear-gradient(to top, #ffffff, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        user-select: none;
+        width: 100px;
+        height: 100;
+    }
+}
+
+@media (max-width:425px){
+    .icons {
+        color: #ffffff;
+        border: 0;
+        /* margin: 0 rem; */
+        box-sizing: border-box;
+        width: min-content;
+        height: min-content;
+        /* border-radius: 5px; */
+        font-size: 20px;
+        display: inline-block;
+    
+    }
+    .logo_name {
+        font-family: 'The Histoia Demo', sans-serif;
+        font-size: 2rem;
+        background: linear-gradient(to top, #ffffff, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        user-select: none;
+        width: 80px;
+        height: 100;
+    }
 }
