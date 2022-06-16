@@ -159,9 +159,9 @@ justify-self: flex-end;
     background: rgba(245, 222, 179, 0);
     /* border: none; */
     /* padding-left:rem; */
-    padding: 0.6rem;
-    margin-left: 2rem;
-    font-size: 2rem;
+    padding: 0.2rem;
+    margin-left: 1rem;
+    font-size: 1rem;
     font-weight: 800;
     border: rgb(94, 93, 93) 1px solid;
     cursor: pointer;
