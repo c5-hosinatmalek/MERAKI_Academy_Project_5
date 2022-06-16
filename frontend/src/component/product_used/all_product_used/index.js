@@ -42,7 +42,7 @@ useEffect(()=>{
         getAllProductUsed()
     }else{
         getAllProductBYCategory()
-        console.log("mmmm");
+       
     }
   
 },[category])
