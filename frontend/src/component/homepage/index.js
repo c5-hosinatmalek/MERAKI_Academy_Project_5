@@ -151,6 +151,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      <div className="numper_page_home" >
       {state.number &&
         state.number.map((element) => {
           return (
@@ -164,10 +165,11 @@ const Homepage = () => {
               >
                 {element}
               </button>
-              ;
+              
             </div>
           );
         })}
+      </div>
     </div>
   );
 };

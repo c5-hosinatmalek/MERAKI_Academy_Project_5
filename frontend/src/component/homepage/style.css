@@ -198,7 +198,12 @@ font-weight: 600;
 padding: 10px;
 justify-self: flex-end;
 }
-
+.numper_page_home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
 
 @media (max-width:1200px){
   .contener_img_product img{
