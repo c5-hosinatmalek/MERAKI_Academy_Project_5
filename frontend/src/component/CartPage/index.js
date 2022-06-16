@@ -91,8 +91,8 @@ setMessage("Your order has been accepted")
 }
 let amount =0
 
-  return <>
-
+  return <div className="contenur_cart" >
+      <div className="content_cart" >
   <table>
 <tr className="headerCartTable">
     <th>Image</th>
@@ -166,7 +166,8 @@ let amount =0
       >
         Check Out
       </button>
-    </>
+      </div>
+    </div>
 
 
       };

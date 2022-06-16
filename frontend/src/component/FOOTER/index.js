@@ -9,7 +9,8 @@ import { FaInstagramSquare } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import {BsArrowUpRightSquareFill} from "react-icons/bs";
+
+import {IoIosCheckmarkCircle} from "react-icons/io";
 
 const FOOTER = () => {
   const [clasNameicon,setClasNameicon]=useState("")
@@ -146,7 +147,7 @@ const FOOTER = () => {
 
               <div className="btn">
                 <button className={`submit_send_email ${classNameSend}`}>Send</button>
-               <h1 className={`righi_send ${clasNameicon}`}> <span className="righi_send_span"><BsArrowUpRightSquareFill/></span>  Sent Successfully</h1>
+               <h1 className={`righi_send ${clasNameicon}`}> <span className="righi_send_span"><IoIosCheckmarkCircle/></span>  Sent Successfully</h1>
               </div>
            
             </form>
