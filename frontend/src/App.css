@@ -23,9 +23,17 @@ textarea{
   resize: none;
 }
 
+.mainphotosclass{
+  display: none;
+}
 
 
 
+ .contener_img2{
+
+display: none;
+  
+}
 
 
 /* .App {
@@ -87,4 +95,4 @@ button:hover{
 
 .routesdiv{
   width: 600%;
-}
+} */

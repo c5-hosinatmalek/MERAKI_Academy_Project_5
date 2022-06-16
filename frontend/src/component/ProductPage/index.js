@@ -38,7 +38,7 @@ const ProductPage = () => {
 
 
     
-  }, []);
+  }, [id]);
   const addCartClick = (id,price) => {
     
     axios
