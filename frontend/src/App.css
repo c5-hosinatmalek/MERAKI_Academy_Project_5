@@ -19,10 +19,14 @@
   height:50rem;
   border-bottom: 3px black solid;
 }
+textarea{
+  resize: none;
+}
 
 .mainphotosclass{
   display: none;
 }
+
 
 
  .contener_img2{
@@ -31,9 +35,10 @@ display: none;
   
 }
 
+
 /* .App {
   display: flex;
-}
+} */
 .mainphotos {
   height: 1000px;
   position: sticky;
@@ -84,14 +89,9 @@ button:hover{
   width: 79rem;
 }
 
-.App {
-  display: flex;
-}
 .mainphotos {
   position: sticky;
 }
-
-
 
 .routesdiv{
   width: 600%;
