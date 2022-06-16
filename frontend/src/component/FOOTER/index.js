@@ -146,7 +146,7 @@ const FOOTER = () => {
 
               <div className="btn">
                 <button className={`submit_send_email ${classNameSend}`}>Send</button>
-               <h1 className={`righi_send ${clasNameicon}`}> <BsArrowUpRightSquareFill/></h1>
+               <h1 className={`righi_send ${clasNameicon}`}> <span className="righi_send_span"><BsArrowUpRightSquareFill/></span>  Sent Successfully</h1>
               </div>
            
             </form>
