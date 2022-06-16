@@ -58,7 +58,7 @@ button:hover {
 
 .App {
 display: grid;
-grid-template-columns: auto 70% 15%;
+grid-template-columns: auto 69% 15%;
 }
 .mainphotos {
   position: sticky;

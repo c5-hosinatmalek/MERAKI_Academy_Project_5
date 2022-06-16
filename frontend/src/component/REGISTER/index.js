@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./style.css";
-
+import { Link, useNavigate } from "react-router-dom";
 const REGISTER = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -136,7 +136,7 @@ const REGISTER = () => {
             <div>
               <h3>
                 If you already have an account with us, please login at the
-                login page.
+                  <Link to={"/login"} > login page.</Link>   
               </h3>
             </div>
             <div className="containeeer_rigister">

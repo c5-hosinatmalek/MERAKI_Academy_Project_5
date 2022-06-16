@@ -19,7 +19,6 @@ const GetProdact = () => {
       number: state.product.number,
       sub_category: state.catogre.subCategory,
       subCatgoryProduct: state.product.subCatgoryProduct,
-      
     };
   });
   const [show, setShow] = useState(state.prodect);
@@ -55,12 +54,12 @@ const GetProdact = () => {
     axios
       .get(`http://localhost:5000/category/${id}/products`)
       .then((result) => {
-        dispacth(addcatogre(result.data.result))
+        dispacth(addcatogre(result.data.result));
       })
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   useEffect(() => {
     products(1);
@@ -181,6 +180,7 @@ const GetProdact = () => {
             })}
         </div>
       </div>
+      
     </div>
   );
 };
