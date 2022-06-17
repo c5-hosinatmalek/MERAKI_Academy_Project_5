@@ -39,7 +39,7 @@ padding-bottom: 0.5rem;
     color: #b11616 ;
 }
 .contener_ordersale .form_ordersale{
-    border: solid black 3px;
+   
    
 padding: 0;
 
@@ -63,8 +63,8 @@ padding: 0;
 
 .form_ordersale input{
     width: 30rem;
-    font-weight: 500;
-    font-size: 1.9rem;
+    padding: 0.3rem 0;
+    font-size: 1.5rem;
 }
 
 .productused_name {

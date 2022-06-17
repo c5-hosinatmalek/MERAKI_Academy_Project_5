@@ -84,7 +84,7 @@ const ORDERSALE=()=>{
             
            </div>
             <form className="form_ordersale" onSubmit={submit} >
-                <div className="titel_order" ><h1>Info of your product</h1> </div>
+                
                 <div className="productused_name" >
                     <label>Name product</label>
                     <input onKeyDown={(e)=>{
