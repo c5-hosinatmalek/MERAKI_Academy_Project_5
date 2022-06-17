@@ -278,19 +278,19 @@ let usedamount=0
       >
         Check Out
       </button>
-//       </div>
-//     </div>
+        {/* </div> 
+     </div>  */}
 
 
-//       };
+      );
 
 
 
 
 
     </>
-  );
-};
+);
 
+    }
 
 export default CartPage;

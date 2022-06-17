@@ -19,6 +19,9 @@
   height: 50rem;
   border-bottom: 3px black solid;
 }
+.mainphotosclass{
+  display: none;
+}
 /* textarea{
   resize: none;
 }
@@ -51,7 +54,7 @@ button:hover {
   cursor: pointer;
 }
 
-@media (max-width: 1500px) {
+/* @media (max-width: 1500px) {
   .mainphotosclass {
     display: none;
   }
@@ -80,6 +83,6 @@ grid-template-columns: auto 69% 15%;
   position: sticky;
   top: 0;
   height: 10rem;
-}
+} */
 
 
