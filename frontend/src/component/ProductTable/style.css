@@ -3,8 +3,8 @@
   width: 51px;
 }
 .contenur_product_taple {
-  width: 90%;
-  height: 100%;
+  width: 100%;
+  height: 70vw;
   overflow: auto;
 }
 .description {
@@ -35,7 +35,7 @@
   margin-bottom: 0.5rem;
   font-size: 1rem;
 }
-span{
+.spanStock{
     color: #b11616;
     font-weight: 600;
 }

@@ -16,7 +16,23 @@ const FOOTER = () => {
   const [clasNameicon,setClasNameicon]=useState("")
   const [classNameSend,setClassNameSend]=useState("")
 
+const FOOTER = () => {
+  // const form = useRef();
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
 
+  //   emailjs
+  //     .sendForm(
+  //       "service_uq7s3w5",
+  //       "template_iy2hv8o",
+  //       form.current,
+  //       "ghDvvK363ERZHeuEk"
+  //     )
+  //     .then(
+  //       (result) => {},
+  //       (error) => {}
+  //     );
+  // };
 
   const form = useRef();
   const sendEmail = (e) => {
@@ -157,7 +173,7 @@ const FOOTER = () => {
     </div>
   );
 };
-
+}
 export default FOOTER;
 
 

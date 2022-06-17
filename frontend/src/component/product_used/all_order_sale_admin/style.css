@@ -1,11 +1,12 @@
 
 .contener_all_product_for_admin{
-    width: 20rem;
+    width: 100%;
+    overflow: auto;
 }
-.contener_all_product_for_admin img {
+/* .contener_all_product_for_admin img {
 width: 15rem;
 height: 15rem;
-}
+} */
 
 tr th {
     margin-left: 5rem ;

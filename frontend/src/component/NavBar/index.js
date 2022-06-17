@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 import { RiAccountCircleFill } from "react-icons/ri";
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {FaShoppingCart} from "react-icons/fa";
 
 
@@ -14,6 +15,7 @@ import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 
 const NavBar = () => {
+  const navigate =useNavigate()
   const [show, setShow] = useState();
   const [className, setClassName] = useState("");
   const dispacth = useDispatch();
@@ -32,6 +34,8 @@ const NavBar = () => {
 
   const logout = () => {
     dispacth(setLogout());
+    navigate("/")
+
   };
   ///////////////////////////////////////////////////////////////
   const sowHide = () => {
@@ -48,18 +52,20 @@ const NavBar = () => {
     <div className="navbar">
       {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-          <Link to={`/admin/usersTable`}>table users</Link>
-          <Link to={`/admin/productTable`}>
-            <p>table product</p>
-          </Link>
-          <Link to={`/admin/cart`}>
-            <p>table checkout</p>
-          </Link>
-          <Link to={`/admin/uplodphoto`}>
-            <p>uplodphoto</p>
-          </Link>
-        
-        <Link to={`/`} >login</Link>
+<img src={logo} className="logo_nameAdmin"></img>
+<h1 className="navtiltle">Admin Page</h1>
+          
+<div className="my_account_contener">
+            <div className="icons" onClick={sowHide}>
+              {" "}
+              <RiAccountCircleFill sx={{ fontSize: 55 }} className="icons" /> 
+            </div>
+              <ul className={`ul ${className}`} id="adminlist">
+                <li className="li_1">{decodeToken("userName")}</li>
+                <li className="li_2" onClick={logout}>Logout</li>
+
+              </ul>
+              </div>
         </div>
       ) : (
         <div className="navUser">

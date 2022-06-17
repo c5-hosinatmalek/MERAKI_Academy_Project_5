@@ -14,15 +14,18 @@
 .routesdiv_admin {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
+  
   width: auto;
-  height: 50rem;
+  
   border-bottom: 3px black solid;
 }
-/* textarea{
+textarea{
   resize: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
 
 .mainphotosclass{
   display: none;
@@ -30,12 +33,20 @@
 
 
 
+ .contener_img2{
+
+display: none;
+  
+}
+/*
 
 
 
+/* .App {
+  display: flex;
+} */
 
-
-.mainphotos {
+/*.mainphotos {
   height: 1000px;
   position: sticky;
   top: 0px;
@@ -44,12 +55,9 @@
 
   height: 1000px;
   width: 300px;
-} */
-
-
-button:hover {
-  cursor: pointer;
 }
+
+
 
 @media (max-width: 1500px) {
   .mainphotosclass {
@@ -78,8 +86,10 @@ grid-template-columns: auto 69% 15%;
 
 .mainphotos {
   position: sticky;
-  top: 0;
-  height: 10rem;
 }
 
+
+.routesdiv{
+  width: 600%;
+}  */
 
