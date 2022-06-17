@@ -15,6 +15,8 @@ import {
 const CartPage = () => {
   const [message, setMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
+  const [clascontent,setclascontent]=useState("")
+
   const state = useSelector((state) => {
     return {
       cart: state.cart.cart,
@@ -31,8 +33,15 @@ const CartPage = () => {
         },
       })
       .then((result) => {
-        console.log(result);
+       
         dispatch(getCart(result.data.result));
+        if(result.data.result.length===0){
+          setclascontent("active")
+        }else{
+          setclascontent("")
+        }
+
+        
       })
       .catch((err) => {
         console.log(err);
@@ -64,6 +73,43 @@ const CartPage = () => {
       .delete(`http://localhost:5000/cart/${product_id}`, {
         headers: {
           authorization: `Bearer ${state.token}`,
+
+//         }}).then((result)=>{
+            
+//         }).catch((err)=>{
+//             console.log(err);
+//         })
+// }
+
+
+// const CheckOutClick=()=>{
+//   let date = new Date()
+//   date = date.toString().split(" ").slice(1,4).join(" ")
+ 
+//   axios.put("http://localhost:5000/cart/checkout",{arrayCheckout:state.cart,date},{
+//     headers: {
+//       authorization: `Bearer ${state.token}`,
+//     }}).then((result)=>{
+// setMessage("Your order has been accepted")
+//       dispatch(checkoutAction())
+//     }).catch((err)=>{
+//       console.log(err);
+//     })
+// }
+// let amount =0
+
+//   return <div className="contenur_cart" >
+//     <h1 className={`message_cart ${clascontent}`} >Cart is empty</h1>
+//       <div className={`content_cart ${clascontent}`} >
+//   <table>
+// <tr className="headerCartTable">
+//     <th>Image</th>
+//     <th>Product Name</th>
+//     <th>Quantity</th>
+//     <th>Price</th>
+//     <th>Total</th>
+// </tr>
+
         },
       })
       .then((result) => {})
@@ -165,8 +211,19 @@ const CartPage = () => {
       >
         Check Out
       </button>
+//       </div>
+//     </div>
+
+
+//       };
+
+
+
+
+
     </>
   );
 };
+
 
 export default CartPage;

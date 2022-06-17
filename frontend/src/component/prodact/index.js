@@ -79,7 +79,7 @@ const GetProdact = () => {
                 <div className="subImgDiv">
                   <Link
                     to={`/subCategory/${element.subCategory_id}`}
-                    className="subImgDiv"
+                    className={index===0?"subImgDivv_1":"subImgDivv"}
                   >
                     <img
                       key={index + "img"}
