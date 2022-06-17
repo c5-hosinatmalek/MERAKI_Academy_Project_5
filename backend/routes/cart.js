@@ -5,7 +5,10 @@ const {
   getUserCarts,
   checkOut,updateQuantity,
   getallcarts,
-  addtosold
+  addtosold,
+  AddToCartused,
+  getUserCartsprodact,
+  deletecartused
 } = require("../controllers/cart");
 const authentication = require("../middlewares/authentication");
 const cartRouter = express.Router();
@@ -19,4 +22,8 @@ cartRouter.put("/checkout/", authentication, checkOut);
 cartRouter.put("/quantity",authentication,updateQuantity)
 cartRouter.get("/" ,getallcarts);
 cartRouter.post("/" ,addtosold);
+cartRouter.post("/:usedpro",authentication,AddToCartused);
+cartRouter.post("/cart/usedprodact" ,authentication,getUserCartsprodact);
+cartRouter.delete("/cart/delete/:id" ,authentication,deletecartused);
+
 module.exports = cartRouter;

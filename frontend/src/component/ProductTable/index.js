@@ -173,7 +173,7 @@ const ProductTable = () => {
           <th className="head">Description</th>
           <th className="head">Store Quantity</th>
           <th className="head">Note</th>
-          <th className="head">Operation</th>
+          <th className="head">Operater</th>
         </tr>
         {state.products &&
           state.products.map((element, index) => {

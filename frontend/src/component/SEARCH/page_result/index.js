@@ -47,17 +47,18 @@ const PAGEAllRESULTSEARCH = () => {
             );
           })}
       </div>
-      <div>
+      <div className="numper_page_search" >
         {resulatsarch.number &&
           resulatsarch.number.map((element, index) => {
             return (
-              <button key={index}
-                onClick={() => {
-                  numberClick(index );
-                }}
-              >
-                {index + 1}
-              </button>
+              <div className="divPagination"> <button  key={index}
+              onClick={() => {
+                numberClick(index );
+              }}
+            >
+              {index + 1}
+            </button></div>
+             
             );
           })}
       </div>

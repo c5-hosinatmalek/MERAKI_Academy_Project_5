@@ -81,7 +81,10 @@ function App() {
 
 
   
-  if(decodeToken("role")==1){
+
+  if(decodeToken("role")===1){
+
+
     return(
     <div className="App">
     <div className="mainphotos">

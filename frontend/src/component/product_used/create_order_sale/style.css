@@ -2,14 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50rem;
+   padding: 4rem 0;
 }
 
 .contener_ordersale .form_ordersale{
     border: solid black 5px;
     /* padding: 10px; */
-    border-radius: 5px;
-    
+    /* border-radius: 5px; */
+padding: 0;
+/* margin: 5rem 0; */
 }
 .titel_order {
     /* border-bottom: 3px solid black; */
@@ -25,6 +26,7 @@
 .form_ordersale label{
     display: block;
     font-size: 1.7rem;
+    font-weight: 700;
 }
 
 .form_ordersale input{
@@ -38,6 +40,9 @@
 }
 .category_select{
     padding: 7px;
+}
+.category_select select{
+   height: 1.7rem;
 }
 .product_used_description{
     padding: 7px;
@@ -78,7 +83,7 @@
 }
 .message_user{
     text-align: center;
-    
+   
     padding: 7px;
 }
 .product_used_description textarea{

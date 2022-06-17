@@ -13,7 +13,7 @@ const REGISTER = () => {
   const [status, setStatus] = useState(false);
   const [countries, setCountry] = useState([]);
   const [verfied, setVerfied] = useState("");
-  const [checkVerfied, setCheckVerfied] = useState(true);
+  const [checkVerfied, setCheckVerfied] = useState(false);
   const [compareWord, setCompareWord] = useState("");
   const verfiedClick = (e) => {
     if (compareWord !== verfied) {

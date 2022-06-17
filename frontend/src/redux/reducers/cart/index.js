@@ -1,37 +1,50 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const cartSlice=createSlice({
-name:"cart",
-initialState:{
-    cart:[],
+export const cartSlice = createSlice({
+  name: "cart",
+  initialState: {
+    cart: [],
+    usedcart: [],
     totalprice: 0,
-},
-reducers:{
-    getCart:(state,action)=>{
-        state.cart=action.payload
+  },
+  reducers: {
+    getCart: (state, action) => {
+      state.cart = action.payload;
     },
-    deleteFromCart:(state,action)=>{
-        state.cart=state.cart.filter((element,index)=>{
-            
-        return action.payload!==element.product_id
-        })
+    deleteFromCart: (state, action) => {
+      state.cart = state.cart.filter((element, index) => {
+        return action.payload !== element.product_id;
+      });
     },
-    // acteion index of [element,newquantity] 
-    updateQuantity:(state,action)=>{
-        
-state.cart[action.payload[0]].quantity=action.payload[1]
+    // acteion index of [element,newquantity]
+    updateQuantity: (state, action) => {
+      state.cart[action.payload[0]].quantity = action.payload[1];
     },
-    checkoutAction:(state,action)=>{
-state.cart=[]
+    checkoutAction: (state, action) => {
+      state.cart = [];
+    },
+    totalPriceAction: (state, action) => {
+      state.totalprice = state.totalprice + action.payload;
+    },
+    addToUsed: (state, action) => {
+      state.usedcart = action.payload;
+    },
+    deleteusedpro: (state, action) => {
+        state.usedcart= state.usedcart.filter((element) => {
+        return element.used_product_id !== action.payload;
+      });
+    },
+  },
+});
 
-    },
-    totalPriceAction:(state,action)=>{
-state.totalprice=state.totalprice+action.payload
-    }
-}
-})
-
-
-export const { getCart,deleteFromCart,updateQuantity,checkoutAction,totalPriceAction } = cartSlice.actions;
+export const {
+  getCart,
+  deleteFromCart,
+  updateQuantity,
+  checkoutAction,
+  totalPriceAction,
+  addToUsed,
+  deleteusedpro,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
