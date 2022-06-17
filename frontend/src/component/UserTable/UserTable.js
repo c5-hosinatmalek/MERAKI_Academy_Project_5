@@ -2,6 +2,7 @@ import axios, { Axios } from "axios";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserAction,deleteUserAction,makeAdminAction } from "../../redux/reducers/Admin/index";
+import "./style.css"
 const UserTable = () => {
   const state = useSelector((state) => {
     return {
@@ -40,29 +41,29 @@ const UserTable = () => {
       });
   };
   return (
-    <>
+    <div className="userTablePage">
       <table>
-        <tr>
-          <th>User_id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Country</th>
-          <th>Role_Id</th>
-          <th>Is_Deleted</th>
-          <th>button</th>
+        <tr className="headRow">
+          <th className="head">User_id</th>
+          <th className="head">Name</th>
+          <th className="head">Email</th>
+          <th className="head">Country</th>
+          <th className="head">Role_Id</th>
+          <th className="head">Is_Deleted</th>
+          <th className="head">Operation</th>
         </tr>
         {state.user &&
           state.user.map((element, index) => {
             return (
-              <tr key={index}>
-                <td>{`${element.user_id}`} </td>
-                <td>{element.name}</td>
-                <td>{element.email}</td>
-                <td>{element.country}</td>
-                <td>{element.role_id}</td>
-                <td>{element.is_deleted}</td>
-                <td>
-                  <button
+              <tr key={index} className="rowBody">
+                <td className="body">{`${element.user_id}`} </td>
+                <td className="body">{element.name}</td>
+                <td className="body">{element.email}</td>
+                <td className="body">{element.country}</td>
+                <td className="body">{element.role_id}</td>
+                <td className="body">{element.is_deleted}</td>
+                <td className="body">
+                  <button className="operButton"
                     onClick={(e) => {
                       deleteUser(element.user_id);
                       dispatch(deleteUserAction(index))
@@ -70,7 +71,7 @@ const UserTable = () => {
                   >
                     Delete
                   </button>
-                  <button
+                  <button className="operButton"
                     onClick={(e) => {
                       makeAdmin(element.user_id);
                       dispatch(makeAdminAction(index))
@@ -83,7 +84,7 @@ const UserTable = () => {
             );
           })}
       </table>
-    </>
+    </div>
   );
 };
 export default UserTable;

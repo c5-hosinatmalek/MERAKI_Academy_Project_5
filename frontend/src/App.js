@@ -16,8 +16,6 @@ import ALLORDERSALE from "./component/product_used/all_order_sale"
 import ONEPRODUCTUSED from "./component/product_used/one_product_used";
 
 
-
-/////////////////////////////////////////////////////////////search proccess///////
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllproduct } from "./redux/reducers/search";
@@ -26,7 +24,6 @@ import PAGEAllRESULTSEARCH from "./component/SEARCH/page_result";
 import ALLPRODUCTUSED from "./component/product_used/all_product_used";
 import ALLPRODUCTFORADMIN from "./component/product_used/all_order_sale_admin";
 import ADMINCONTROL from "./admin_control";
-////////////////////////////////////////////////////////////
 import { CategoryBar } from "./component/CategoryBar/index";
 
 import Homepage from "./component/homepage";
@@ -81,10 +78,13 @@ function App() {
   
   ////////////////////////////////////////////////////////////////////
 
-  
+
 
   
+
   if(decodeToken("role")===1){
+
+
     return(
     <div className="App">
     <div className="mainphotos">
@@ -151,7 +151,7 @@ function App() {
 
       </div>)
 
-      }
+      }}
           
          
 
