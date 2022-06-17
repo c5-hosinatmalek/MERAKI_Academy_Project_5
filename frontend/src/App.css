@@ -19,7 +19,7 @@
   height: 50rem;
   border-bottom: 3px black solid;
 }
-textarea{
+/* textarea{
   resize: none;
 }
 
@@ -30,16 +30,10 @@ textarea{
 
 
 
- .contener_img2{
-
-display: none;
-  
-}
 
 
-/* .App {
-  display: flex;
-} */
+
+
 
 .mainphotos {
   height: 1000px;
@@ -50,7 +44,7 @@ display: none;
 
   height: 1000px;
   width: 300px;
-}
+} */
 
 
 button:hover {
@@ -84,10 +78,8 @@ grid-template-columns: auto 69% 15%;
 
 .mainphotos {
   position: sticky;
+  top: 0;
+  height: 10rem;
 }
 
-
-.routesdiv{
-  width: 600%;
-} */
 

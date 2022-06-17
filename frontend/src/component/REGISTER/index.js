@@ -42,8 +42,8 @@ const REGISTER = () => {
         console.log(err);
       });
   };
-  const submit = (e) => {
-    e.preventDefault();
+  const submit = () => {
+
     axios
       .get(`http://localhost:5000/user/${email}`)
       .then((result) => {
@@ -229,7 +229,9 @@ const REGISTER = () => {
             </div>
           </div>
           <div className="Register">
-            <button>Register</button>
+            <button onClick={()=>{
+              submit()
+            }}>Register</button>
           </div>
         </div>
       ) : (
