@@ -1,94 +1,178 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    color: rgb(0, 0, 0);
-
-}
 footer{
-    width: 100%;
-
-}
-
-.main-content{
+    padding: 1rem;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    color: white;
+    background: black;
+}
+
+footer h2{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing:1.5px;
+    margin-bottom: 0.5rem;
+    padding-top: 10px;
+}
+.left_box p{
+    
+    text-align: left;
+    font-size: 1.7rem;
+    height: 150px;
+}
+
+.left_box{
+    width: 350px;
+    text-align: center;
+   
+}
+
+.social{
+    text-align: center;
+    padding-top: 1.9rem;
+}
+.social a{
+color: aliceblue;
+margin-left: 1.5rem;
+font-size: 2.5rem;
+border-bottom: solid 1px white;
 }
 
 
-
-.main-content div{
-width: 400px;
-height: 30px;
-text-align:center;
+.center_box span{
+    font-size: 2rem;
+ 
 }
-.main-content div p{
-    margin-top: 20px;
-    font-size:1.5rem ;
+.phone{
+    margin-top: 2.2rem;
+   
+}
+.email{
+    margin-top: 2.3rem;
+    
+}
+.place{
+    margin-top: 2.2rem;
+   
+}
+.content_center{
     text-align: left;
 }
 
-.main-content div .social{
-    margin-top: 30px;
+.right_box .name{
+    border: 0;
+    margin: 0;
+
+}
+.right_box .email{
+    border: 0;
+    margin-top: 1rem;
+
 }
 
-.main-content div .social a span{
-    margin-right: 1.5rem;
-    font-size: 2rem;
-}
 
-.main-content h2{
-    font-size: 2rem;
-    text-transform: uppercase;
-} 
-
-
-
-.center_box .content_center{
-text-align: left;
-
-font-size: 2rem;
-}
-
-.center_box .content_center div{
-   margin-top: 25px;
-}
-
-.right_box .content form .email{
-   
-margin-top: 20px;
-}
-.right_box .content form .email input{
+.right_box form input{
     width: 20rem;
-    height: 1.9rem;
     font-size: 1.5rem;
-    border-radius: 5px;
+   border-radius: 5px;
 }
-.right_box .content form .text_area textarea{
-    width: 20rem;
-    height: 3.5rem;
+
+.right_box form textarea{
+    width: 30rem;
     font-size: 1.5rem;
-    border-radius: 5px;
+   border-radius: 5px;
+   height: 5rem;
+
 }
-
-
-.right_box .content form .text_area{
-   margin-top: 20px;
+.right_box .text_area{
+    margin-top: 1rem;
 }
-
-.right_box .content form .btn{
-    margin-top: 50px;
- 
-}
-
-.right_box .content form .btn button{
+.main_content_footer form button{
+    margin-top: 1rem;
     width: 7rem;
-    padding: 0.5rem 0;
-    margin-bottom: 20px;
-    background: black;
-    color: aliceblue;
-    font-size: large;
-    font-weight: 600;
+    font-size: 1.9rem;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+    border: solid rgb(255, 255, 255) 1px;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+@media (max-width:1250px){
+    .right_box form textarea{
+        width: 20rem;
+        font-size: 1.5rem;
+       border-radius: 5px;
+       height: 5rem;
+    
+    }
+}
+
+@media (max-width:1100px){
+    .right_box form textarea{
+        width: 20rem;
+        font-size: 1.5rem;
+       border-radius: 5px;
+       height: 5rem;
+    
+    }
+    footer{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        color: white;
+        background: black;
+    }
+
+    .left_box{
+        margin-bottom: 3rem;
+    }
+    .center_box{
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .right_box{
+        text-align: center;
+    }
+    footer h2{
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        letter-spacing:1.5px;
+        margin-bottom: 0.5rem;
+        padding-top: 10px;
+    }
+    .left_box p{
+    
+        text-align: left;
+        font-size: 1.4rem;
+        height: 150px;
+    }
+
+    .center_box span{
+        font-size: 1.4rem;
+     
+    }
+}
+
+@media (max-width:500px){
+    .right_box form input{
+        width: 17rem;
+        font-size: 1rem;
+       border-radius: 5px;
+    }
+    .right_box form textarea{
+        width: 17rem;
+        font-size: 1.5rem;
+       border-radius: 5px;
+       height: 5rem;
+    
+    }
 }

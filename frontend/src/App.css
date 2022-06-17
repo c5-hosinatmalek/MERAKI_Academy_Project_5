@@ -1,3 +1,95 @@
-.App {
-  text-align: center;
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Montserrat', sans-serif;
+
+
+  box-sizing: border-box;
 }
+
+.routesdiv_admin {
+  display: flex;
+  flex-direction: row;
+  
+  width: auto;
+  
+  border-bottom: 3px black solid;
+}
+textarea{
+  resize: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.mainphotosclass{
+  display: none;
+}
+
+
+
+ .contener_img2{
+
+display: none;
+  
+}
+/*
+
+
+
+/* .App {
+  display: flex;
+} */
+
+/*.mainphotos {
+  height: 1000px;
+  position: sticky;
+  top: 0px;
+}
+.mainphotosclass {
+
+  height: 1000px;
+  width: 300px;
+}
+
+
+
+@media (max-width: 1500px) {
+  .mainphotosclass {
+    display: none;
+  }
+
+  .react-slideshow-container {
+    width: 79rem;
+  }
+
+ 
+  .mainphotos {
+    position: sticky;
+  }
+}
+
+.react-slideshow-container {
+  width: 79rem;
+}
+
+
+.App {
+display: grid;
+grid-template-columns: auto 69% 15%;
+}
+
+.mainphotos {
+  position: sticky;
+}
+
+
+.routesdiv{
+  width: 600%;
+}  */
+

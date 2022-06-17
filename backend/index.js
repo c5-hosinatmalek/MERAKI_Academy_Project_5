@@ -12,7 +12,11 @@ const productRouter = require("./routes/product");
 const userRouter = require("./routes/user");
 const cartRouter = require("./routes/cart");
 const loginRouter = require("./routes/login");
+const Homeiteams = require("./routes/Home_items");
+const emailRouter =require("./routes/email")
+const {requestRouter}=require("./routes/request")
 
+const prudectUsedRouter=require("./routes/product_used")
 //
 const app = express();
 app.use(cors());
@@ -35,15 +39,32 @@ app.use("/register", registerRouter);
 // create sub_category router
 app.use("/sub_category", sub_categoryRouter);
 // create product router
-app.use("/product", productRouter);
 
+app.use("/product", productRouter);
 // creat middlleware application ==>handle all requst cartRouter
+
 app.use("/cart", cartRouter);
 // create login router
-app.use("/login", loginRouter);
 
+app.use("/login", loginRouter);
 // create user router
+
 app.use("/user", userRouter);
+// create Homeiteams router
+
+app.use("/Homeiteams", Homeiteams);
+// create email router
+
+app.use("/email",emailRouter)
+// create requst router
+
+app.use("/request",requestRouter)
+// creat middlleware application ==>handle all requst prudectUsedRouter
+
+app.use("/prudect_used",prudectUsedRouter)
+
+
+
 app.listen(port, () => {
   console.log(`server on in port ${port}`);
 });

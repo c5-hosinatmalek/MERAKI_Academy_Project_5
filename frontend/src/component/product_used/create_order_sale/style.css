@@ -1,0 +1,89 @@
+.contener_ordersale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+}
+
+.contener_ordersale .form_ordersale{
+    border: solid black 5px;
+    /* padding: 10px; */
+    border-radius: 5px;
+    
+}
+.titel_order {
+    /* border-bottom: 3px solid black; */
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 7px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    background: #0B4579;
+    color: white;
+}
+
+.form_ordersale label{
+    display: block;
+    font-size: 1.7rem;
+}
+
+.form_ordersale input{
+    width: 30rem;
+    /* padding: 1rem; */
+    font-size: 1.5rem;
+}
+
+.productused_name {
+    padding: 7px;
+}
+.category_select{
+    padding: 7px;
+}
+.product_used_description{
+    padding: 7px;
+}
+.img_url_contener{
+    padding: 7px;
+}
+.asking_price{
+    padding: 7px;
+}
+.bank_account{
+    padding: 7px;
+}
+.phone_number{
+    padding: 7px;
+}
+.sen_buttoun{
+    padding: 7px;
+    text-align: center;
+    
+}
+.sen_buttoun button{
+    background: white;
+    color: black;
+    border-radius: 3px;
+    font-size: 2rem;
+    width: 7rem;
+    margin-left: 1rem;
+    height: 2.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 300px;
+    height: 70px;
+    background-color: #b11616;
+    border: 0ch;
+    font-size: 23px;
+    color: white;
+}
+.message_user{
+    text-align: center;
+    
+    padding: 7px;
+}
+.product_used_description textarea{
+    width: 30rem;
+    font-size: 1.5rem;
+  
+   height: 5rem;
+}

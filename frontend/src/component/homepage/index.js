@@ -1,75 +1,89 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getfury } from "../../redux/reducers/search";
 import "react-slideshow-image/dist/styles.css";
 import "./style.css";
+import { setPagination } from "../../redux/reducers/paginishon/index";
 import header1 from "./img/1.png";
 import header2 from "./img/2.jpg";
 import header3 from "./img/3.jpg";
 import header4 from "./img/4.png";
 import header5 from "./img/5.png";
-import header6 from "./img/6.png";
+import { color } from "@mui/system";
 const Homepage = () => {
-  const [Pagination, setPagination] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => {
     return {
       allproduct: state.search.allPrudact,
       number: state.search.number,
+      state: state.search.allPrudact,
+      home: state.home.homePageItems,
+      Pagination: state.pagination.pagination,
     };
   });
-
+  const filterdSubCatag = (type1) => {
+    const fortest =
+      state.state &&
+      state.state.map((element, index) => {
+        if (element.subCategory_id == type1) {
+          return (
+            <div className="contener_prodect" key={index}>
+              <Link className="content_product_slid" to={`/category/product/${element.product_id}`}>
+                <div className="contener_img_product">
+                  <img className="productimg" src={element.picUrlProd} />
+                </div>
+                <div className="contener_titel_product">
+                  <span className="titlemainpage">{element.title}</span>
+                </div>
+                <div className="contener_price">
+                  {" "}
+                  <h1 className="pricemain">{element.price} JD</h1>
+                </div>
+              </Link>
+            </div>
+          );
+        }
+      });
+    return fortest;
+  };
   const properties = {
     duration: 3000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: "autoplay",
     indicators: true,
   };
-
-  const filterdCatagore = (type1) => {
-    const fortest =
-      state.allproduct &&
-      state.allproduct.filter((element) => {
-        return element.sub_category == type1 || element.product_name === type1;
-      });
-    return fortest;
-  };
-
-  const filterdSubCatag = (type1) => {
-    const fortest =
-      state.allproduct &&
-      state.allproduct.filter((element) => {
-        return element.category_id == type1;
-      });
-    return fortest;
-  };
-
   const getproductPagination = (string) => {
     axios
       .post(`http://localhost:5000/product/Pagination/${string}`)
       .then((result) => {
-        setPagination(result.data.result);
+        dispatch(setPagination(result.data.result));
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
   useEffect(() => {
     getproductPagination(1);
   }, []);
 
+
+
+
+
+
+
+
+  console.log(state);
   return (
-    <div>
+    <div className="continerAll_mainhomediv">
       <div className="mainhomediv">
         <div>
-
-          <div>
+          <div className="continerAll_img_page">
             <img
               src={header4}
               onClick={() => {
@@ -94,102 +108,51 @@ const Homepage = () => {
           </Slide>
         </div>
         <div>
-          {/* this one for printers just add number (10)  */}
-          <p>gpu</p>
-          <Slide {...properties} className="test">
-            {filterdCatagore(8).map((element) => {
+          {state.home &&
+            state.home.map((element, index) => {
               return (
-                <div className="test2">
-                  <div className="prodacthome">
-                    <div className="">
-                      <hr></hr>
+                <div key={index}>
+                  <div id={index}>
+                    {element.url ? (
+                      <div className="contener_img_separtor">
+                        <img className="img_separtor" src={element.url}></img>
+                      </div>
+                    ) : null}
+                    <Slide {...properties} className="contener_side_product">
+                      {filterdSubCatag(element.product_Id)}
+                    </Slide>
+                  </div>
+                </div>
+              );
+            })}
+          <div className="contener_all_product_main">
+            {state.Pagination &&
+              state.Pagination.map((element) => {
+                return (
+                  <div className="contener_one_product">
+                    <Link
+                      className="linkproduct_mainpage"
+                      to={`/category/product/${element.product_id}`}
+                    >
                       <img className="firstpageimg" src={element.picUrlProd} />
-                    </div>
-                    <p className="titlehome">{element.title}</p>
-                    <p className="titlehome"> {element.price} </p>
+                      <p className="titleproduct_main">{element.title}</p>
+
+                      <p className="dis_product_main">
+                        {" "}
+                        {element.description
+                          .split(" ")
+                          .splice(1, 15)
+                          .join(" ")}{" "}
+                      </p>
+                      <p className="price_productmain">{element.price} JD</p>
+                    </Link>
                   </div>
-                </div>
-              );
-            })}
-          </Slide>
-        </div>
-        {/* this one for ssdjust add string ("ssd") in 103 */}
-        <img className="header2" src={header2} />
-        <div>
-          <Slide {...properties} className="test">
-            {filterdCatagore(9).map((element) => {
-              return (
-                <div>
-                  <div className="each-slide">
-                    <img className="firstpageimg" src={element.picUrlProd} />
-                    <p>{element.title}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </Slide>
-        </div>
-        <img className="header3" src={header6} />
-        <div>
-          {/* this one for power by asusu just add number 1 to params */}
-          <Slide {...properties} className="test">
-            {filterdSubCatag(2).map((element) => {
-              return (
-                <div>
-                  <div className="each-slide">
-                    <img className="firstpageimg" src={element.picUrlProd} />
-                    <p>{element.title}</p>
-                  </div>
-
-                </div>
-              );
-            })}
-          </Slide>
-        </div>
-        <img className="header3" src={header1} />
-
-
-        <div>
-          {/* this one for printers just add number (5)*/}
-          <p>gpu</p>
-          <Slide {...properties} className="test">
-            {filterdCatagore(8).map((element) => {
-              return (
-                <div>
-                  <div className="each-slide">
-                    <img className="firstpageimg" src={element.picUrlProd} />
-                    <p>{element.title}</p>
-                  </div>
-
-                </div>
-              );
-            })}
-          </Slide>
-
-
-          {Pagination &&
-            Pagination.map((element) => {
-              
-              return (
-                <div>
-                  <p>{element.title}</p>
-
-                  <img className="firstpageimg" src={element.picUrlProd} />
-                  <p>
-                    {" "}
-                    {element.description
-                      .split(" ")
-                      .splice(1, 15)
-                      .join(" ")}{" "}
-                  </p>
-                  <p>{element.price}</p>
-                </div>
-              );
-            })}
+                );
+              })}
+          </div>
         </div>
       </div>
-
-
+      <div className="numper_page_home" >
       {state.number &&
         state.number.map((element) => {
           return (
@@ -203,11 +166,11 @@ const Homepage = () => {
               >
                 {element}
               </button>
-              ;
+              
             </div>
           );
         })}
-
+      </div>
     </div>
   );
 };

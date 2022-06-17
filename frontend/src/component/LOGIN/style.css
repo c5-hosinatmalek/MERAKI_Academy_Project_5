@@ -1,0 +1,138 @@
+.mainlogin {
+  display: flex;
+}
+.logginheader {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-left: 2rem;
+}
+.detalislogin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.childlogin {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.login_user {
+  display: flex;
+  gap: 10rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  justify-content: center;
+}
+.loginput {
+  height: 2rem;
+  font-size: 20px;
+  border-bottom-color: #f3f3f3;
+  border-right-color: #f3f3f3;
+  background-color: #f3f3f3d2;
+}
+.emaildiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.passworddiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.loginh3 {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.logininput {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.AccountLogin {
+  color: #C92A24;
+  margin-top: 1rem;
+}
+.login_user form {
+  border: solid black 5px;
+  text-align: center;
+  background: black;
+  border-radius: 5px;
+}
+
+.titel {
+  border-bottom: 3px solid rgb(255, 255, 255);
+}
+
+.titel h1 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 600;
+  color: white;
+  padding: 10px;
+}
+
+.email_login label {
+  display: block;
+  font-size: 1.7rem;
+
+  color: white;
+}
+
+.passward_login label {
+  display: block;
+
+  font-size: 1.7rem;
+  color: white;
+}
+
+.login_user form input {
+  width: 25rem;
+
+  font-size: 2rem;
+
+  background: white;
+}
+
+.login_button {
+  padding: 10px;
+}
+.login_buttons {
+  display: flex;
+  width: 39rem;
+  gap: 2rem;
+  justify-content: center;
+}
+.login_button {
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: #b11616;
+  font-size: 20px;
+  width: 10rem;
+  height: 50px;
+}
+@media (max-width: 800px) {
+  .mainlogin {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 500px) {
+  .login_buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .childlogin {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    width: 100%;
+  }
+}

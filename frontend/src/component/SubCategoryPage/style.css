@@ -1,0 +1,14 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+.mainnproductdivSub{
+    display: flex;
+    justify-content: center;
+}
+.type{
+ margin-top: 2rem;
+    margin-left: 3rem;
+}

@@ -1,0 +1,119 @@
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+.pageimg {
+  width: 200px;
+  height:150px;
+}
+.productimg {
+  width: 150px;
+  height: 100px;
+}
+.iteamsheader{
+    align-items: stretch;
+    display: flex;
+    justify-content: space-around;
+    border-style: outset;
+    background-color: #f5f5f5;
+    margin: 20px;
+    width: 100%;
+    padding: 10px;
+}
+.titleSlider{
+   margin: 20px ;
+}
+.sliderLabel{
+  margin: 0px 20px 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.updatesliderLabel{
+  font-size: 15px;
+  font-weight: 600;
+  margin: 2px 0px 2px 10px;;
+}
+.updateButton{
+  height: 2rem;
+    font-size: 1.1rem;
+    background-color: #b11616;
+    font-weight: 700;
+    color: white;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 2px;
+    width: 100%;
+}
+.uploadBottom{
+
+  /* width: 100%; */
+    height: 2rem;
+    font-size: 1.1rem;
+    background-color: #b11616;
+    font-weight: 700;
+    color: white;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 2px;
+}
+
+
+
+.mainphotodiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+}
+
+
+.mainiteamsheader{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+
+.test{
+  display: flex;
+  justify-content: center;
+  height: 250px;
+}
+
+
+.changeheader{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: flex-start;
+  gap: 5px;
+  padding-left: 10px;
+}
+
+
+.mm{
+  color: white;
+  padding: 15px;
+  width: 100%;
+  height: 150px;
+  overflow: scroll;
+  border: 1px solid #ccc;
+}
+.nnnn{
+  display: flex;
+  justify-content: center;
+}
+.updateInput{
+  margin-left: 10px;
+}
+

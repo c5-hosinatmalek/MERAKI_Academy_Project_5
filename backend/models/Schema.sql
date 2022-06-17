@@ -51,6 +51,8 @@ CREATE TABLE sub_categories(
     sub_category VARCHAR(255),
     picUrlSub VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
     PRIMARY KEY (subCategory_id)
 );
 
@@ -62,7 +64,8 @@ CREATE TABLE Products(
     sub_category INT,
     product_name VARCHAR(255),
     product_type VARCHAR(255),
-    price VARCHAR(255),
+    buy_price INT,
+    price INT,
     description TEXT,
     FOREIGN KEY (category_id) REFERENCES categories(category_id),
     FOREIGN KEY (sub_category) REFERENCES sub_categories(subcategory_id),
@@ -83,7 +86,11 @@ CREATE TABLE pic(
 
 CREATE TABLE sold(
     sold_id INT AUTO_INCREMENT NOT NULL,
-    sold INT,
+    sold_price INT,
+    title VARCHAR(255),
+    price_buy INT,
+    quantity INT,
+    date VARCHAR(255),
     product_Id int,
     FOREIGN KEY (product_id) REFERENCES products(product_id),
     PRIMARY KEY (sold_id)
@@ -96,8 +103,35 @@ CREATE TABLE cart (
     user_id int,
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     quantity int,
+    price_checkout int,
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (cart_id)
+);
+
+CREATE TABLE request (
+    request_id int AUTO_INCREMENT NOT NULL,
+    email VARCHAR(255),
+    product_id int,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    is_deleted TINYINT DEFAULT 0,
+    is_emailsend TINYINT DEFAULT 0,
+    PRIMARY KEY (request_id)
+);
+
+CREATE TABLE usedproduct (
+    used_product_id INT AUTO_INCREMENT NOT NULL,
+    category VARCHAR(255),
+    product_name VARCHAR(255),
+    product_description TEXT,
+    url_imj TEXT,
+    asking_price INT,
+    bank_account VARCHAR(255),
+    admission_status TINYINT DEFAULT 0,
+    is_deleted TINYINT DEFAULT 0,
+    phone_number VARCHAR(255),
+    user_id INT,
+    FOREIGN key (user_id) REFERENCES users (user_id),
+    PRIMARY KEY (used_product_id)
 );
 
 INSERT INTO
@@ -121,54 +155,104 @@ VALUES
     ("Software");
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("CPU & Processor");
+    (
+        "CPU & Processor",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714250/p59ruoewwgm6epxupgvm.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Storage Drive");
+    (
+        "Storage Drive",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714801/goajw1pbyodbpv1ag7rm.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Laser Printer");
+    (
+        "Laser Printer",
+        3,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714962/m0kxus3lensth0ndyhrm.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Memory - RAM");
+    (
+        "Memory - RAM",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714437/j831zbyabgxpbp9ewq7o.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Graphic Card");
+    (
+        "Graphic Card",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714391/n92tbkz2ajlxen7mwbx7.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Power Supply");
+    (
+        "Power Supply",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714662/jxu1q2voemu0jvzrsjtr.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Motherboard");
+    (
+        "Motherboard",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714538/ire9vdikwfnfkmbcaa1z.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Cooling");
+    (
+        "Cooling",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714308/q4y3uvzyzgvooxxwppy0.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Cases");
+    (
+        "Cases",
+        2,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714839/edzxgldexnncd0emij0b.webp"
+    );
 
 INSERT INTO
-    sub_categories (sub_category)
+    sub_categories (sub_category, category_id, picUrlSub)
 VALUES
-    ("Scanner");
+    (
+        "Scanner",
+        3,
+        "http://res.cloudinary.com/halhouli/image/upload/v1654714916/gdqjnrprds7cvr2cgpy7.webp"
+    );
+
+INSERT INTO
+    roles (role)
+VALUES
+    ("Admin");
+
+INSERT INTO
+    roles (role)
+VALUES
+    ("User");
 
 INSERT INTO
     Products (
@@ -179,7 +263,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -189,9 +274,10 @@ VALUES
         8,
         "cooler master",
         50,
-        "Sleek, Pearl White finish for a more refined look,4 direct contact heat pipes provide excellent heat dissipation,
+        "Pearl White finish for a more refined look,4 direct contact heat pipes provide excellent heat dissipation,
 Dual XtraFlo PWM Fans with white LEDs can be fine-tuned for maximum cooling performance or silent operation,Precise stacked fin array decreases airflow resistance, allowing cooler air to reach the heatsink,Intuitive fan bracket design makes upgrading and removing the fan a breeze,",
-        70
+        70,
+        40
     );
 
 INSERT INTO
@@ -204,6 +290,7 @@ INSERT INTO
         price,
         description,
         Store_Quantity
+       
     )
 VALUES
     (
@@ -219,6 +306,7 @@ Dual SickleFlow ARGB  Push and pull - dual SickleFlow 120 ARGB fans to maximize 
 Top Cover Design - Creative ARGB LED logo design with additional light strips on the top cover for aesthetic customization,
 Mainstream dual platforms are available: Intel: LGA 2066/2011-v3 / 2011 /1200/ 1366/ 1156/ 1155/ 1151/ 1150/ AMD: AM4 / AM3+ / AM3 / AM2+ / AM2 / FM2+ / FM2 / FM1,",
         60
+        
     );
 
 INSERT INTO
@@ -230,7 +318,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -245,7 +334,8 @@ The iconic DeepCool Castle EX infinity mirror pump design with a new twist. See 
 Designed from the inside out, the new dual-chamber pump features an optimized flow route for better heat exchange,
 A stronger 3-phase motor provides higher cooling performance with an increased flow rate while keeping noise levels low,
 With 25% more skived fins on the copper cold plate, the larger surface area effectively dissipates heat,",
-        30
+        30,
+        50
     );
 
 INSERT INTO
@@ -257,7 +347,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -272,7 +363,8 @@ The iconic DeepCool Castle EX infinity mirror pump design with a new twist. See 
 Designed from the inside out, the new dual-chamber pump features an optimized flow route for better heat exchange,
 A stronger 3-phase motor provides higher cooling performance with an increased flow rate while keeping noise levels low,
 With 25% more skived fins on the copper cold plate, the larger surface area effectively dissipates heat,",
-        30
+        30,
+        20
     );
 
 INSERT INTO
@@ -284,7 +376,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -295,7 +388,8 @@ VALUES
         "ASUS",
         65,
         "Mid-tower with support for EATX motherboards featuring a metal chassis, 4mm-thick smoked, tempered-glass full view side panels, three easy-to-clean dust filters, and space for 9 Storage drives Premium cable management includes translucent rear panel, adjustable multi-function cover featuring GPU support brackets and pre-run chassis cables , Keep your cool with built in fan hub, four 140mm fans and up to seven optional fan-mounting points , Custom Liquid Cooling ready features a water pump/ reservoir mounting bracket and support for radiators up to 420mm in length and 90mm thick (with fans) , Graphic card mounting options include Up to 2x vertically mounted Graphics cards or 3x horizontally mounted Graphics cards using the 7 expansion Slots",
-        30
+        30,
+        55
     );
 
 INSERT INTO
@@ -307,7 +401,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -324,7 +419,8 @@ Integrated 6 ports Aura Sync addressable-RGB controller hub and a dedicated fron
 Integrated 6 ports Aura Sync addressable-RGB controller hub and a dedicated front panel control button to create a stunning lighting effect,
 Extensive storage options: up to 2 HDD (trays included) and 6x SDD (2x dedicated bracket included, one is on the power supply shroud) mounting locations,
 Combat-ready: Customized headphone hook which can be hanged on both sides,",
-        56
+        56,
+        70
     );
 
 INSERT INTO
@@ -336,7 +432,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -351,7 +448,8 @@ VALUES
 4.5 GHz Max Boost, 100 MB cache, DDR4-3200 support,
 For the advanced Socket AM4 platform, can support PCIe 4.0 on X570 and B550 motherboards,
 Cooler not included, high-performance cooler recommended,",
-        250
+        250,
+        380
     );
 
 INSERT INTO
@@ -363,7 +461,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -378,7 +477,8 @@ VALUES
 4.5 GHz Max Boost, 100 MB cache, DDR4-3200 support,
 For the advanced Socket AM4 platform, can support PCIe 4.0 on X570 and B550 motherboards,
 Cooler not included, high-performance cooler recommended,",
-        200
+        200,
+        600
     );
 
 INSERT INTO
@@ -390,7 +490,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -405,7 +506,8 @@ Supports Intel Turbo Boost Max Technology 3.0,
 Intel Optane memory support,
 PCIe Gen 4.0 compliant,
 Does not include thermal solution,",
-        90
+        90,
+        1000
     );
 
 INSERT INTO
@@ -417,7 +519,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -432,7 +535,8 @@ Maximum Turbo Power: 241W,
 30MB L3 Cache,
 14MB L2 Cache,
 Windows 11 Supported,",
-        90
+        90,
+        750
     );
 
 INSERT INTO
@@ -444,7 +548,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -458,7 +563,8 @@ VALUES
 Memory Interface: 256-bit,
 Output: DisplayPort x 3 (v1.4) / HDMI 2.1 x 1,
 Digital maximum resolution - 7680 x 4320,",
-        153
+        153,
+        500
     );
 
 INSERT INTO
@@ -470,7 +576,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -487,7 +594,8 @@ MaxContact heat spreader allows 2X more contact with the GPU chip for improved t
 Reinforced frame prevents excessive torsion and lateral bending of the PCB,
 FanConnect II equips a hybrid-controlled fan header for optimal system cooling,
 Vented backplate prevents hot air from recirculating through the cooling array,",
-        153
+        153,
+        500
     );
 
 INSERT INTO
@@ -499,7 +607,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -517,7 +626,8 @@ Axial-tech fan design has been newly tuned with a reversed central fan direction
 2.7-slot design expands cooling surface area to make the most of the three powerful Axial-tech fans,
 Super Alloy Power II includes premium alloy chokes solid polymer capacitors and an array of high-current power stages,
 GPU Tweak II provides intuitive performance tweaking thermal controls and system monitoring,",
-        90
+        90,
+        630
     );
 
 INSERT INTO
@@ -529,7 +639,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -546,7 +657,8 @@ Axial-tech fan design features a smaller fan hub that facilitates longer blades 
 A 2-slot Design maximizes compatibility and cooling efficiency for superior performance in small chassis,
 0dB Technology lets you enjoy light gaming in relative silence,
 A stainless steel bracket is harder and more resistant to corrosion,",
-        90
+        90,
+        630
     );
 
 INSERT INTO
@@ -558,7 +670,8 @@ INSERT INTO
         product_type,
         price,
         description,
-        Store_Quantity
+        Store_Quantity,
+        buy_price
     )
 VALUES
     (
@@ -579,5 +692,6 @@ Graphics Output Options: HDMI, DisplayPort,
 2 USB 3.2 Gen2 (Rear Type A+C), 9 USB 3.2 Gen1 (4 Front, 4 Rear, Front Type-C),
 Phantom Gaming 2.5 Gigabit LAN, Intel® Gigabit LAN,
 ASRock Polychrome SYNC,",
-        90
+        90,
+        140
     );

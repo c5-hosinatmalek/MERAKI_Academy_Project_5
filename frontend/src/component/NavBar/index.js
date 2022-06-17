@@ -1,82 +1,126 @@
 import { Link } from "react-router-dom";
 import "./style.css";
-import { BsCart4 } from "react-icons/bs";
-import { RiAccountCircleLine } from "react-icons/ri";
-import LOGIN from "../LOGIN";
+import { RiAccountCircleFill } from "react-icons/ri";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {FaShoppingCart} from "react-icons/fa";
+
+
+import logo from "./logo/logo.png"
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../../redux/reducers/auth";
 import jwtDecode from "jwt-decode";
 import SEARCH from "../SEARCH";
+import { useState } from "react";
+import MenuIcon from '@mui/icons-material/Menu';
+
 const NavBar = () => {
+  const navigate =useNavigate()
+  const [show, setShow] = useState();
+  const [className, setClassName] = useState("");
   const dispacth = useDispatch();
   const state = useSelector((state) => {
     return {
+      cartcontent:state.cart.cart,
       isLoggedIn: state.auth.isLoggedIn,
       token: state.auth.token,
     };
   });
   const decodeToken = (columnName) => {
-      
     if (state.isLoggedIn) {
       return jwtDecode(state.token)[columnName];
     }
   };
-  
 
   const logout = () => {
     dispacth(setLogout());
-  };
+    navigate("/")
 
+  };
+  ///////////////////////////////////////////////////////////////
+  const sowHide = () => {
+    setShow(!show);
+
+    if (show) {
+      setClassName("active");
+    } else {
+      setClassName("");
+    }
+  };
+  ////////////////////////////////////////////////////////////////
   return (
     <div className="navbar">
-        {decodeToken("role")==1?
+      {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-        <p>table users</p>
-        <p>table product</p>
-        <p>table checkout</p>
-        
-        </div>:
-        <div className="navUser">
-      <Link to={"/"}>
-        <img
-          className="logo"
-          src="http://res.cloudinary.com/doxxh3kej/image/upload/v1654159311/t7ldyjgrus0wqhqe4pns.jpg"
-        />
-      </Link>
-      <SEARCH />
-      <dev>
-        <Link to={"/login"} className="myAccount">
-          <RiAccountCircleLine className="myaccount" />
-          My Account
-        </Link>
-        {state.isLoggedIn ? (
-          <ul>
-            <li>{decodeToken("userName")}</li>
-            <li onClick={logout}>Logout</li>
-          </ul>
-        ) : (
-          <ul className="myAccountList">
-            <li>
-              <Link to="/login">login</Link>
-            </li>
-            <li>
-              <Link to="/rigester">Register</Link>
-            </li>
-          </ul>
-        )}
-      </dev>
-      {!state.isLoggedIn ? (
-        <Link to={"/login"}>
-          <BsCart4 className="cartLogo" />
-        </Link>
+<img src={logo} className="logo_nameAdmin"></img>
+<h1 className="navtiltle">Admin Page</h1>
+          
+<div className="my_account_contener">
+            <div className="icons" onClick={sowHide}>
+              {" "}
+              <RiAccountCircleFill sx={{ fontSize: 55 }} className="icons" /> 
+            </div>
+              <ul className={`ul ${className}`} id="adminlist">
+                <li className="li_1">{decodeToken("userName")}</li>
+                <li className="li_2" onClick={logout}>Logout</li>
+
+              </ul>
+              </div>
+        </div>
       ) : (
-        <Link to={`/cart/${decodeToken("user_id")}`}>
-          <BsCart4 className="cartLogo" />
-        </Link>
+        <div className="navUser">
+          <Link to={"/"}>
+
+<img src={logo} className="logo_name"></img>
+          </Link>
+          <SEARCH />
+          <div className="my_account_contener">
+            <div className="icons" onClick={sowHide}>
+              {" "}
+              <RiAccountCircleFill sx={{ fontSize: 55 }} className="icons" /> 
+            </div>
+
+            {state.isLoggedIn ? (
+              <ul className={`ul ${className}`}>
+                <li className="li_1">{decodeToken("userName")}</li>
+
+                <li className="li_1" ><Link to="/create_order_sale" >order sale</Link></li>
+                <li className="li_1" ><Link to="/all_order_sale" >All Order Sale</Link></li>
+                <li className="li_2" onClick={logout}>Logout</li>
+
+              </ul>
+            ) : (
+              <ul className={`ul ${className}`}>
+                <li className="li_1">
+                  <Link to="/login">login</Link>
+                </li>
+                <li className="li_2">
+                  <Link to="/rigester">Register</Link>
+                </li>
+              </ul>
+            )}
+
+            {!state.isLoggedIn ? (
+              <Link className="contener_logcart" to={"/login"}>
+                <div className="icons">
+                  {" "}
+                  <FaShoppingCart  />
+                </div>
+               
+              </Link>
+            ) : (
+              <Link className="contener_logcart" to={`/cart/${decodeToken("user_id")}`}>
+                <div className="icons">
+                  {" "}
+                  <FaShoppingCart  />
+                </div>
+              
+              </Link>
+            )}
+            <h1 className="menu_icon"  ><MenuIcon  sx={{ fontSize: 55 }} /></h1>
+          </div>
+        </div>
       )}
-      </div>}
-      
-      
     </div>
   );
 };

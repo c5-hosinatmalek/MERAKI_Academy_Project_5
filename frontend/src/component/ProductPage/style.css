@@ -1,12 +1,116 @@
-.productPage{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.mainproductPage {
+  display: flex;
+  justify-content: center;
 }
-.priceAvilability{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+.productPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 150px;
+  width: 96%;
 }
-.imgProduct{
-    width: 100px;
-    height: 100px;
+.parentpriceAvilability {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 25rem;
+  align-content: center;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+
+}
+.priceAvilability {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8rem;
+    margin-left: 10px;
+    align-items: center;
+}
+.imgProduct {
+  width: 300px;
+  height: 300px;
+}
+.childproductPage {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lidescrption {
+  font-size: 20px;
+}
+
+.prodactphoto {
+  display: flex;
+  justify-content: center;
+}
+.addtocart {
+  width: 300px;
+  height: 70px;
+  background-color: red;
+  border: 0ch;
+  font-size: larger;
+  color: white;
+  
+}
+
+.detalis {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: larger;
+}
+
+.Availability {
+  color: black;
+}
+
+.stock {
+  color: rgb(131, 125, 125);
+}
+.Brand {
+  color: rgb(131, 125, 125);
+}
+ul {
+  list-style-type: none;
+}
+
+.prodactdetalis {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.addtocartdiv{
+  display: flex;
+justify-content:center;
+align-items: center;
+    margin-left: 10px;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+}
+
+
+@media (max-width:1000px){
+  .productPage{
+    display: flex;
+    flex-direction: column;
+  }
+  .imgProduct {
+    width: 200px;
+    height: 150px;
+  }
+  .parentpriceAvilability {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 25rem;
+    align-content: center;
+    margin-top: 5px;
+    background-color: #f5f5f5;
+  
+  }
 }

@@ -1,32 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { paginationAction } from "../../../redux/reducers/paginishon/index";
 const PAGEAllRESULTSEARCH = () => {
+  const dispacth = useDispatch();
   const resulatsarch = useSelector((state) => {
     return {
       resulatsarch: state.search.resultSerch,
       stateserch: state.search.stateserch,
       messageSearche: state.search.messageSearche,
+      productAfterPagtion: state.pagination.productAfterPagtion,
+      number: state.pagination.number,
     };
   });
+  useEffect(() => {
+    dispacth(paginationAction([resulatsarch.resulatsarch, 0,0]));
+  }, [resulatsarch.resulatsarch]);
+  const numberClick = (number) => {
+    dispacth(paginationAction([resulatsarch.resulatsarch, number]));
+  };
 
   return (
     <div className="all_result_search">
       <h1>{resulatsarch.messageSearche}</h1>
       <div className="continer_all_result">
-        {resulatsarch.resulatsarch &&
-          resulatsarch.resulatsarch.map((resulat, index) => {
+        {resulatsarch.productAfterPagtion &&
+          resulatsarch.productAfterPagtion.map((resulat, index) => {
             return (
-              <div className="one_result">
-                <div className="img_result">
-                  <img src={resulat.picUrlProd} />
+              <Link
+                to={`/category/product/${resulat.product_id}`}
+                key={index}
+                className="linkProduct"
+              >
+                <div className="one_result">
+                  <img src={resulat.picUrlProd} className="img_result" />
+                  <p className="titlePar">{resulat.title}</p>
+                  <p className="descriptionPar">
+                    {" "}
+                    {resulat.description.split(" ").slice(1, 15).join(" ")}...
+                  </p>
+
+                  <p className="pricePar">{resulat.price}JD</p>
                 </div>
-                <div className="one_dis_price">
-                  <h3>{resulat.title}</h3>
-                  <h4>price:{resulat.price}JD</h4>
-                </div>
-              </div>
+              </Link>
+            );
+          })}
+      </div>
+      <div>
+        {resulatsarch.number &&
+          resulatsarch.number.map((element, index) => {
+            return (
+              <button key={index}
+                onClick={() => {
+                  numberClick(index );
+                }}
+              >
+                {index + 1}
+              </button>
             );
           })}
       </div>
