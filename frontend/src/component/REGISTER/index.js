@@ -15,6 +15,9 @@ const REGISTER = () => {
   const [verfied, setVerfied] = useState("");
   const [checkVerfied, setCheckVerfied] = useState(false);
   const [compareWord, setCompareWord] = useState("");
+
+  const navigate=useNavigate("")
+
   const verfiedClick = (e) => {
     if (compareWord !== verfied) {
       setMessageUser("The code is wrong");
@@ -32,7 +35,10 @@ const REGISTER = () => {
       .then((result) => {
         if (result.data.success) {
           setStatus(true);
-          setMessageUser("account created successfully");
+          setMessageUser("Account created successfully");
+setTimeout(() => {
+  navigate("/login")
+}, 3000);
         }
       })
       .catch((err) => {
@@ -44,6 +50,10 @@ const REGISTER = () => {
   };
   const submit = (e) => {
     e.preventDefault();
+    if(!email && !password && !name){
+      setMessageUser("Please fill out all fields")
+      return
+    }
     axios
       .get(`http://localhost:5000/user/${email}`)
       .then((result) => {
@@ -51,7 +61,7 @@ const REGISTER = () => {
           setMessageUser("This email is already exist");
           return;
         }
-
+        setMessageUser("")
         setCheckVerfied(true);
         createVerfiedWord();
       })
@@ -169,7 +179,7 @@ const REGISTER = () => {
                         <input
                           className="inputregstier"
                           type="text"
-                          placeholder="E_mail"
+                          placeholder="Email"
                           required
                           onChange={(e) => {
                             setEmail(e.target.value);
@@ -182,7 +192,7 @@ const REGISTER = () => {
                         <label className="star">*</label> Country
                       </h3>
                         <select
-                          className="regstierinputs"
+                          className="countryRegister"
                           onChange={(e) => {
                             setCountryy(e.target.value);
                           }}
@@ -247,7 +257,7 @@ const REGISTER = () => {
               setCompareWord(e.target.value);
             }}
           />
-          <button
+          <button className="verButton"
             onClick={() => {
               verfiedClick();
             }}

@@ -6,7 +6,7 @@ import { SetAllProductUsedFromUser } from "../../../redux/reducers/prduct_used";
 import "./style.css";
 const ALLORDERSALE = () => {
   const [messageUser, setMessageUser] = useState("");
-  const [clasName,setClasName]=useState("")
+  const [clasName, setClasName] = useState("");
   const dispacth = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -23,34 +23,34 @@ const ALLORDERSALE = () => {
       })
       .then((resulat) => {
         dispacth(SetAllProductUsedFromUser(resulat.data.result));
-       
-        if(resulat.data.result.length===0){
-          setMessageUser("No Sales Orders")
-          setClasName("active")
-        }else{
-          setMessageUser("")
-          setClasName("")
+
+        if (resulat.data.result.length === 0) {
+          setMessageUser("No Sales Orders");
+          setClasName("active");
+        } else {
+          setMessageUser("");
+          setClasName("");
         }
       });
   }, []);
 
   return (
     <div className="contener_all_order_sale">
-      <h1 className={`mesageif_empty ${clasName}`} >{messageUser}</h1>
+      <h1 className={`mesageif_empty ${clasName}`}>{messageUser}</h1>
       <div className="content_all_order_sale">
         {state.allordersale &&
           state.allordersale.map((element, index) => {
             console.log(element);
             return (
               <div className="content_one_order_sale">
-
-                {element.is_deleted?<div
+                {element.is_deleted ? (
+                  <div
                     style={{ background: ` rgba(192, 11, 11, 0.774)` }}
                     className="approvied"
                   >
                     <h1 className="fff">Admission status</h1>
-                  </div>:element.admission_status ? (
-
+                  </div>
+                ) : element.admission_status ? (
                   <div
                     style={{ background: `rgba(0, 128, 0, 0.63)` }}
                     className="approvied"
@@ -59,9 +59,7 @@ const ALLORDERSALE = () => {
                   </div>
                 ) : (
                   <div
-
                     style={{ background: `rgba(240, 240, 16, 0.795)` }}
-
                     className="approvied"
                   >
                     <h1 className="fff">Admission status</h1>
@@ -70,20 +68,31 @@ const ALLORDERSALE = () => {
 
                 <div className="one_order_sale">
                   <div className="details_all_order">
-                    <h1>Product Name : {element.product_name}</h1>
-                    <h1>Asking price : {element.asking_price} JD</h1>
-                    <h1>Phone Number :{element.phone_number} </h1>
-                    <h1>Bank Account :{element.bank_account} </h1>
+                    <h2>
+                      Product Name :<span className="proInfo"> {element.product_name}</span>{" "}
+                    </h2>
+                    <h2>
+                      Asking Price :<span className="proInfo"> {element.asking_price} JD </span>{" "}
+                    </h2>
+                    <h2>
+                      Phone Number :<span className="proInfo"> {element.phone_number}</span>{" "}
+                    </h2>
+                    <h2>
+                      Bank Account :<span className="proInfo">{element.bank_account}</span>{" "}
+                    </h2>
 
-                    <h1>
-                      Admission status :
-
-                      {element.is_deleted?"Request Denied":element.admission_status
-
-                        ? "it has been accepted"
-                        : "Under Review"}{" "}
-                    </h1>
-                    <h1>Broduct Description :{element.product_description} </h1>
+                    <h2>
+                      Approved Status :
+                      <span className="proInfo">
+                        {element.is_deleted
+                          ? "Request Denied"
+                          : element.admission_status
+                          ? "it has been accepted"
+                          : "Under Review"}{" "}
+                      </span>
+                    </h2>
+                    <h2>Description :<span className="proInfo">{element.product_description}
+                      </span></h2>
                   </div>
 
                   <div className="content_img_order">

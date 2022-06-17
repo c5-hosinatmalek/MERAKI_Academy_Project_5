@@ -17,11 +17,14 @@
 .one_order_sale{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 20%;
    width: 100%;
-   height: 20rem;
+   height: fit-content;
    border: 3px solid rgb(0, 0, 0);
    margin-bottom: 1.5rem;
+}
+.proInfo{
+    font-weight: 500;
 }
 
 
@@ -38,7 +41,7 @@
 
 
 .content_img_order img{
-    width: 35rem;
+    width: 9rem;
     height: 100%;
 }
 
