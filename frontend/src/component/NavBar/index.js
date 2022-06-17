@@ -84,8 +84,8 @@ const NavBar = () => {
               <ul className={`ul ${className}`}>
                 <li className="li_1">{decodeToken("userName")}</li>
 
-                <li className="li_1" ><Link to="/create_order_sale" >order sale</Link></li>
-                <li className="li_1" ><Link to="/all_order_sale" >All Order Sale</Link></li>
+                <li className="li_1" ><Link to="/create_order_sale" >Sell product</Link></li>
+                <li className="li_1" ><Link to="/all_order_sale" >My sold products</Link></li>
                 <li className="li_2" onClick={logout}>Logout</li>
 
               </ul>

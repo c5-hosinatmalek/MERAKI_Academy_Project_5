@@ -20,7 +20,6 @@ const ALLPRODUCTFORADMIN=()=>{
         axios.get("http://localhost:5000/prudect_used/AllSaleOrderForadmin").then((resulatt)=>{
 
             dispacth( setallProductFromAdmin(resulatt.data.result))
-            console.log(resulatt);
                 
         })
     }
@@ -70,15 +69,15 @@ const ALLPRODUCTFORADMIN=()=>{
 
                         {
     state.allOrderSaleForAdmin&&state.allOrderSaleForAdmin.map((element,index)=>{
-        console.log(element);
+        
         return(
             <tr>
                             <td className="body"><img className="imgTable" src={element.url_imj}/></td>
-                            <td className="body"><h1>{element.product_name}</h1> </td>
-                            <td className="body"> <h1>{element.category}</h1></td>
-                            <td className="body"><h1>{element.asking_price}  JD</h1></td>
-                            <td className="body"><h1>{element.bank_account}</h1></td>
-                            <td className="body">{element.admission_status?<h1 style={{color:"green"}} >it has been accpted</h1  >:<h1 style={{color:"red"}} >under review</h1>}</td>
+                            <td className="body">{element.product_name} </td>
+                            <td className="body"> {element.category}</td>
+                            <td className="body">{element.asking_price}  JD</td>
+                            <td className="body">{element.bank_account}</td>
+                            <td className="body">{element.admission_status?<h2 style={{color:"green"}} >it has been accpted</h2  >:<h2 style={{color:"red"}} >under review</h2>}</td>
                             <td className="body">{element.product_description}</td>
                             <td className="body">{element.phone_number}</td>
                             <td className="body"> <button className="operButton" onClick={()=>{
@@ -91,7 +90,6 @@ const ALLPRODUCTFORADMIN=()=>{
                             }} >Accept</button>
                                 <button className="operButton" onClick={()=>{axios.delete(`http://localhost:5000/prudect_used/delete/${element.used_product_id}`).then((result)=>{
                                     allOrderSale()
-                                    console.log(result);
                                 })}} >Delete</button>
                              </td>
             </tr>
