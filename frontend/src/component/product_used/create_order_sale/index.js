@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import "./style.css"
 import { useSelector } from "react-redux";
@@ -11,7 +11,13 @@ const ORDERSALE=()=>{
     const [bank_account,setbank_account]=useState("")
     const [phone_number,setphone_number]=useState("")
     const [message,setMessage]=useState("")
-
+    const ninbut=useRef()
+    const pinbut=useRef()
+    const binbut=useRef()
+    const phoinbut=useRef()
+    const catinbut=useRef()
+    const upinbut=useRef()
+    const desinput=useRef()
     const state = useSelector((state) => {
         return {
           cart: state.cart.cart,
@@ -61,8 +67,8 @@ const ORDERSALE=()=>{
 
 
     useEffect(()=>{
-        console.log(category);
-    },[category])
+      ninbut.current.focus()
+    },[])
 
 
     return(
@@ -72,24 +78,36 @@ const ORDERSALE=()=>{
                 <div className="titel_order" ><h1>Info of your product</h1> </div>
                 <div className="productused_name" >
                     <label>Name product</label>
-                    <input placeholder="Example hard desk" onChange={(e)=>{setProduct_name(e.target.value)}}  />
+                    <input onKeyDown={(e)=>{
+                      e.key=="Enter"?pinbut.current.focus(): ninbut.current.focus()
+                    }} ref={ninbut} placeholder="Example_hard disk" onChange={(e)=>{setProduct_name(e.target.value)}}  />
                 </div>
               
                 <div className="asking_price">
                     <label>Price</label>
-                    <input onChange={(e)=>{setAsking_price(e.target.value)}} placeholder="asking price"/>
+                    <input onKeyDown={(e)=>{
+                      e.key==="Enter"?binbut.current.focus():pinbut.current.focus()
+                    }} ref={pinbut} onChange={(e)=>{setAsking_price(e.target.value)}} placeholder="Example_20 JD"/>
                 </div>
                 <div className=" bank_account">
                     <label>Bank account</label>
-                    <input placeholder="Bank account" onChange={(e)=>{setbank_account(e.target.value)}} />
+                    <input onKeyDown={(e)=>{
+                      e.key==="Enter"?phoinbut.current.focus():binbut.current.focus()
+                    }} ref={binbut} placeholder="Bank account" onChange={(e)=>{setbank_account(e.target.value)}} />
                 </div>
                 <div className="phone_number">
                     <label>Phone number</label>
-                    <input placeholder="Phone number" onChange={(e)=>{setphone_number(e.target.value)}} />
+                    <input  onKeyDown={(e)=>{
+                      e.key==="Enter"?catinbut.current.focus():phoinbut.current.focus()
+                    }}  ref={phoinbut} placeholder="Phone number" onChange={(e)=>{setphone_number(e.target.value)}} />
                 </div>
                 <div className="category_select">
                     <label >Category</label>
-                    <select onChange={(e)=>{setCategory(e.target.value)}} >
+                    <select onKeyDown={(e)=>{
+                      e.key==="Enter"?upinbut.current.focus():catinbut.current.focus()
+                      
+                    }} ref={catinbut} onChange={(e)=>{setCategory(e.target.value)
+                      upinbut.current.focus()}} >
                         <option ></option>
                         <option value="hard ware">hard ware</option>
 
@@ -105,11 +123,13 @@ const ORDERSALE=()=>{
                 
                 <div className="img_url_contener" >
                     <label> Image for the product</label>
-                    <input type="file" onChange={(e)=>{setimage(e.target.files[0])}} />
+                    <input ref={upinbut} type="file" onChange={(e)=>{setimage(e.target.files[0])
+                    desinput.current.focus()
+                    }} />
                 </div>
                 <div className="product_used_description">
                     <label>Description </label>
-                    <textarea onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="Description" />
+                    <textarea  ref={desinput} onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="Description" />
                 </div>
                 
                 <div className="sen_buttoun" ><button>Send</button></div>

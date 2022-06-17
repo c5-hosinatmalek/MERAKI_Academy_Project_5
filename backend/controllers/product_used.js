@@ -182,7 +182,7 @@ const allProductUsed = (req, res) => {
     }
     res.status(200).json({
       success: true,
-      message: "all product used ",
+      message: "All products used ",
       result: result,
     });
   });
@@ -225,7 +225,7 @@ const getAllProdectWithCategory=(req,res)=>{
     }
     res.status(200).json({
       success:true,
-      message:`all product ${category}`,
+      message:`All products ${category}`,
       result:result
     })
   })

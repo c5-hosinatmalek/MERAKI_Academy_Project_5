@@ -87,6 +87,7 @@ const updateProduct = (req, res) => {
     description,
     category_id,
     sub_category,
+    buy_price
   } = req.body;
   const productId = req.params.id;
 
@@ -100,10 +101,11 @@ const updateProduct = (req, res) => {
     category_id,
     sub_category,
     productId,
+    buy_price
   ];
-  console.log(data);
+
   const query =
-    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,picUrlProd=?,description=?,category_id=?,sub_category=? WHERE product_ID=?";
+    "UPDATE products SET product_name=?,product_type=?,price=?,title=?,picUrlProd=?,description=?,category_id=?,sub_category=?,buy_price=? WHERE product_ID=?";
 
   connection.query(query, data, (err, result) => {
     if (err) {

@@ -44,8 +44,10 @@ const SEARCH = () => {
                   dispacth(setStateSerch(false));
                 }}
                   to={`/category/product/${result.product_id}
-                        `}
-                        
+
+                  `}
+
+
                 >
                   <div className="continer_result">
                     <div className="img_product">

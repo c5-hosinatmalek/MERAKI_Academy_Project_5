@@ -49,6 +49,16 @@
 
 }
 
+.mesageif_empty{
+    display: none;
+}
+.mesageif_empty.active{
+    display: inline-block;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+}
+
 
 
 

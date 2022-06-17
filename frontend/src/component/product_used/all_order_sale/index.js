@@ -6,6 +6,7 @@ import { SetAllProductUsedFromUser } from "../../../redux/reducers/prduct_used";
 import "./style.css";
 const ALLORDERSALE = () => {
   const [messageUser, setMessageUser] = useState("");
+  const [clasName,setClasName]=useState("")
   const dispacth = useDispatch();
   const state = useSelector((state) => {
     return {
@@ -22,11 +23,20 @@ const ALLORDERSALE = () => {
       })
       .then((resulat) => {
         dispacth(SetAllProductUsedFromUser(resulat.data.result));
+       
+        if(resulat.data.result.length===0){
+          setMessageUser("No Sales Orders")
+          setClasName("active")
+        }else{
+          setMessageUser("")
+          setClasName("")
+        }
       });
   }, []);
 
   return (
     <div className="contener_all_order_sale">
+      <h1 className={`mesageif_empty ${clasName}`} >{messageUser}</h1>
       <div className="content_all_order_sale">
         {state.allordersale &&
           state.allordersale.map((element, index) => {

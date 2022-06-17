@@ -5,12 +5,9 @@ const AddToCart = (req, res) => {
   let quantity = 1;
   const product_id = req.params.id;
   const user_id = req.token.user_id;
-
   const { price } = req.body;
-
   const query = `select * from cart where product_id =? and is_deleted=0;`;
   const Data = [product_id];
-  console.log(check, quantity, quantity, product_id, user_id, Data);
   connection.query(query, Data, (err, result) => {
     if (result.length) {
       let newqunt = quantity + 1;
@@ -48,7 +45,41 @@ const AddToCart = (req, res) => {
       });
     }
   });
- 
+};
+
+const AddToCartused = (req, res) => {
+  const product_id = req.params.usedpro;
+  const user_id = req.token.user_id;
+  console.log(product_id,user_id);
+  const query = `select * from usedproduct where used_product_id =? and is_deleted=0;`;
+  const Data = [product_id];
+  connection.query(query, Data, (err, result) => {
+    if (err) {
+      res.status(500).json({
+        succses: false,
+        err,
+      });
+    }
+    console.log(result);
+    const used_product_id = result[0].used_product_id;
+    const query =
+      "INSERT INTO cart (usedproduct_id,user_id,price_checkout) VALUES (?,?,?)";
+    const price_checkout = result[0].asking_price;
+    const data = [used_product_id, user_id, price_checkout];
+    connection.query(query, data, (err, Result) => {
+      if (err) {
+        return res.status(500).json({
+          succses: false,
+          Message: "server error",
+          err,
+        });
+      }
+      res.status(201).json({
+        succses: true,
+        Result,
+      });
+    });
+  });
 };
 
 const deletecart = (req, res) => {
@@ -72,6 +103,36 @@ const deletecart = (req, res) => {
   });
 };
 
+
+
+const deletecartused = (req, res) => {
+  const product_id = req.params.id;
+  const user_id = req.token.user_id;
+  const query = "DELETE FROM cart WHERE usedproduct_id = ? AND user_id=?  ";
+  const Data = [product_id, user_id];
+  connection.query(query, Data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        succses: false,
+        Message: "sever error",
+        err: err,
+      });
+    }
+    res.status(200).json({
+      succses: true,
+      Message: "delete product from cart",
+      result: result,
+    });
+  });
+};
+
+
+
+
+
+
+
+
 const getUserCarts = (req, res) => {
   const user_id = req.token.user_id;
   const query = `SELECT * FROM cart INNER JOIN PRODUCTS ON CART.product_id =PRODUCTS.PRODUCT_ID  WHERE CART.is_deleted = 0 AND cart.user_id=?`;
@@ -90,6 +151,27 @@ const getUserCarts = (req, res) => {
     });
   });
 };
+
+const getUserCartsprodact = (req, res) => {
+  const user_id = req.token.user_id;
+  console.log(user_id);
+  const query = `SELECT * FROM cart INNER JOIN usedproduct ON CART.usedproduct_id =usedproduct.used_product_id WHERE CART.is_deleted = 0 AND cart.user_id=?`;
+  const data = [user_id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        succses: false,
+        Message: "server error",
+        err,
+      });
+    }
+    res.status(200).json({
+      succses: true,
+      result,
+    });
+  });
+};
+
 const checkOut = async (req, res) => {
   const user_id = req.token.user_id;
   const { arrayCheckout, date } = req.body;
@@ -123,7 +205,7 @@ const checkOut = async (req, res) => {
         element.price,
         element.title,
         element.buy_price,
-        +element.quantity,
+        element.quantity,
         date,
         element.product_id,
       ];
@@ -131,7 +213,7 @@ const checkOut = async (req, res) => {
         if (err) {
           console.log(err);
         }
-        console.log({ succ: true, result });
+        res.status(200).json({ succ: true, result });
       });
     });
 };
@@ -216,4 +298,7 @@ module.exports = {
   updateQuantity,
   getallcarts,
   addtosold,
+  AddToCartused,
+  getUserCartsprodact,
+  deletecartused
 };
