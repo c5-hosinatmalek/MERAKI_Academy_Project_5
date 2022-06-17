@@ -2,6 +2,7 @@
 .contener_all_product_for_admin{
     width: 100%;
     overflow: auto;
+    height: 70vw;
 }
 /* .contener_all_product_for_admin img {
 width: 15rem;
