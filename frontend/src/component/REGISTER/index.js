@@ -226,10 +226,10 @@ const REGISTER = () => {
                   )}
                 </>
               </form>
-            </div>
           </div>
           <div className="Register">
-            <button className="registerButton">Register</button>
+            <button className="registerButton" onClick={submit}>Register</button>
+            </div>
           </div>
         </div>
       ) : (
