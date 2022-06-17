@@ -75,12 +75,12 @@ const ORDERSALE=()=>{
         <div className="contener_ordersale">
            <div className="Salesorderfilling">
             <h1><span>*</span> Sales order filling guide</h1>
-            <p><span>1.</span>Name product: The name of the product to be sold with model number,if any</p>
-            <p><span>2.</span>Asking Price: The price should be reasonable and in the jordanian currency</p>
-            <p><span>3.</span>Bank account: It must be an active bank account number,and if the request is accepted, the money will be sent to the same account  </p>
-            <p><span>4.</span>Category:We only buy products in the listed categories </p>
-            <p><span>5.</span>Image for the product: You must choose a clear picture of the product</p>
-            <p><span>6.</span>Description of the product: An accurate and complete description of the product must be written</p>
+            <p><span>1.</span>Name product: The name of the product to be sold with model number,if any.</p>
+            <p><span>2.</span>Asking Price: The price should be reasonable and in the jordanian currency.</p>
+            <p><span>3.</span>Bank account: It must be an active bank account number,and if the request is accepted, the money will be sent to the same account.  </p>
+            <p><span>4.</span>Category:We only buy products in the listed categories. </p>
+            <p><span>5.</span>Image for the product: You must choose a clear picture of the product.</p>
+            <p><span>6.</span>Description of the product: An accurate and complete description of the product must be written.</p>
             
            </div>
             <form className="form_ordersale" onSubmit={submit} >
