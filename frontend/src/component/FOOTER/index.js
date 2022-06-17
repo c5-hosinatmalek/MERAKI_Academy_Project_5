@@ -12,11 +12,11 @@ import { MdEmail } from "react-icons/md";
 
 import {IoIosCheckmarkCircle} from "react-icons/io";
 
-const FOOTER = () => {
+
+  
+  const FOOTER = () => {
   const [clasNameicon,setClasNameicon]=useState("")
   const [classNameSend,setClassNameSend]=useState("")
-
-const FOOTER = () => {
   // const form = useRef();
   // const sendEmail = (e) => {
   //   e.preventDefault();
@@ -173,7 +173,7 @@ const FOOTER = () => {
     </div>
   );
 };
-}
+
 export default FOOTER;
 
 
