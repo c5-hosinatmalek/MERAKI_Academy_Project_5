@@ -40,7 +40,6 @@ const ALLORDERSALE = () => {
       <div className="content_all_order_sale">
         {state.allordersale &&
           state.allordersale.map((element, index) => {
-            console.log(element);
             return (
               <div className="content_one_order_sale">
                 {element.is_deleted ? (
@@ -48,37 +47,44 @@ const ALLORDERSALE = () => {
                     style={{ background: ` rgba(192, 11, 11, 0.774)` }}
                     className="approvied"
                   >
-                    <h1 className="fff">Admission status</h1>
+                    <h1 className="fff">Used Product</h1>
                   </div>
                 ) : element.admission_status ? (
                   <div
                     style={{ background: `rgba(0, 128, 0, 0.63)` }}
                     className="approvied"
                   >
-                    <h1 className="fff">Admission status</h1>
+                    <h1 className="fff">Used Product</h1>
                   </div>
                 ) : (
                   <div
                     style={{ background: `rgba(240, 240, 16, 0.795)` }}
                     className="approvied"
                   >
-                    <h1 className="fff">Admission status</h1>
+                    <h1 className="fff">Used Product</h1>
                   </div>
                 )}
 
                 <div className="one_order_sale">
                   <div className="details_all_order">
                     <h2>
-                      Product Name :<span className="proInfo"> {element.product_name}</span>{" "}
+                      Product Name :
+                      <span className="proInfo"> {element.product_name}</span>{" "}
                     </h2>
                     <h2>
-                      Asking Price :<span className="proInfo"> {element.asking_price} JD </span>{" "}
+                      Asking Price :
+                      <span className="proInfo">
+                        {" "}
+                        {element.asking_price} JD{" "}
+                      </span>{" "}
                     </h2>
                     <h2>
-                      Phone Number :<span className="proInfo"> {element.phone_number}</span>{" "}
+                      Phone Number :
+                      <span className="proInfo"> {element.phone_number}</span>{" "}
                     </h2>
                     <h2>
-                      Bank Account :<span className="proInfo">{element.bank_account}</span>{" "}
+                      Bank Account :
+                      <span className="proInfo">{element.bank_account}</span>{" "}
                     </h2>
 
                     <h2>
@@ -91,8 +97,12 @@ const ALLORDERSALE = () => {
                           : "Under Review"}{" "}
                       </span>
                     </h2>
-                    <h2>Description :<span className="proInfo">{element.product_description}
-                      </span></h2>
+                    <h2>
+                      Description :
+                      <span className="proInfo">
+                        {element.product_description}
+                      </span>
+                    </h2>
                   </div>
 
                   <div className="content_img_order">
