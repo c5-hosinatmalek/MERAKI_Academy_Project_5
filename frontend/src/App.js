@@ -84,7 +84,7 @@ function App() {
   
 
   
-  if(decodeToken("role")){
+  if(decodeToken("role")===1){
     return(
     <div className="App">
     <div className="mainphotos">
@@ -163,7 +163,10 @@ function App() {
 
 
 
-
+// dvvvvvvvvvvvvvsdvdsvds
+// dsvdsvdsvdsvdsvds
+// sdvsdvsdvsdvdsv
+// sdvdsvdsvdsvdsv
 
 
 export default App;
