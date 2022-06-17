@@ -16,6 +16,8 @@ const CartPage = () => {
   const [message, setMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
   const [clascontent,setclascontent]=useState("")
+  const [lengthCart,setLengthCart]=useState()
+  
 
   const state = useSelector((state) => {
     return {
@@ -26,7 +28,7 @@ const CartPage = () => {
     };
   });
   const dispatch = useDispatch();
-  useEffect(() => {
+  const gelAllCart=()=>{
     axios
       .get("http://localhost:5000/cart/getcart/", {
         headers: {
@@ -34,7 +36,7 @@ const CartPage = () => {
         },
       })
       .then((result) => {
-       
+        setLengthCart(result.data.result.length)
         dispatch(getCart(result.data.result));
         if(result.data.result.length===0){
           setclascontent("active")
@@ -47,7 +49,10 @@ const CartPage = () => {
       .catch((err) => {
         console.log(err);
       });
-
+  }
+  useEffect(() => {
+    
+    gelAllCart()
     axios
       .post(
         "http://localhost:5000/cart/cart/usedprodact",
@@ -65,7 +70,7 @@ const CartPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },[lengthCart]);
 
   const updateQuantityFun = (index, quantity, product_id) => {
     dispatch(updateQuantity([index, quantity]));
@@ -180,7 +185,9 @@ const deleteused=(id)=>{
   let amount = 0;
 let usedamount=0
   return (
-    <>
+    <div className="contenur_cart">
+      <h1 className={`message_cart ${clascontent}`} >Cart is empty</h1>
+      <div className={!lengthCart?`content_cart active`:`content_cart`}>
       <table>
         <tr className="headerCartTable">
           <th>Image</th>
@@ -219,6 +226,7 @@ let usedamount=0
                     className="deleteIcon"
                     onClick={() => {
                       deleteCartClick(element.product_id);
+                      gelAllCart()
                     }}
                   >
                     <MdDelete />
@@ -248,6 +256,8 @@ let usedamount=0
                     className="deleteIcon"
                     onClick={() => {
                       console.log(false);
+                     
+                      
                       deleteused(element.used_product_id);
                     }}
                   >
@@ -278,7 +288,8 @@ let usedamount=0
       >
         Check Out
       </button>
-    </>
+      </div>
+    </div>
   );
 };
 

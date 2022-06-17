@@ -73,9 +73,18 @@ const ORDERSALE=()=>{
 
     return(
         <div className="contener_ordersale">
-           
+           <div className="Salesorderfilling">
+            <h1><span>*</span> Sales order filling guide</h1>
+            <p><span>1.</span>Name product: The name of the product to be sold with model number,if any.</p>
+            <p><span>2.</span>Asking Price: The price should be reasonable and in the jordanian currency.</p>
+            <p><span>3.</span>Bank account: It must be an active bank account number,and if the request is accepted, the money will be sent to the same account.  </p>
+            <p><span>4.</span>Category:We only buy products in the listed categories. </p>
+            <p><span>5.</span>Image for the product: You must choose a clear picture of the product.</p>
+            <p><span>6.</span>Description of the product: An accurate and complete description of the product must be written.</p>
+            
+           </div>
             <form className="form_ordersale" onSubmit={submit} >
-                <div className="titel_order" ><h1>Info of your product</h1> </div>
+                
                 <div className="productused_name" >
                     <label>Name product</label>
                     <input onKeyDown={(e)=>{
@@ -84,7 +93,7 @@ const ORDERSALE=()=>{
                 </div>
               
                 <div className="asking_price">
-                    <label>Price</label>
+                    <label>Asking Price</label>
                     <input onKeyDown={(e)=>{
                       e.key==="Enter"?binbut.current.focus():pinbut.current.focus()
                     }} ref={pinbut} onChange={(e)=>{setAsking_price(e.target.value)}} placeholder="Example_20 JD"/>
