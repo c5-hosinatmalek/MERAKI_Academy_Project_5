@@ -87,7 +87,7 @@ function App() {
     <div className="mainphotos">
       <img className="mainphotosclass" src={photo}></img>
     </div>
-    <NavBar />
+
     <div className="routesdiv_admin">
     
       <ADMINCONTROL/>
@@ -153,7 +153,7 @@ function App() {
          
 
    
-    }
+    
    
 
 

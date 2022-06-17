@@ -96,17 +96,7 @@ CREATE TABLE sold(
     PRIMARY KEY (sold_id)
 );
 
-CREATE TABLE cart (
-    cart_id INT AUTO_INCREMENT NOT NULL,
-    product_id int,
-    FOREIGN KEY (product_id) REFERENCES products(product_id),
-    user_id int,
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    quantity int,
-    price_checkout int,
-    is_deleted TINYINT DEFAULT 0,
-    PRIMARY KEY (cart_id)
-);
+
 
 CREATE TABLE request (
     request_id int AUTO_INCREMENT NOT NULL,
@@ -132,6 +122,19 @@ CREATE TABLE usedproduct (
     user_id INT,
     FOREIGN key (user_id) REFERENCES users (user_id),
     PRIMARY KEY (used_product_id)
+);
+CREATE TABLE cart (
+    cart_id INT AUTO_INCREMENT NOT NULL,
+    product_id int,
+    usedproduct_id INT,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (usedproduct_id) REFERENCES usedproduct(used_product_id),
+    user_id int,
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
+    quantity int,
+    price_checkout int,
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (cart_id)
 );
 
 INSERT INTO
