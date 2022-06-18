@@ -180,6 +180,20 @@
     font-size: 30px;
     display: inline-block;
   }
+  
+.my_account_contener .ul.active {
+  margin-top: 1rem;
+  width: 7rem;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background: #ffffff;
+  border: 5px solid transparent;
+  border-top: 5px solid rgb(114, 114, 114);
+  border-radius: 5px;
+  transition: 1s;
+  display: block;
+}
   .logo_name {
     font-family: "The Histoia Demo", sans-serif;
     font-size: 2rem;
@@ -189,6 +203,13 @@
     user-select: none;
     width: 100px;
     height: 100;
+  }
+  
+  .my_account_contener li a {
+      color: #000000;
+      font-size: .8rem;
+      transform: initial;
+      width: 100%;
   }
 }
 
