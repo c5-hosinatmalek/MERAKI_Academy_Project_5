@@ -116,7 +116,7 @@ const LOGIN = () => {
       <div className="logginheader">
         <h1 className="AccountLogin">Account Login</h1>
         <div className="detalislogin">
-          <h3>Welcome To City Center</h3>
+          <h3>Welcome To Computer shop</h3>
           <p>
             By creating an account you will be able to shop faster, be up to
             date on an order's status, and keep track of the orders you have

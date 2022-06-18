@@ -221,6 +221,22 @@ const restockProduct = (req, res) => {
   });
 };
 
+const soldTable =(req,res)=>{
+  const query= "SELECT * FROM SOLD "
+  connection.query(query,(err,result)=>{
+    if (err) {
+      res.status(500).json({
+        success: false,
+        mesage: "server error",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      result,
+    });
+  });
+  
+}
 
 
 
@@ -268,5 +284,5 @@ module.exports = {
   allProductDescending,
   allProductascending,
   allProductByLetters,
-  getProdactPaginBuySub
+  getProdactPaginBuySub,soldTable
 };
