@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 import { RiAccountCircleFill } from "react-icons/ri";
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {FaShoppingCart} from "react-icons/fa";
 
@@ -19,6 +19,7 @@ const NavBar = () => {
   const [show, setShow] = useState();
   const [className, setClassName] = useState("");
   const dispacth = useDispatch();
+  const ulinput=useRef()
   const state = useSelector((state) => {
     return {
       cartcontent:state.cart.cart,
@@ -31,7 +32,7 @@ const NavBar = () => {
       return jwtDecode(state.token)[columnName];
     }
   };
-
+  
   const logout = () => {
     dispacth(setLogout());
     navigate("/")
@@ -48,11 +49,12 @@ const NavBar = () => {
     }
   };
   ////////////////////////////////////////////////////////////////
+  
   return (
-    <div className="navbar">
+    <div  className="navbar">
       {decodeToken("role") == 1 ? (
         <div className="navAdmin">
-<img src={logo} className="logo_nameAdmin"></img>
+<img  src={logo} className="logo_nameAdmin"></img>
 <h1 className="navtiltle">Admin Page</h1>
           
 <div className="my_account_contener">
@@ -82,19 +84,22 @@ const NavBar = () => {
 
             {state.isLoggedIn ? (
               <ul className={`ul ${className}`}>
-                <li className="li_1">{decodeToken("userName")}</li>
+                <li  onClick={sowHide} className="li_1">{decodeToken("userName")}</li>
 
-                <li className="li_1" ><Link to="/create_order_sale" >Sell product</Link></li>
-                <li className="li_1" ><Link to="/all_order_sale" >My sold products</Link></li>
-                <li className="li_2" onClick={logout}>Logout</li>
+                <li onClick={sowHide} className="li_1" ><Link to="/create_order_sale" >Sell product</Link></li>
+                <li  onClick={sowHide} className="li_1" ><Link to="/all_order_sale" >My sold products</Link></li>
+                <li   className="li_2" onClick={()=>{
+                  logout()
+                  sowHide()
+                }}>Logout</li>
 
               </ul>
             ) : (
-              <ul className={`ul ${className}`}>
-                <li className="li_1">
+              <ul onMouseDown={(e)=>{e.preventDefault()}} ref={ulinput} className={`ul ${className}`}>
+                <li  onClick={sowHide} className="li_1">
                   <Link to="/login">login</Link>
                 </li>
-                <li className="li_2">
+                <li  onClick={sowHide} className="li_2">
                   <Link to="/rigester">Register</Link>
                 </li>
               </ul>

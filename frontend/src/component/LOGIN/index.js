@@ -1,5 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { useState,useRef } from "react";
+
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../redux/reducers/auth";
@@ -7,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { gapi } from "gapi-script";
 import { GoogleLogin } from "react-google-login";
 import "./style.css";
+
 const LOGIN = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -15,6 +17,9 @@ const LOGIN = () => {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState(false);
   const [messegeUser, setMessageUser] = useState("");
+  const emailinput=useRef()
+  const pasinpt=useRef()
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -103,6 +108,9 @@ const LOGIN = () => {
   //   gapi.load("clint:auth2", start);
   // },[]);
 
+    useEffect(()=>{
+      emailinput.current.focus()
+    },[])
   return (
     <div className="mainlogin">
       <div className="logginheader">
@@ -123,6 +131,10 @@ const LOGIN = () => {
             <div className="emaildiv">
             <h3>Email</h3>
             <input
+              ref={emailinput}
+              onKeyDown={(e)=>{
+                e.key==="Enter"?pasinpt.current.focus():emailinput.current.focus()
+              }}
               className="loginput"
               placeholder="enter email..."
               type="text"
@@ -134,6 +146,10 @@ const LOGIN = () => {
             <div className="passworddiv">
             <h3>Password</h3>
             <input
+            onKeyDown={(e)=>{
+              e.key==="Enter"? submit():pasinpt.current.focus()
+            }}
+              ref={pasinpt}
               className="loginput"
               placeholder="enter password..."
               type="password"
@@ -145,7 +161,7 @@ const LOGIN = () => {
           </div>
           <div className="logininput"></div>
         </div>
-
+        
         <div className="login_buttons">
           <div>
             <button
@@ -170,11 +186,11 @@ const LOGIN = () => {
         </div>
         {status ? (
           <div className="message_user">
-            <h1>{messegeUser}</h1>
+            <h1> {messegeUser}</h1>
           </div>
         ) : (
           <div className="message_user">
-            <h1>{messegeUser}</h1>
+            <h1> {messegeUser}</h1>
           </div>
         )}
       </div>

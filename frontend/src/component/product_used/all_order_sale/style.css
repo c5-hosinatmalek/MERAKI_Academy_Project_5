@@ -1,11 +1,14 @@
 .contener_all_order_sale{
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
+   justify-content: center;
+   
 
     height: 50rem;
 
 
+}
+.content_alll{
+width: 50%;
 }
 .content_all_order_sale{
     width: 100%;
@@ -17,6 +20,7 @@
 .one_order_sale{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 20%;
    width: 100%;
    height: fit-content;
@@ -41,13 +45,16 @@
 
 
 .content_img_order img{
-    width: 9rem;
+    width: 30rem;
     height: 100%;
 }
 
-
-.details_all_order h1{
-    padding: 5px;
+.details_all_order{
+    padding: 7px;
+}
+.details_all_order h2{
+   
+    margin-bottom:1rem ;
    
 
 }

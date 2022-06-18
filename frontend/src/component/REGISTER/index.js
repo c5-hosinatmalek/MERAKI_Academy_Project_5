@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef} from "react";
 import axios from "axios";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,6 +15,12 @@ const REGISTER = () => {
   const [verfied, setVerfied] = useState("");
   const [checkVerfied, setCheckVerfied] = useState(false);
   const [compareWord, setCompareWord] = useState("");
+  const nameinput=useRef()
+  const emailinput=useRef()
+  const pasinput=useRef()
+  const countryinput=useRef()
+  const submitputtoum=useRef()
+  const varInput=useRef()
 
   const navigate=useNavigate("")
 
@@ -35,6 +41,7 @@ const REGISTER = () => {
       .then((result) => {
         if (result.data.success) {
           setStatus(true);
+         
           setMessageUser("Account created successfully");
 setTimeout(() => {
   navigate("/login")
@@ -61,9 +68,11 @@ setTimeout(() => {
           setMessageUser("This email is already exist");
           return;
         }
+       
         setMessageUser("")
         setCheckVerfied(true);
         createVerfiedWord();
+       
       })
       .catch((err) => {
         console.log(err);
@@ -78,6 +87,7 @@ setTimeout(() => {
       .catch((err) => {
         console.log(err);
       });
+      nameinput.current.focus()
   }, []);
   const createVerfiedWord = () => {
     let verfiedWord = "";
@@ -162,6 +172,10 @@ setTimeout(() => {
                         <label className="star">*</label> Name
                       </h3>
                         <input
+                        onKeyDown={(e)=>{
+                          e.key==="Enter"?emailinput.current.focus():nameinput.current.focus()
+                        }}
+                          ref={nameinput}
                           className="inputregstier"
                           type="text"
                           placeholder="User Name"
@@ -177,6 +191,11 @@ setTimeout(() => {
                         <label className="star">*</label> Email
                       </h3>
                         <input
+                        onKeyDown={(e)=>{
+                       
+                        e.key==="Enter"?countryinput.current.focus():emailinput.current.focus()
+                        }}
+                        ref={emailinput}
                           className="inputregstier"
                           type="text"
                           placeholder="Email"
@@ -192,6 +211,10 @@ setTimeout(() => {
                         <label className="star">*</label> Country
                       </h3>
                         <select
+                        onKeyDown={(e)=>{
+                          e.key==="Enter"?pasinput.current.focus():countryinput.current.focus()
+                        }}
+                        ref={countryinput}
                           className="countryRegister"
                           onChange={(e) => {
                             setCountryy(e.target.value);
@@ -212,6 +235,10 @@ setTimeout(() => {
                         <label className="star">*</label> Password
                       </h3>
                         <input
+                        onKeyDown={(e)=>{
+                          e.key==="Enter"?submitputtoum.current.focus(): pasinput.current.focus()
+                        }}
+                          ref={pasinput}
                           className="inputregstier"
                           type="password"
                           placeholder="Pasword"
@@ -238,19 +265,21 @@ setTimeout(() => {
               </form>
           </div>
           <div className="Register">
-            <button className="registerButton" onClick={submit}>Register</button>
+            <button  ref={submitputtoum} className="registerButton" onClick={submit}>Register</button>
             </div>
           </div>
         </div>
       ) : (
         <div className="verfiedDiv">
+         
           <div className="titel_regester">
-            {" "}
+           
             <h1>verfied</h1>
           </div>
           <div className="parAndInputDev"> 
           <p className="varPar">Enter the verfied code, it was send to your email</p>
           <input
+          ref={varInput}
           className="varInput"
             maxLength={6}
             onChange={(e) => {

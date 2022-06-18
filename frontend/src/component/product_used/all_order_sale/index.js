@@ -36,6 +36,7 @@ const ALLORDERSALE = () => {
 
   return (
     <div className="contener_all_order_sale">
+      <div className="content_alll">
       <h1 className={`mesageif_empty ${clasName}`}>{messageUser}</h1>
       <div className="content_all_order_sale">
         {state.allordersale &&
@@ -112,6 +113,7 @@ const ALLORDERSALE = () => {
               </div>
             );
           })}
+      </div>
       </div>
     </div>
   );
