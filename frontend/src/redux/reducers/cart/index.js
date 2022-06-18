@@ -34,6 +34,9 @@ export const cartSlice = createSlice({
         return element.used_product_id !== action.payload;
       });
     },
+    deleteallused:(state,action)=>{
+      state.usedcart=[]
+    }
   },
 });
 
@@ -45,6 +48,7 @@ export const {
   totalPriceAction,
   addToUsed,
   deleteusedpro,
+  deleteallused
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
