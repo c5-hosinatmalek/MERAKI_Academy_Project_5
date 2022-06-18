@@ -9,13 +9,15 @@ import {
   checkoutAction,
   deleteallused,
 } from "../../redux/reducers/cart";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const currency = "USD";
 const style = { layout: "vertical" };
 
-
 const ButtonWrapper = ({ currency, showSpinner }) => {
+  const disp=useDispatch()
+  const Navigate=useNavigate()
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
   const state = useSelector((state) => {
     return {
@@ -42,7 +44,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         }
       )
       .then((result) => {
-        dispatch(checkoutAction());
+        disp(checkoutAction());
       })
       .catch((err) => {
         console.log(err);
@@ -86,8 +88,10 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         onApprove={function (data, actions) {
           return actions.order.capture().then(function () {
             // Your code here after capture the order
+            console.log(false);
             CheckOutClick()
-            dispatch(deleteallused())
+            disp(deleteallused())
+            Navigate("/")
           });
         }}
       />
