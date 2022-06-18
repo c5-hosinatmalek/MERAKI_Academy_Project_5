@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToUsed,deleteusedpro } from "../../redux/reducers/cart";
 import { MdDelete } from "react-icons/md";
-
 import {
   getCart,
   updateQuantity,
   deleteFromCart,
   checkoutAction,
+  deleteallused
 } from "../../redux/reducers/cart";
 
 const CartPage = () => {
@@ -185,8 +185,6 @@ let usedamount=0
               </tr>
             );
           })}
-          {console.log(111,state.usedcart &&
-          state.usedcart)}
         {state.usedcart &&
           state.usedcart.map((element, index) => {
             console.log(element);
@@ -228,10 +226,13 @@ let usedamount=0
         className="checkotbtton"
         onClick={(e) => {
           CheckOutClick();
+          dispatch(deleteallused())
         }}
       >
         Check Out
+
       </button>
+      {message}
     </>
   );
 };

@@ -290,6 +290,10 @@ const addtosold = (req, res) => {
   });
 };
 
+
+
+
+
 module.exports = {
   AddToCart,
   deletecart,
