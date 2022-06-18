@@ -4,6 +4,7 @@
   justify-content: flex-start;
   width: 100%;
   height: 30rem;
+  padding: 1rem 2.2rem;
   
 }
 
@@ -11,20 +12,44 @@
 .form_rigister {
   text-align: center;
   padding: 10px;
+  width: 100%;
 }
 .space {
   display: flex;
-  gap: 5rem;
-
+  gap: 5rem;}
+.parRegister{
+  margin: 1rem 2.2rem;
 }
-
+.parAndInputDev{
+  width: 40%;
+  margin: 20px;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.varInput{
+  width: 5rem;
+  font-size: 20px;
+  height: 3rem;
+}
+.verButton{
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: #b11616;
+  font-size: 20px;
+  width: 10rem;
+  height: 50px;
+  margin-bottom: 1rem;
+}
 .titel_regester{
     color: white;
-    background-color: #0B4579;
-    /* border-bottom:solid black 3px ; */
-    /* padding: 7px; */
     font-size: 1.7rem;
     font-weight: 600;
+    padding: 10px 20px ;
 
 }
 .regstierinputs{
@@ -33,20 +58,50 @@
     gap: 30px;
     border-bottom-color: #f3f3f3;
     border-right-color: #f3f3f3;
-    background-color: #f3f3f3d2;
+    
 }
 .inputname{
     display: flex;
     flex-direction: column;
     gap: 33px;
     text-align: start;
+    width: 100%;
+}
+.input_user{
+  display: grid;
+  grid-template-columns: 10rem auto;
+  /* gap: 2rem; */
+}
+.registerButton{
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: #b11616;
+  font-size: 20px;
+  width: 10rem;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+.countryRegister{
+  font-size: 20px;
+  border-bottom-color: #f3f3f3;
+  border-right-color: #f3f3f3;
+  background-color: #f3f3f3;
+  width: 16rem;
 }
 .h3{
     display: flex;
     gap: 20px;
 }
+.verfiedDiv{
+  min-height: 50vw;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
 .star{
-    color: #f00;
+    color: #b11616;
     margin-right: 0.3em;
     font-weight: bold;
 }
@@ -88,7 +143,7 @@ font-size: 20px;
   cursor: pointer;
 }
 .Register {
-  color: red;
+  color: #b11616;
   margin-left: 2rem;
   margin-top: 1rem;
 }
@@ -107,4 +162,14 @@ font-size: 20px;
     font-size: 23px;
     color: white;
 }*/
+
+@media (max-width: 650px) {
+ 
+  .input_user{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+  }
+}
 

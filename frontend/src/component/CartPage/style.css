@@ -1,7 +1,21 @@
-.imgCart {
-  height: 120px;
-  width: 120px;
-  padding: 20px;
+
+.contenur_cart{
+    min-height: 40rem;
+   display: flex;
+   justify-content: center;
+}
+.content_cart{
+margin-bottom: 5rem;
+}
+.content_cart.active{
+    display: none;
+}
+.imgCart{
+    height: 120px;
+    width: 120px;
+    padding: 20px;
+
+
 }
 .headerCartTable {
   background-color: #0b4579;
@@ -67,6 +81,7 @@
   border-top: 3px solid black;
 }
 
+
 .Cash {
   height: 50px;
   width: 47rem;
@@ -74,4 +89,14 @@
   background: #2c2e2f;
   font-size: larger;
   color: white;
+
+.message_cart{
+    display: none;
+}
+.message_cart.active{
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+
 }

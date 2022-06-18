@@ -22,7 +22,7 @@
     /* background-color: gray; */
     font-size: 18px;
     font-weight: 600;
-    border-bottom: 4px double rgb(196, 193, 193);
+    border-bottom: 7px double rgb(196, 193, 193);
     padding: 20px 0px;
     grid-template-areas: "hds hds" "subC subC";
 
@@ -43,16 +43,28 @@ align-items: center;
 flex-wrap: wrap;
 width: 100%;
 }
-.subImgDiv{
+.subImgDivv{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
     align-items: center;
-    margin: 10px 9px;
+    /* margin: 10px 9px; */
     color: black;
-  
+   
 }
-.subImgDiv a{
+.subImgDivv {
     border-left: 2px solid rgb(196, 193, 193);
+}
+.subImgDivv_1{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    /* margin: 10px 9px; */
+    color: black;
 }
 .subCategoryImg{
     width: 100px;
@@ -160,7 +172,7 @@ justify-self: flex-end;
     /* border: none; */
     /* padding-left:rem; */
     padding: 0.2rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     font-size: 1rem;
     font-weight: 800;
     border: rgb(94, 93, 93) 1px solid;

@@ -1,18 +1,51 @@
-.contener_ordersale{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50rem;
-}
 
-.contener_ordersale .form_ordersale{
-    border: solid black 5px;
-    /* padding: 10px; */
-    border-radius: 5px;
+
+
+
+
+
+
+
+
+
+
+ .contener_ordersale{
+    display: flex;
+    justify-content: left;
+    /* align-items: center; */
+   padding: 3rem 0;
+}
+.Salesorderfilling{
+    padding: 0 1.5rem;
+    margin-right: 2rem;
+    width: 50%;
     
 }
+.Salesorderfilling h1{
+border-bottom: 1px solid  #b11616;
+width: fit-content;
+padding-bottom: 0.5rem;
+}
+.Salesorderfilling h1 span{
+    color:  #b11616;
+}
+.Salesorderfilling p{
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    line-height: 2.3rem;
+}
+.Salesorderfilling p span{
+    color: #b11616 ;
+}
+.contener_ordersale .form_ordersale{
+   
+   
+padding: 0;
+
+}
 .titel_order {
-    /* border-bottom: 3px solid black; */
+   width: 100%;
     text-align: center;
     margin-bottom: 10px;
     padding: 7px;
@@ -25,11 +58,12 @@
 .form_ordersale label{
     display: block;
     font-size: 1.7rem;
+    font-weight: 700;
 }
 
 .form_ordersale input{
     width: 30rem;
-    /* padding: 1rem; */
+    padding: 0.3rem 0;
     font-size: 1.5rem;
 }
 
@@ -38,6 +72,10 @@
 }
 .category_select{
     padding: 7px;
+}
+.category_select select{
+   height: 1.7rem;
+   font-size: 1.5rem;
 }
 .product_used_description{
     padding: 7px;
@@ -78,7 +116,7 @@
 }
 .message_user{
     text-align: center;
-    border-top: 1px solid black;
+   
     padding: 7px;
 }
 .product_used_description textarea{
@@ -86,4 +124,4 @@
     font-size: 1.5rem;
   
    height: 5rem;
-}
+} 

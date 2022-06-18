@@ -15,6 +15,9 @@ const REGISTER = () => {
   const [verfied, setVerfied] = useState("");
   const [checkVerfied, setCheckVerfied] = useState(false);
   const [compareWord, setCompareWord] = useState("");
+
+  const navigate=useNavigate("")
+
   const verfiedClick = (e) => {
     if (compareWord !== verfied) {
       setMessageUser("The code is wrong");
@@ -32,7 +35,10 @@ const REGISTER = () => {
       .then((result) => {
         if (result.data.success) {
           setStatus(true);
-          setMessageUser("account created successfully");
+          setMessageUser("Account created successfully");
+setTimeout(() => {
+  navigate("/login")
+}, 3000);
         }
       })
       .catch((err) => {
@@ -42,8 +48,12 @@ const REGISTER = () => {
         console.log(err);
       });
   };
-  const submit = () => {
-
+  const submit = (e) => {
+    e.preventDefault();
+    if(!email && !password && !name){
+      setMessageUser("Please fill out all fields")
+      return
+    }
     axios
       .get(`http://localhost:5000/user/${email}`)
       .then((result) => {
@@ -51,7 +61,7 @@ const REGISTER = () => {
           setMessageUser("This email is already exist");
           return;
         }
-
+        setMessageUser("")
         setCheckVerfied(true);
         createVerfiedWord();
       })
@@ -134,7 +144,7 @@ const REGISTER = () => {
           <h1 className="Register">Register Account</h1>
           <div className="test3">
             <div>
-              <h3>
+              <h3 className="parRegister">
                 If you already have an account with us, please login at the
                   <Link to={"/login"} > login page.</Link>   
               </h3>
@@ -145,25 +155,12 @@ const REGISTER = () => {
                   <div className="titel_regester"> </div>
                   <div className="space">
                     <div className="inputname">
+                    <div className="regstierinputs">
+                      <div className="input_user">
                       <h3 className="h3">
                         {" "}
                         <label className="star">*</label> Name
                       </h3>
-                      <h3 className="h3">
-                        {" "}
-                        <label className="star">*</label> Email
-                      </h3>
-                      <h3 className="h3">
-                        {" "}
-                        <label className="star">*</label> Country
-                      </h3>
-                      <h3 className="h3">
-                        {" "}
-                        <label className="star">*</label> Password
-                      </h3>
-                    </div>
-                    <div className="regstierinputs">
-                      <div className="name_user">
                         <input
                           className="inputregstier"
                           type="text"
@@ -174,20 +171,28 @@ const REGISTER = () => {
                           }}
                         />
                       </div>
-                      <div className="email_user">
+                      <div className="input_user">
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Email
+                      </h3>
                         <input
                           className="inputregstier"
                           type="text"
-                          placeholder="E_mail"
+                          placeholder="Email"
                           required
                           onChange={(e) => {
                             setEmail(e.target.value);
                           }}
                         />
                       </div>
-                      <div className="country_user">
+                      <div className="input_user">
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Country
+                      </h3>
                         <select
-                          className="regstierinputs"
+                          className="countryRegister"
                           onChange={(e) => {
                             setCountryy(e.target.value);
                           }}
@@ -201,7 +206,11 @@ const REGISTER = () => {
                         </select>
                       </div>
 
-                      <div className="password_user">
+                      <div className="input_user">
+                      <h3 className="h3">
+                        {" "}
+                        <label className="star">*</label> Password
+                      </h3>
                         <input
                           className="inputregstier"
                           type="password"
@@ -211,6 +220,7 @@ const REGISTER = () => {
                             setPassword(e.target.value);
                           }}
                         />
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -226,28 +236,28 @@ const REGISTER = () => {
                   )}
                 </>
               </form>
-            </div>
           </div>
           <div className="Register">
-            <button onClick={()=>{
-              submit()
-            }}>Register</button>
+            <button className="registerButton" onClick={submit}>Register</button>
+            </div>
           </div>
         </div>
       ) : (
-        <>
+        <div className="verfiedDiv">
           <div className="titel_regester">
             {" "}
             <h1>verfied</h1>
           </div>
-          <p>Enter the verfied code, it was send to your email</p>
+          <div className="parAndInputDev"> 
+          <p className="varPar">Enter the verfied code, it was send to your email</p>
           <input
+          className="varInput"
             maxLength={6}
             onChange={(e) => {
               setCompareWord(e.target.value);
             }}
           />
-          <button
+          <button className="verButton"
             onClick={() => {
               verfiedClick();
             }}
@@ -255,9 +265,10 @@ const REGISTER = () => {
             Verfied email
           </button>
           <div className="message_user">
+            </div>
             <h1>{messageUser}</h1>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

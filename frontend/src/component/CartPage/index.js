@@ -19,7 +19,14 @@ const CartPage = () => {
   const [show, setshow] = useState(false);
   const [message, setMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
+
 const navigate=useNavigate()
+
+  const [clascontent,setclascontent]=useState("")
+  const [lengthCart,setLengthCart]=useState()
+  
+
+
   const state = useSelector((state) => {
     return {
       cart: state.cart.cart,
@@ -29,7 +36,7 @@ const navigate=useNavigate()
     };
   });
   const dispatch = useDispatch();
-  useEffect(() => {
+  const gelAllCart=()=>{
     axios
       .get("http://localhost:5000/cart/getcart/", {
         headers: {
@@ -37,13 +44,23 @@ const navigate=useNavigate()
         },
       })
       .then((result) => {
-        console.log(result);
+        setLengthCart(result.data.result.length)
         dispatch(getCart(result.data.result));
+        if(result.data.result.length===0){
+          setclascontent("active")
+        }else{
+          setclascontent("")
+        }
+
+        
       })
       .catch((err) => {
         console.log(err);
       });
-
+  }
+  useEffect(() => {
+    
+    gelAllCart()
     axios
       .post(
         "http://localhost:5000/cart/cart/usedprodact",
@@ -61,7 +78,7 @@ const navigate=useNavigate()
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },[lengthCart]);
 
   const updateQuantityFun = (index, quantity, product_id) => {
     dispatch(updateQuantity([index, quantity]));
@@ -90,6 +107,43 @@ const navigate=useNavigate()
       .delete(`http://localhost:5000/cart/${product_id}`, {
         headers: {
           authorization: `Bearer ${state.token}`,
+
+//         }}).then((result)=>{
+            
+//         }).catch((err)=>{
+//             console.log(err);
+//         })
+// }
+
+
+// const CheckOutClick=()=>{
+//   let date = new Date()
+//   date = date.toString().split(" ").slice(1,4).join(" ")
+ 
+//   axios.put("http://localhost:5000/cart/checkout",{arrayCheckout:state.cart,date},{
+//     headers: {
+//       authorization: `Bearer ${state.token}`,
+//     }}).then((result)=>{
+// setMessage("Your order has been accepted")
+//       dispatch(checkoutAction())
+//     }).catch((err)=>{
+//       console.log(err);
+//     })
+// }
+// let amount =0
+
+//   return <div className="contenur_cart" >
+//     <h1 className={`message_cart ${clascontent}`} >Cart is empty</h1>
+//       <div className={`content_cart ${clascontent}`} >
+//   <table>
+// <tr className="headerCartTable">
+//     <th>Image</th>
+//     <th>Product Name</th>
+//     <th>Quantity</th>
+//     <th>Price</th>
+//     <th>Total</th>
+// </tr>
+
         },
       })
       .then((result) => {})
@@ -138,7 +192,9 @@ const navigate=useNavigate()
   let amount = 0;
   let usedamount = 0;
   return (
-    <>
+    <div className="contenur_cart">
+      <h1 className={`message_cart ${clascontent}`} >Cart is empty</h1>
+      <div className={!lengthCart?`content_cart active`:`content_cart`}>
       <table>
         <tr className="headerCartTable">
           <th>Image</th>
@@ -177,6 +233,7 @@ const navigate=useNavigate()
                     className="deleteIcon"
                     onClick={() => {
                       deleteCartClick(element.product_id);
+                      gelAllCart()
                     }}
                   >
                     <MdDelete />
@@ -203,6 +260,8 @@ const navigate=useNavigate()
                     className="deleteIcon"
                     onClick={() => {
                       console.log(false);
+                     
+                      
                       deleteused(element.used_product_id);
                     }}
                   >
@@ -230,6 +289,7 @@ const navigate=useNavigate()
           <Pay />
         </div>
 
+
       ) : (
         <button
           className="checkotbtton"
@@ -242,7 +302,12 @@ const navigate=useNavigate()
         </button>
       )}
       ;{message}
+
     </>
+
+//       </div>
+//     </div>
+
   );
 };
 

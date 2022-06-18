@@ -6,11 +6,13 @@ import { useParams } from "react-router-dom";
 import { getproduct } from "../../redux/reducers/prodact";
 import { useDispatch, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
+import {IoIosCheckmarkCircle} from "react-icons/io";
 
 
 const ProductPage = () => {
   const [message, setMessage] = useState("")
   const { id } = useParams();
+  const [clasName,setClassName]=useState("")
   
   const dispatch = useDispatch();
   const state = useSelector((state) => {
@@ -47,8 +49,10 @@ const ProductPage = () => {
       },})
       .then((result) => {
         setMessage("Your Item has been added")
+        setClassName("active")
         setTimeout(()=>{
           setMessage("")
+          setClassName("")
         },3000)
       })
       .catch((err) => {
@@ -111,7 +115,7 @@ const ProductPage = () => {
             >
             Add to cart
           </button>
-          <p>{message}</p>
+          <p className="message_cart_add" ><span className={`icon_check ${clasName}`}><IoIosCheckmarkCircle/> </span> {message}</p>
         </>
         )}
         </div>

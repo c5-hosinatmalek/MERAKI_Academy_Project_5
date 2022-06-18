@@ -8,6 +8,7 @@ const AddToCart = (req, res) => {
   const { price } = req.body;
   const query = `select * from cart where product_id =? and is_deleted=0;`;
   const Data = [product_id];
+  console.log(check, quantity, quantity, product_id, user_id, Data);
   connection.query(query, Data, (err, result) => {
     if (result.length) {
       let newqunt = quantity + 1;

@@ -313,7 +313,7 @@ const ProductTable = () => {
                 <td className="body">{element.Store_Quantity}</td>
                 <td className="body">
                   {element.Store_Quantity < 10
-                    ?<span>Restock the product</span>
+                    ?<span className="spanStock">Restock the product</span>
                     :  "The stock is good"}
                 </td>
                 <td className="body">
