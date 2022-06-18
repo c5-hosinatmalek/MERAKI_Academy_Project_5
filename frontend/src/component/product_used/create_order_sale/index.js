@@ -83,7 +83,7 @@ const ORDERSALE=()=>{
             <p><span>6.</span>Description of the product: An accurate and complete description of the product must be written.</p>
             
            </div>
-            <form className="form_ordersale" onSubmit={submit} >
+            <div className="form_ordersale" >
                 
                 <div className="productused_name" >
                     <label>Name product</label>
@@ -141,9 +141,9 @@ const ORDERSALE=()=>{
                     <textarea  ref={desinput} onChange={(e)=>{setProduct_Description(e.target.value)}} placeholder="Description" />
                 </div>
                 
-                <div className="sen_buttoun" ><button>Send</button></div>
+                <div className="sen_buttoun" ><button onClick={submit} >Send</button></div>
                 <div className="message_user" >  <h1>{message}</h1> </div>
-            </form>
+            </div>
         </div>
     )
 }
