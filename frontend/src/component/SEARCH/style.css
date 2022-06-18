@@ -81,7 +81,8 @@ color: black;
         padding: 0.4rem  0.4rem;
         width: 13.5rem;
         font-size: 1rem;
-        font-weight: 700;
+        /* font-weight: 700; */
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
     .h1_search{
         color: rgb(0, 0, 0);

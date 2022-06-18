@@ -198,7 +198,7 @@ const navigate=useNavigate()
       <table>
         <tr className="headerCartTable">
           <th>Image</th>
-          <th>Product Name</th>
+          <th className="non">Product Name</th>
           <th>Quantity</th>
           <th>Price</th>
           <th>Total</th>
