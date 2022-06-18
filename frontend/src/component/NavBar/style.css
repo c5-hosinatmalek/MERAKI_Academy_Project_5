@@ -94,8 +94,8 @@
 }
 
 .my_account_contener ul .li_2:hover {
-  font-size: 2.2rem;
-  transition: 0.1s;
+  font-size: 1.7rem;
+  transition: 0.2s;
   font-weight: 1000;
   transform: initial;
 }
@@ -108,17 +108,21 @@
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-
+.my_account_contener li {
+ 
+margin-top: 0.6rem;
+}
 .my_account_contener li a {
   color: #000000;
   font-size: 1.5rem;
   transform: initial;
   width: 100%;
+ 
 }
 
 .my_account_contener li a:hover {
-  font-size: 2.2rem;
-  transition: 0.1s;
+  font-size: 2rem;
+  transition: 0.2s;
   font-weight: 1000;
 }
 

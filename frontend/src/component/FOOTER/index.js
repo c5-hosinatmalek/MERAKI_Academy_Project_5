@@ -17,6 +17,9 @@ import {IoIosCheckmarkCircle} from "react-icons/io";
   const FOOTER = () => {
   const [clasNameicon,setClasNameicon]=useState("")
   const [classNameSend,setClassNameSend]=useState("")
+  const nameinput=useRef()
+  const emailinput=useRef()
+  const textinput=useRef()
   // const form = useRef();
   // const sendEmail = (e) => {
   //   e.preventDefault();
@@ -136,6 +139,10 @@ import {IoIosCheckmarkCircle} from "react-icons/io";
               <div className="name">
                   
                 <input
+                onKeyDown={(e)=>{
+                  e.key==="Enter"?emailinput.current.focus():nameinput.current.focus()
+                }}
+                ref={nameinput}
                   type="text"
                   placeholder="enter name...."
                   required
@@ -144,6 +151,8 @@ import {IoIosCheckmarkCircle} from "react-icons/io";
               </div>
               <div className="email">
                 <input
+                onKeyDown={(e)=>{e.key==='Enter'?textinput.current.focus():emailinput.current.focus()}}
+                ref={emailinput}
                   type="email"
                   placeholder="enter email...."
                   required
@@ -152,6 +161,7 @@ import {IoIosCheckmarkCircle} from "react-icons/io";
               </div>
               <div className="text_area">
                 <textarea
+                ref={textinput}
                   placeholder="enter message...."
                   type="text"
                   cols="25"
