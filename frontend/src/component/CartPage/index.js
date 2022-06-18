@@ -1,20 +1,25 @@
 import axios from "axios";
 import "./style.css";
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToUsed,deleteusedpro } from "../../redux/reducers/cart";
+import { addToUsed, deleteusedpro } from "../../redux/reducers/cart";
 import { MdDelete } from "react-icons/md";
 import {
   getCart,
   updateQuantity,
   deleteFromCart,
   checkoutAction,
-  deleteallused
+  deleteallused,
+  price,
 } from "../../redux/reducers/cart";
-
+import Pay from "../paypal/index";
+import { useNavigate  } from "react-router-dom";
 const CartPage = () => {
+  const [show, setshow] = useState(false);
   const [message, setMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
+const navigate=useNavigate()
   const state = useSelector((state) => {
     return {
       cart: state.cart.cart,
@@ -92,23 +97,22 @@ const CartPage = () => {
         console.log(err);
       });
   };
-const deleteused=(id)=>{
-  dispatch(deleteusedpro(id))
-  console.log(id);
-  axios
-  .delete(`http://localhost:5000/cart/cart/delete/${id}`, {
-    headers: {
-      authorization: `Bearer ${state.token}`,
-    },
-  })
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-}
+  const deleteused = (id) => {
+    dispatch(deleteusedpro(id));
+    console.log(id);
+    axios
+      .delete(`http://localhost:5000/cart/cart/delete/${id}`, {
+        headers: {
+          authorization: `Bearer ${state.token}`,
+        },
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const CheckOutClick = () => {
     let date = new Date();
     date = date.toString().split(" ").slice(1, 4).join(" ");
@@ -132,7 +136,7 @@ const deleteused=(id)=>{
       });
   };
   let amount = 0;
-let usedamount=0
+  let usedamount = 0;
   return (
     <>
       <table>
@@ -195,7 +199,6 @@ let usedamount=0
                 </td>
                 <td className="titleCell">{element.product_description}</td>
                 <td className="quantityCell">
-
                   <button
                     className="deleteIcon"
                     onClick={() => {
@@ -208,7 +211,7 @@ let usedamount=0
                 </td>
                 <td className="priceCell">{element.price_checkout} JD</td>
                 <td className="totalCell">
-                  {usedamount=usedamount+element.price_checkout} JD
+                  {(usedamount = usedamount + element.price_checkout)} JD
                 </td>
               </tr>
             );
@@ -218,21 +221,27 @@ let usedamount=0
           <td></td>
           <td></td>
           <td className="tdtotalprice">Total Price</td>
-          <td className="tdtotalprice">{amount+usedamount} JD</td>
+          <td className="tdtotalprice">{amount + usedamount} JD</td>
         </tr>
       </table>
       <h1>{message}</h1>
-      <button
-        className="checkotbtton"
-        onClick={(e) => {
-          CheckOutClick();
-          dispatch(deleteallused())
-        }}
-      >
-        Check Out
+      {show ? (
+        <div>
+          <Pay />
+        </div>
 
-      </button>
-      {message}
+      ) : (
+        <button
+          className="checkotbtton"
+          onClick={() => {
+            setshow(true);
+            dispatch(price(amount + usedamount));
+          }}
+        >
+          Check Out
+        </button>
+      )}
+      ;{message}
     </>
   );
 };
