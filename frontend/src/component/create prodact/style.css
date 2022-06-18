@@ -15,11 +15,19 @@
 #title {
   margin: 1rem 0rem 0rem 1rem;
 }
+.imgCreate{
+  width: 200px;
+  height: 200px;
+}
 .inputCreate {
   font-size: 1.3rem;
   margin-top: 1rem;
   width: 40%;
 
+}
+.createMes{
+  font-size: 20px;
+  margin-left: 20px;
 }
 .newsinput {
   font-size: 1.3rem;

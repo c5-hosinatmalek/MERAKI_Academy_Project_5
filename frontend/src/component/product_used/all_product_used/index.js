@@ -84,7 +84,7 @@ useEffect(()=>{
                           <p className="titlePar_product_used"> {element.product_name}</p>
                           <p className="descriptionPar_used">
                             {" "}
-                            {element.product_description}
+                            {element.product_description.split(" ").slice(0,15).join(" ")}
                           </p>
       
                           <p className="price_product_used"> {element.asking_price +20 } JD</p>
