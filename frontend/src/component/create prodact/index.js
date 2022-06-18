@@ -81,7 +81,7 @@ const Addprodact = () => {
       });
   };
   return (
-    <div>
+    <div className="createProduct">
       <div className="addNewsChild">
         <h1 id="title">Add new product</h1>
         <div className="divLabel">
@@ -91,7 +91,7 @@ const Addprodact = () => {
           <textarea
             id="titleNew"
             className="newsinput"
-            placeholder="title"
+            placeholder="Title"
             onChange={(e) => {
               Settitle(e.target.value);
             }}
@@ -103,7 +103,7 @@ const Addprodact = () => {
           </label>
           <textarea id="descrNew"
             className="newsinput"
-            placeholder="description"
+            placeholder="Description"
             onChange={(e) => {
               Setdescription(e.target.value);
             }}
@@ -114,7 +114,8 @@ const Addprodact = () => {
          Quantity
           </label>
           <input 
-            placeholder="qun"
+          className="inputCreate"
+            placeholder="Quantity"
             type="number"
             id="quantity"
             name="quantity"
@@ -130,7 +131,8 @@ const Addprodact = () => {
             Product Name
           </label>
           <input
-            placeholder="name"
+          className="inputCreate"
+            placeholder="Name"
             onChange={(e) => {
               Setproduct_name(e.target.value);
             }}
@@ -141,8 +143,9 @@ const Addprodact = () => {
             Product Type
           </label>
           <input
+          className="inputCreate"
           id="typeNew"
-            placeholder="type"
+            placeholder="Type"
             onChange={(e) => {
               Setproduct_type(e.target.value);
             }}
@@ -153,8 +156,9 @@ const Addprodact = () => {
           Price
           </label>
           <input
+          className="inputCreate"
           id="price"
-            placeholder="price"
+            placeholder="Price"
             onChange={(e) => {
               Setprice(e.target.value);
             }}
@@ -164,13 +168,14 @@ const Addprodact = () => {
           <label for="titleNew" type="text" className="labelNew">
           Category
           </label>
-
           <select
+          className="inputCreate"
           id="category"
             onChange={(e) => {
               setCato(e.target.value);
             }}
           >
+            <option></option>
             {catogre &&
               catogre.map((element, index) => {
                 return (
@@ -186,11 +191,13 @@ const Addprodact = () => {
           Sub Category
           </label>
           <select
+          className="inputCreate"
           id="subcategory"
             onChange={(e) => {
               Setsub_category(e.target.value);
             }}
           >
+            <option></option>
             {subcatogre &&
               subcatogre.map((element, index) => {
                 return (
@@ -207,11 +214,12 @@ const Addprodact = () => {
             Image
           </label>
           <input
+          className="inputCreate"
           id="uploadImg"
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
           ></input>
-          <button onClick={uploadImage}>Upload</button>
+          <button className="uploadCreat" onClick={uploadImage}>Upload</button>
         </div>
         <div className="divLabel">
           <img src={url} />

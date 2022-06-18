@@ -20,7 +20,6 @@ const ALLPRODUCTFORADMIN=()=>{
         axios.get("http://localhost:5000/prudect_used/AllSaleOrderForadmin").then((resulatt)=>{
 
             dispacth( setallProductFromAdmin(resulatt.data.result))
-            console.log(resulatt);
                 
         })
     }
@@ -57,42 +56,41 @@ const ALLPRODUCTFORADMIN=()=>{
                 <table>
                    
                         <tr>
-                            <th>Image</th>
-                            <th>name</th>
-                            <th>category</th>
-                            <th>asking price</th>
-                            <th>bank account</th>
-                            <th>admission status</th>
-                            <th>product description</th>
-                            <th>phone number</th>
-                            <th>Available Operations</th>
+                            <th className="head">Image</th>
+                            <th className="head">Name</th>
+                            <th className="head">Category</th>
+                            <th className="head">Price</th>
+                            <th className="head">Bank Account</th>
+                            <th className="head">admission status</th>
+                            <th className="head" >Description</th>
+                            <th className="head">Phone Number</th>
+                            <th className="head"> Operation</th>
                         </tr>
 
                         {
     state.allOrderSaleForAdmin&&state.allOrderSaleForAdmin.map((element,index)=>{
-        console.log(element);
+        
         return(
             <tr>
-                            <td><img src={element.url_imj}/></td>
-                            <td><h1>{element.product_name}</h1> </td>
-                            <td> <h1>{element.category}</h1></td>
-                            <td><h1>{element.asking_price}  JD</h1></td>
-                            <td><h1>{element.bank_account}</h1></td>
-                            <td>{element.admission_status?<h1 style={{color:"green"}} >it has been accpted</h1  >:<h1 style={{color:"red"}} >under review</h1>}</td>
-                            <td>{element.product_description}</td>
-                            <td>{element.phone_number}</td>
-                            <td> <button onClick={()=>{
+                            <td className="body"><img className="imgTable" src={element.url_imj}/></td>
+                            <td className="body">{element.product_name} </td>
+                            <td className="body"> {element.category}</td>
+                            <td className="body">{element.asking_price}  JD</td>
+                            <td className="body">{element.bank_account}</td>
+                            <td className="body">{element.admission_status?<h2 style={{color:"green"}} >it has been accpted</h2  >:<h2 style={{color:"red"}} >under review</h2>}</td>
+                            <td className="body">{element.product_description}</td>
+                            <td className="body">{element.phone_number}</td>
+                            <td className="body"> <button className="operButton" onClick={()=>{
                                axios.put(`http://localhost:5000/prudect_used/${element.used_product_id}`).then((result)=>{
                                 allOrderSale()
                                
                                 
                             })
 
-                            }} >Acceptance</button>
-                                <button onClick={()=>{axios.delete(`http://localhost:5000/prudect_used/delete/${element.used_product_id}`).then((result)=>{
+                            }} >Accept</button>
+                                <button className="operButton" onClick={()=>{axios.delete(`http://localhost:5000/prudect_used/delete/${element.used_product_id}`).then((result)=>{
                                     allOrderSale()
-                                    console.log(result);
-                                })}} >delete</button>
+                                })}} >Delete</button>
                              </td>
             </tr>
         )

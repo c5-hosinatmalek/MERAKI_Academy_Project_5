@@ -1,158 +1,151 @@
-
-.navbar{
-    background-color: black;
+.navbar {
+  background-color: black;
 }
 * {
-
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 .navbar {
-    /* padding: 1rem; */
-background-color: #000000;
-
+  /* padding: 1rem; */
+  background-color: #000000;
+}
+.navtiltle {
+  color: white;
+  font-weight: 700;
 }
 
 .navUser {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 
-    align-items: center;
+  align-items: center;
 }
+.navAdmin {
+    display: flex;
+    justify-content: space-between;
+  
+    align-items: center;
+  }
 
 .logo_name {
-    font-family: 'The Histoia Demo', sans-serif;
-    font-size: 2.7rem;
-    background: linear-gradient(to top, #ffffff, #ffffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    user-select: none;
-    width: 150px;
-    height: 100;
+  font-family: "The Histoia Demo", sans-serif;
+  font-size: 2.7rem;
+  background: linear-gradient(to top, #ffffff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  width: 150px;
 }
+.logo_nameAdmin {
+  width: 150px;
 
+  justify-self: flex-start;
+  
+}
 
 .my_account_contener {
+  padding: 0;
+  margin: 0;
 
-    padding: 0;
-    margin: 0;
-
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-
-
-
 .myaccount_logo {
-    padding: 1rem;
-    color: #080808;
-    background: #ffffff;
-
+  padding: 1rem;
+  color: #080808;
+  background: #ffffff;
 }
 
 .my_account_contener .ul {
-    position: absolute;
-    right: -100rem;
-    list-style: none;
-    transform: initial;
-    text-align: center;
-    display: none;
-
+  position: absolute;
+  right: -100rem;
+  list-style: none;
+  transform: initial;
+  text-align: center;
+  display: none;
 }
 
-
-
 .my_account_contener .ul.active {
-    margin-top: 1rem;
-    width: 12rem;
-    position: absolute;
-    right: auto;
-    z-index: 10;
-    background: #ffffff;
-    border: 5px solid transparent;
-    border-top: 5px solid rgb(114, 114, 114);
-    border-radius: 5px;
-    transition: 1s;
-    display: block;
-
-
+  margin-top: 1rem;
+  width: 12rem;
+  position: absolute;
+  right: auto;
+  z-index: 10;
+  background: #ffffff;
+  border: 5px solid transparent;
+  border-top: 5px solid rgb(114, 114, 114);
+  border-radius: 5px;
+  transition: 1s;
+  display: block;
+}
+#adminlist {
+  right: 5px;
 }
 
 .my_account_contener ul .li_1 {
-
-    
-    border-bottom: 2px solid #7c7b7b;
-    font-size: 1.5rem;
-    border-radius: 5px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+  border-bottom: 2px solid #7c7b7b;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-
 .my_account_contener ul .li_2:hover {
-    font-size: 2.2rem;
-    transition: 0.1s;
-    font-weight: 1000;
-    transform: initial;
-
+  font-size: 2.2rem;
+  transition: 0.1s;
+  font-weight: 1000;
+  transform: initial;
 }
 
 .my_account_contener ul .li_2 {
-    border-bottom: 2px solid #7c7b7b;
-    font-size: 1.5rem;
-    transform: initial;
-    border-radius: 5px;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
+  border-bottom: 2px solid #7c7b7b;
+  font-size: 1.5rem;
+  transform: initial;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .my_account_contener li a {
-    color: #000000;
-    font-size: 1.5rem;
-    transform: initial;
-    width: 100%;
+  color: #000000;
+  font-size: 1.5rem;
+  transform: initial;
+  width: 100%;
 }
 
 .my_account_contener li a:hover {
-    font-size: 2.2rem;
-    transition: 0.1s;
-    font-weight: 1000;
+  font-size: 2.2rem;
+  transition: 0.1s;
+  font-weight: 1000;
 }
-
-
 
 .icons {
-    color: #ffffff;
-    border: 0;
-    margin: 0 1rem;
-    box-sizing: border-box;
-    width: min-content;
-    height: min-content;
-    /* border-radius: 5px; */
-    font-size: 60px;
-    display: inline-block;
-   
-
+  color: #ffffff;
+  border: 0;
+  margin: 0 1rem;
+  box-sizing: border-box;
+  width: min-content;
+  height: min-content;
+  /* border-radius: 5px; */
+  font-size: 60px;
+  display: inline-block;
 }
-
 
 .contener_logcart {
-    color: black;
-    position: relative;
+  color: black;
+  position: relative;
 }
 
-.menu_icon{
-    color: #ffffff;
-    display:none;
+.menu_icon {
+  color: #ffffff;
+  display: none;
 }
 
-
-@media (max-width:650px){.icons {
+@media (max-width: 650px) {
+  .icons {
     color: #ffffff;
     border: 0;
     margin: 0 0.4rem;
@@ -162,11 +155,10 @@ background-color: #000000;
     /* border-radius: 5px; */
     font-size: 30px;
     display: inline-block;
+  }
 
-}
-
-.logo_name {
-    font-family: 'The Histoia Demo', sans-serif;
+  .logo_name {
+    font-family: "The Histoia Demo", sans-serif;
     font-size: 2rem;
     background: linear-gradient(to top, #ffffff, #ffffff);
     -webkit-background-clip: text;
@@ -174,55 +166,52 @@ background-color: #000000;
     user-select: none;
     width: 120px;
     height: 100;
+  }
+}
+@media (max-width: 510px) {
+  .icons {
+    color: #ffffff;
+    border: 0;
+    /* margin: 0 rem; */
+    box-sizing: border-box;
+    width: min-content;
+    height: min-content;
+    /* border-radius: 5px; */
+    font-size: 30px;
+    display: inline-block;
+  }
+  .logo_name {
+    font-family: "The Histoia Demo", sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to top, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    width: 100px;
+    height: 100;
+  }
 }
 
-}
-@media (max-width:510px){
-    .icons {
-        color: #ffffff;
-        border: 0;
-        /* margin: 0 rem; */
-        box-sizing: border-box;
-        width: min-content;
-        height: min-content;
-        /* border-radius: 5px; */
-        font-size: 30px;
-        display: inline-block;
-    
-    }
-    .logo_name {
-        font-family: 'The Histoia Demo', sans-serif;
-        font-size: 2rem;
-        background: linear-gradient(to top, #ffffff, #ffffff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        user-select: none;
-        width: 100px;
-        height: 100;
-    }
-}
-
-@media (max-width:425px){
-    .icons {
-        color: #ffffff;
-        border: 0;
-        /* margin: 0 rem; */
-        box-sizing: border-box;
-        width: min-content;
-        height: min-content;
-        /* border-radius: 5px; */
-        font-size: 20px;
-        display: inline-block;
-    
-    }
-    .logo_name {
-        font-family: 'The Histoia Demo', sans-serif;
-        font-size: 2rem;
-        background: linear-gradient(to top, #ffffff, #ffffff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        user-select: none;
-        width: 80px;
-        height: 100;
-    }
+@media (max-width: 425px) {
+  .icons {
+    color: #ffffff;
+    border: 0;
+    /* margin: 0 rem; */
+    box-sizing: border-box;
+    width: min-content;
+    height: min-content;
+    /* border-radius: 5px; */
+    font-size: 20px;
+    display: inline-block;
+  }
+  .logo_name {
+    font-family: "The Histoia Demo", sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to top, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    width: 80px;
+    height: 100;
+  }
 }

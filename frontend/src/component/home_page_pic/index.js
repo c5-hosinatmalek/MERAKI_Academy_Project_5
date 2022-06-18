@@ -112,19 +112,17 @@ function Getphotosmain() {
   };
   return (
     <div>
+        <h1 className="titleSlider">Create Slider</h1>
       <div>
+        <label for="sliderMainImg" className="sliderLabel">Choose slider main image</label>
         <input
+        id="sliderMainImg"
           type="file"
           onChange={(e) => setImage(e.target.files[0])}
         ></input>
-        <button
-          onClick={() => {
-            addImage("post", `http://localhost:5000/Homeiteams/${addimg}`);
-          }}
-        >
-          update
-        </button>
+        <label for="catgeorySlider" className="sliderLabel">Choose sub category for slider</label>
         <select
+        id="catgeorySlider"
           onChange={(e) => {
             setAddimg(e.target.value);
           }}
@@ -141,27 +139,43 @@ function Getphotosmain() {
           <option value={9}>Cases</option>
           <option value={10}>Scanner</option>
         </select>
+        <button className="uploadBottom"
+          onClick={() => {
+            addImage("post", `http://localhost:5000/Homeiteams/${addimg}`);
+          }}
+        >
+          Upload
+        </button>
       </div>
 
 
       {state.home &&
         state.home.map((element, index) => {
           return (
-            <div>
-              <div className="test">
+            
                 <div className="iteamsheader">
                   <div className="mainphotodiv">
-                    <h1>Header phtoto</h1>
+                    <h1>Slider main Image</h1>
                     <img className="pageimg" src={element.url}></img>{" "}
                   </div>
                   <div className="mainiteamsheader">
-                    <h1>product</h1>
+                    <h1>Subcategory slider</h1>
                     <div className="mm">
                       <h1>{filterdSubCatag(element.product_Id)}</h1>
                     </div>
                   </div>
                   <div className="changeheader">
+                    <label for="updatePhoto" className="updatesliderLabel">Update slider main image</label>
+                    <input
+                    className="updateInput"
+                    id="updatePhoto"
+                      type="file"
+                      onChange={(e) => setImage(e.target.files[0])}
+                    ></input>
+                    <label for="updateCategory" className="updatesliderLabel">Update sub category for slider</label>
                     <select
+                    className="updateInput"
+                    id="updateCategory"
                       onChange={(e) => {
                         setproduct_Id(e.target.value);
                       }}
@@ -178,20 +192,7 @@ function Getphotosmain() {
                       <option value={8}>Cooling</option>
                       <option value={9}>Cases</option>
                     </select>
-                    <input
-                      type="file"
-                      onChange={(e) => setImage(e.target.files[0])}
-                    ></input>
-                    <button
-                      onClick={() => {
-                        deleteslid(element.pic_id);
-                        dispatch(deleteslide(element.pic_id));
-                      }}
-                    >
-                      {" "}
-                      delete
-                    </button>
-                    <button
+                    <button className="updateButton"
                       onClick={() => {
                         addImage(
                           "put",
@@ -202,12 +203,20 @@ function Getphotosmain() {
                     >
                       update
                     </button>
+                    <button
+                    className="updateButton"
+                      onClick={() => {
+                        deleteslid(element.pic_id);
+                        dispatch(deleteslide(element.pic_id));
+                      }}
+                    >
+                      {" "}
+                      delete
+                    </button>
                   </div>
                 </div>
-                    <div>
-                </div>
-              </div>
-              </div>
+               
+             
           );
         })}
     </div>
