@@ -62,7 +62,7 @@ useEffect(()=>{
                         <option></option>
                         <option value="ALL Produc" >ALL Produc</option>
                         <option value="hard ware">hard ware</option>
-                        <option value="Bc">Bc</option>
+                        <option value="pc">pc</option>
                         <option value="Laptop">Laptop</option>
                         <option value="Accessories">Accessories</option>
                     </select>

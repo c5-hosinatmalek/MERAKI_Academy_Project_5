@@ -100,3 +100,114 @@ margin-bottom: 5rem;
     top: 50%;
 
 }
+@media (max-width: 700px){
+    .contenur_cart{
+        text-align: center;
+        width: 100%;
+        min-height: 40rem;
+       display: flex;
+      
+    }
+    .content_cart{
+    /* margin-bottom: 5rem; */
+    width: 100%;
+    }
+    .content_cart.active{
+        display: none;
+    }
+    .content_cart table {
+        width: 100%;
+    }
+    .imgCart{
+        height: 7.5rem;
+        width: 7rem;
+        /* padding: 1rem; */
+    
+    }
+    .headerCartTable{
+        background-color: #0B4579;
+        /* padding: 0.625rem; */
+        width: 100%;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: white;
+    }
+    .titleCell{
+        /* padding: 0.313rem 0.625rem; */
+        padding: 0 0;
+        font-size: 0.9rem;
+        font-weight: 400;
+        height: 7.813rem;
+    }
+    .quantityCell{
+        /* padding: 0.313rem 1.063rem; */
+        padding: 0;
+        gap: 0;
+        display: flex;
+        /* gap: 0.313rem; */
+        justify-items: center;
+        align-items: center;
+        height: 7.813rem;
+    
+    }
+    .priceCell{
+        /* padding: 0.313rem 1.25rem; */
+        /* font-size: 1.25rem; */
+        padding: 0;
+        text-align: center;
+        height: 7.813rem;
+    
+    }
+    .totalCell{
+        /* padding: 0.313rem 0.625rem; */
+        padding: 0;
+        font-size: 1.25rem;
+        text-align: center;
+        height: 7.813rem;
+    
+    }
+    .inputQuantity{
+    
+    font-weight: 400;
+    text-align: center;
+    width: 3.125rem;
+    
+    font-size: 1.25rem;
+    height: 2.25rem;
+    }
+    .deleteIcon{
+    font-size: 1.563rem;
+    height: 2.25rem;
+    
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    }
+    .checkotbtton{
+        width: 15rem;
+      height: 4rem;
+      background-color: red;
+      border: 0ch;
+      /* font-size: 1.438rem; */
+      color: white;
+    }
+    .totalPriceRow{
+        font-size: 1.25rem;
+    }
+    .tdtotalprice{
+        border-top:3px solid black ;
+    }
+    
+    .message_cart{
+        display: none;
+    }
+    .message_cart.active{
+        display: block;
+        position: absolute;
+        left: 24%;
+        top: 50%;
+    }
+    .headerCartTable .nnn{
+        display: none;
+    }
+}

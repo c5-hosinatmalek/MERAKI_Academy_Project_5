@@ -239,4 +239,18 @@ margin-top: 0.6rem;
     width: 80px;
     height: 100;
   }
+  .my_account_contener .ul.active {
+    margin-top: 1rem;
+    left: 14rem;
+    width: 12rem;
+    position: absolute;
+    right: auto;
+    z-index: 10;
+    background: #ffffff;
+    border: 5px solid transparent;
+    border-top: 5px solid rgb(114, 114, 114);
+    border-radius: 5px;
+    transition: 1s;
+    display: block;
+  }
 }
