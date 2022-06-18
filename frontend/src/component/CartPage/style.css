@@ -69,7 +69,7 @@ margin-bottom: 5rem;
 .checkotbtton {
   width: 300px;
   height: 70px;
-  background-color: red;
+  background-color: #b11616;
   border: 0ch;
   font-size: 23px;
   color: white;
@@ -186,7 +186,7 @@ margin-bottom: 5rem;
     .checkotbtton{
         width: 15rem;
       height: 4rem;
-      background-color: red;
+      background-color: #b11616;
       border: 0ch;
       /* font-size: 1.438rem; */
       color: white;

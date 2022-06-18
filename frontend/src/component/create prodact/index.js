@@ -153,7 +153,7 @@ const Addprodact = () => {
         </div>
         <div className="divLabel">
           <label for="price" type="text" className="labelNew">
-          Price
+         buy Price
           </label>
           <input
           className="inputCreate"
@@ -161,6 +161,19 @@ const Addprodact = () => {
             placeholder="Price"
             onChange={(e) => {
               Setprice(e.target.value);
+            }}
+          ></input>
+        </div>
+        <div className="divLabel">
+          <label for="price" type="text" className="labelNew">
+          Sell Price
+          </label>
+          <input
+          className="inputCreate"
+          id="price"
+            placeholder="Price"
+            onChange={(e) => {
+             
             }}
           ></input>
         </div>
@@ -221,11 +234,11 @@ const Addprodact = () => {
           ></input>
           <button className="uploadCreat" onClick={uploadImage}>Upload</button>
         </div>
+      <p className="createMes">{mesage}</p>
         <div className="divLabel">
-          <img src={url} />
+          <img  clasName="imgCreate" src={url} />
         </div>
       </div>
-      {mesage}
     </div>
   );
 };

@@ -151,6 +151,7 @@ const ProductTable = () => {
     })
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data.url)
         setUrl(data.url);
       })
       .catch((err) => console.log(err));

@@ -64,7 +64,12 @@ if(subject.includes("restock")){
 
 }
 if (subject.includes("verfied")) {
-    
+    const mailOptions ={
+        from:"datapirates1996@gmail.com",
+        to:`${email}`,
+        subject:`${subject}`,
+        text:`${emailBody}`
+    }
     transporter.sendMail(mailOptions,(error,info)=>{
         if(error){
            return res.json({error})

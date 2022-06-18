@@ -64,6 +64,7 @@ const ProductPage = () => {
     let email =jwtDecode(state.token)["email"]
     axios.post('http://localhost:5000/request',{product_id,email}).then((result)=>{
       console.log(result);
+      setMessage("We will send you email when its available")
     }).catch((err)=>{
       console.log(err);
     })
@@ -101,10 +102,12 @@ const ProductPage = () => {
           </div>
         </div>
         <div className="addtocartdiv">
-        {state.product[0] && state.product[0].Store_Quantity == 0 ? (
+        {state.product[0] && state.product[0].Store_Quantity == 0 ? (<>
           <button className="addtocart" onClick={()=>{
             askForEmail(state.product[0].product_id)
+            setMessage("We will send you email when its available")
           }}>Send me email when availabe</button>
+          <p className="message_cart_add" ><span className={`icon_check ${clasName}`}><IoIosCheckmarkCircle/> </span> {message}</p></>
           ) : (<>
           <button
           className="addtocart"
