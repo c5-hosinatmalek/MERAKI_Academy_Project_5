@@ -6,6 +6,7 @@ export const cartSlice = createSlice({
     cart: [],
     usedcart: [],
     totalprice: 0,
+    amount:0
   },
   reducers: {
     getCart: (state, action) => {
@@ -36,6 +37,9 @@ export const cartSlice = createSlice({
     },
     deleteallused:(state,action)=>{
       state.usedcart=[]
+    },
+    price:(state,action)=>{
+      state.amount=action.payload
     }
   },
 });
@@ -48,7 +52,8 @@ export const {
   totalPriceAction,
   addToUsed,
   deleteusedpro,
-  deleteallused
+  deleteallused,
+  price
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

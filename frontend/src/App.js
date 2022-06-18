@@ -111,6 +111,7 @@ function App() {
   }else{
     return (
       <div className="App">
+
         <div className="mainphotos">
           <img className="mainphotosclass" src={photo}></img>
         </div>
