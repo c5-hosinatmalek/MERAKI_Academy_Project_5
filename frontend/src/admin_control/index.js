@@ -10,6 +10,7 @@ const ADMINCONTROL=()=>{
                 <Link to={"/creat"}>Add new product</Link>
                 <Link to={"/admin/uplodphoto"} >Home page</Link>
                 <Link to={"/all_order_sale_for_admin"} >Used product</Link>
+                <Link to={"admin/soldTable"}>Sold Table</Link>
                 
             </div>
         </div>

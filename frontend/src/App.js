@@ -36,7 +36,7 @@ import jwtDecode from "jwt-decode";
 import FOOTER from "./component/FOOTER";
 import UserTable from "./component/UserTable/UserTable";
 import ProductTable from "./component/ProductTable";
-
+import {SoldTable} from "./component/SoldItemTable/index";
 
 
 import { SubCatgoryPage } from "./component/SubCategoryPage/index";
@@ -100,6 +100,7 @@ function App() {
         <Route path="/creat" element={<Createprodact />} />
         <Route path="/admin/uplodphoto" element={<Getphotosmain />} />
         <Route path="/all_order_sale_for_admin" element={<ALLPRODUCTFORADMIN/>}/>
+        <Route path="/admin/soldTable" element={<SoldTable/>}/>
       </Routes>
     
     </div>
