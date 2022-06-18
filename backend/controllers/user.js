@@ -1,7 +1,7 @@
 const { query } = require("../models/db");
 const connection = require("../models/db");
 const getAllUser = (req, res) => {
-  const query = `SELECT * FROM users `;
+  const query = `SELECT * FROM users WHERE ROLE.ID=2 `;
   connection.query(query, (err, result) => {
     if (err) {
       res.status(500).json({

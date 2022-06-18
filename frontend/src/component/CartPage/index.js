@@ -303,11 +303,10 @@ const navigate=useNavigate()
       )}
       ;{message}
 
-    
 
-       </div>
-     </div>
 
+    </div>
+    </div>
   );
 };
 
