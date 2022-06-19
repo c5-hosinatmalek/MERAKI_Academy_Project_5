@@ -29,13 +29,11 @@ This project is intendent to be a HAWRDWARE_SUPPLEMENTS where you can buy any PC
 
 ### Prerequisites
 
-<ul>
-<li> visual studio code </li>
-<li>Git Bash </li>
-<li>mysql</li>
-<li>Node.js</li>
-<li>react</li>
-</ul>
+
+-Visual Studio Code follow this Link to install("https://visualstudio.microsoft.com/downloads/").
+-Git Bash follow this link to install(https://git-scm.com/downloads).
+-MongoDB follo wthis link to install(https://www.mongodb.com/try/download/community).
+-Node.js follow this link to install(https://nodejs.org/en/download/).
 
 ### Installing
 
@@ -75,8 +73,15 @@ End with an example of getting some data out of the system or using it for a lit
 <li>  </li>
 <li>you can see all product but you cant add to cart or buy anything without login </li>
 <li>you can sell your used product as customr </li>
+<li>you can add any product to your cart and checkout </li>
+<li>if you use search you can get your product faster<li>
 <li>you can see many tables as admin </li>
+<li>you can use paypal to make online payment</li>
+
 </ul>
+
+##    User Story
+you can see it at trello (https://trello.com/b/yNorG5eO/pa)
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [MongoDB](https://www.mongodb.com/) - Database
