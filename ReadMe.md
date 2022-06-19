@@ -42,7 +42,7 @@ This project is intendent to be a HAWRDWARE_SUPPLEMENTS where you can buy any PC
 1)clone the repo to your local machine using git bash
 
 ```
-https://github.com/C5-MoadBino/MERAKI_Academy_Project_4.git
+https://github.com/C5-Data-pirates/MERAKI_Academy_Project_5
 
 ```
 
@@ -71,11 +71,11 @@ End with an example of getting some data out of the system or using it for a lit
 ## 🎈 Usage <a name="usage"></a>
 
 <ul>
-<li>you dont have to register to nivigate our web app</li>
+<li>you dont have to register to navigate our web app</li>
 <li>  </li>
-<li>you can click on post to see what ther users add  but you cant add post or comment you have to be on of our users </li>
-<li>you can click on gamelist and seach on any game you want </li>
-<li>you can click on news and red the lasts news </li>
+<li>you can see all product but you cant add to cart or buy anything without login </li>
+<li>you can sell your used product as customr </li>
+<li>you can see many tables as admin </li>
 </ul>
 ## ⛏️ Built Using <a name = "built_using"></a>
 
