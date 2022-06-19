@@ -18,7 +18,7 @@ export const paginationSlice = createSlice({
     // payload=>([allproductbeforePagintion,number of page])
     paginationAction:(state,action)=>{
       
-      if(action.payload[2]==0){
+      if(action.payload[2]==0&& state.number.length==0){
         for(let i=0;i<Math.ceil(action.payload[0].length/12);i++){
   state.number.push(i)
         }
